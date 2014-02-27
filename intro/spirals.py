@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from math import floor, sqrt, sin, cos
 
 
-def fist_n_primes(n):           # Calculates first n primes using sieve of Eratosthenes
+def first_n_primes(n):           # Calculates first n primes using sieve of Eratosthenes
 
     sieve = [True] * (n/2)
     for i in xrange(3, int(n**0.5) + 1, 2):
@@ -32,13 +32,13 @@ def calculate_coordinates_archimedian_spiral(n):
 
 def plot_and_save_spiral(n, spiral_fun, path):
 
-    primes        = fist_n_primes(n)
+    primes        = first_n_primes(n)
     coord_primes  = zip(*[spiral_fun(i) for i in primes])
     
     fig = plt.figure(figsize=(23.5, 23.5)) 
     plt.plot(coord_primes[0], coord_primes[1],    'ro')
 
-    if spiral_fun == calculate_coordinates_Ulam_spiral:
+    if spiral_fun == calculate_coordinates_Ulam_spiral or True:
 
         coord_quad_form = {}   # Interesting patterns can be observed when highlighting primes of form 4n + an + b
         for i in xrange(n):
@@ -57,6 +57,6 @@ def plot_and_save_spiral(n, spiral_fun, path):
     plt.clf()
 
 
-n = 100000
+n = 10000
 plot_and_save_spiral(n, calculate_coordinates_Ulam_spiral,        "Ulam_spiral.png");
 plot_and_save_spiral(n, calculate_coordinates_archimedian_spiral, "archimed_spiral.png");

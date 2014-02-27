@@ -1,0 +1,46 @@
+def permutation(l):
+    if len(l) == 1:
+        return [l]
+    else:
+        perm_list = []
+        for e in l:
+            tmp_l = list(l)
+            tmp_l.remove(e)
+            for perm in permutation(tmp_l):
+                perm.insert(0, e)
+                perm_list.append(perm)
+    return perm_list
+
+print permutation(["a", "b", "c"])
+
+def combination(l, k, repete = False):
+    if k == 1:
+        return [[i] for i in l]
+    else:
+        ret_list = []
+        for i, e in enumerate(l[:]):
+            if not repete:
+                i = 0
+                l.remove(e)
+            for comb in combination(l[i:], k-1, repete=repete):
+                comb.insert(0, e)
+                ret_list.append(sorted(comb))
+        return sorted(ret_list)
+
+print combination(["a", "b", "c"], 3, repete=1)
+
+def variation(l, k, repete = False):
+    if k == 1:
+        return [[i] for i in l]
+    else:
+        perm_list = []
+        for e in l:
+            tmp_l = list(l)
+            if not repete:
+                tmp_l.remove(e)
+            for var in variation(tmp_l, k-1, repete=repete):
+                var.insert(0, e)
+                perm_list.append(var)
+    return sorted(perm_list)
+
+print variation(["a", "b", "c"], 2, repete=1)
