@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def permutation(l):
     if len(l) == 1:
         return [l]
@@ -11,7 +13,6 @@ def permutation(l):
                 perm_list.append(perm)
     return perm_list
 
-print permutation(["a", "b", "c"])
 
 def combination(l, k, repete = False):
     if k == 1:
@@ -27,7 +28,6 @@ def combination(l, k, repete = False):
                 ret_list.append(sorted(comb))
         return sorted(ret_list)
 
-print combination(["a", "b", "c"], 3, repete=1)
 
 def variation(l, k, repete = False):
     if k == 1:
@@ -43,4 +43,15 @@ def variation(l, k, repete = False):
                 perm_list.append(var)
     return sorted(perm_list)
 
-print variation(["a", "b", "c"], 2, repete=1)
+
+def nice_print(l):
+    for comb in l:
+        print "    " + "".join(comb)
+    print
+
+print "Permutations"
+nice_print(permutation(["a", "b", "c"]))
+print "Combinations"
+nice_print(combination(["a", "b", "c"], 3, repete=1))
+print "Variations"
+nice_print(variation(  ["a", "b", "c"], 4, repete=1))
