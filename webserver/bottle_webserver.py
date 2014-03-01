@@ -13,7 +13,8 @@ def index():
 
 @route('/pascal/<param_string>')
 def index(param_string):
-    print "wuiiiii"
+    print "Attempting to print pascals triangle"
+    print "     Parameters: %s\n" % param_string
     params = param_string.split("&")
     return plot_pascals_triangle(int(params[0]),int(params[1]))
 
