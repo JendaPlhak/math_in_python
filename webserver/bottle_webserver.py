@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.append("../2_cviceni")
+sys.path.append("2_cviceni/")
 
 from bottle import route, run, template, static_file
 from pascals_triangle import plot_pascals_triangle
