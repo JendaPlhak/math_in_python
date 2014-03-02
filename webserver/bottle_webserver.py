@@ -16,11 +16,12 @@ def index():
 @route('/pascal/<qstring>')
 def index(qstring):
     print "Attempting to print pascals triangle"
-    print "     Parameters: %s\n" % param_string
+    print "     Parameters: %s\n" % qstring
 
     params = parse_qs(qstring)
-    return plot_pascals_triangle( int(params["n_layers"]),
-                                  int(params["d"])
+    print params
+    return plot_pascals_triangle( int(params["n_layers"][0]),
+                                  int(params["d"][0])
                                 )
 
 
