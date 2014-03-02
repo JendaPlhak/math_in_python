@@ -3,7 +3,8 @@
 import sys
 sys.path.append("2_cviceni/")
 
-from bottle import route, run, template, static_file
+from urlparse         import parse_qs
+from bottle           import route, run, template, static_file
 from pascals_triangle import plot_pascals_triangle
 
 
@@ -11,12 +12,17 @@ from pascals_triangle import plot_pascals_triangle
 def index():
     return '<b>Something is coming...</b>'
 
-@route('/pascal/<param_string>')
-def index(param_string):
+
+@route('/pascal/<qstring>')
+def index(qstring):
     print "Attempting to print pascals triangle"
     print "     Parameters: %s\n" % param_string
-    params = param_string.split("&")
-    return plot_pascals_triangle(int(params[0]),int(params[1]))
+
+    params = parse_qs(qstring)
+    return plot_pascals_triangle( int(params["n_layers"]),
+                                  int(params["d"])
+                                )
+
 
 @route('/ahoj/<name>')
 def index(name):
