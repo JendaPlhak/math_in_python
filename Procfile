@@ -1,1 +1,1 @@
-web: python webserver/bottle_webserver.py
+web: python layout/routes.py
