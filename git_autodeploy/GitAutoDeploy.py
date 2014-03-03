@@ -8,7 +8,7 @@ class GitAutoDeploy(BaseHTTPRequestHandler):
 
     CONFIG_FILEPATH = './GitAutoDeploy.conf.json'
     config = None
-    quiet = False
+    quiet  = False
     daemon = False
 
     @classmethod
@@ -39,6 +39,7 @@ class GitAutoDeploy(BaseHTTPRequestHandler):
             for path in paths:
                 self.pull(path)
                 self.deploy(path)
+                self.respond()
 
     def parseRequest(self):
         length = int(self.headers.getheader('content-length'))
