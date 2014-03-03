@@ -4,6 +4,6 @@
 	[{
 		"url": "https://github.com/JendaPlhak/math_in_python", 
 		"path": "..",
-		"deploy": "echo deploying"
+		"deploy": "echo deploying && sudo service FlaskWebserver restart"
 	}]
 }
