@@ -2,6 +2,7 @@
 
 import sys
 sys.path.append("../../JendasWork/2_task/")
+sys.path.append("/home/ubuntu/math_in_python/JendasWork/2_task/")
 
 from flask import Flask, render_template
 app = Flask(__name__)
