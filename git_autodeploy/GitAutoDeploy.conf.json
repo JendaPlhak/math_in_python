@@ -1,0 +1,9 @@
+{
+	"port": 8081, 
+	"repositories": 
+	[{
+		"url": "https://github.com/JendaPlhak/math_in_python", 
+		"path": "..",
+		"deploy": "echo deploying"
+	}]
+}
