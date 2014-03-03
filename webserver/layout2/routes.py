@@ -22,7 +22,7 @@ def plhak():
 	return render_template('plhak.html')
 
 
-@app.route('/pascal/<qstring>')
+@app.route('/plhak/pascal/<qstring>')
 def index(qstring):
     print "Attempting to print pascals triangle"
     print "     Parameters: %s\n" % qstring
@@ -39,5 +39,7 @@ def index(qstring):
 @app.route('/kvapil')
 def kvapil():
 	return render_template('kvapil.html')
+
+
 if __name__ == '__main__':
 	app.run(port=8080)

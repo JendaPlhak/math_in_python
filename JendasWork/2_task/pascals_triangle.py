@@ -41,8 +41,4 @@ def plot_pascals_triangle(n_layers, d):     # d = divisor
                     )
         shift += sq_edge / 2
 
-    draw.saveas("pascals_triangle.svg")
     return draw.tostring()
-
-
-plot_pascals_triangle(50, 13)
