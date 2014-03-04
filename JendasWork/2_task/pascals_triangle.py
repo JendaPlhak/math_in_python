@@ -15,6 +15,7 @@ def pascals_triangle(n_layers):
         for j in xrange(i):
             layers[-1].append(layers[-2][j] + layers[-2][j+1])
         layers[-1].append(1)
+        
     return layers
 
 
@@ -27,7 +28,7 @@ def plot_pascals_triangle(n_layers, d):     # d = divisor
     center  = n_layers * sq_edge / 2 + 20    # Center coordinates
     shift   = sq_edge / 2                    # how much to shift from the center
 
-    HSV_tuples = [(x*2.0/d, 0.75, 0.85) for x in range(d)]
+    HSV_tuples = [(x*1.0/d, 0.85, 0.85) for x in range(d)]
     RGB_tuples = map(lambda x: colorsys.hsv_to_rgb(*x), HSV_tuples)
     RGB_tuples = [[i * 255 for i in colour] for colour in RGB_tuples]
 
