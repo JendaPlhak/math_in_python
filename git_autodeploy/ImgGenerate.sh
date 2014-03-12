@@ -15,7 +15,7 @@ do
         mkdir img
     fi
 
-    for file in $(find . -maxdepth 1 -perm -111 -type f)
+    for file in $(find . -maxdepth 1 -perm -111 -type f -name "*.py")
     do
         echo ${file}
         "${file}"

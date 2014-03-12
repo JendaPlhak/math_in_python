@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import svgwrite
 import numpy as np
 from cmath import exp, pi
@@ -9,12 +8,13 @@ def roundComplex(z):
 
 class Turtle():
 
-    def __init__(self, start_coord=[0,0]):
+    def __init__(self, title, start_coord=[100,100]):
 
         self.draw    = svgwrite.drawing.Drawing()
         self.coord   = start_coord[0] + 1j*start_coord[1]
         self.dir     = 1
-        self.pendown = False
+        self.pendown = True
+        self.title   = title
 
 
     def left(self, angle, rad=False): # angle in degrees
@@ -46,21 +46,7 @@ class Turtle():
             self.draw.add( self.draw.line(start  = (self.coord.real, self.coord.imag),\
                                           end    = (new_coord.real, new_coord.imag),  \
                                           stroke = colour ))
-        self.coord = new_coord
-        # dir = self.dir
-        # self.left(145)
-        # new_coord = self.coord + self.dir * 5
-        # self.draw.add( self.draw.line(start  = (self.coord.real, self.coord.imag),\
-        #                               end    = (new_coord.real, new_coord.imag),  \
-        #                               stroke = colour ))
-        # self.dir = dir
-        # self.right(145)
-        # new_coord = self.coord + self.dir * 5
-        # self.draw.add( self.draw.line(start  = (self.coord.real, self.coord.imag),\
-        #                               end    = (new_coord.real, new_coord.imag),  \
-        #                               stroke = colour ))
-        # self.dir = dir
-        
+        self.coord = new_coord        
 
 
     def backwards(self, step, colour='black'):
@@ -88,5 +74,5 @@ class Turtle():
         self.right(180)
 
 
-    def dumpImage(self, path="trol.svg"):
-        self.draw.saveas(path)
+    def dumpImage(self):
+        self.draw.saveas("img/" + self.title + ".svg")

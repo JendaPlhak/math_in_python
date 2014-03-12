@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from turtle import Turtle
 from math   import atan, sqrt, pi
 from cmath  import exp
@@ -68,29 +69,28 @@ def rose(draw, a=30, n = 12):
 
 
 
+if __name__ == "__main__":
 
-draw = Turtle()
+    draw = Turtle("Various_pictures")
 
-draw.setCoord(250, 250)
-draw.resetDir()
+    draw.setCoord(250, 250)
+    draw.resetDir()
 
-draw.penDown()
-square(draw, 200)
+    draw.penDown()
+    square(draw, 200)
 
-draw.resetDir()
-draw.setCoord(500, 250)
-barredCircle(draw, r=50, shift=5)
+    draw.resetDir()
+    draw.setCoord(500, 250)
+    barredCircle(draw, r=50, shift=5)
 
-draw.setCoord(750, 250)
-triangle(draw, 10, 5, 15)
+    draw.setCoord(750, 250)
+    triangle(draw, 10, 5, 15)
 
-draw.setCoord(1000, 250)
-rose(draw)
+    draw.setCoord(1000, 250)
+    rose(draw)
 
-
-
-draw.penUp()
-draw.dumpImage()
+    draw.penUp()
+    draw.dumpImage()
 
 
 

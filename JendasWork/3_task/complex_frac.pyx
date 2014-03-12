@@ -39,7 +39,7 @@ cdef inline Complex cNewNumber( float re_min, float im_min,
 
 
 
-def juliaFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, path="trol.png"):
+def complexFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, path="img/trol.png"):
      
     # Specify image width and height
     cdef int w = width
@@ -93,7 +93,7 @@ def juliaFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, path=
     for x in xrange(w):
         for y in xrange(h):
             pix_map[x, y] = (output[x][y], output[x][y]/2, output[x][y]*2)
-    img.save('fractal.jpg')
+    img.save(path)
 
 
     # Clean up

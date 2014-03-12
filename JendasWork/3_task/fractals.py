@@ -1,8 +1,9 @@
+#!/usr/bin/env python
 from turtle import Turtle
 from cmath  import exp, pi
 from math   import hypot, atan, sin, cos
 
-from complex_frac import juliaFractal
+from complex_frac import complexFractal
 
 import numpy             as np
 import matplotlib.pyplot as plt
@@ -121,7 +122,7 @@ def pentagonSnowflake(draw, rec, side):
     drawGramar(draw, instructions, side, 72, 72)
 
 
-def pentagonSnowflakeMirror(draw, rec, side):
+def pentagonSnowflakeMirror(draw, rec, side): # Draw the pentagon snowflake using reflections
 
     inner    = True
     edges    = []
@@ -196,30 +197,33 @@ def addSymetry(edges, vertices, i):
 if __name__ == "__main__":
 
 
-    draw = Turtle()
-    draw.setCoord(100, 100)
-    draw.penDown()
-
-    # tree(draw, 10, 100.)
-
-    # draw.setCoord(400, 50)
-    # kochFlake(draw, 5, 100)
-    # draw.resetDir()
-
-    # draw.setCoord(750, 350)
-    # sierpinskiTriangle(draw, 7, 500)
-
-
-    # draw.setCoord(500, 50)
-    # hilberCurve(draw, 7, 300)
-
-    # draw.setCoord(500, 50)
-    # krishnaAnklet(draw, 6, 300)
-
-    # pentagonSnowflake(draw, 4, 25)
-    # pentagonSnowflakeMirror(draw, 1 , 30)
-    # draw.setCoord(250, 250)
-
-    juliaFractal()
-
+    draw = Turtle("Tree")
+    tree(draw, 10, 100.)
     draw.dumpImage()
+
+    draw = Turtle("Koch_Flake")
+    kochFlake(draw, 5, 100)
+    draw.dumpImage()
+
+    draw = Turtle("Sierpinski_Triangle")
+    sierpinskiTriangle(draw, 7, 500)
+    draw.dumpImage()
+
+    draw = Turtle("Hilber_Curve")
+    hilberCurve(draw, 7, 300)
+    draw.dumpImage()
+
+    draw = Turtle("Krishna_Anklet")
+    krishnaAnklet(draw, 6, 300)
+    draw.dumpImage()
+
+    draw = Turtle("Krishna_Anklet", [300, 300])
+    pentagonSnowflakeMirror(draw, 3 , 7)
+    draw.dumpImage()
+
+
+    complexFractal(julia_=True,  path="img/Julia_Set.png")
+    complexFractal(julia_=False, path="img/Mandelbrot_set.png")
+
+
+    
