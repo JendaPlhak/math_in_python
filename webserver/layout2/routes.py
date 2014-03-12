@@ -40,7 +40,8 @@ def index(qstring):
 @app.route('/kvapil/task/<task>')
 def kvapil_task(task=None):
     if task == 1:
-        return render_template('.html')    
+        return render_template('1_taskKvapil.html')   
+        
     return render_template('kvapil.html', name=name)
 
 
