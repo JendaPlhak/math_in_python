@@ -37,8 +37,13 @@ def index(qstring):
                                 )
 
 @app.route('/kvapil')
-def kvapil():
-    return render_template('kvapil.html')
+@app.route('/kvapil/task/<task>')
+def kvapil_task(task=None):
+    if task == 1:
+        return render_template('.html')    
+    return render_template('kvapil.html', name=name)
+
+
 
 
 if __name__ == '__main__':
