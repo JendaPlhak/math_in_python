@@ -47,19 +47,19 @@ class Turtle():
                                           end    = (new_coord.real, new_coord.imag),  \
                                           stroke = colour ))
         self.coord = new_coord
-        dir = self.dir
-        self.left(145)
-        new_coord = self.coord + self.dir * 5
-        self.draw.add( self.draw.line(start  = (self.coord.real, self.coord.imag),\
-                                      end    = (new_coord.real, new_coord.imag),  \
-                                      stroke = colour ))
-        self.dir = dir
-        self.right(145)
-        new_coord = self.coord + self.dir * 5
-        self.draw.add( self.draw.line(start  = (self.coord.real, self.coord.imag),\
-                                      end    = (new_coord.real, new_coord.imag),  \
-                                      stroke = colour ))
-        self.dir = dir
+        # dir = self.dir
+        # self.left(145)
+        # new_coord = self.coord + self.dir * 5
+        # self.draw.add( self.draw.line(start  = (self.coord.real, self.coord.imag),\
+        #                               end    = (new_coord.real, new_coord.imag),  \
+        #                               stroke = colour ))
+        # self.dir = dir
+        # self.right(145)
+        # new_coord = self.coord + self.dir * 5
+        # self.draw.add( self.draw.line(start  = (self.coord.real, self.coord.imag),\
+        #                               end    = (new_coord.real, new_coord.imag),  \
+        #                               stroke = colour ))
+        # self.dir = dir
         
 
 

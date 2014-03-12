@@ -1,5 +1,11 @@
 from turtle import Turtle
 from cmath  import exp, pi
+from math   import hypot, atan, sin, cos
+
+from complex_frac import juliaFractal
+
+import numpy             as np
+import matplotlib.pyplot as plt
 
 
 def tree(draw, rec, a):
@@ -115,28 +121,105 @@ def pentagonSnowflake(draw, rec, side):
     drawGramar(draw, instructions, side, 72, 72)
 
 
+def pentagonSnowflakeMirror(draw, rec, side):
+
+    inner    = True
+    edges    = []
+    vertices = []
+    # Initialize pentagon
+    draw.penUp()
+    for _ in xrange(5):
+        start = draw.coord
+        draw.forward(side)
+        draw.right(72)
+        edges.append((start, draw.coord))
+        vertices.append(start)
+
+    for r in xrange(rec):
+        edges_tmp = []
+        vertices_tmp = []
+        for i in xrange(5):
+            edge_tmp, new_vortex = addSymetry(edges, vertices, i)
+            edges_tmp.extend(edge_tmp)
+            vertices_tmp.append(new_vortex)
+        vertices = vertices_tmp
+
+        if inner:
+            edges.extend(edges_tmp)
+        else:
+            edges = edges_tmp
+
+    for edge in edges:
+        draw.addLine(edge[0], edge[1])
 
 
-draw = Turtle()
-draw.setCoord(150, 150)
-draw.penDown()
+def addSymetry(edges, vertices, i):
 
-# tree(draw, 10, 100.)
+    vortex = vertices[(i + 3)% 5]
+    edge   = (vertices[i], vertices[(i+1) % 5])
 
-# draw.setCoord(400, 50)
-# kochFlake(draw, 5, 100)
-# draw.resetDir()
-
-# draw.setCoord(750, 350)
-# sierpinskiTriangle(draw, 7, 500)
+    dir_vector = edge[1] - edge[0]
+    norm       = dir_vector.imag - 1j * dir_vector.real   # Calculate shift vector to shift our linear space to origin
+    norm      /= hypot(norm.real, norm.imag)
+    norm      *= -norm.real * edge[0].real -norm.imag * edge[0].imag
 
 
-# draw.setCoord(500, 50)
-# hilberCurve(draw, 7, 300)
+    if dir_vector.real == 0:
+        angle = pi/2
+    else:
+        angle = atan(dir_vector.imag / dir_vector.real)
 
-# draw.setCoord(500, 50)
-# krishnaAnklet(draw, 6, 300)
+    sin_ = sin(2*angle)
+    cos_ = cos(2*angle)
 
-pentagonSnowflake(draw, 6, 25)
+    new_edges = []
+    for e in edges:
+        e_tmp = []
+        for V in e:
+            V_tmp = V
+            V = V + norm     # Linear transformation - shift, rotation, back-shift
+            V = (cos_*V.real + sin_*V.imag) + \
+                1j*(sin_*V.real - cos_*V.imag)
+            V = V - norm
 
-draw.dumpImage()
+            if V_tmp == vortex:
+                vortex_new = V
+            e_tmp.append(V)
+
+        new_edges.append(e_tmp)
+    return new_edges, vortex_new
+
+
+
+
+
+if __name__ == "__main__":
+
+
+    draw = Turtle()
+    draw.setCoord(100, 100)
+    draw.penDown()
+
+    # tree(draw, 10, 100.)
+
+    # draw.setCoord(400, 50)
+    # kochFlake(draw, 5, 100)
+    # draw.resetDir()
+
+    # draw.setCoord(750, 350)
+    # sierpinskiTriangle(draw, 7, 500)
+
+
+    # draw.setCoord(500, 50)
+    # hilberCurve(draw, 7, 300)
+
+    # draw.setCoord(500, 50)
+    # krishnaAnklet(draw, 6, 300)
+
+    # pentagonSnowflake(draw, 4, 25)
+    # pentagonSnowflakeMirror(draw, 1 , 30)
+    # draw.setCoord(250, 250)
+
+    juliaFractal()
+
+    draw.dumpImage()
