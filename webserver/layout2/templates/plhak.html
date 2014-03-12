@@ -1,11 +1,29 @@
 {% extends "template.html" %}
 {% block content %}
-{% endblock %}
+	{% if task == 'archimed_spiral' %}
+		<img src="../static/img/JendasWork/1_task/Archimed_spiral.png" width="600" alt="archimed_spiral.png">
+		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/1_task/spirals.py">here</a> to see the code.</p>
+	{% elif task == 'gcd' %}
+		<img src="../static/img/JendasWork/1_task/gcd_modulo_steps.png" width="500" alt="gcd_modulo_steps.png">
+		<img src="../static/img/JendasWork/1_task/gcd_recursive.png" width="500" alt="gcd_recursive.png">
+		<img src="../static/img/JendasWork/1_task/gcd_subtraction_steps.png" width="500" alt="gcd_subtraction_steps.png">
 
+		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/1_task/euclidean_algorithm.py">here</a> to see the code.</p>
+	{% elif task == 'ulam_spiral'%}
+		<img src="../static/img/JendasWork/1_task/Ulam_spiral.png" width="600" alt="archimed_spiral.png">
+		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/1_task/spirals.py">here</a> to see the code.</p>
+	{% endif %}
+{% endblock %}
 {% block side_container %}
 
-<ol>
-	<li>Task 1</li>
+<ol id="side_menu">
+	<li>Task 1
+		<ul class="side_menu">
+			<li><a href="/plhak/archimed_spiral">Archimed spiral</a></li>
+			<li><a href="/plhak/gcd">GCD</a></li>
+			<li><a href="/plhak/ulam_spiral">Ulam spiral</a></li>
+		</ul>
+	</li>
 	<li>Task 2</li>
 	<li>Task 3</li>
 </ol>

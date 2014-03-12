@@ -13,8 +13,9 @@ from pascals_triangle import plot_pascals_triangle
 
 
 @app.route('/')
-def home():
-    return render_template('home.html')
+@app.route('/<name>')
+def home(name=''):
+    return render_template('home.html', name=name)
 
 
 @app.route('/plhak/')
