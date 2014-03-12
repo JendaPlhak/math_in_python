@@ -49,9 +49,10 @@ def nice_print(l):
         print "    " + "".join(comb)
     print
 
-print "Permutations"
-nice_print(permutation(["a", "b", "c"]))
-print "Combinations"
-nice_print(combination(["a", "b", "c"], 3, repete=1))
-print "Variations"
-nice_print(variation(  ["a", "b", "c"], 4, repete=1))
+if __name__ == "__main__":
+    print "Permutations"
+    nice_print(permutation(["a", "b"]))
+    print "Combinations"
+    nice_print(combination(["a", "b"], 3, repete=1))
+    print "Variations"
+    nice_print(variation(  ["a", "b"], 4, repete=1))

@@ -3,7 +3,7 @@ from decimal import *
 import gmpy
 import math
 import numpy as np
-getcontext().prec = 230
+getcontext().prec = 30
 
 
 def leibniz(max_error = 10**(-2)):
@@ -85,8 +85,11 @@ def bellard_formula(n_steps = 1000): # http://en.wikipedia.org/wiki/Bellard%27s_
     return sum_ * 1/Decimal(1 << 6)
 
 
-print leibniz()
-print archimedes()
-print monte_carlo()
-print bellard_formula()
-print gmpy.pi(800)
+if __name__ == "__main__":
+
+    print leibniz()
+    print archimedes()
+    print monte_carlo()
+    print bellard_formula()
+    print gmpy.pi(125)
+    print 

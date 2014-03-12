@@ -64,13 +64,12 @@ def exp_bisection(x, exp, max_error=10**(-10)):
 
     return acc;
 
+if __name__ == "__main__":
+    
+    x = 35.50545456454646
+    y = 1.574858754854588784545
 
-x = 35.50545456454646
-y = 1.574858754854588784545
-
-print newton_sq_root(x)
-print x**0.5
-print "Taylor:    %f" % exp_taylor(x, y)
-print "Bisection: %f" % exp_bisection(x, y)
-
-print "Python:    %f" % x ** y
+    print "To Calculate: {0}^{1}".format(x, y)
+    print "     Taylor:    %f" % exp_taylor(x, y)
+    print "     Bisection: %f" % exp_bisection(x, y)
+    print "     Python:    %f" % x ** y
