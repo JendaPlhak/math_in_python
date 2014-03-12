@@ -24,7 +24,7 @@ def calculate_coordinates_Ulam_spiral(n):    # Calculates [x,y] coordinates of g
 
 def calculate_coordinates_archimedian_spiral(n):
 
-    angle = n * 0.05
+    angle = n * 0.5
     x     = (1 + angle)*cos(angle)
     y     = (1 + angle)*sin(angle)
     return [x, y]
@@ -38,18 +38,18 @@ def plot_and_save_spiral(n, spiral_fun, path):
     fig = plt.figure(figsize=(23.5, 23.5)) 
     plt.plot(coord_primes[0], coord_primes[1],    'ro')
 
-    if spiral_fun == calculate_coordinates_Ulam_spiral or True:
+    if spiral_fun == calculate_coordinates_Ulam_spiral:
 
         coord_quad_form = {}   # Interesting patterns can be observed when highlighting primes of form 4n + an + b
         for i in xrange(n):
             coord_quad_form[4*i**2 + 7*i - 49] = None 
-            if 4*i**2+3*i - 19 > primes[-1]:
+            if 4*i**2 + 3*i - 19 > primes[-1]:
                 break
         coord_quad_form = zip(*[spiral_fun(i) for i in primes if i in coord_quad_form])
-        plt.plot(coord_quad_form[0], coord_quad_form[1], 'bo')
-    else:
-        coord_spiral  = zip(*[spiral_fun(i) for i in range(n)])
-        plt.plot(coord_spiral[0], coord_spiral[1], 'k')
+        plt.plot(coord_quad_form[0], coord_quad_form[1], 'bo', markersize=15)
+    # else:
+    #     coord_spiral  = zip(*[spiral_fun(i) for i in range(n)])
+    #     plt.plot(coord_spiral[0], coord_spiral[1], 'k')
 
     plt.axis([ min(coord_primes[0]) - 1, max(coord_primes[0]) + 1, min(coord_primes[1]) - 1, max(coord_primes[1]) + 1 ])
 
@@ -57,6 +57,7 @@ def plot_and_save_spiral(n, spiral_fun, path):
     plt.clf()
 
 
-n = 10000
-plot_and_save_spiral(n, calculate_coordinates_Ulam_spiral,        "Ulam_spiral.png");
-plot_and_save_spiral(n, calculate_coordinates_archimedian_spiral, "archimed_spiral.png");
+if __name__ == "__main__":
+
+    plot_and_save_spiral(100000, calculate_coordinates_Ulam_spiral,       "img/Ulam_spiral.png");
+    plot_and_save_spiral(50000, calculate_coordinates_archimedian_spiral, "img/Archimed_spiral.png");
