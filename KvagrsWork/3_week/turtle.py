@@ -188,8 +188,5 @@ def radToDeg(rad):
 turtle = Turtle()
 
 turtle.left(90)
-turtle.forward(100)
-bush(turtle, 7, 100)
-
-
-turtle.save("test")
+polygon(turtle, 30)
+turtle.save("polygon")
