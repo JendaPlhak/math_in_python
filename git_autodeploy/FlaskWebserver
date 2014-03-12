@@ -37,6 +37,7 @@ do_stop () {
     log_end_msg $?
 }
 do_img_reload() {
+    make -f ${DIR_MAKE}
     ${DIR_IMG}/ImgGenerate.sh
 }
  
