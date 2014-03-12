@@ -14,12 +14,12 @@ from pascals_triangle import plot_pascals_triangle
 
 @app.route('/')
 def home():
-	return render_template('home.html')
+    return render_template('home.html')
 
 
 @app.route('/plhak')
 def plhak():
-	return render_template('plhak.html')
+    return render_template('plhak.html')
 
 
 @app.route('/plhak/pascal/<qstring>')
@@ -37,9 +37,15 @@ def index(qstring):
                                 )
 
 @app.route('/kvapil')
-def kvapil():
-	return render_template('kvapil.html')
+@app.route('/kvapil/task/<task>')
+def kvapil_task(task=None):
+    if task == 1:
+        return render_template('1_taskKvapil.html')   
+        
+    return render_template('kvapil.html', name=name)
+
+
 
 
 if __name__ == '__main__':
-	app.run(port=8080)
+    app.run(port=8080)
