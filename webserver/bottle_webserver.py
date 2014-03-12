@@ -22,6 +22,7 @@ def index(qstring):
     print params
     if not (int(params["n_layers"][0]) > 0 and int(params["n_layers"][0]) < 150):
         params["n_layers"][0] = 50
+        
     return plot_pascals_triangle( int(params["n_layers"][0]),
                                   int(params["d"][0])
                                 )

@@ -1,0 +1,9 @@
+{
+	"port": 8082, 
+	"repositories": 
+	[{
+		"url": "https://github.com/JendaPlhak/math_in_python", 
+		"path": "..",
+		"deploy": "echo deploying && sudo service FlaskWebserver restart"
+	}]
+}
