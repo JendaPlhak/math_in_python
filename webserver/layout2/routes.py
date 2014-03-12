@@ -17,9 +17,10 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/plhak')
-def plhak():
-    return render_template('plhak.html')
+@app.route('/plhak/')
+@app.route('/plhak/<task>')
+def plhak(task=''):
+    return render_template('plhak.html', task=task)
 
 
 @app.route('/plhak/pascal/<qstring>')
@@ -36,9 +37,6 @@ def index(qstring):
                                   int(params["d"][0])
                                 )
 
-#@app.route('/kvapil') 
-#def kvapil():
-#    return render_template('kvapil.html')
 @app.route('/kvapil/')
 @app.route('/kvapil/<task>')
 def kvapil(task=''):

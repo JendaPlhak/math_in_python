@@ -1,12 +1,16 @@
 {% extends "template.html" %}
 {% block content %}
 	{% if task == '' %}
-		<a href="/kvapil/1">First task</a>
-	{% endif %}
-	
-	{% if task == '1' %}
-		<p>TASK 1</p>
-		Kde nic, tu nic
-	{% endif %}
-
+		<div class="list_of_tasks">
+			<ol>
+				<li>Week 1
+					<ol>
+						<li><a href="/kvapil/"></a></li>
+					</ol>
+				</li>
+			</ol>
+		</div>
+	{% elif task == '1' %}
+	Ahoj
+	{% endif $}
 {% endblock %}
