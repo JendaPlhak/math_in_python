@@ -1,16 +1,12 @@
 {% extends "template.html" %}
 {% block content %}
-	{% if task == '' %}
-		<div class="list_of_tasks">
-			<ol>
-				<li>Week 1
-					<ol>
-						<li><a href="/plhak/"></a></li>
-					</ol>
-				</li>
-			</ol>
-		</div>
-	{% elif task == '1' %}
-	Ahoj
-	{% endif $}
 {% endblock %}
+
+{% block side_container %}
+
+<ol>
+	<li>Task 1</li>
+	<li>Task 2</li>
+	<li>Task 3</li>
+</ol>
+{% endblock%}

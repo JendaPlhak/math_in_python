@@ -37,10 +37,17 @@ def index(qstring):
                                   int(params["d"][0])
                                 )
 
-@app.route('/kvapil/')
+
+#def kvapil():
+#    return render_template('kvapil.html')
+#
+@app.route('/kvapil/') 
 @app.route('/kvapil/<task>')
 def kvapil(task=''):
     return render_template('kvapil.html', task=task)
+
+
+
 
 if __name__ == '__main__':
     app.run(port=8080)
