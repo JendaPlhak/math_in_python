@@ -1,6 +1,12 @@
 {% extends "template.html" %}
 {% block content %}
-	<p>Hi, I am Kvapil.</p>
-	{% block task %}
-	{% endblock %}
+	{% if task == '' %}
+		<a href="/kvapil/1">First task</a>
+	{% endif %}
+	
+	{% if task == '1' %}
+		<p>TASK 1</p>
+		Kde nic, tu nic
+	{% endif %}
+
 {% endblock %}

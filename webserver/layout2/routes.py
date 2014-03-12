@@ -36,16 +36,13 @@ def index(qstring):
                                   int(params["d"][0])
                                 )
 
-@app.route('/kvapil')
-@app.route('/kvapil/task/<task>')
-def kvapil_task(task=None):
-    if task == 1:
-        return render_template('1_taskKvapil.html')   
-        
-    return render_template('kvapil.html', name=name)
-
-
-
+#@app.route('/kvapil') 
+#def kvapil():
+#    return render_template('kvapil.html')
+@app.route('/kvapil/')
+@app.route('/kvapil/<task>')
+def kvapil(task=''):
+    return render_template('kvapil.html', task=task)
 
 if __name__ == '__main__':
     app.run(port=8080)
