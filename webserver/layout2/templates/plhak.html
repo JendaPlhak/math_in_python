@@ -1,7 +1,16 @@
 {% extends "template.html" %}
 {% block content %}
-	<p>Hi, I am Plhak.</p>
-	<div class="task">
-		First week, first task!
-	</div>
+	{% if task == '' %}
+		<div class="list_of_tasks">
+			<ol>
+				<li>Week 1
+					<ol>
+						<li><a href="/plhak/"></a></li>
+					</ol>
+				</li>
+			</ol>
+		</div>
+	{% elif task == '1' %}
+	Ahoj
+	{% endif $}
 {% endblock %}
