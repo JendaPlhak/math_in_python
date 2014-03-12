@@ -1,10 +1,10 @@
 #!/bin/sh
 
 STUD="Jendas"
-IMG_PATH=/home/jendas/skola/math_in_python/webserver/layout2/static/img/${STUD}Work
+IMG_PATH=/home/ubuntu/math_in_python/webserver/layout2/static/img/${STUD}Work
 
 
-cd /home/jendas/skola/math_in_python/${STUD}Work
+cd /home/ubuntu/math_in_python/${STUD}Work
 
 for dir in */
 do
