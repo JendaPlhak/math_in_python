@@ -48,5 +48,20 @@ ul li:hover {
 }
 
 .container {
+	display: inline-block;
+	float: right;
+	width: 700px;
 	margin-left: 10px;
+}
+
+.side_container {
+	display: inline-block;
+	background-color: red;
+	float: left;
+	width: 180px;
+	border-radius: 10px 0px 10px 0px;
+}
+
+.side_container ol {
+	list-style: none;
 }

@@ -1,16 +1,19 @@
 {% extends "template.html" %}
 {% block content %}
-	{% if task == '' %}
-		<div class="list_of_tasks">
-			<ol>
-				<li>Week 1
-					<ol>
-						<li><a href="/kvapil/"></a></li>
-					</ol>
-				</li>
-			</ol>
-		</div>
-	{% elif task == '1' %}
-	Ahoj
-	{% endif $}
+
+	{% if task  == '1' %}
+		<img src="../static/img/KvagrsWork/1_week/collatzo.png" alt="nefunguje" >
+	{% endif %}
 {% endblock %}
+{% block side_container %}
+
+<ol =>
+	<li>Week 1
+		<ul>
+			<li>Collatzo</li>
+		</ul>
+	</li>
+	<li>Week 2</li>
+	<li>Week 3</li>
+</ol>
+{% endblock%}
