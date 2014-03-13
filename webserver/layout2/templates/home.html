@@ -1,11 +1,14 @@
 {% extends "template.html" %}
 {% block content %}
 	
-	<p>Welcome to our page. This website was created for our school subject about math and programming. Please bear in mind, that this web is in progress, thanks.</p>
-
+	<p>Welcome to our page. This website was created for our school subject about math and programming. Please bear in mind, that this web is currently in progress, thanks.</p>
+	{% if name == 'news' %}
 	<p>[UPDATE] We have added some new content. For more click above.</p>
+	{% endif %}
 {% endblock %}
 
 {% block side_container %}
-Ahoj
+<ul id="side_menu">
+	<li><a href="/news">News</a></li>
+</ul>
 {% endblock %}

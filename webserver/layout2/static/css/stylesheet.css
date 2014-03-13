@@ -30,12 +30,14 @@ body {
 	font-size: 20px;
 }
 
-ul a {
+ul a, a {
 	text-decoration: none;
 	color: black;
 }
 
-ul a:hover {
+a:hover
+
+ul a:hover, a {
 	color: #664455;
 }
 ul li {
@@ -56,11 +58,15 @@ ul li:hover {
 
 .side_container {
 	display: inline-block;
-	background-color: red;
+	background-color: #225588;
 	float: left;
 	height: 400px;
 	width: 180px;
+
+	border: 5px solid #226688;
 	border-radius: 10px 0px 10px 0px;
+
+
 }
 
 .side_menu, #side_menu {
@@ -71,14 +77,12 @@ ul li:hover {
 	margin-left: -20px;
 	padding-top: 2px;
 	padding-bottom: 2px;
-	padding-left: 0px;
-	margin-right: 0px;
-	padding-right: 0px;
+	
 }
 
 .side_menu {
 	margin-left: 0px;
-	width: 40px;
+	width: 80px;
 }
 /*#side_menu, .side_menu, #side_menu .side_menu li { margin:0px; padding:0px; list-style: none;}
 
