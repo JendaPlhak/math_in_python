@@ -11,7 +11,7 @@
  
 # Change the next 3 lines to suit where you install your script and what you want to call it
 DIR=/home/ubuntu/math_in_python/webserver/layout2
-DIR_MAKE=/home/ubuntu/math_in_python/JendasWork/Makefile
+DIR_MAKE=/home/ubuntu/math_in_python/JendasWork/
 DIR_IMG=/home/ubuntu/math_in_python/git_autodeploy
 DAEMON=$DIR/routes.py
 DAEMON_NAME=FlaskWebserver
@@ -26,7 +26,7 @@ PIDFILE=/var/run/$DAEMON_NAME.pid
 . /lib/lsb/init-functions
  
 do_start () {
-    make -f ${DIR_MAKE}
+    make -C ${DIR_MAKE}
     log_daemon_msg "Starting system $DAEMON_NAME daemon"
     start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON
     log_end_msg $?
@@ -37,7 +37,7 @@ do_stop () {
     log_end_msg $?
 }
 do_img_reload() {
-    make -f ${DIR_MAKE}
+    make -C ${DIR_MAKE}
     ${DIR_IMG}/ImgGenerate.sh
 }
  
