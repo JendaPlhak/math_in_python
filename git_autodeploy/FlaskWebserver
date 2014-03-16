@@ -48,8 +48,8 @@ case "$1" in
         ;;
  
     restart|reload|force-reload)
-        do_stop
         do_img_reload
+        do_stop
         do_start
         ;;
 
