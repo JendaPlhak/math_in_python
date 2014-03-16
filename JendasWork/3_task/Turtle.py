@@ -63,6 +63,16 @@ class Turtle():
                                       end    = (to.real, to.imag),      \
                                       stroke = colour ))
 
+    def addLineNumpy(self, from_, to, colour='black'):
+        self.draw.add( self.draw.line(start  = (from_[0], from_[1]),\
+                                      end    = (to[0], to[1]),      \
+                                      stroke = colour ))
+
+    def addPoint(self, center):
+        self.draw.add( self.draw.circle(center=center, r=5, stroke = 'red', fill='red'))
+
+    def text(self, text, fill='black'):
+        self.draw.add(self.draw.text(text, (10,300), fill=fill, font_size=20))
 
     def setCoord(self, x, y):
         self.coord = x + 1j*y
@@ -73,6 +83,8 @@ class Turtle():
     def backDir(self):
         self.right(180)
 
-
     def dumpImage(self):
         self.draw.saveas("img/" + self.title + ".svg")
+
+    def show(self):
+        self.draw.show()

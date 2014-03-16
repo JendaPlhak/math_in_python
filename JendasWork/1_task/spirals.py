@@ -24,9 +24,9 @@ def calculate_coordinates_Ulam_spiral(n):    # Calculates [x,y] coordinates of g
     return [z.real, z.imag]
 
 
-def calculate_coordinates_archimedian_spiral(n):
+def coord_ArchimedSpiral(n, step=0.5):
 
-    angle = n * 0.5
+    angle = n * step
     x     = (1 + angle)*cos(angle)
     y     = (1 + angle)*sin(angle)
     return [x, y]
@@ -62,4 +62,4 @@ def plot_and_save_spiral(n, spiral_fun, path):
 if __name__ == "__main__":
 
     plot_and_save_spiral(100000, calculate_coordinates_Ulam_spiral,       "img/Ulam_spiral.png");
-    plot_and_save_spiral(50000, calculate_coordinates_archimedian_spiral, "img/Archimed_spiral.png");
+    plot_and_save_spiral(50000, coord_ArchimedSpiral, "img/Archimed_spiral.png");
