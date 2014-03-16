@@ -3,8 +3,10 @@ import svgwrite
 import numpy as np
 from cmath import exp, pi
 
+
 def roundComplex(z):
     return z.real + 1j*z.imag
+
 
 class Turtle():
 
