@@ -30,18 +30,16 @@ def round_2(path="img/hide_and_seek2_orig.png"):
 
 def round_3(path="img/hide_and_seek3_orig.png"):
 
-    img    = Image.open(path)
-    pixels = img.load()
-    shift  = img.size[1]/2
+    img     = Image.open(path)
+    pixels  = img.load()
+    shift   = img.size[1]/2
     img_new = Image.new('RGB', img.size, 'black')
     for x in xrange(img.size[0]):
         for y in xrange(img.size[1]/2):
-            if bool(pixels[x, y+shift][0]) != bool(pixels[x, -y + shift][0]):
+            if bool(pixels[x, y][0]) != bool(pixels[x, y + shift][0]):
                 img_new.putpixel([x, y], (255,255,255, 255))
-    img_new.show()
 
-
-    # img.save("img/hide_and_seek3.png")
+    img.save("img/hide_and_seek3.png")
 
 
 if __name__ == '__main__':

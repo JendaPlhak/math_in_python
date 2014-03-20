@@ -3,7 +3,7 @@ import sys
 sys.path.append("../1_task")
 from PIL     import Image
 from spirals import coord_ArchimedSpiral
-from math    import pi, tan
+from math    import pi, tan, sqrt
 
 
 
@@ -28,21 +28,21 @@ def archimedSpiral(size=500, path="img/spiral.png"):
     for length in xrange(35000):
         x, y = coord_ArchimedSpiral(length, pi/500)
         img.putpixel( (int(x) + size/2, int(y) + size/2), (0,0,0))
-    img.show()
     img.save(path)
 
 def triangle(a=200., size=500, path="img/triangle.png"):
 
     img = Image.new('RGB', (size,size), 'white')
+    v   = (a**2 - (a/2.)**2)**0.5
     for x in xrange(-size/2, size/2):
         for y in xrange(size):
-            if y <= tan(pi/3)*x + (a**2 - (a/2.)**2)**0.5 and y <= -tan(pi/3)*x + (a**2 - (a/2.)**2)**0.5:
-                img.putpixel( (x + size/2, y + size/2), (int(x/float(size) * 255),  0, int(y/float(size) * 255)))
+            if y <= sqrt(3)*x + v and y <= -sqrt(3)*x + v:
+                img.putpixel( (x + size/2, y + size/2), (int(x/float(size) * 255),  int((x+y)/float(size) * 255), int(y/float(size) * 255)))
     img.save(path)
 
 
 if __name__ == "__main__":
 
-    elipse(full=False)
-    archimedSpiral()
+    # elipse(full=False)
+    # archimedSpiral()
     triangle()
