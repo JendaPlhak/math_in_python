@@ -65,4 +65,4 @@ def triangulateRandom(n):
 
 
 if __name__ == '__main__':
-    triangulateRandom(50)
+    triangulateRandom(30)
