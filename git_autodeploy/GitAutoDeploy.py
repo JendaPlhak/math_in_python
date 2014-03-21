@@ -38,9 +38,9 @@ class GitAutoDeploy(BaseHTTPRequestHandler):
             paths = self.getMatchingPaths(url)
             for path in paths:
                 self.pull(path)
-                self.deploy(path)
                 self.respond()
-
+                self.deploy(path)
+                
     def parseRequest(self):
         length = int(self.headers.getheader('content-length'))
         body = self.rfile.read(length)
