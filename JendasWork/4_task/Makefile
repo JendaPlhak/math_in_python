@@ -8,3 +8,5 @@ all: $(OBJS)
 
 clean:
 	rm -f img/skryvacka*
+
+.PHONY: all clean
