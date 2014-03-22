@@ -2,7 +2,7 @@
 from PIL import Image
 
 
-def round_1(path="img/hide_and_seek1_orig.png"):
+def round_1(path="img/skryvacka1.png"):
 
     img    = Image.open(path)
     pixels = img.load()
@@ -15,7 +15,7 @@ def round_1(path="img/hide_and_seek1_orig.png"):
     img.save("img/hide_and_seek1.png")
         
 
-def round_2(path="img/hide_and_seek2_orig.png"):
+def round_2(path="img/skryvacka2.png"):
 
     img_orig = Image.open(path)
     pixels   = img_orig.load()
@@ -28,7 +28,7 @@ def round_2(path="img/hide_and_seek2_orig.png"):
     img.save("img/hide_and_seek2.png")
 
 
-def round_3(path="img/hide_and_seek3_orig.png"):
+def round_3(path="img/skryvacka3.png"):
 
     img     = Image.open(path)
     pixels  = img.load()
