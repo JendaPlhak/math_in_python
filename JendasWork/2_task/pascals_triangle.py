@@ -19,7 +19,7 @@ def pascals_triangle(n_layers):
     return layers
 
 
-def plot_pascals_triangle(n_layers, d):     # d = divisor
+def plot_pascals_triangle(n_layers, d, save=True):     # d = divisor
 
     layers  = pascals_triangle(n_layers)
     draw    = svgwrite.drawing.Drawing()
@@ -41,8 +41,8 @@ def plot_pascals_triangle(n_layers, d):     # d = divisor
                               )
                     )
         shift += sq_edge / 2
-
-    draw.saveas("img/pascals_triangle.svg")
+    if save:
+        draw.saveas("img/pascals_triangle.svg")
     return draw.tostring()
 
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from turtle import Turtle
+from Turtle import Turtle
 from cmath  import exp, pi
 from math   import hypot, atan, sin, cos
 
