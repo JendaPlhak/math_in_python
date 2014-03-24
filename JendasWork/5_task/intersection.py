@@ -6,8 +6,12 @@ import numpy as np
 import math, random
 from Turtle import Turtle
 
-det  = np.linalg.det
-norm = np.linalg.norm
+
+def det(mat): # Calculate determinant of 2x2 matrix
+    return mat[0,0] * mat[1,1] - mat[0,1] * mat[1,0]
+
+def norm(V):
+    return (V[0]**2 + V[1]**2) ** 0.5
 
 def sameNorm(A, B, P):
     return norm(A - P) + norm(B - P) - norm(A - B) < 0.001
@@ -41,7 +45,7 @@ def segmentIntersect(seg_1, seg_2):  # Following determinant algorithm from http
     P_X = det(np.array([[det1, det3], [det2, det4]])) / DENOM
     P_Y = det(np.array([[det1, det5], [det2, det6]])) / DENOM
 
-    P = np.array([[P_X, P_Y]])
+    P = np.array([P_X, P_Y])
 
     # Norm has to be the same.
     if sameNorm(seg_1[0,:], seg_1[1,:], P) and sameNorm(seg_2[0,:], seg_2[1,:], P):
@@ -84,12 +88,9 @@ if __name__ == '__main__':
         for seg2 in segments[i+1:]:
             intersect = segmentIntersect(seg1, seg2)
             if intersect != None:
-                draw.addPoint(intersect[0])
+                draw.addPoint(intersect)
 
     for seg in segments:
         draw.addLineNumpy(seg[0], seg[1])
 
     draw.dumpImage()
-
-
-

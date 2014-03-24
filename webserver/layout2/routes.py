@@ -24,7 +24,7 @@ def plhak(task=''):
     return render_template('plhak.html', task=task)
 
 
-@app.route('/plhak/pascal/<qstring>')
+@app.route('/pascal/<qstring>')
 def index(qstring):
     print "Attempting to print pascals triangle"
     print "     Parameters: %s\n" % qstring
