@@ -37,7 +37,7 @@ def index(qstring):
         params["n_layers"][0] = 50
         
     return plot_pascals_triangle( int(params["n_layers"][0]),
-                                  int(params["d"][0])
+                                  int(params["d"][0]),
                                   save=False
                                 )
 
