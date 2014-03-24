@@ -51,4 +51,7 @@ def kvapil(task=''):
 
 
 if __name__ == '__main__':
+    handler = RotatingFileHandler('/var/log/flaskWebserver.log', maxBytes=100000, backupCount=1)
+    handler.setLevel(logging.INFO)
+    app.logger.addHandler(handler)
     app.run(port=8080)
