@@ -49,6 +49,8 @@ def index(qstring):
 def kvapil(task='', img_data='triangulation.svg'):
 
     n = int(request.args.get('num',0))
+    if n not in range(2,50):
+        n = 3
     
     img = draw_triangulation(n)
     base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
