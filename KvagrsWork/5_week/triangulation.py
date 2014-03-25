@@ -53,7 +53,7 @@ def triangulation(n, length=100, min_side=False):
 def draw_triangulation(n):
 
 	im = svgwrite.drawing.Drawing()
-	points, segments = triangulation(50, length=120, min_side=True)
+	points, segments = triangulation(n, length=120, min_side=True)
 
 	for seg in segments:
 		im.add( im.line(	start 	= (seg[0], seg[1]),\
@@ -64,9 +64,11 @@ def draw_triangulation(n):
 							r 		= 2,\
 							stroke 	= 'black'))
 
-	im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")#static/img/KvagrsWork/5_week/
+	im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
+	#im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
 
 	return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
+	#return "../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
 
 
 if __name__ == '__main__':
