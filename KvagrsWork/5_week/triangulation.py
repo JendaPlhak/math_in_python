@@ -1,4 +1,5 @@
 import svgwrite
+import os
 from random 				import random, randint
 from math 					import sqrt, cos, sin
 from segment_intersection 	import cross_point, generate_data, dist
@@ -69,7 +70,7 @@ def draw_triangulation(n):
 		im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
 		return "../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
 	else:
-		
+
 		im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
 		return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
 	
