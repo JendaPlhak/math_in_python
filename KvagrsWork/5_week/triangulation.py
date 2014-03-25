@@ -64,11 +64,11 @@ def draw_triangulation(n):
 							r 		= 2,\
 							stroke 	= 'black'))
 
-	#im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
-	im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
+	im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
+	#im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
 
-	#return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
-	return "../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
+	return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
+	#return "../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
 
 
 if __name__ == '__main__':
