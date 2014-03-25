@@ -3,15 +3,19 @@ import logging
 import sys
 sys.path.append("../../JendasWork/2_task/")
 sys.path.append("/home/ubuntu/math_in_python/JendasWork/2_task/")
+sys.path.append("../../KvagrsWork/5_week/")
+sys.path.append("/home/ubuntu/math_in_python/KvagrsWork/5_week/")
 
 from logging.handlers import RotatingFileHandler
-from flask            import Flask, render_template
+from flask            import Flask, request, render_template
 
 app = Flask(__name__)
 
 from urlparse         import parse_qs
 from bottle           import route, run, template, static_file
 from pascals_triangle import plot_pascals_triangle
+from triangulation    import draw_triangulation
+from PIL              import Image
 
 
 @app.route('/')
@@ -19,14 +23,12 @@ from pascals_triangle import plot_pascals_triangle
 def home(name=''):
     return render_template('home.html', name=name)
 
-
 @app.route('/plhak/')
 @app.route('/plhak/<task>')
 def plhak(task=''):
     return render_template('plhak.html', task=task)
 
-
-@app.route('/pascal/<qstring>')
+@app.route('/plhak/<qstring>')
 def index(qstring):
     print "Attempting to print pascals triangle"
     print "     Parameters: %s\n" % qstring
@@ -42,19 +44,20 @@ def index(qstring):
                                 )
 
 
-#def kvapil():
-#    return render_template('kvapil.html')
-#
 @app.route('/kvapil/') 
 @app.route('/kvapil/<task>')
-def kvapil(task=''):
-    return render_template('kvapil.html', task=task)
+def kvapil(task='', img_data='triangulation.svg'):
 
+    n = int(request.args.get('num',0))
+    
+    img = draw_triangulation(n)
+    base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
 
+    return render_template('kvapil.html', task=task, img_data=base64_data)
 
 
 if __name__ == '__main__':
     handler = RotatingFileHandler('/var/log/flaskWebserver.log', maxBytes=100000, backupCount=1)
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)
-    app.run(port=8080)
+    app.run(port=8080, debug=True)

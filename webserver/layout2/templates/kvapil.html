@@ -10,6 +10,12 @@
 		<img src="../static/img/KvagrsWork/3_week/star.svg" alt="star.svg" width="500">
 		<img src="../static/img/KvagrsWork/3_week/bush.svg" alt="bush.svg" width="500">
 		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/KvagrsWork/3_week/turtle.py">here</a> to see the code.</p>
+	{% elif task == 'triangulation' %}
+		<img src="data:image/svg+xml;base64,{{ img_data }}" alt="triangulation.svg" width="500">
+		<form action="{{ ('triangulation') }}" method="get">
+			Number: <input type="number" name="num" value="14">
+					<input type="submit" value="Draw!">
+		</form>
 	{% endif %}
 {% endblock %}
 {% block side_container %}
@@ -24,6 +30,12 @@
 	<li>Week 3
 		<ul class="side_menu">
 			<li><a href="/kvapil/turtle">Turtle</a></li>
+		</ul>
+	</li>
+	<li>
+		Week 5
+		<ul class="side_menu">
+			<li><a href="/kvapil/triangulation">Triangulation</a></li>
 		</ul>
 	</li>
 </ol>
