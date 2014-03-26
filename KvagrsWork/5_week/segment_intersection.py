@@ -1,4 +1,5 @@
 import svgwrite
+import os
 from random import random, randint
 from math 	import sqrt, cos, sin
 
@@ -76,18 +77,31 @@ def segment_intersection(n, length=100):
 	return	segments, seg_intersect
 
 
-if __name__ == '__main__':
+def draw_segment_intersection(n, length=100):
 
 	im = svgwrite.drawing.Drawing()
-	data = segment_intersection(30, length=120)
+	segments, points = segment_intersection(n, length)
 
-	for line in data[0]:
-		im.add( im.line(start 	= (line[0],line[1]),\
-						end 	= (line[2],line[3]),\
-						stroke  = 'black'))
-	for point in data[1]:
+	for seg in segments:
+		im.add( im.line(	start 	= (seg[0],seg[1]),\
+							end 	= (seg[2],seg[3]),\
+							stroke  = 'black'))
+	for point in points:
 		im.add( im.circle(	center 	= point,\
 							r 		= 2,\
 							stroke	= 'red'))
 
-	im.saveas("segment_intersection.svg")
+	if os.path.isdir("../../webserver/layout2/static/img/KvagrsWork/5_week/"):
+
+		im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg")
+		return "../../webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg"
+	else:
+
+		im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg")
+		return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg"
+	
+if __name__ == '__main__':
+
+	print "Draw segments and their cross points for"
+	print "10 points and length 100 of each segment."
+	draw_segment_intersection(10,100)

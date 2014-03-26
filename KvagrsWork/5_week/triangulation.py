@@ -78,4 +78,5 @@ def draw_triangulation(n):
 
 if __name__ == '__main__':
 
+	print "Drawing triangulation for 10 points"
 	draw_triangulation(10)
