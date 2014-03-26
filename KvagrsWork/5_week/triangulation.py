@@ -28,7 +28,7 @@ def sort_segments(segments):
 	return
 
 
-def triangulation(n, length=100, min_side=False):
+def triangulation(n, min_side=False, length=100):
 
 	points 		= generate_data(n, length, segments=False)
 	segments 	= join_points(points)
@@ -51,10 +51,10 @@ def triangulation(n, length=100, min_side=False):
 	
 	return points, fin_segments
 
-def draw_triangulation(n):
+def draw_triangulation(n, min_side, length=120):
 
 	im = svgwrite.drawing.Drawing()
-	points, segments = triangulation(n, length=120, min_side=True)
+	points, segments = triangulation(n, min_side, length=120)
 
 	for seg in segments:
 		im.add( im.line(	start 	= (seg[0], seg[1]),\

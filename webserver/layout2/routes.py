@@ -68,12 +68,15 @@ def plhak(task=''):
 def kvapil(task=''):
 
     if task == 'triangulation':
-        n = int(request.args.get('num',0))
+        n     = int(request.args.get('num',0))
+        check = request.args.get('checkbox',0)
 
         if n not in range(2,50):
             n = 3
-        
-        img         = draw_triangulation(n)
+        print check
+
+
+        img         = draw_triangulation(n, min_side=check)
         base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
     
         return render_template('kvapil.html', task=task, img_data=base64_data)
