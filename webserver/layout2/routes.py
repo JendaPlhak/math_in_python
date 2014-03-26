@@ -29,22 +29,38 @@ def home(name=''):
 @app.route('/plhak/')
 @app.route('/plhak/<task>')
 def plhak(task=''):
-    return render_template('plhak.html', task=task)
 
-@app.route('/plhak/<qstring>')
-def index(qstring):
-    print "Attempting to print pascals triangle"
-    print "     Parameters: %s\n" % qstring
+    if task == 'pascal':
 
-    params = parse_qs(qstring)
-    print params
-    if not (int(params["n_layers"][0]) > 0 and int(params["n_layers"][0]) < 150):
-        params["n_layers"][0] = 50
-        
-    return plot_pascals_triangle( int(params["n_layers"][0]),
-                                  int(params["d"][0]),
-                                  save=False
-                                )
+        n_layers = int(request.args.get('n_layers',0))
+        d        = int(request.args.get('d',0))
+    
+        if n_layers < 0 or n_layers > 50 or d > 50:
+            n_layers = 50
+            d        = 2
+    
+        img = plot_pascals_triangle(n_layers, d)
+        base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
+
+        return render_template('plhak.html', task=task, img_data=base64_data)
+    else:    
+
+        return render_template('plhak.html', task=task)
+
+#@app.route('/plhak/<qstring>')
+#def index(qstring):
+#    print "Attempting to print pascals triangle"
+#    print "     Parameters: %s\n" % qstring
+#
+#    params = parse_qs(qstring)
+#    print params
+#    if not (int(params["n_layers"][0]) > 0 and int(params["n_layers"][0]) < 150):
+#        params["n_layers"][0] = 50
+#        
+#    return plot_pascals_triangle( int(params["n_layers"][0]),
+#                                  int(params["d"][0]),
+#                                  save=False
+#                                )
 
 
 @app.route('/kvapil/') 
