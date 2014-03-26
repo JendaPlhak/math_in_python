@@ -8,8 +8,8 @@ import os
 
 def pascals_triangle(n_layers):
 
-    if n_layers <= 0:
-        raise Exception(" Non-positive values of n_layers not allowed!")
+    #if n_layers <= 0:
+    #    raise Exception(" Non-positive values of n_layers not allowed!")
 
     layers = [[1]]
     for i in xrange(n_layers - 1):
