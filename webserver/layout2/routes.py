@@ -65,7 +65,7 @@ def plhak(task=''):
 
 @app.route('/kvapil/') 
 @app.route('/kvapil/<task>')
-def kvapil(task='', img_data='triangulation.svg'):
+def kvapil(task=''):
 
     if task == 'triangulation':
         n = int(request.args.get('num',0))
