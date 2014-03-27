@@ -28,7 +28,7 @@
 	{% elif task == 'triangulation' %}
 		<img src="data:image/svg+xml;base64,{{ img_data }}" alt="triangulation.svg" width="500">
 		<form action="" method="get">
-			Number: <input type="number" name="num" value="14"><br>
+			Number: <input type="number" name="num" value="{{ value }}14"><br>
 			Minimal lengths: <input type="checkbox" name="checkbox" value="True">
 					<input type="submit" value="Draw!">
 		</form>
