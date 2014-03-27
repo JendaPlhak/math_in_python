@@ -6,8 +6,7 @@
 
 import svgwrite
 from svglib import svg
-from numpy 	import arctan
-from math 	import sin, cos, pi, sqrt
+from math 	import sin, cos, pi, sqrt, atan
 
 def tan(alpha):
 
@@ -80,56 +79,44 @@ class Turtle(object):
 	def draw_object(self, filename, width=200, height=200):
 		
 		im = svgwrite.drawing.Drawing()
-		#im.add(im.line(start=(10,10,), end=(100,100), stroke='black'))
-		
 		for x in range(len(self.lines)):
-			A = (self.lines[x][0]+width/4,self.lines[x][1]+height/2)			# Different offsets, to make i clearer on web
-			B = (self.lines[x][2]+width/4,self.lines[x][3]+height/2)
+			A = (self.lines[x][0]+width/2,self.lines[x][1]+height/2)			# Different offsets, to make i clearer on web
+			B = (self.lines[x][2]+width/2,self.lines[x][3]+height/2)
 			im.add( im.line(	start = A,\
 								end   = B,\
-								stroke= 'black'))
-			print A, B
-		
+								stroke= 'black'))		
 
 		im.saveas(filename)
 		return
-		"""
 
-		
-		picture = svg(filename, width, height)
-		picture.open()
-
-		for x in range(len(self.lines)):
-			picture.line(self.lines[x][0], self.lines[x][1], self.lines[x][2], self.lines[x][3], width="3")
-		picture.save()
-		return
-		"""
-		
 
 ########################################
 
-def polygon(turtle, k, n=5):			# turtle = object from Turtle class, k = length of a side, n = number of sides
+def polygon(turtle, k, n=5):					# turtle = object from Turtle class, k = length of a side, n = number of sides
 	for x in range(n):
 		turtle.forward(k)
 		turtle.left(360/n)
 	return
 
-def star(turtle, k, n=9):				# not working quite yet
+def star(turtle, k, n=9):						# not working quite yet
 	for x in range(n):
 		turtle.forward(k)
 		turtle.left( ((n+1)/2)*360/n )
 	return	
 
 """ Third task picture B /relatively """
-def infsquare(turtle, a, x, n=100):
-	angle = radToDeg(arctan( x/(a-x) ))
+def infsquare(turtle, k, x, n=100):				# turtle = object from Turtle class, k = length of the biggest side, x = the offset of smaller square		
+	angle = radToDeg(atan( float(x/(k-x)) ))
 	for i in range(n):
-		polygon(turtle, a, 4)
+		polygon(turtle, k, 4)
+		turtle.penup()							# penup/down is not neccesary here, but svgwrite overwrites some lines..
 		turtle.forward(x)
+		turtle.pendown()
 		turtle.left(angle)
-		tmp = sqrt((a-x)**2 + x*2)
-		x = (x*tmp)/a
-		a = tmp
+		print angle
+		tmp = sqrt((k-x)**2 + x*2)
+		x 	= (x*tmp)/k
+		k 	= tmp
 	return
 
 """ Third task picture D /relatively """
@@ -227,5 +214,5 @@ polygon(turtle, 30)
 turtle.save("polygon")
 """
 
-star(turtle, 100)
-turtle.draw_object("star.svg")
+triangles(turtle, 5., 5,10)
+turtle.draw_object("triangles.svg")
