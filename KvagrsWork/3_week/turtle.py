@@ -4,65 +4,98 @@
 #
 #######################################
 
+import svgwrite
 from svglib import svg
-from numpy import arctan
-from math import sin, cos, pi, sqrt
+from numpy 	import arctan
+from math 	import sin, cos, pi, sqrt
 
 def tan(alpha):
+
 	return sin(alpha)/cos(alpha)
 
 
 class Turtle(object):
+
 	def __init__(self, absolute=False):
-		self.x = 0		# Turtle starts at [0,0]
+		self.x = 0							# Turtle starts at [0,0]
 		self.y = 0
-		self.phi = 0		# Starting angle
+		self.phi = 0						# Starting angle
 		self.pen = True
 		self.absolute = absolute
 		self.lines = []
 
 	def forward(self, d):
-		phi = self.degToRad(self.phi)	# conversion
 
-		n_x = self.x + d*cos(phi)		# Calculating new coordinates
+		phi = self.degToRad(self.phi)		# conversion
+
+		n_x = self.x + d*cos(phi)			# Calculating new coordinates
 		n_y = self.y + d*sin(phi)
 
-		if self.pen == True:			# Drawing lines
+		if self.pen == True:				# Drawing lines
 			self.lines.append([self.x, self.y, n_x, n_y])	# One line is #4 list with starting coord. and ending coord.
 			if self.absolute == False:
 				self.x = n_x
 				self.y = n_y
-		else:						# Changing the starting positions
+		else:								# Changing the starting positions
 			if self.absolute == False:
 				self.x = n_x
 				self.y = n_y
 		return
 
 	def back(self, d):
+
 		self.forward(-d)
 		return
 
+
 	def left(self, phi):
+
 		self.phi -= phi
 		return
+
 
 	def right(self, phi):
 		self.phi += phi
 		return
 
+
 	def penup(self):
+
 		self.pen = False
 		return
 
+
 	def pendown(self):
+
 		self.pen = True
 		return
 
-	def degToRad(self,phi):		# Conversion function from degrees to radians
+
+	def degToRad(self,phi):						# Conversion function from degrees to radians
+
 		r_phi = (phi*pi)/180
 		return r_phi
 
-	def save(self, filename, width=1000, height=1000):
+
+	def draw_object(self, filename, width=200, height=200):
+		
+		im = svgwrite.drawing.Drawing()
+		#im.add(im.line(start=(10,10,), end=(100,100), stroke='black'))
+		
+		for x in range(len(self.lines)):
+			A = (self.lines[x][0]+width/4,self.lines[x][1]+height/2)			# Different offsets, to make i clearer on web
+			B = (self.lines[x][2]+width/4,self.lines[x][3]+height/2)
+			im.add( im.line(	start = A,\
+								end   = B,\
+								stroke= 'black'))
+			print A, B
+		
+
+		im.saveas(filename)
+		return
+		"""
+
+		
 		picture = svg(filename, width, height)
 		picture.open()
 
@@ -70,16 +103,18 @@ class Turtle(object):
 			picture.line(self.lines[x][0], self.lines[x][1], self.lines[x][2], self.lines[x][3], width="3")
 		picture.save()
 		return
+		"""
+		
 
 ########################################
 
-def polygon(turtle, k, n=5):		# turtle = object from Turtle class, k = length of a side, n = number of sides
+def polygon(turtle, k, n=5):			# turtle = object from Turtle class, k = length of a side, n = number of sides
 	for x in range(n):
 		turtle.forward(k)
 		turtle.left(360/n)
 	return
 
-def star(turtle, k, n=17):		# not working quite yet
+def star(turtle, k, n=9):				# not working quite yet
 	for x in range(n):
 		turtle.forward(k)
 		turtle.left( ((n+1)/2)*360/n )
@@ -186,7 +221,11 @@ def radToDeg(rad):
 
 
 turtle = Turtle()
-
+"""
 turtle.left(90)
 polygon(turtle, 30)
 turtle.save("polygon")
+"""
+
+star(turtle, 100)
+turtle.draw_object("star.svg")

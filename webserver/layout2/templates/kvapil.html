@@ -1,12 +1,15 @@
 {% extends "template.html" %}
 {% block content %}
-
-	{% if task  == 'collatzo' %}
+	{% if task == '' %}
+	<p>
+		Please choose any project you like on the left.
+	</p>
+	{% elif task  == 'collatzo' %}
 		<img src="../static/img/KvagrsWork/1_week/collatzo.png" alt="Collatzo steps for 8000 natural numbers" width="500">
 		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/KvagrsWork/1_week/collatzo.py">here</a> to see the code.</p>
 	{% elif task == 'turtle' %}
-		<img src="../static/img/KvagrsWork/3_week/polygon.svg" alt="polygon.svg" width="500">
-		<img src="../static/img/KvagrsWork/3_week/star.svg" alt="star.svg" width="500">
+		<img src="../static/img/KvagrsWork/3_week/polygon.svg" alt="polygon.svg" width="300">
+		<img src="../static/img/KvagrsWork/3_week/star.svg" alt="star.svg" width="300">
 		<img src="../static/img/KvagrsWork/3_week/bush.svg" alt="bush.svg" width="500">
 		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/KvagrsWork/3_week/turtle.py">here</a> to see the code.</p>
 
