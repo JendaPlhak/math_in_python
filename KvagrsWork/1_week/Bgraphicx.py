@@ -4,10 +4,11 @@
 #
 #######################################
 
-from svglib import svg
-from bmplib import bmp
+import svgwrite
+from PIL import Image
 
-def fixed_length_segment(pic, side, n):	# side = length of segment, n = number of steps
+def fixed_length_segment(side, n):	# side = length of segment, n = number of steps
+
 	step = side/n
 	lines = []
 	for i in range(n+1):
@@ -22,32 +23,45 @@ def fixed_length_segment(pic, side, n):	# side = length of segment, n = number o
 		lines.append([x0, -y0, x1, y1])
 	return lines
 
+
+def draw_fixed_length_segment(side, n):
+
+	im 	  = svgwrite.drawing.Drawing()
+	lines = fixed_length_segment(side, n)
+
+	for line in lines:
+		A = (line[0]+side, line[1]+side)
+		B = (line[2]+side, line[3]+side)
+		im.add( im.line(	start = A,\
+							end   = B,\
+							stroke= 'black' ))
+	im.saveas('orion.svg')
+
+
 #######################################
 
 def color_flow(side):
+
 	bits = []
-	for i in range(side):
-		for j in range(side):
-			bits.append([i,j,[100+i, j, i+j]])
+	for x in xrange(side):
+		for y in xrange(side):
+			bits.append( [(x,y),(100+x, y, x+y)])
 	return bits
 
+def draw_color_flow(side):
+
+	pixels = color_flow(side)
+	im 	   = Image.new("RGB",(side,side),(0,0,0))
+
+	for pixel in pixels:
+		im.putpixel(pixel[0], pixel[1])
+
+	im.save('color_flow.bmp')
+
+#######################################
 
 
-draw = bmp("lines", 1000, 1000, 2)
-draw.open()
-#draw.offset(0,0)
-#
-#side = 100
-#bits = color_flow(side)
-#
-#for i in range(side**2):
-#	draw.bit(bits[i][0], bits[i][1], bits[i][2])
+if __name__ == '__main__':
 
-n = 10
-lines = fixed_length_segment(draw, 200, n)
-for i in range(4*(n+1)):
-	draw.line(lines[i][0], lines[i][1], lines[i][2], lines[i][3], width="2")
-
-
-
-draw.save()
+	draw_fixed_length_segment(200,10)
+	draw_color_flow(200)

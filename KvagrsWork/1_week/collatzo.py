@@ -21,15 +21,11 @@ def collSteps(n):
 
 #######################################
 
-#print collSteps(8000) 
-#plt.plot([15],[collSteps(15)[1]],'ko')
 
 points=[]
 for i in range(1,8000):
 	points.append([i, collSteps(i)])
-	plt.plot( [i],[collSteps(i)[0]], 'ko' )
+	plt.plot( [i],[collSteps(i)[1]], 'ko' )				# collSteps(i)[0] are steps, collSteps(i)[1] are max num in collatzo series
 
-#print points
-
-plt.axis([0,8000,0,300])
-plt.savefig('collatzo.png')
+plt.axis([0,5000,0,5000])
+plt.savefig('collatzo_max.png')

@@ -32,6 +32,13 @@
 		<img src="../static/img/JendasWork/4_task/hide_and_seek3_orig.png" width="500" alt="hide_and_seek3_orig.png">
 		<img src="../static/img/JendasWork/4_task/hide_and_seek3.png" width="500" alt="hide_and_seek3.png">
 		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/4_task/hide_and_seek.py">here</a> to see the code.</p>
+	{% elif task == 'pascal' %}
+		<img src="data:image/svg+xml;base64,{{ img_data }}" alt="pascal.svg" width="500">
+		<form action="" method="get">
+			Number of layers:	<input type="number" name="n_layers" value="50"><br>
+			Modul: 				<input type="number" name="d" value="2"><br>
+			<input type="submit" value="Draw!">
+		</form>
 	{% endif %}
 {% endblock %}
 {% block side_container %}
@@ -45,6 +52,9 @@
 		</ul>
 	</li>
 	<li>Task 2</li>
+		<ul class="side_menu">
+			<li><a href="/plhak/pascal">Pascal</a></li>
+		</ul>
 	<li>Task 3</li>
 	<li>Task 4</li>
 		<ul class="side_menu">

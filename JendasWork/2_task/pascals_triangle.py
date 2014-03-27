@@ -2,12 +2,14 @@
 
 import svgwrite
 import colorsys
+#add
+import os
 
 
 def pascals_triangle(n_layers):
 
-    if n_layers <= 0:
-        raise Exception(" Non-positive values of n_layers not allowed!")
+    #if n_layers <= 0:
+    #    raise Exception(" Non-positive values of n_layers not allowed!")
 
     layers = [[1]]
     for i in xrange(n_layers - 1):
@@ -42,8 +44,18 @@ def plot_pascals_triangle(n_layers, d, save=True):     # d = divisor
                     )
         shift += sq_edge / 2
     if save:
-        draw.saveas("img/pascals_triangle.svg")
-    return draw.tostring()
+        #add
+        if os.path.isdir("../../webserver/layout2/static/img/JendasWork/2_task/"):
+
+            draw.saveas("../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg")
+            return "../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
+        else:
+
+            draw.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg")
+            return "/home/ubuntu/math_in_python/webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
+    
+        #draw.saveas("img/pascals_triangle.svg")
+    #return draw.tostring()
 
 
 if __name__ == "__main__":
