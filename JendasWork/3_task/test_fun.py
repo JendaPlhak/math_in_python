@@ -15,7 +15,7 @@ def regularPolygon(draw, a=50, n=5): # a = side in pixels, n = number of angles
 
     draw.right(360./n)
     draw.penUp()
-    return vertices
+    return tuple(vertices)
 
 
 def star(draw, a=50, n=5): # a = side in pixels, n = number of angles  
