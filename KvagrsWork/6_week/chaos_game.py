@@ -1,50 +1,65 @@
 from PIL  	import Image
-from math 	import cos, sin, pi
+from math 	import cos, sin, pi,sqrt
 from random import randint
+import random
 
 
-def chaos_game(n, r, side=100, iteration=100):		# n = the number of points, r 
+def weighted_random_point(points, weights):											# Different possibilities of chosing some point, weights == [W1,W2,W3]
 	
-	base = []
-	angle  = pi/2
-	for i in xrange(n):									# draw regular n-polygon
-		x = int(side*cos(angle))
-		y = int(side*sin(angle))
-		angle += 2*pi/n
-		base.append([x+side,-y+side])
+	weighted_points = []
+	for i, point in enumerate(points):
+		weighted_points.append( point * weights[i] )
 
-	x = randint(0, side-1)
-	y = randint(0, side-1)
+	return random.choice( weighted_points )
 
+
+def chaos_game(n, r, weights, side=100, iteration=1000, regular=True):		# n = the number of points, r 
+	
+	edge_points = []
+	if regular:
+		angle  = pi/2
+		for i in xrange(n):											# draw vertices of regular n-polygon
+			x = int(side*cos(angle))
+			y = int(side*sin(angle))
+			angle += 2*pi/n
+			edge_points.append( [x + side,-y + side] )
+	
+	else:
+		for i in xrange(n):
+			x = randint(0,side)
+			y = randint(0,side)
+			edge_points.append( [x + side, y + side] )
+
+
+	x      = randint(0, side-1)
+	y 	   = randint(0, side-1)
 	pixels = [[x,y]]
+
 	for i in xrange(iteration):
-		V = base[randint(0,n-1)]
-		x = (x+V[0])*r
-		y = (y+V[1])*r
-		pixels.append([x,y])
+		rand = weighted_random_point( edge_points, weights )
+		x 	 = int(( x + rand[0]) * r)
+		y 	 = int(( y + rand[1]) * r)
+		if i > 100:
+			pixels.append( [x + side, y + side] )
 
-	pixels.extend(base)
-	#for pixel in pixels:
-	#	pixel[0] += side
-	#	pixel[1] += side
-
+	pixels.extend( edge_points )
 	return pixels
 
 
-def draw_chaos_game(n, r, save=False, filename=None, side=100):
+def draw_chaos_game(n, r, weights, side=100, iteration=100,  regular=True, save=False, filename=None):
 
-	im = Image.new("RGB", (1000, 1000), (255,255,255))
-	pixels = chaos_game(n,r,side)
+	pixels = chaos_game(n, r, weights, side, iteration, regular)
+	im 	   = Image.new("RGB", (1000, 1000), (255,255,255))
 
 	for pixel in pixels:
-		im.putpixel(pixel, (255,0,0))
+		im.putpixel(pixel, (0,0,0))
 
 	im.show()
 
 	if save:
-		im.save()
+		im.save('filename')
 
 
 if __name__ == '__main__':
 	
-	draw_chaos_game(3,1/2,side=100)
+	draw_chaos_game(n=3, r=0.5, weights=[1,1,1], side=200, iteration=100000, regular=True)
