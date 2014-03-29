@@ -22,6 +22,7 @@ def cross_point(u, v):										# u, v are lists, |u| = 4 = |v|
 	x3,y3 = D
 	
 	if x0 - x1 == 0 or x2 - x3 == 0:
+		print "hoalo 1"
 		return (None, None), False
 
 	k1 = (y0-y1)/(x0-x1)									# actual magic, k1,2 and q1,2 are coefficients for lines, 
@@ -30,6 +31,7 @@ def cross_point(u, v):										# u, v are lists, |u| = 4 = |v|
 	q2 = y2-k2*x2
 
 	if k1 == k2:
+		print "hoalo 2"
 		return (None, None), False
 
 	Px = (q2-q1)/(k1-k2)									# [Px,Py] is the cross point
@@ -43,6 +45,7 @@ def cross_point(u, v):										# u, v are lists, |u| = 4 = |v|
 		return (Px,Py), True
 
 	else:
+		print "hoalo 3"
 		return (None, None), False
 
 
@@ -104,4 +107,6 @@ if __name__ == '__main__':
 
 	print "Draw segments and their cross points for"
 	print "10 points and length 100 of each segment."
-	draw_segment_intersection(10,100)
+	#draw_segment_intersection(10,100)
+
+	print cross_point([0,0,1,10],[5,5,-5,5])
