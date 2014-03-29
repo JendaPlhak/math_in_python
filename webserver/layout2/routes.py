@@ -12,9 +12,7 @@ from flask            import Flask, request, render_template
 app = Flask(__name__)
 
 from urlparse         import parse_qs
-from bottle           import route, run, template, static_file
 from pascals_triangle import plot_pascals_triangle
-from PIL              import Image
 
 #Kvapil
 from triangulation            import draw_triangulation
