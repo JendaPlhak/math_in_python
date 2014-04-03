@@ -1,7 +1,12 @@
+import sys
+
+sys.path.append("../4_week")
+
 import svgwrite
 from random 				import random, randint
-from math 					import sqrt, cos, sin, atan, acos
+from math 					import sqrt, cos, sin, atan, acos, pi
 from segment_intersection 	import cross_point, generate_data, dist
+from polygon 				import determinant
 
 def find_right(points):						# find the rightest point in the plane
 
@@ -31,7 +36,7 @@ def dot_product(u,v):
 
 def angle(u,v):
 
-	arg = ( dot_product(u,v) / (norm(u)*norm(v)) )
+	arg = ( dot_product(u,v) / (norm(u) * norm(v)) )
 
 	return acos(arg)
 
@@ -58,40 +63,34 @@ def line_print(data):
 
 def convex_wrapping(n):
 
-	points 	= generate_data(n)
-	fix_points = points
-	line_print(points)
-	right 	= find_right(points)
-	edges	= []
-	fixed_v	= [0,1]
 
-	points.remove(right)
-	next = points[0]
-	#points.remove(next)
-	#while next == right:
-	#	i 	 = randint(1, len(points)-1)
-	#	next = points[i]
+	points 	      = generate_data(n)			# generate points in plane
+	backup_points = points 						# backup for return
 	
-	var_v 	  = vectorize(right, next)
-	min_angle =  angle(fixed_v, var_v)
-	print "Min angel"
-	print min_angle
+	r_point	= find_right(points)				# find the rightest point
+	#fixed_v	= vectorize([0,1], r_point)			# starting vector to which will be calculated the angle
 
-	while next != right:
-		for i, point in enumerate(points):
+	points.remove(r_point)						# remove the r_point from points, but put it back later so it can cycle
+	next = points[0]							# get the first point, why not. No need for random
 
-			if min_angle > angle(fixed_v, vectorize(right, point)):
-				next 	  = point
-				var_v 	  = vectorize(right, next)
-				min_angle = angle(fixed_v, vectorize(right, point))
-				print "Min angel"
-				print min_angle
+	edges 	= []
+	fixed_v	= vectorize([0,1], r_point)
+	free_v  = vectorize(next, r_point)
+	angle   = angle(fixed_v, free_v)
 
-		edges.append( right+next )
-		points.append(right)
-		right = next
-		points.remove(next)
-		
+	while next != r_point:
+		for point in points:
+			free_v  = vectorize(point, r_point)
+			n_angle = angle(fixed_v, free_v)
+			if angle > n_angle:
+				next  = point
+				angle = n_angle
+
+		edges.append(r_point + next)
+		points.append(r_point)
+		r_point = next
+		points.remove()
+
 
 	return fix_points, edges
 
@@ -100,7 +99,7 @@ def convex_wrapping(n):
 
 if __name__ == '__main__':
 
-	
+	"""	
 	points, edges = convex_wrapping(10)
 	im 	 = svgwrite.drawing.Drawing()
 
@@ -118,4 +117,12 @@ if __name__ == '__main__':
 						end 	= (line[2],line[3]),\
 						stroke	= 'black'))
 	im.saveas("convex_wrapping.svg")
-	
+	"""
+
+	num = dot_product([0,1], [-1,1])
+	den = norm([0,1]) * norm([-1,1])
+	print acos(num / den)
+
+	num = dot_product([0,1], [-1,2])
+	den = norm([0,1]) * norm([-1,2])
+	print acos(num / den)

@@ -22,17 +22,20 @@
 		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/KvagrsWork/3_week/turtle.py">here</a> to see the code.</p>
 
 	{% elif task == 'shapes' %}
-		<img src="../static/img/KvagrsWork/4_week/polygon.svg" alt="polygon.svg" width="300;">
+		<img src="../static/img/KvagrsWork/4_week/circle_filled.bmp" alt="circle_filled.bmp" width="200">
+		<img src="../static/img/KvagrsWork/4_week/circle_par.bmp" alt="circle_par.bmp" width="200">
+		<img src="../static/img/KvagrsWork/4_week/ellipse_par.bmp" alt="ellipse_par.bmp" width="200">
+		<img src="../static/img/KvagrsWork/4_week/equilateral_triangle.bmp" alt="equilateral_triangle.bmp" width="100">
 	{% elif task == 'polygon' %}
-		<img src="../static/img/KvagrsWork/4_week/polygon.bmp" alt="Irregular polygon in the plane" width="300;">
+		<img src="../static/img/KvagrsWork/4_week/polygon.bmp" alt="Irregular polygon in the plane" width="300">
 
 	{% elif task == 'hide_and_seek' %}
-		<img src="../static/img/KvagrsWork/4_week/skryvacka1.png" alt="skryvacka1.png" width="300;">
-		<img src="../static/img/KvagrsWork/4_week/solved1.png" alt="solved1.png" width="300;">
-		<img src="../static/img/KvagrsWork/4_week/skryvacka2.png" alt="skryvacka2.png" width="300;">
-		<img src="../static/img/KvagrsWork/4_week/skryvacka2.png" alt="skryvacka2.png" width="300;">
-		<img src="../static/img/KvagrsWork/4_week/skryvacka3.png" alt="skryvacka3.png" width="300;">
-		<img src="../static/img/KvagrsWork/4_week/solved3.png" alt="solved3.png" width="300;">
+		<img src="../static/img/KvagrsWork/4_week/skryvacka1.png" alt="skryvacka1.png" width="300">
+		<img src="../static/img/KvagrsWork/4_week/solved1.png" alt="solved1.png" width="300">
+		<img src="../static/img/KvagrsWork/4_week/skryvacka2.png" alt="skryvacka2.png" width="300">
+		<img src="../static/img/KvagrsWork/4_week/skryvacka2.png" alt="skryvacka2.png" width="300">
+		<img src="../static/img/KvagrsWork/4_week/skryvacka3.png" alt="skryvacka3.png" width="300">
+		<img src="../static/img/KvagrsWork/4_week/solved3.png" alt="solved3.png" width="300">
 
 
 	{% elif task == 'intersection' %}
@@ -50,7 +53,13 @@
 			Minimal lengths: <input type="checkbox" name="checkbox" value="True">
 					<input type="submit" value="Draw!">
 		</form>
-	
+	{% elif task == 'chaos_game' %}
+		<img src="../static/img/KvagrsWork/6_week/sierpinski_triangle.bmp" alt="sierpinski_triangle.bmp" width="300">
+		<form action="" method="get">
+			Number of vertices: <input type="number" name="num"><br>
+			Ratio: 				<input type="number" name="ratio">
+		</form>
+
 	{% endif %}
 {% endblock %}
 {% block side_container %}
@@ -80,6 +89,11 @@
 		<ul class="side_menu">
 			<li><a href="/kvapil/intersection">Intersection</a></li>
 			<li><a href="/kvapil/triangulation">Triangulation</a></li>
+		</ul>
+	</li>
+	<li>Week 6
+		<ul class="side_menu">
+			<li><a href="/kvapil/chaos_game">Chaos game</a></li>
 		</ul>
 	</li>
 </ol>

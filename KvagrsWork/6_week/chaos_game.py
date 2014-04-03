@@ -1,7 +1,14 @@
+import sys
+import os
+sys.path.append("../4_week/")
+
+
 from PIL  	import Image
 from math 	import cos, sin, pi,sqrt
 from random import randint
 import random
+
+from basic_shapes import movePointsTowardsOrigin
 
 
 def weighted_random_point(points, weights):											# Different possibilities of chosing some point, weights == [W1,W2,W3]
@@ -39,17 +46,22 @@ def chaos_game(n, r, weights, side=100, iteration=1000, regular=True):		# n = th
 		rand = weighted_random_point( edge_points, weights )
 		x 	 = int(( x + rand[0]) * r)
 		y 	 = int(( y + rand[1]) * r)
-		if i > 100:
+		if i > 10000:
 			pixels.append( [x + side, y + side] )
 
-	pixels.extend( edge_points )
+	#pixels.extend( edge_points )
 	return pixels
 
 
-def draw_chaos_game(n, r, weights, side=100, iteration=100,  regular=True, save=False, filename=None):
+def draw_chaos_game(n, r, weights=None, side=100, iteration=100,  regular=True, save=False, filename=''):
+
+	if weights == None:
+		weights = [1] * n
 
 	pixels = chaos_game(n, r, weights, side, iteration, regular)
-	im 	   = Image.new("RGB", (1000, 1000), (255,255,255))
+	pixels, size = movePointsTowardsOrigin( pixels )
+
+	im 	   = Image.new("RGB", (size, size), (255,255,255))
 
 	for pixel in pixels:
 		im.putpixel(pixel, (0,0,0))
@@ -57,9 +69,14 @@ def draw_chaos_game(n, r, weights, side=100, iteration=100,  regular=True, save=
 	im.show()
 
 	if save:
-		im.save('filename')
+		if os.path.isdir("../../webserver/layout2/static/img/KvagrsWork/6_week/"):
+			im.save("../../webserver/layout2/static/img/KvagrsWork/6_week/chaos_game.bmp")
+			return "../../webserver/layout2/static/img/KvagrsWork/6_week/chaos_game.bmp"
+		else:
+			im.save("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/6_week/chaos_game.bmp")
+			return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/6_week/chaos_game.bmp"
 
 
 if __name__ == '__main__':
 	
-	draw_chaos_game(n=3, r=0.5, weights=[1,1,1], side=200, iteration=100000, regular=True)
+	draw_chaos_game(n=3, r=0.2, weights=[1,1,1], side=200, iteration=100000, regular=True)

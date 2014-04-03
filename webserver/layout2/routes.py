@@ -3,8 +3,10 @@ import logging
 import sys
 sys.path.append("../../JendasWork/2_task/")
 sys.path.append("/home/ubuntu/math_in_python/JendasWork/2_task/")
-sys.path.append("../../KvagrsWork/5_week/")
-sys.path.append("/home/ubuntu/math_in_python/KvagrsWork/5_week/")
+
+for i in xrange(6):
+    sys.path.append("../../KvagrsWork/" + str(i + 1) +"_week/")
+    sys.path.append("/home/ubuntu/math_in_python/KvagrsWork/" + str(i + 1) + "_week/")
 
 from logging.handlers import RotatingFileHandler
 from flask            import Flask, request, render_template
@@ -17,6 +19,7 @@ from pascals_triangle import plot_pascals_triangle
 #Kvapil
 from triangulation            import draw_triangulation
 from segment_intersection     import draw_segment_intersection
+#from chaos_game               import draw_chaos_game
 
 
 @app.route('/')
@@ -92,6 +95,17 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, img_data=base64_data)
 
+    #elif task == 'chaos_game':
+    #    n     = int(request.args.get('num', 0))
+    #    ratio = int(request.args.get('ratio', 0))
+#
+#    #    if n not in range(3,20) or ratio < 0 or ratio > 1:
+#    #        n     = 3
+#    #        ratio = 0.5
+#
+#    #    img         = draw_chaos_game(n, ratio)
+#    #    base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
+#
     else:
         return render_template('kvapil.html', task=task)
 
