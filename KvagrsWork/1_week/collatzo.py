@@ -1,9 +1,3 @@
-#######################################
-#
-# Plot collatzo steps for natural N
-#
-#######################################
-
 import matplotlib.pyplot as plt
 
 def collSteps(n):
@@ -19,13 +13,27 @@ def collSteps(n):
 		maxN = max(maxN, n)
 	return steps, maxN
 
-#######################################
+
+def plot_collatzo(x=8000, y=300, maxNumber=False):
+
+	points=[]
+	plt.axis([0,x,0,y])
+	for i in range(1,y):
+		points.append([i, collSteps(i)])
+		
+		if maxNumber:
+			plt.plot( [i],[collSteps(i)[1]], 'ko' )				# collSteps(i)[0] are steps, collSteps(i)[1] are max num in collatzo series
+			plt.ylabel('Number of steps')
+			plt.savefig('collatzo_max.png')
+
+		else:
+			plt.plot( [i],[collSteps(i)[0]], 'ko' )
+			plt.ylabel('Number of steps')
+			plt.savefig('collatzo_steps.png')
+
+	return
 
 
-points=[]
-for i in range(1,8000):
-	points.append([i, collSteps(i)])
-	plt.plot( [i],[collSteps(i)[1]], 'ko' )				# collSteps(i)[0] are steps, collSteps(i)[1] are max num in collatzo series
+if __name__ == '__main__':
 
-plt.axis([0,5000,0,5000])
-plt.savefig('collatzo_max.png')
+	plot_collatzo()

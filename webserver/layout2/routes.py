@@ -10,6 +10,7 @@ for i in xrange(6):
 
 from logging.handlers import RotatingFileHandler
 from flask            import Flask, request, render_template
+from StringIO         import StringIO
 
 app = Flask(__name__)
 
@@ -76,7 +77,8 @@ def kvapil(task=''):
             n = 3
         print check
 
-
+        # udelej file-like objekt (ma metody read, write, atd.) v pameti 
+        #output      = StringIO()
         img         = draw_triangulation(n, min_side=check)
         base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
     

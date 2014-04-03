@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- define page encoding -->
 	<meta charset="UTF-8"/>
 	<title>Basic layout</title>
+
+	<!-- linking the css stylesheet -->
 	<link rel="stylesheet" href="../static/css/stylesheet.css"/>
+
+	<!-- adding MathJax script for usage of math in LaTeX on the web -->
+	<script type="text/javascript"
+  			src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  			// Enables using single dollars '$' for inline math mode next to double '$$'
+  			MathJax.Hub.Config({
+  				tex2jax: {
+    				inlineMath: [['$','$'], ['\\(','\\)']],
+    			processEscapes: true
+  			}
+			});
+	</script>
+
+	<!-- adding script to higlight the code on the webpage -->
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/monokai_sublime.min.css">
+	<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+	<script type="text/javascript">
+  hljs.configure({tabReplace: '    '}); // 4 spaces
+  // ... or
+  //hljs.configure({tabReplace: '<span class="indent">\t</span>'});
+
+  hljs.initHighlightingOnLoad();
+</script>
+
+	<!-- jQuery thanks to Google-- >
+<!--
+	<script type=text/javascript src="{{ url_for('.static', filename='jquery.js') }}">
+	document.write('hi');
+	</script>
+-->	
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="{{url_for('.static', filename='jquery.js') }}">\x3C/script>')</script>
+	
+
+
+	<!-- my own script-->
+	<script type="text/javascript" src="../static/script.js"></script>
+
 </head>
 <body>
 	<header>
@@ -23,5 +65,7 @@
 		{% block side_container %}
 		{% endblock %}
 	</div>
+
+	
 </body>
 </html>
