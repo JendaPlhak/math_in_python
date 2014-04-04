@@ -42,7 +42,7 @@ do_img_reload() {
 }
 
 do_clear() {
-    make -C ${DIR_MAKE} clear
+    make -C ${DIR_MAKE} cleanImg
 }
  
 case "$1" in
@@ -61,7 +61,7 @@ case "$1" in
         do_img_reload
         ;;
 
-    clear)
+    cleanImg)
         do_clear
         ;;
  
