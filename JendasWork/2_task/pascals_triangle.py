@@ -22,7 +22,7 @@ def pascals_triangle(n_layers):
 
 
 def plot_pascals_triangle(n_layers, d):     # d = divisor
-
+    
     layers  = pascals_triangle(n_layers)
     draw    = svgwrite.drawing.Drawing()
 
@@ -44,8 +44,8 @@ def plot_pascals_triangle(n_layers, d):     # d = divisor
                     )
         shift += sq_edge / 2
     
-    draw.saveas("img/pascals_triangle.svg")
-    return draw.tostring()
+    # draw.saveas("img/pascals_triangle.svg")
+    return "/home/jendas/skola/math_in_python/webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
 
 
 if __name__ == "__main__":
