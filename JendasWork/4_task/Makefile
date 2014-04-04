@@ -9,4 +9,7 @@ all: $(OBJS)
 clean:
 	rm -f img/skryvacka*
 
-.PHONY: all clean
+cleanImg:
+	rm -R img
+
+.PHONY: all clean cleanImg

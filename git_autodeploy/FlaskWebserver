@@ -40,6 +40,10 @@ do_img_reload() {
     make -C ${DIR_MAKE}
     ${DIR_IMG}/ImgGenerate.sh
 }
+
+do_clear() {
+    make -C ${DIR_MAKE} clear
+}
  
 case "$1" in
  
@@ -55,6 +59,10 @@ case "$1" in
 
     imgReload)
         do_img_reload
+        ;;
+
+    clear)
+        do_clear
         ;;
  
     status)
