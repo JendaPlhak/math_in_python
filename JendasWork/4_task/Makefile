@@ -3,6 +3,7 @@ OBJS = skryvacka1.png skryvacka2.png skryvacka3.png
 all: $(OBJS)
 
 %.png:
+	mkdir -p img
 	wget -O "img/$@" http://www.fi.muni.cz/~xpelanek/IV122/zadani/$@
 	touch img/$@
 
