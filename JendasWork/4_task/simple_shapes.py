@@ -43,6 +43,6 @@ def triangle(a=200., size=500, path="img/triangle.png"):
 
 if __name__ == "__main__":
 
-    # elipse(full=False)
-    # archimedSpiral()
+    elipse(full=False)
+    archimedSpiral()
     triangle()
