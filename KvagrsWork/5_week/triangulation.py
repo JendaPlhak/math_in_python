@@ -1,11 +1,13 @@
 import svgwrite
 import os
+from StringIO				import StringIO
 from random 				import random, randint
 from math 					import sqrt, cos, sin
 from segment_intersection 	import cross_point, generate_data, dist
 
 
-def join_points(points):								# creates a segment for each pair of points
+
+def join_points(points):		# creates a segment for each pair of points
 
 	segments = []
 	tmp_list = points[:]
@@ -51,7 +53,7 @@ def triangulation(n, min_side=False, length=100):
 	
 	return points, fin_segments
 
-def draw_triangulation(n, min_side, length=120):
+def draw_triangulation(n, min_side, length=120, web=False):
 
 	im = svgwrite.drawing.Drawing()
 	points, segments = triangulation(n, min_side, length=120)
@@ -65,6 +67,9 @@ def draw_triangulation(n, min_side, length=120):
 							r 		= 2,\
 							stroke 	= 'black'))
 
+	if web:
+		return im.tostring()
+
 	if os.path.isdir("../../webserver/layout2/static/img/KvagrsWork/5_week/"):
 
 		im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
@@ -74,7 +79,6 @@ def draw_triangulation(n, min_side, length=120):
 		im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg")
 		return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/triangulation.svg"
 	
-
 
 if __name__ == '__main__':
 

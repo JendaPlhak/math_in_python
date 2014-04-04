@@ -13,4 +13,9 @@ $(document).ready(function() {
 		}
 
 	});
+
+	$('.side_menu').hide();
+	$('#side_menu li').click(function(){
+		$(this).children('ul').slideToggle();
+	});
 });

@@ -32,21 +32,21 @@ def home(name=''):
 @app.route('/plhak/<task>')
 def plhak(task=''):
 
-    if task == 'pascal':
-
-        n_layers = int(request.args.get('n_layers',0))
-        d        = int(request.args.get('d',0))
-    
-        if n_layers < 0 or n_layers > 50 or d > 50:
-            n_layers = 50
-            d        = 2
-    
-        img = plot_pascals_triangle(n_layers, d)
-        base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
-
-        return render_template('plhak.html', task=task, img_data=base64_data)
-    else:    
-
+#    if task == 'pascal':
+#
+#        n_layers = int(request.args.get('n_layers',0))
+#        d        = int(request.args.get('d',0))
+#    
+#        if n_layers < 0 or n_layers > 50 or d > 50:
+#            n_layers = 50
+#            d        = 2
+#    
+#        img = plot_pascals_triangle(n_layers, d)
+#        base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
+#
+#        return render_template('plhak.html', task=task, img_data=base64_data)
+#    else:    
+#
         return render_template('plhak.html', task=task)
 
 #@app.route('/plhak/<qstring>')
@@ -78,9 +78,13 @@ def kvapil(task=''):
         print check
 
         # udelej file-like objekt (ma metody read, write, atd.) v pameti 
-        #output      = StringIO()
-        img         = draw_triangulation(n, min_side=check)
-        base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
+        output = StringIO()
+        output.write( draw_triangulation(n, min_side=check, web=True) )
+        output.seek(0)
+
+        #base64_data = open( output, "rb").read().encode("base64").replace("\n", "")
+        base64_data = output.read().encode("base64").replace("\n", "")
+        output.close()
     
         return render_template('kvapil.html', task=task, img_data=base64_data)
 

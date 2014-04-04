@@ -96,6 +96,10 @@ ul li:hover {
 	overflow: auto;
 }
 
+.picture {
+	overflow-x: auto;
+}
+
 .python {
 	width: 1100px;
 }
