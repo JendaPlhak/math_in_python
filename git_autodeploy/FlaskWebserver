@@ -21,7 +21,7 @@ DAEMON_NAME=FlaskWebserver
 DAEMON_USER=ubuntu
  
 # The process ID of the script when it runs is stored here:
-PIDFILE=/var/run/$DAEMON_NAME.pid
+PIDFILE=/var/run/flask/$DAEMON_NAME.pid
  
 . /lib/lsb/init-functions
  
