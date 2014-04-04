@@ -33,7 +33,7 @@ do_start () {
 }
 do_stop () {
     log_daemon_msg "Stopping system $DAEMON_NAME daemon"
-    start-stop-daemon --stop --pidfile $PIDFILE --retry 10
+    start-stop-daemon --stop --pidfile $PIDFILE --retry 10 --signal 9
     log_end_msg $?
 }
 do_img_reload() {
@@ -51,7 +51,11 @@ case "$1" in
         do_${1}
         ;;
  
-    restart|reload|force-reload)
+    restart)
+        do_stop
+        do_start
+        ;;
+    reload|force-reload)
         do_img_reload
         do_stop
         do_start
