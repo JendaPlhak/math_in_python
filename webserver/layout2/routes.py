@@ -83,6 +83,7 @@ def kvapil(task=''):
     elif task == 'intersection':
         n      = int(request.args.get('num',0))
         length = int(request.args.get('len',0))
+        print request.args.get('nazevFunkce',)
 
         if n not in range(2,50) or length not in range(20,150):
             n      = 15
