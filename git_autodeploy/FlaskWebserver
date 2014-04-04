@@ -34,7 +34,7 @@ do_start () {
 do_stop () {
     log_daemon_msg "Stopping system $DAEMON_NAME daemon"
     PID=$(cat /var/run/flask/FlaskWebserver.pid)
-    kill -- -$(ps -o pgid=$PID | grep -o [0-9]*)
+    kill -- -$(ps -o pgid= $PID | grep -o '[0-9]*')
     start-stop-daemon --stop --pidfile $PIDFILE --retry 10 --signal 9
     log_end_msg $?
 }
