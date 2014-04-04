@@ -97,6 +97,10 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, img_data=base64_data)
 
+    elif task == 'script.html':
+
+        return render_template('Kvagr/1_task/script.html')
+
     #elif task == 'chaos_game':
     #    n     = int(request.args.get('num', 0))
     #    ratio = int(request.args.get('ratio', 0))

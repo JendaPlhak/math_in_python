@@ -2,3 +2,4 @@ venv
 *.pyc
 *.svg
 *.png
+*.bmp
