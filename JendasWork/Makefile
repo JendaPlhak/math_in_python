@@ -1,4 +1,4 @@
-DIRS = 3_task 4_task
+DIRS = 3_task 4_task 7_task
 
 all: subdirs
 
