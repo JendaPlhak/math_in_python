@@ -54,7 +54,6 @@ def convertArguments(arguments):
     internal representation of given data type.
     """
     for key in arguments:
-
         value = arguments[key][0]
 
         if value.isdigit():
@@ -65,7 +64,7 @@ def convertArguments(arguments):
 
 def evaluateFunction(owner, funName, arguments):
     """
-    Evaluate function of given owner, for 
+    Evaluate function of given owner and 
     given arguments.
     """
     convertArguments(arguments)

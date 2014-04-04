@@ -42,7 +42,12 @@ def plhak(task=''):
             n_layers = 50
             d        = 2
         if request.args:
-            img = evaluateFunction("Jendas", task, dict(request.args))
+
+            arguments = dict(request.args)
+            funName   = arguments["funName"]
+            del arguments["funName"]
+            img = evaluateFunction("Jendas", funName, dict(request.args))
+            
         else:
             img = plot_pascals_triangle(n_layers, d)
         base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
