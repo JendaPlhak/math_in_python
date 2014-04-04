@@ -22,6 +22,7 @@ from triangulation            import draw_triangulation
 from segment_intersection     import draw_segment_intersection
 #from chaos_game               import draw_chaos_game
 
+from abstract_calling import evaluateFunction
 
 @app.route('/')
 @app.route('/<name>')
@@ -40,29 +41,15 @@ def plhak(task=''):
         if n_layers < 0 or n_layers > 50 or d > 50:
             n_layers = 50
             d        = 2
-    
-        img = plot_pascals_triangle(n_layers, d)
+        if request.args:
+            img = evaluateFunction("Jendas", task, dict(request.args))
+        else:
+            img = plot_pascals_triangle(n_layers, d)
         base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
 
         return render_template('plhak.html', task=task, img_data=base64_data)
     else:    
-
         return render_template('plhak.html', task=task)
-
-#@app.route('/plhak/<qstring>')
-#def index(qstring):
-#    print "Attempting to print pascals triangle"
-#    print "     Parameters: %s\n" % qstring
-#
-#    params = parse_qs(qstring)
-#    print params
-#    if not (int(params["n_layers"][0]) > 0 and int(params["n_layers"][0]) < 150):
-#        params["n_layers"][0] = 50
-#        
-#    return plot_pascals_triangle( int(params["n_layers"][0]),
-#                                  int(params["d"][0]),
-#                                  save=False
-#                                )
 
 
 @app.route('/kvapil/') 
