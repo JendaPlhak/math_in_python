@@ -15,4 +15,6 @@ def sieveOfEratosthenes(n):
 
 	return primes
 
+	
+
 sieveOfEratosthenes(1000)
