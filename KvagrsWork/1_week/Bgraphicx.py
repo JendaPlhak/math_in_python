@@ -30,7 +30,7 @@ def draw_fixed_length_segment(side, n):
 		im.add( im.line(	start = A,\
 							end   = B,\
 							stroke= 'black' ))
-	im.saveas('orion.svg')
+	im.saveas('img/orion.svg')
 
 
 #######################################

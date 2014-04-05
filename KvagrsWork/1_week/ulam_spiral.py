@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def sieveOfEratosthenes(n):
 
 	numbers = [True] * n
@@ -16,5 +18,6 @@ def sieveOfEratosthenes(n):
 	return primes
 
 	
+if __name__ == '__main__':
 
-sieveOfEratosthenes(1000)
+	sieveOfEratosthenes(1000)
