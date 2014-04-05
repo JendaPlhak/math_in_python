@@ -9,6 +9,7 @@ do
     do
         dir=${dir%*/}
         cd ${dir}
+        echo ${dir##*/}
 
         if [ ! -d "img" ]; then
             mkdir img
@@ -23,10 +24,8 @@ do
         if [ ! -d "${IMG_PATH}/${dir}/" ]; then
             mkdir -p ${IMG_PATH}/${dir}/
         fi
-
+        
         cp img/* ${IMG_PATH}/${dir}/
-
-        echo ${dir##*/}
         cd ..
     done
 done
