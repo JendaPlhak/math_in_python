@@ -1,10 +1,13 @@
-/*html {
-	margin: auto;
-	width: 900px;
-	border: 5px solid #226688;
-}*/
+html {
+		background-image: url(backgroundImage.jpg);
+	/*background-repeat: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBvfD4vYMX-DtJ8B_swBeWQtrqNo0LhF3DWvcTM_5nzFryXdGd);
+	background-color: #454545;*/
+}
+
+
 
 body {
+	background: white;
 	width: 900px;
 	margin: auto;
 	position: relative;

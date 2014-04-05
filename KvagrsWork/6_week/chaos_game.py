@@ -11,7 +11,7 @@ import random
 from basic_shapes import movePointsTowardsOrigin
 
 
-def weighted_random_point(points, weights):											# Different possibilities of chosing some point, weights == [W1,W2,W3]
+def weighted_random_point(points, weights):		# Different possibilities of chosing some point, weights == [W1,W2,W3]
 	
 	weighted_points = []
 	for i, point in enumerate(points):
@@ -20,7 +20,7 @@ def weighted_random_point(points, weights):											# Different possibilities 
 	return random.choice( weighted_points )
 
 
-def chaos_game(n, r, weights, side=100, iteration=1000, regular=True):		# n = the number of points, r 
+def chaos_game(n, r, weights, side=100, iteration=1000, regular=True):	# n = the number of points, r 
 	
 	edge_points = []
 	if regular:

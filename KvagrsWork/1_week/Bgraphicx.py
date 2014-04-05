@@ -7,7 +7,6 @@ def fixed_length_segment(side, n):	# side = length of segment, n = number of ste
 	step = side/n
 	lines = []
 	for i in range(n+1):
-		print i
 		x0 = 0
 		x1 = side - step*i
 		y0 = step*i
