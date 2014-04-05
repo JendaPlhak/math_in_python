@@ -1,9 +1,4 @@
-#######################################
-#
-#	Task 1 part B, vector and bitmap graphics
-#
-#######################################
-
+#!/usr/bin/env python
 import svgwrite
 from PIL import Image
 
@@ -56,7 +51,7 @@ def draw_color_flow(side):
 	for pixel in pixels:
 		im.putpixel(pixel[0], pixel[1])
 
-	im.save('color_flow.bmp')
+	im.save('img/color_flow.bmp')
 
 #######################################
 
