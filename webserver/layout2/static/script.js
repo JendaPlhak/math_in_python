@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('.code').hide();
+	//$('.code').hide();
 	
 	$('#buttonCode').click(function(){
 		if($(this).val() == 'Show code'){
@@ -14,8 +14,9 @@ $(document).ready(function() {
 
 	});
 
+	/*
 	$('.side_menu').hide();
 	$('#side_menu li').click(function(){
 		$(this).children('ul').slideToggle();
-	});
+	});*/
 });
