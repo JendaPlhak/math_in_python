@@ -3,35 +3,32 @@
 {% block content %}
 
 	<!-- TASK 1-->
-	{% if task == 'collatzo' %}
+	{% if task in ['collatzo','archimed_spiral','gcd','ulam_spiral'] %}
 		{% include 'Jenda/1_task/' + task + '.html' %}
-	{% elif task == 'archimed_spiral' %}
-		{% include 'Jenda/1_task/' + task + '.html' %}
-	{% elif task == 'gcd' %}
-		{% include 'Jenda/1_task/' + task + '.html' %}
-	{% elif task == 'ulam_spiral'%}
-		{% include 'Jenda/1_task/' + task + '.html' %}
-
+	
 	<!-- TASK 2 -->
-	{% elif task == 'pascal' %}
+	{% elif task in ['pascal'] %}
 		{% include 'Jenda/2_task/' + task + '.html' %}
 
 	<!-- TASK 3 -->
-	{% elif task == 'turtle' %}
+	{% elif task in ['turtle', 'fractals'] %}
 		{% include 'Jenda/3_task/' + task + '.html' %}
-	{% elif task == 'fractals' %}
-		{% include 'Jenda/3_task/' + task + '.html' %}
+	
 	<!-- TASK 4 -->
-	{% elif task == 'shapes' %}
+	{% elif task in ['shapes', 'polygon','effects','hide_and_seek'] %}
 		{% include 'Jenda/4_task/' + task + '.html' %}		
-	{% elif task == 'polygon' %}
-		{% include 'Jenda/4_task/' + task + '.html' %}		
-	{% elif task == 'effects' %}
-		{% include 'Jenda/4_task/' + task + '.html' %}		
-	{% elif task == 'hide_and_seek' %}
-		{% include 'Jenda/4_task/' + task + '.html' %}		
+	
+	<!-- TASK 5 -->
+	{% elif task in ['intersection', 'triangulation', 'gift_wrapping']%}
+		{% include 'Jenda/5_task/' + task + '.html' %}
+
+	<!-- TASK 6 -->	
+	{% elif task in ['chaos_game'] %}
+		{% include 'Jenda/6_task/' + task + '.html' %}
+
 			
 	{% endif %}
+		
 {% endblock %}
 {% block side_container %}
 
@@ -52,6 +49,7 @@
 	<li>Task 3
 		<ul class="side_menu">
 			<li><a href="/plhak/turtle">Turtle</a></li>
+			<li><a href="/plhak/fractals">Fractals</a></li>
 		</ul>
 	</li>
 	<li>Task 4
@@ -60,6 +58,18 @@
 			<li><a href="/plhak/polygon">Polygon</a></li>
 			<li><a href="/plhak/effects">Effects</a></li>
 			<li><a href="/plhak/hide_and_seek">Hide&Seek</a></li>
+		</ul>
+	</li>
+	<li>Task 5
+		<ul class="side_menu">
+			<li><a href="/plhak/intersection">Intersection</a></li>
+			<li><a href="/plhak/triangulation">Triangulation</a></li>
+			<li><a href="/plhak/gift_wrapping">Gift wrapping</a></li>
+		</ul>
+	</li>
+	<li>Task 6
+		<ul class="side_menu">
+			<li><a href="/plhak/chaos_game">Chaos game</a></li>
 		</ul>
 	</li>
 </ol>

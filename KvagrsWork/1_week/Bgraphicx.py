@@ -1,9 +1,4 @@
-#######################################
-#
-#	Task 1 part B, vector and bitmap graphics
-#
-#######################################
-
+#!/usr/bin/env python
 import svgwrite
 from PIL import Image
 
@@ -12,7 +7,6 @@ def fixed_length_segment(side, n):	# side = length of segment, n = number of ste
 	step = side/n
 	lines = []
 	for i in range(n+1):
-		print i
 		x0 = 0
 		x1 = side - step*i
 		y0 = step*i
@@ -35,7 +29,7 @@ def draw_fixed_length_segment(side, n):
 		im.add( im.line(	start = A,\
 							end   = B,\
 							stroke= 'black' ))
-	im.saveas('orion.svg')
+	im.saveas('img/orion.svg')
 
 
 #######################################
@@ -56,7 +50,7 @@ def draw_color_flow(side):
 	for pixel in pixels:
 		im.putpixel(pixel[0], pixel[1])
 
-	im.save('color_flow.bmp')
+	im.save('img/color_flow.bmp')
 
 #######################################
 
