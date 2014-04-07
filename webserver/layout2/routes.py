@@ -33,6 +33,9 @@ def home(name=''):
 @app.route('/plhak/<task>')
 def plhak(task=''):
 
+    
+    return render_template('plhak', task=task)
+
 
 #    if task == 'pascal':
 #

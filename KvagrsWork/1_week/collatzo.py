@@ -29,7 +29,7 @@ def plot_collatzo(x=8000, y=300, maxNumber=False, inverse=False):
 		points.append([i, collSteps(i)])
 
 		plt.xlabel('Natural numbers')
-		if maxNumber:
+		if maxNumber:	
 			plt.plot( [i],[collSteps(i)[1]], 'ko' )		# collSteps(i)[1] are max
 			plt.ylabel('Maximal number aj')
 			plt.savefig('img/collatzo_max.png')
@@ -51,5 +51,5 @@ def plot_collatzo(x=8000, y=300, maxNumber=False, inverse=False):
 
 if __name__ == '__main__':
 
-	plot_collatzo(x=800, y=300)
+	plot_collatzo(x=8000, y=300)
 	plot_collatzo(x=5000, y=5000, maxNumber=True)
