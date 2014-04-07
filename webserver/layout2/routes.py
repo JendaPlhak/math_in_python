@@ -33,10 +33,6 @@ def home(name=''):
 @app.route('/plhak/<task>')
 def plhak(task=''):
 
-    
-    return render_template('plhak', task=task)
-
-
 #    if task == 'pascal':
 #
 #        n_layers = int(request.args.get('n_layers',0))
