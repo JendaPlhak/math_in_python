@@ -222,8 +222,8 @@ if __name__ == "__main__":
     draw.dumpImage()
 
 
-    complexFractal(julia_=True,  path="img/Julia_Set.png")
-    complexFractal(julia_=False, path="img/Mandelbrot_set.png")
+    # complexFractal(julia_=True,  path="img/Julia_Set.png")
+    # complexFractal(julia_=False, path="img/Mandelbrot_set.png")
 
 
     

@@ -40,7 +40,7 @@ cdef inline Complex cNewNumber( float re_min, float im_min,
 
 
 
-def complexFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, path="img/trol.png"):
+def complexFractal(width=3000/5, height=2000/5,c_num=-0.8+0.156*1j, julia_=True, path="img/trol.png"):
      
     # Specify image width and height
     cdef int w = width
