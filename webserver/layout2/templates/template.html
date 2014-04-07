@@ -1,75 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- define page encoding -->
-	<meta charset="UTF-8"/>
-	<title>Math in Python</title>
+    <meta charset="UTF-8"/>
+    <title>Math in Python</title>
 
-	<!-- linking the css stylesheet -->
-	<link rel="stylesheet" href="../static/css/stylesheet.css"/>
+    <!-- linking the css stylesheet -->
+    <link rel="stylesheet" href="../static/css/stylesheet.css"/>
 
-	<!-- adding MathJax script for usage of math in LaTeX on the web -->
-	<script type="text/javascript"
-  			src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  			// Enables using single dollars '$' for inline math mode next to double '$$'
-  			MathJax.Hub.Config({
-  				tex2jax: {
-    				inlineMath: [['$','$'], ['\\(','\\)']],
-    			processEscapes: true
-  			}
-			});
-	</script>
+    <!-- adding MathJax script for usage of math in LaTeX on the web -->
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+            // Enables using single dollars '$' for inline math mode next to double '$$'
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                processEscapes: true
+            }
+            });
+    </script>
 
-	<!-- adding script to higlight the code on the webpage -->
-	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/monokai_sublime.min.css">
-	<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-	<script type="text/javascript">
-  hljs.configure({tabReplace: '    '}); // 4 spaces
-  // ... or
-  //hljs.configure({tabReplace: '<span class="indent">\t</span>'});
+    <!-- adding script to higlight the code on the webpage -->
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script type="text/javascript">
+        hljs.configure({tabReplace: '    '}); // 4 spaces
+         // ... or
+         //hljs.configure({tabReplace: '<span class="indent">\t</span>'});
 
-  hljs.initHighlightingOnLoad();
-</script>
-
-	<!-- jQuery thanks to Google-- >
-<!--
-	<script type=text/javascript src="{{ url_for('.static', filename='jquery.js') }}">
-	document.write('hi');
-	</script>
--->	
-	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="{{url_for('.static', filename='jquery.js') }}">\x3C/script>')</script>
-	
-
-
-	<!-- my own script-->
-	<script type="text/javascript" src="../static/script.js"></script>
+         hljs.initHighlightingOnLoad();
+    </script>
 
 </head>
 <body>
-	<header>
-		<div class="navbar">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/plhak/">Plhak's work</a></li>
-				<li><a href="/kvapil/">Kvapil's work</a></li>
-			</ul>
-		</div>
-	</header>
-	<div class="container">
-		{% block content %}
-		{% endblock %}
-	</div>
-	<div class="side_container">
-		{% block side_container %}
-		{% endblock %}
-	</div>
-    <!--
-     <div class="bot_container">
-        sdas
+    <div class="main_container">
+        <div class="header">
+            <span id="headline"><a href="/home">math in python</a></span>
+        </div>
+
+        <div id="navbar">
+            <ul>
+                <li id="plhak">plhak</li>
+                <li id="yes">
+                    <div id="outerPlhak">
+                        <div id="innerPlhak">
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                        </div>
+                    </div>
+                </li>
+                <li id="kvapil">kvapil</li>
+                <li>
+                    <div id="outerKvapil">
+                        <div id="innerKvapil">
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                            <div class="barTask"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        
+        <div id="navTask"></div>    
+        
+        <div class="main_content">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+        <div class="test"></div>
+        <div class="bottom_container">
+            <p id="bottom_paragraf">
+                authors: Jan Plhak & Jan Kvapil<br>
+                contact: mail (auger) gmail.com
+            </p>            
+        </div>
     </div>
-    -->
-   
+
+    <!-- jQuery, thanks google-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{url_for('.static', filename='jquery.js') }}">\x3C/script>')</script>
+
+    <!-- my own script-->
+    <script type="text/javascript" src="../static/script.js"></script>
 </body>
 </html>

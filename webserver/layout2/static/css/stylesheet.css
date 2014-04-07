@@ -1,131 +1,218 @@
-html {
-		background-image: url(backgroundImage.jpg);
-	/*background-repeat: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBvfD4vYMX-DtJ8B_swBeWQtrqNo0LhF3DWvcTM_5nzFryXdGd);
-	background-color: #454545;*/
-}
-
-
-
 body {
-	background: white;
-	width: 900px;
-	margin: auto;
-	position: relative;
-	font-family: sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-image: url(backgroundImage.jpg);
+    font-family: sans-serif;
 }
 
-.navbar{
-	background-color: #225588;
-	height: 40px;
-	margin-left: -30px;
-	border: 5px solid #226688;
-	border-radius: 10px 10px 10px 10px;
-	padding-top: 15px;
+.main_container {
+
+    background-color: #ffffff;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin: auto;
+
+    border-radius: 5px 5px 0px 0px;
+    border: solid 1px #225588;
+
+    width: 900px;
+    position: relative;
+    min-height: 600px;
+    height: auto;
+    overflow: hidden;
 }
 
-.navbar ul {
-	display: inline;
-	list-style: none;
-	padding-left: 5px;
+.header {
+    
+    position: relative;
+    background-color: #223355;
+    padding-bottom: 20px;
+    
+    border-radius: 5px 5px 0px 0px;
+    /*text-align: center;*/
+    font: bold 50px sans-serif; 
+    /*font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;*/
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
+#headline {
+    color: #226688;
+    padding-left: 500px;
+    cursor: pointer;
+}
+.header #headline a {
+    text-decoration: none;
+    color: #226688;
+}
+#navbar {
 
-.navbar ul li{
-	height: 10px;
-	padding-left: 5px;
-	padding-top: 10px;
-	display: inline;
-	margin: 5px 5px;
-	font-size: 20px;
+    font-size: 20px;
+
+    background-color: #f8f8f8; 
+    margin-top: -10px;
+    height: 50px;
+
+    border-radius: 10px 10px 10px 10px;
+    border: 2px solid #226688;
+    position: relative;
+    text-align: right;
 }
 
-ul a, a {
-	text-decoration: none;
-	color: black;
+#navbar ul{
+    margin-top: 10px;
+    padding-right: 40px;
 }
 
-a:hover
-
-ul a:hover, a {
-	color: #664455;
-}
-ul li {
-	padding: 10px 5px 10px 5px;
-}
-
-ul li:hover {
-	background-color: white;
-	border-radius: 5px;
+#navbar ul li{
+    list-style: none;
+    display: inline-block;
+    font: 25px sans-serif;
+    padding-left: 10px;
+    margin-bottom: -10px;
+    height: 20px;
+    position: relative;
 }
 
-.container {
-	display: inline-block;
-	float: right;
-	width: 700px;
-	margin-left: 10px;
+.main_content {
+    background-color: white;
+
+    padding: 20px;
+    
+
+    border-radius: 10px 10px 5px 5px;
+    min-height: 500px;
+    height: auto;
+    position: relative;
 }
 
-.side_container {
-	display: inline-block;
-	background-color: #225588;
-	float: left;
-	/*height: 550px;*/
-	overflow: auto;
-	width: 180px;
-
-	border: 5px solid #226688;
-	border-radius: 10px 0px 10px 0px;
+.bottom_container {
+    text-align: right;
+    font: bold 10px sans-serif;
+    position: relative;
+    height: auto;
 }
 
-.bot_container{
-	background-color: red;
-	display: inline-block;
-	margin-left: -30px;
-	position: relative;
-	width: 900px;
-	height: 100px;
-	bottom: 0;
+#bottom_paragraf {
+    color: gray;
+    padding-right: 10px;
+    position: relative;
+
 }
 
-.side_menu, #side_menu {
-	list-style: none;
+#plhak, #kvapil {
+    cursor: pointer;
+    position: relative;
+    width: auto;
+    left: 0px;
+    display: inline-block;
 }
 
-.side_menu li {
-	margin-left: -20px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	
+#outerPlhak, #outerKvapil {
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    width: 0px;
+    height: 30px;
+    top:-10px;
+}
+#outerTaskPlhak {
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    width: 0px;
+    height: 30px;
+    top:-13px;
 }
 
-.side_menu {
-	margin-left: 0px;
-	width: 80px;
+#innerPlhak, #innerKvapil {
+    display:inline-block;
+    position: relative;
+    width: 250px;
+    right: -150px;
+}
+#innerTaskPlhak {
+    display:inline-block;
+    position: relative;
+    width: 400px;
+    right: -200px;
 }
 
-.code {
-
-	overflow: auto;
+#taskPlhak .taskPlhak {
+    display: inline-block;
+    list-style: none;
 }
 
-.picture {
-	overflow-x: auto;
+.taskLink {
+    list-style: none;
+    text-decoration: none;
 }
 
-.python {
-	width: 1100px;
+.barTask {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #a2d0e3;
+    margin-left: 3px;
+    border-radius: 5px;
 }
 
-/*#side_menu, .side_menu, #side_menu .side_menu li { margin:0px; padding:0px; list-style: none;}
+.barTask:hover {
+    cursor: pointer;
+}
 
-#side_menu li {float:left; display:inline; cursor:pointer; list-style:none; padding:0px 10px 0px 10px; border:1px #000 solid; position:relative;}
-#side_menu .side_menu li { width:100%; text-indent:10px; line-height:30px; margin-right:10px; border-top:1px #000 solid; border-bottom:1px #000 solid; border-left:none; border-right:none; background:#fff;}
-#side_menu li a {display:block; width:inherit; height:inherit;}
-#side_menu li ul {left:-1px; top:100%;}
+#navTask {
+    margin:auto;
+    width:100%;
+    text-align:center;
+    /*background-color: red;*/
+}
+.task {
+    margin: 10px -4px 10px;
+    min-width: 100px;
+    padding: 16px 10px 10px;
+    height:35px;
+    line-height: 35px;
+    display:inline-block;
+    font: 20px sans-serif;
+    border-radius: 5px;
+    /*background-color: blue;*/
+}
+.task:hover{
+    background-color: #d8d8d8;
+}
+.task a {
+    text-decoration: none;
+    color: #226688;
+}
+.menuCode {
+    background: #225588;
+    width: 260px;
+    height: 30px;
+    border-radius: 5px 5px;
+}
 
-ul.side_menu { display:none; }
-#side_menu li:focus > a, #side_menu li:focus { color:#fff; background:#000; }
-li:focus > .side_menu { display:block; }
+.menuCode ul {
+    padding-top: 5px;
+    padding-left: 10px;
+}
 
-li, li a {color:#000;}
-*/
+.menuCode ul li {
+    padding-left: 10px;
+    list-style: none;
+    display: inline;
+    cursor: pointer;
+}
+
+.menuCode ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.menuCode ul li a:hover, .menuCode ul li:hover {
+    color: #223355;
+}
