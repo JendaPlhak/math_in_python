@@ -89,7 +89,7 @@ def complexFractal(width=3000/5, height=2000/5,c_num=-0.8+0.156*1j, julia_=True,
     print "Calculation finished!"
     
 
-    HSV_tuples = [(j*1.0/50., 0.85, 0.85) for j in xrange(150)]
+    HSV_tuples = [(j*1.0/50., 0.85, 0.85) for j in xrange(256)]
     RGB_tuples = map(lambda x: colorsys.hsv_to_rgb(*x), HSV_tuples)
     RGB_tuples = [tuple([int(j * 255) for j in colour]) for colour in RGB_tuples]
 
@@ -98,7 +98,7 @@ def complexFractal(width=3000/5, height=2000/5,c_num=-0.8+0.156*1j, julia_=True,
     # Write pixels to file
     for x in xrange(w):
         for y in xrange(h):
-            pix_map[x, y] = RGB_tuples[output[x][y] % 150]
+            pix_map[x, y] = RGB_tuples[output[x][y] % 256]
     img.save(path)
 
 
