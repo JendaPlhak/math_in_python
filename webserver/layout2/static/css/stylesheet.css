@@ -36,7 +36,7 @@ body {
     font: bold 50px sans-serif; 
     vertical-align: 10px;
 }
-.header {
+/*.header {
     
     position: relative;
     background-color: #223355;
@@ -45,14 +45,13 @@ body {
     border-radius: 5px 5px 0px 0px;
     font: bold 50px sans-serif; 
     font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-}
+}*/
 
 #headline {
     color: #226688;
-    padding-left: 500px;
     cursor: pointer;
 }
-.header #headline a {
+#header #headline a {
     text-decoration: none;
     color: #226688;
 }
