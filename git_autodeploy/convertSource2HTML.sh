@@ -19,7 +19,7 @@ do
         for file in $(find . -maxdepth 1 -perm -111 -type f -name "*.py")
         do
             file_name=$(echo $file | grep -E '\w+\.py' -o)
-            new_file=${CUR_PATH}/${dir}/${file_name}.html
+            new_file=${CUR_PATH}/${dir}/${file_name}
             echo "  "Converting $file_name
 
             touch $new_file
