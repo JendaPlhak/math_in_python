@@ -1,10 +1,11 @@
 body {
-    margin-top: 0px;
+    margin: auto;
+    margin-top: 88px;
     margin-bottom: 0px;
     background-image: url(backgroundImage.jpg);
     font-family: sans-serif;
+    text-align: center;
 }
-
 .main_container {
 
     background-color: #ffffff;
@@ -15,7 +16,7 @@ body {
     margin-bottom: 0px;
     margin: auto;
 
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
     border: solid 1px #225588;
 
     width: 900px;
@@ -24,26 +25,33 @@ body {
     height: auto;
     overflow: hidden;
 }
-
-.header {
+#header {
+    margin: 0 auto;
+    margin-left: 500px;
+    /*margin-left: 500px;*/
+    height: 20px;
+    /*width: 200px;*/
+    color: #226688;
+    display: inline-block;
+    font: bold 50px sans-serif; 
+    vertical-align: 10px;
+}
+/*.header {
     
     position: relative;
     background-color: #223355;
     padding-bottom: 20px;
     
     border-radius: 5px 5px 0px 0px;
-    /*text-align: center;*/
     font: bold 50px sans-serif; 
-    /*font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;*/
     font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-}
+}*/
 
 #headline {
     color: #226688;
-    padding-left: 500px;
     cursor: pointer;
 }
-.header #headline a {
+#header #headline a {
     text-decoration: none;
     color: #226688;
 }
@@ -51,12 +59,12 @@ body {
 
     font-size: 20px;
 
-    background-color: #f8f8f8; 
-    margin-top: -10px;
+    /*background-color: #f8f8f8; */
+    margin-top: 0px;
     height: 50px;
 
-    border-radius: 10px 10px 10px 10px;
-    border: 2px solid #226688;
+    /*border-radius: 10px 10px 10px 10px;
+    border: 2px solid #226688;*/
     position: relative;
     text-align: right;
 }
@@ -103,6 +111,7 @@ body {
 }
 
 #plhak, #kvapil {
+    color:#225588;
     cursor: pointer;
     position: relative;
     width: auto;
@@ -128,7 +137,6 @@ body {
     height: 30px;
     top:-13px;
 }
-
 #innerPlhak, #innerKvapil {
     display:inline-block;
     position: relative;
@@ -141,12 +149,10 @@ body {
     width: 400px;
     right: -200px;
 }
-
 #taskPlhak .taskPlhak {
     display: inline-block;
     list-style: none;
 }
-
 .taskLink {
     list-style: none;
     text-decoration: none;
@@ -156,7 +162,7 @@ body {
     display: inline-block;
     width: 25px;
     height: 25px;
-    background-color: #a2d0e3;
+    background-color: #d6d6d6;
     margin-left: 3px;
     border-radius: 5px;
 }

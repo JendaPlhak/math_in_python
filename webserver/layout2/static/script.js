@@ -12,10 +12,10 @@ $(document).ready(function(){
     
     $('#plhak, #kvapil').hover(
         function(){
-            $(this).css('color','#225588');
+            $(this).css('color','#227799');
         },
         function(){
-            $(this).css('color','black');
+            $(this).css('color','#225588');
         }
         );
 
@@ -81,35 +81,18 @@ $(document).ready(function(){
                 <div class="task">\
                     <a href="/'+name+'/'+task+'">'+task.replace(/_/g," ")+'</a>\
                 </div>');
-
-            
-            //$('#navTask').css('marginLeft',);
         }
-
-        /*if( !plhakHidden && kvapilHidden ){
-            $('#outerPlhak').animate({width:'-=100px'},'slow');
-            $('#innerPlhak').animate({right:'-=100px'},'slow');
-            plhakBarHidden  = true;
-            $('#outerTaskPlhak').animate({width:'+=120px'},'slow');
-            $('#innerTaskPlhak').animate({left:'-=200px'},'slow');
-        }*/
-        /*window.history.pushState('obj','newtitle','/kvapil/1' );
-        $('#inner').animate( { left : '150px' }, 'slow' );
-        state = false;
-        //$('#task').css('background-color','black');
-        $('#task').animate( { left : '-150px' }, 'slow' );
-        return true;*/
     });
 
     $('.barTask').hover(
         function(){
             for( var i=0; i<=$(this).index()+1; i++ ){
-                $('#navbar ul li div div div:nth-child('+i+')').css('background-color','#225588');
+                $('#navbar ul li div div div:nth-child('+i+')').css('background-color','#87a0bb');
             }
         },
         function(){
             for( var i=0; i<=$(this).index()+1; i++ ){
-                $('#navbar ul li div div div:nth-child('+i+')').css('background-color','#a2d0e3');
+                $('#navbar ul li div div div:nth-child('+i+')').css('background-color','#d6d6d6');
             }
         }
     );
