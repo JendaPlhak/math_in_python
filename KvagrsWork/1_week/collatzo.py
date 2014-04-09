@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import matplotlib
-matplotlib.use('Agg')			# won't display plt
-import matplotlib.pyplot as plt
+#matplotlib.use('Agg')			# won't display plt
+
+#import matplotlib.pyplot as plt
+import pylab as plt
 
 def collSteps(n):
 	steps 	= 0
@@ -23,7 +25,7 @@ def plot_collatzo(x=8000, y=300, maxNumber=False):
 	plt.axis([0,x,0,y])
 	for i in range(1,x):
 		points.append([i, collSteps(i)])
-
+		print "hejaheja"
 		plt.xlabel('Natural numbers')
 		if maxNumber:	
 			plt.plot( [i],[collSteps(i)[1]], 'ko' )		# collSteps(i)[1] for max
@@ -32,7 +34,7 @@ def plot_collatzo(x=8000, y=300, maxNumber=False):
 		else:
 			plt.plot( [i],[collSteps(i)[0]], 'ko' )		# collSteps(i)[0] for steps
 			plt.ylabel('Number of steps')
-			plt.savefig('img/collatzo_steps.png')
+			plt.savefig('img/collatzo_steps', format='png')
 
 	return
 
@@ -40,4 +42,4 @@ def plot_collatzo(x=8000, y=300, maxNumber=False):
 if __name__ == '__main__':
 
 	plot_collatzo(x=8000, y=300)
-	plot_collatzo(x=5000, y=5000, maxNumber=True)
+	#plot_collatzo(x=5000, y=5000, maxNumber=True)

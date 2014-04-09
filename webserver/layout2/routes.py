@@ -104,7 +104,7 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, img_data=base64_data)
 
-    elif task.endswith(".py"):
+    elif task.endswith("script.html"):
 
         return render_template('Kvagr/1_task/script.html')
 
