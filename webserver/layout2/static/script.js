@@ -49,6 +49,7 @@ $(document).ready(function(){
 
     var tasksPlhak  = {
         "1" : ["collatzo", "archimed_spiral", "ulam_spiral", "gcd"],
+        "2" : ["pascals_triangle"],
         "3" : ["turtle","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
@@ -56,6 +57,7 @@ $(document).ready(function(){
     }
     var tasksKvapil = {
         "1" : ["collatzo", "gcd"],
+        "2" : ["pascals_triangle"],
         "3" : ["turtle","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],

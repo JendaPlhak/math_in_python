@@ -186,7 +186,7 @@ body {
     color: #226688;
 }
 .menuCode {
-    background: #225588;
+    background: #226688;
     width: 260px;
     height: 30px;
     border-radius: 5px 5px;
@@ -211,4 +211,9 @@ body {
 
 .menuCode ul li a:hover, .menuCode ul li:hover {
     color: #223355;
+}
+
+.code{
+    width: auto;
+    overflow: auto;
 }

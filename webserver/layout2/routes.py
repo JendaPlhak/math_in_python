@@ -24,6 +24,15 @@ from segment_intersection     import draw_segment_intersection
 
 from abstract_calling import evaluateFunction
 
+tasksKvapil = {
+        "1_task" : ["collatzo"],
+        "2_task" : ["pascals_triangle"],
+        "3_task" : ["turtle","fractals"],
+        "4_task" : ["turtle","polygon", "effects", "hide_and_seek"],
+        "5_task" : ["intersection", "triangulation","gift_wrapping"],
+        "6_task" : ["chaos_game"]
+    }
+
 @app.route('/')
 @app.route('/<name>')
 def home(name=''):
@@ -95,7 +104,7 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, img_data=base64_data)
 
-    elif task == 'script.html':
+    elif task.endswith(".py"):
 
         return render_template('Kvagr/1_task/script.html')
 

@@ -1,9 +1,6 @@
 {% extends "template.html" %}
 {% block content %}
 	{% if task == '' %}
-	<p>
-		Please choose any project you like on the left.
-	</p>
 	{% elif task  == 'collatzo' %}
 		{% include '/Kvagr/1_task/'+task+'.html' %}
 		
@@ -53,48 +50,22 @@
 		</form>
 	{% elif task == 'chaos_game' %}
 		<img src="../static/img/KvagrsWork/6_week/sierpinski_triangle.bmp" alt="sierpinski_triangle.bmp" width="300">
-		<form action="" method="get">
+		<!--<form action="" method="get">
 			Number of vertices: <input type="number" name="num"><br>
 			Ratio: 				<input type="number" name="ratio">
-		</form>
+								<input	type="submit" value="Draw!">
+		</form>-->
 
 	{% endif %}
 
+	
+
+<div class="code">
+<pre>
+	<code class="python">
+{% include 'Kvagr/1_task/collatzo.py' %}	
+	</code>
+</pre>
+</div>
+
 {% endblock %}
-
-{% block side_container %}
-<ol id="side_menu">
-	<li>Week 1
-		<ul class="side_menu">
-			<li><a href="/kvapil/collatzo">Collatzo</a></li>
-			<li><a href="/kvapil/graphics">Graphics</a></li>
-		</ul>
-	</li>
-	<li>Week 2</li>
-
-	<li>Week 3
-		<ul class="side_menu">
-			<li><a href="/kvapil/turtle">Turtle</a></li>
-		</ul>
-	</li>
-	<li>Week 4
-		<ul class="side_menu">
-			<li><a href="/kvapil/shapes">Basic shapes</a></li>
-			<li><a href="/kvapil/polygon">Polygon</a></li>
-			<li><a href="/kvapil/hide_and_seek">Hide & seek</a></li>
-		</ul>
-	</li>
-	<li>
-		Week 5
-		<ul class="side_menu">
-			<li><a href="/kvapil/intersection">Intersection</a></li>
-			<li><a href="/kvapil/triangulation">Triangulation</a></li>
-		</ul>
-	</li>
-	<li>Week 6
-		<ul class="side_menu">
-			<li><a href="/kvapil/chaos_game">Chaos game</a></li>
-		</ul>
-	</li>
-</ol>
-{% endblock%}

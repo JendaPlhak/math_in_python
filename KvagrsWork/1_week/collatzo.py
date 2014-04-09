@@ -1,26 +1,22 @@
 #!/usr/bin/env python
-
+import matplotlib
+matplotlib.use('Agg')			# won't display plt
 import matplotlib.pyplot as plt
 
 def collSteps(n):
 	steps 	= 0
 	maxN 	= n
-
-	total = 1
-
-	while n!=1:
-		total += n
-		#print n
-		if n%2 == 0:
+	while n != 1:
+		if n % 2 == 0:
 			n /= 2
 		else:
-			n = 3*n + 1
+			n = 3 * n + 1
 		steps += 1
 		maxN = max(maxN, n)
-	return steps, maxN, 1000/total
+	return steps, maxN
 
 
-def plot_collatzo(x=8000, y=300, maxNumber=False, inverse=False):
+def plot_collatzo(x=8000, y=300, maxNumber=False):
 
 
 	points=[]
@@ -30,21 +26,13 @@ def plot_collatzo(x=8000, y=300, maxNumber=False, inverse=False):
 
 		plt.xlabel('Natural numbers')
 		if maxNumber:	
-			plt.plot( [i],[collSteps(i)[1]], 'ko' )		# collSteps(i)[1] are max
+			plt.plot( [i],[collSteps(i)[1]], 'ko' )		# collSteps(i)[1] for max
 			plt.ylabel('Maximal number aj')
 			plt.savefig('img/collatzo_max.png')
-
-		elif inverse:
-			plt.plot( [i],[collSteps(i)[2]], 'ko' )
-			plt.ylabel('Number of steps')
-			plt.savefig('img/collatzo_inverse.png')
-
 		else:
-			plt.plot( [i],[collSteps(i)[0]], 'ko' )		# collSteps(i)[0] are steps
+			plt.plot( [i],[collSteps(i)[0]], 'ko' )		# collSteps(i)[0] for steps
 			plt.ylabel('Number of steps')
 			plt.savefig('img/collatzo_steps.png')
-
-		
 
 	return
 
