@@ -56,7 +56,7 @@ $(document).ready(function(){
         "6" : ["chaos_game"]
     }
     var tasksKvapil = {
-        "1" : ["collatzo", "gcd"],
+        "1" : ["collatzo", "basic_graphics", "gcd"],
         "2" : ["pascals_triangle"],
         "3" : ["turtle","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
