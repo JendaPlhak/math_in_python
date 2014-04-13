@@ -40,4 +40,4 @@ def plot_collatzo(x=8000, y=300, maxNumber=False):
 if __name__ == '__main__':
 
 	plot_collatzo(x=8000, y=300)
-	plot_collatzo(x=5000, y=5000, maxNumber=True)
+	#plot_collatzo(x=5000, y=5000, maxNumber=True)
