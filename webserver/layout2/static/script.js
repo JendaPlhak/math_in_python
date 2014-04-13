@@ -1,15 +1,5 @@
 $(document).ready(function(){
 
-	state = false;
-	//var verticalScrollBar = $(window).scrollTop();
-    /*$('#navbar ul li').click(function(){
-        var index = [0,1];
-        index.remove('1');
-        document.write(index);
-        
-        $('.task ul:nth-child('+($(this).index()+1)+')').slideToggle();
-    });*/
-    
     $('#plhak, #kvapil').hover(
         function(){
             $(this).css('color','#227799');
@@ -49,13 +39,15 @@ $(document).ready(function(){
 
     var tasksPlhak  = {
         "1" : ["collatzo", "archimed_spiral", "ulam_spiral", "gcd"],
+        "2" : ["pascals_triangle"],
         "3" : ["turtle","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
         "6" : ["chaos_game"]
     }
     var tasksKvapil = {
-        "1" : ["collatzo", "gcd"],
+        "1" : ["collatzo", "basic_graphics", "ulam_spiral", "gcd"],
+        "2" : ["pascals_triangle"],
         "3" : ["turtle","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],

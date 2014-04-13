@@ -29,8 +29,8 @@ def dot_product(u,v):
 	for i in xrange(len(u)):
 		S += u[i]*v[i]
 
-	if S == 0:
-		print u, v
+	#if S == 0:
+		#print u, v
 	return S
 
 
@@ -119,10 +119,10 @@ if __name__ == '__main__':
 	im.saveas("convex_wrapping.svg")
 	"""
 
-	num = dot_product([0,1], [-1,1])
-	den = norm([0,1]) * norm([-1,1])
-	print acos(num / den)
-
-	num = dot_product([0,1], [-1,2])
-	den = norm([0,1]) * norm([-1,2])
-	print acos(num / den)
+	#num = dot_product([0,1], [-1,1])
+	#den = norm([0,1]) * norm([-1,1])
+	#print acos(num / den)
+#
+#	#num = dot_product([0,1], [-1,2])
+#	#den = norm([0,1]) * norm([-1,2])
+	#print acos(num / den)

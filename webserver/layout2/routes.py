@@ -5,8 +5,8 @@ sys.path.append("../../JendasWork/2_task/")
 sys.path.append("/home/ubuntu/math_in_python/JendasWork/2_task/")
 
 for i in xrange(6):
-    sys.path.append("../../KvagrsWork/" + str(i + 1) +"_week/")
-    sys.path.append("/home/ubuntu/math_in_python/KvagrsWork/" + str(i + 1) + "_week/")
+    sys.path.append("../../KvagrsWork/" + str(i + 1) +"_task/")
+    sys.path.append("/home/ubuntu/math_in_python/KvagrsWork/" + str(i + 1) + "_task/")
 
 from logging.handlers import RotatingFileHandler
 from flask            import Flask, request, render_template
@@ -23,6 +23,12 @@ from segment_intersection     import draw_segment_intersection
 #from chaos_game               import draw_chaos_game
 
 from abstract_calling import evaluateFunction
+
+tasksKvapil = {
+       "collatzo" : '1',
+       "ulam_spiral" : '1',
+       "basic_graphics" : '1'
+    }
 
 @app.route('/')
 @app.route('/<name>')
@@ -79,7 +85,7 @@ def kvapil(task=''):
         base64_data = output.read().encode("base64").replace("\n", "")
         output.close()
     
-        return render_template('kvapil.html', task=task, img_data=base64_data)
+        return render_template('kvapil.html', task=task, numTask=tasksKvapil[task], img_data=base64_data)
 
     elif task == 'intersection':
         n      = int(request.args.get('num',0))
@@ -95,9 +101,9 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, img_data=base64_data)
 
-    elif task == 'script.html':
+    elif task.endswith(".py"):
 
-        return render_template('Kvagr/1_task/script.html')
+        return render_template('KvagrsWork/1_task/'+ task)
 
     #elif task == 'chaos_game':
     #    n     = int(request.args.get('num', 0))
@@ -111,7 +117,7 @@ def kvapil(task=''):
 #    #    base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
 #
     else:
-        return render_template('kvapil.html', task=task)
+        return render_template('kvapil.html', task=task, numTask=tasksKvapil[task])
 
 if __name__ == '__main__':
     handler = RotatingFileHandler('/var/log/flask/flaskWebserver.log', maxBytes=100000, backupCount=1)

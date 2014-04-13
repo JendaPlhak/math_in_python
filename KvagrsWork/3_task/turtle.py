@@ -207,12 +207,14 @@ def radToDeg(rad):
 #######################################
 
 
-turtle = Turtle()
-"""
-turtle.left(90)
-polygon(turtle, 30)
-turtle.save("polygon")
-"""
+if __name__ == '__main__':
 
-triangles(turtle, 5., 5,10)
-turtle.draw_object("triangles.svg")
+	turtle = Turtle()
+	"""
+	turtle.left(90)
+	polygon(turtle, 30)
+	turtle.save("polygon")
+	"""
+	
+	triangles(turtle, 5., 5,10)
+	turtle.draw_object("triangles.svg")

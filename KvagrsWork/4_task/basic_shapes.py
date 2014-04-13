@@ -92,11 +92,11 @@ def movePointsTowardsOrigin(points):
 		if maxX < point[0]:	maxX = point[0]
 		if maxY < point[1]:	maxY = point[1]
 
+	minA = min(minX, minY)
+
 	for point in points:
-		if minX < 0: point[0] += minX
-		if minX > 0: point[0] -= minX
-		if minY < 0: point[1] += minY
-		if minY > 0: point[1] -= minY
+		point[0] -= minX
+		point[1] -= minY
 
 	size = max(maxX - minX, maxY - minY) + 1
 	return points, size	
