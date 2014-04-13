@@ -1,0 +1,23 @@
+The first task shows some characteristics for Collatzo series. The Collatzo series  $\{ a_i\}_{i=1}^k$ is defined for $n \in \mathbb{N}$ as:
+\begin{align*}
+    a_1 &= n\\
+    a_i &=
+            \left\{\begin{array}{lr}
+            \frac{a_{i-1}}{2}   & \text{ if } a_{i-1} \text{ is even}\\
+            3a_{i-1} + 1        & \text{ if } a_{i-1} \text{ is odd}\\
+            \end{array}
+            \right.
+\end{align*}
+The series converges when 1 occurs, because then the series will cycle through $1 \to 4 \to 2 \to 1 \to 4 \ldots$. So $k \in \mathbb{N}$ is the first index for which $a_k = 1$ in the series. It is not proven, that the Collatzo series will converge for arbitrary $n \in \mathbb{N}$, however it has been shown for large amount of numbers.
+
+The first two graphs show the number of steps for 25 and then 8000 natural number. By steps we mean the number of terms in the series.
+
+&img="collatzo_steps_25.png" alt="Collatzo steps for 25 natural numbers" width="400"
+
+&img="collatzo_steps_8000.png" alt="Collatzo steps for 8000 natural numbers" width="400"
+
+The second graph covers another characteristics for Collatzo series, that is the maximum number in the series before it converges. So for $\{ a_i\}_{i=1}^k, a_k = 1$ it is $a_j, 1 \le j \le k$, such $a_j \ge a_i, \forall i, 1 \le i \le k$.
+
+&img="collatzo_max.png" alt="Collatzo maximum for 8000 natural numbers"
+
+Both graphs encourages that the hypothesis might be true because there are strong trends in how the series works.
