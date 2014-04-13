@@ -58,8 +58,6 @@ def drawPascalsTriangle(n, mod=3, side=100, save=False, filename='', web=False):
     return
 
 
-
-
 if __name__ == '__main__':
 
     drawPascalsTriangle(50, mod=2, save=True, filename='pascals_triangle')
