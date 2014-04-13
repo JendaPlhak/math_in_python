@@ -70,6 +70,12 @@ class Turtle():
                                       end    = (to[0], to[1]),      \
                                       stroke = colour ))
 
+    def connectPoints(self, points):
+        l = len(points)
+        for i in xrange(l):
+            self.addLineNumpy(points[i], points[(i + 1) % l])
+
+
     def addPoint(self, center):
         self.draw.add( self.draw.circle(center=center, r=5, stroke = 'red', fill='red'))
 
