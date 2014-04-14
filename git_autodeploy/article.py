@@ -5,17 +5,24 @@ import re
 
 # local directory
 directory =  sys.argv[1]
+
 # get the variable part of directory 
-part_dir = re.match(".*/(.*?Work/.*?_task/)cmt").group(1)
+part_dir = re.match(".*/(.*?Work/.*?_task/)cmt", directory).group(1)
+
+# send warning
+if not os.path.isdir( directory ):
+    print "Could not find dir: %s" % directory
+    sys.exit()
 
 # cycle through all the files in directory      
 for _file in os.listdir( directory ):
+
 
     # only if commentar
     if _file.endswith(".cmt"):
 
         # open commentary
-        with open( directory + _file ,'r') as f:
+        with open( directory +'/'+ _file ,'r') as f:
             commentary = f.read()
         
         # get the name
