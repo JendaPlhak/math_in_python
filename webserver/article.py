@@ -6,23 +6,23 @@ import re
 # local directory
 directory =  sys.argv[1]
 # get the variable part of directory 
-part_dir = directory[ directory.index('templates/') + len('templates/'): ]
+part_dir = re.match(".*/(.*?Work/.*?_task/)cmt").group(1)
 
-# cycle through all the files in directory
+# cycle through all the files in directory      
 for _file in os.listdir( directory ):
 
     # only if commentar
-    if _file.startswith("commentar_"):
+    if _file.endswith(".cmt"):
 
         # open commentary
         with open( directory + _file ,'r') as f:
             commentary = f.read()
         
         # get the name
-        _file_name = _file[ _file.index('_') + 1:]
+        _file_name = _file[ : _file.index('.cmt') ]
     
         # create new file for the article
-        with open( directory +'article_'+ _file_name +'.html','w') as article:
+        with open(  '../webserver/layout2/templates/'+ part_dir + _file_name +'.html','w') as article:
             commentary = commentary.split('\n\n')
         
             # article formatting

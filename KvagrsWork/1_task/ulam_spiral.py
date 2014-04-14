@@ -180,7 +180,7 @@ def draw_ulam_spiral(n, side    =20,    x_scale =0,\
 
 if __name__ == '__main__':
 
-    """
+    
     # Basic ulam_spiral: example, primes, modulo
     draw_ulam_spiral(20,\
                      side    =20,   addText   =True,\
@@ -200,7 +200,7 @@ if __name__ == '__main__':
                      side      =20,    x_scale =5,\
                      addText   =True,  addLines=True,\
                      addSquares=False, filename='rect_spiral_example')
-    """
+    
     draw_ulam_spiral(100000,\
                      side      =2,    x_scale =111,\
                      addSquares=True, filename='rect_spiral_primes')
@@ -209,7 +209,7 @@ if __name__ == '__main__':
                      side      =2,    x_scale=111,\
                      addSquares=True, modulo =7,\
                      filename  ='rect_spiral_modulo')
-    """
+    
     # Basic ulam_triangle_spiral: example, primes, modulo
     draw_ulam_spiral(20,\
                      side      =20,    addText    =True,\
@@ -239,4 +239,3 @@ if __name__ == '__main__':
                      side      =2,    useHex=True,\
                      addSquares=True, modulo=8,\
                      filename  ='hex_spiral_modulo')
-"""
