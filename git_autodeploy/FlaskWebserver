@@ -12,7 +12,7 @@
 # Change the next 3 lines to suit where you install your script and what you want to call it
 DIR=/home/ubuntu/math_in_python/webserver/layout2
 DIR_MAKE=/home/ubuntu/math_in_python/JendasWork/
-DIR_IMG=/home/ubuntu/math_in_python/git_autodeploy
+DIR_AUTO=/home/ubuntu/math_in_python/git_autodeploy
 DAEMON=$DIR/routes.py
 DAEMON_NAME=FlaskWebserver
  
@@ -40,7 +40,11 @@ do_stop () {
 }
 do_img_reload() {
     make -C ${DIR_MAKE}
-    ${DIR_IMG}/ImgGenerate.sh
+    ${DIR_AUTO}/ImgGenerate.sh
+}
+
+do_article_reload() {
+    ${DIR_AUTO}/createArticles.sh
 }
 
 do_clear() {
@@ -52,25 +56,26 @@ case "$1" in
     start|stop)
         do_${1}
         ;;
- 
     restart)
+        do_article_reload
         do_stop
         do_start
         ;;
     reload|force-reload)
         do_img_reload
+        do_article_reload
         do_stop
         do_start
         ;;
-
+    articleReload)
+        do_article_reload
+        ;;
     imgReload)
         do_img_reload
         ;;
-
     cleanImg)
         do_clear
         ;;
- 
     status)
         status_of_proc "$DAEMON_NAME" "$DAEMON" && exit 0 || exit $?
         ;;
