@@ -89,7 +89,7 @@ def copyPoints(points):
 def iterReductionCopy(points, reduction, transforms, rec):
     
     for _ in xrange(rec):
-        print "Iteration NO. %d" % _
+        print "Iteration NO. %d" % (_ + 1)
         points     = applyTransform(points, reduction)
         new_points = []
 
