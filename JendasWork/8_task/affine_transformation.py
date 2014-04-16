@@ -74,8 +74,12 @@ def applyTransform(points, transform, rec=1):
 def drawPoints(points, title):
 
     draw = Turtle(title)
-    for pointGroup in points:
-        draw.connectPoints(pointGroup.points)
+    if isinstance(points[0], PointGroup):
+        for pointGroup in points:
+            draw.connectPoints(pointGroup.points)
+    else:
+        for point in points:
+            draw.addPoint((500*point[0] + 200, 500*point[1] + 200), 'green')
     draw.dumpImage()
 
 def copyPoints(points):
@@ -119,6 +123,7 @@ class PointGroup():
 
         for i in xrange(len(self.points)):
             self.points[i] = dot(transform, self.points[i])
+        return self
 
     def copy(self):
         cp = []

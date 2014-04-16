@@ -76,8 +76,8 @@ class Turtle():
             self.addLineNumpy(points[i], points[(i + 1) % l])
 
 
-    def addPoint(self, center):
-        self.draw.add( self.draw.circle(center=center, r=5, stroke = 'red', fill='red'))
+    def addPoint(self, center, clr='red'):
+        self.draw.add( self.draw.circle(center=center, r=2, stroke=clr, fill=clr))
 
     def text(self, text, fill='black'):
         self.draw.add(self.draw.text(text, (10,300), fill=fill, font_size=20))
