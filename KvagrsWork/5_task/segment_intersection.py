@@ -91,14 +91,14 @@ def draw_segment_intersection(n, length=100):
 							r 		= 2,\
 							stroke	= 'red'))
 
-	if os.path.isdir("../../webserver/layout2/static/img/KvagrsWork/5_week/"):
+	if os.path.isdir("../../webserver/layout2/static/img/KvagrsWork/5_taswk/"):
 
-		im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg")
-		return "../../webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg"
+		im.saveas("../../webserver/layout2/static/img/KvagrsWork/5_task/intersection.svg")
+		return "../../webserver/layout2/static/img/KvagrsWork/5_task/intersection.svg"
 	else:
 
-		im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg")
-		return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_week/intersection.svg"
+		im.saveas("/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_taswk/intersection.svg")
+		return "/home/ubuntu/math_in_python/webserver/layout2/static/img/KvagrsWork/5_taswk/intersection.svg"
 	
 if __name__ == '__main__':
 

@@ -26,7 +26,7 @@ def plotCollatzo(x=8000, y=300, maxNumber=False, filename=''):
 	plt.axis([0,x,0,y])
 	for i in range(1,x):
 		points.append(collSteps(i, maxNumber))
-		
+
 	if maxNumber:	
 		plt.plot( range(1, x), points, 'ko' )		# collSteps(i)[1] for max
 		plt.ylabel('Maximal number aj')

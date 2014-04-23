@@ -27,7 +27,8 @@ from abstract_calling import evaluateFunction
 tasksKvapil = {
        "collatzo" : '1',
        "ulam_spiral" : '1',
-       "basic_graphics" : '1'
+       "basic_graphics" : '1',
+       "intersection" : '5'
     }
 
 @app.route('/')
@@ -60,7 +61,7 @@ def plhak(task=''):
 #
 #        return render_template('plhak.html', task=task, img_data=base64_data)
 #    else:    
-        
+#        
     return render_template('plhak.html', task=task)
 
 
@@ -99,7 +100,7 @@ def kvapil(task=''):
         img         = draw_segment_intersection(n, length)
         base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
     
-        return render_template('kvapil.html', task=task, img_data=base64_data)
+        return render_template('kvapil.html', task=task, numTask=tasksKvapil[task], img_data=base64_data)
 
     elif task.endswith(".py"):
 
