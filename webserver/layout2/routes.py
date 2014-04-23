@@ -25,10 +25,18 @@ from segment_intersection     import draw_segment_intersection
 from abstract_calling import evaluateFunction
 
 tasksKvapil = {
-       "collatzo" : '1',
-       "ulam_spiral" : '1',
-       "basic_graphics" : '1',
-       "intersection" : '5'
+       "collatzo"           : '1',
+       "ulam_spiral"        : '1',
+       "basic_graphics"     : '1',
+       "gcd"                : '1',
+       "pascals_triangle"   : '2',
+       "turtle"             : '3',
+       "polygon"            : '4',
+       "effects"            : '4',
+       "hide_and_seek"      : '4',
+       "intersection"       : '5',
+       "triangulation"      : '5',
+       "gift_wrapping"      : '5'
     }
 
 @app.route('/')

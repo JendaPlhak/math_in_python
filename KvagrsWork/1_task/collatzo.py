@@ -41,6 +41,6 @@ def plotCollatzo(x=8000, y=300, maxNumber=False, filename=''):
 
 if __name__ == '__main__':
 
-	#plotCollatzo(x=25, y=25, filename="collatzo_steps_25")
-	#plotCollatzo(x=8000, y=300, filename="collatzo_steps_8000")
+	plotCollatzo(x=25, y=25, filename="collatzo_steps_25")
+	plotCollatzo(x=8000, y=300, filename="collatzo_steps_8000")
 	plotCollatzo(x=5000, y=5000, maxNumber=True, filename="collatzo_max")

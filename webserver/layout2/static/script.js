@@ -48,15 +48,18 @@ $(document).ready(function(){
     var tasksKvapil = {
         "1" : ["collatzo", "basic_graphics", "ulam_spiral", "gcd"],
         "2" : ["pascals_triangle"],
-        "3" : ["turtle","fractals"],
+        "3" : ["turtle"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
-        "6" : ["chaos_game"]
+        "6" : ["chaos_game"],
+        "7" : [""],
+        "8" : [""],
+        "9" : ["mp_inverse"],
     }
 
     $('.barTask').click(function(){
         //document.write( $(this).parent().attr('id').indexOf("Plhak"));
-        var index      = $(this).index()+1;
+        var index = $(this).index()+1;
         if ( $(this).parent().attr('id').indexOf("Plhak") >= 0 ){
             var name       = "plhak";
             var lengthTask = tasksPlhak[ index ].length;
