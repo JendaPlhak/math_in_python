@@ -29,7 +29,7 @@ for _file in os.listdir( directory ):
         _file_name = _file[ : _file.index('.cmt') ]
     
         # create new file for the article
-        with open(  '../webserver/layout2/templates/'+ part_dir + _file_name +'.html','w') as article:
+        with open(  '../webserver/layout2/templates/'+ part_dir +'article_'+ _file_name +'.html','w') as article:
             commentary = commentary.split('\n\n')
         
             # article formatting
