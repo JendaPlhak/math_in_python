@@ -1,3 +1,24 @@
+
+
+def insort(a, x, lo=0, hi=None, key=lambda x:x):
+    """Insert item x in list a, and keep it reverse-sorted assuming a
+    is reverse-sorted.
+
+    If x is already in a, insert it to the right of the rightmost x.
+    """
+
+    lo = 0
+    hi = len(a)
+
+    val = key(x)
+    while lo < hi:
+        mid = (lo+hi)//2
+        if val > key(a[mid]): hi = mid
+        else: lo = mid+1
+    a.insert(lo, x)
+
+
+
 class AStar(object):
 
     def heuristic(self, node):
@@ -12,11 +33,17 @@ class AStar(object):
         start.f   = start.h
         close_set = set()
         open_set  = set([start])
+        open_list = [start]
 
         while open_set:
+            x = open_list.pop()
 
-            x = min(open_set, key=lambda x: x.f)
-            if x.coord == end.coord:
+            final = True
+            for box in end.boxes:
+                if box not in x.boxes:
+                    final = False
+                    break
+            if final:
                 return self.reconstructPath(start, x, close_set)
 
             open_set.remove(x)
@@ -28,8 +55,9 @@ class AStar(object):
 
                 new_g = x.g + x.move_cost(node)
 
+                add = False
                 if node not in open_set:
-                    open_set.add(node)
+                    add = True
                 elif not new_g < node.g:
                     continue
 
@@ -37,6 +65,9 @@ class AStar(object):
                 node.h      = self.heuristic(node)
                 node.f      = node.g + node.h
                 node.parent = x
+                if add:
+                    open_set.add(node)
+                    insort(open_list, node, key=lambda x: x.f)
 
         return None
                 
@@ -44,11 +75,11 @@ class AStar(object):
     def reconstructPath(self, start, end, close_set):
 
         node = end
-        path = [end.coord]
+        path = [end]
 
         while node != start and node != None:
             node = node.parent
-            path.append(node.coord)
+            path.append(node)
 
         path.reverse()
         return path
