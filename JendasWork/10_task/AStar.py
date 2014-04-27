@@ -1,12 +1,9 @@
-
-
-def insort(a, x, lo=0, hi=None, key=lambda x:x):
-    """Insert item x in list a, and keep it reverse-sorted assuming a
+def insort(a, x, key=lambda x:x):
+    """
+    Insert item x in list a, and keep it reverse-sorted assuming a
     is reverse-sorted.
-
     If x is already in a, insert it to the right of the rightmost x.
     """
-
     lo = 0
     hi = len(a)
 
@@ -18,17 +15,33 @@ def insort(a, x, lo=0, hi=None, key=lambda x:x):
     a.insert(lo, x)
 
 
-
 class AStar(object):
 
     def heuristic(self, node):
+        """
+        Estimated distance between node and target
+        position.
+        """
         raise NotImplementedError
 
     def neighbours(self, node):
+        """
+        Return iterable containing possible moves
+        from given node.
+        """
+        raise NotImplementedError
+
+    def endReached(self, node, end):
+        """
+        Test for target destination.
+        """
         raise NotImplementedError
 
     def search(self, start, end):
-
+        """
+        Perform A* search. If path is not found,
+        exception is raised, otherwise path is returned. 
+        """
         start.h   = self.heuristic(start)
         start.f   = start.h
         close_set = set()
@@ -38,12 +51,7 @@ class AStar(object):
         while open_set:
             x = open_list.pop()
 
-            final = True
-            for box in end.boxes:
-                if box not in x.boxes:
-                    final = False
-                    break
-            if final:
+            if self.endReached(x, end):
                 return self.reconstructPath(start, x, close_set)
 
             open_set.remove(x)
@@ -54,12 +62,12 @@ class AStar(object):
                     continue
 
                 new_g = x.g + x.move_cost(node)
+                add   = False
 
-                add = False
-                if node not in open_set:
+                if node in open_set:
+                    if new_g < node.g: continue
+                else:
                     add = True
-                elif not new_g < node.g:
-                    continue
 
                 node.g      = new_g
                 node.h      = self.heuristic(node)
@@ -73,7 +81,10 @@ class AStar(object):
                 
 
     def reconstructPath(self, start, end, close_set):
-
+        """
+        Perform back-tracking and reconstruct
+        path.
+        """
         node = end
         path = [end]
 

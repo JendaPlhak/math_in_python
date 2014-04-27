@@ -33,11 +33,13 @@ class AStarLTNode(AStarNode): # AStart no Left Turn Node
         unseen   = set([self.sokoban])
         seen     = set()
         posShift = set()
-        LTM      = self.sokoban #LeftTopMost
+        LTM      = self.sokoban # LeftTopMost
+        dirs     = (1, 1j, -1, -1j)
+
         while unseen:
             coord = unseen.pop()
             seen.add(coord)
-            for dir_ in (1, 1j, -1, -1j):
+            for dir_ in dirs:
                 new_coord = coord + dir_
                 if new_coord in map_:
 
@@ -45,31 +47,59 @@ class AStarLTNode(AStarNode): # AStart no Left Turn Node
                         if new_coord + dir_ in map_ and new_coord + dir_ not in self.boxes:
                             posShift.add((new_coord, new_coord + dir_))
 
-                    elif new_coord.real < LTM.real or (new_coord.real == LTM.real and new_coord.imag < LTM.imag):
+                    elif self.isMoreLeft(new_coord, LTM):
                         LTM = new_coord
                         if not new_coord in seen:
                             unseen.add(new_coord)
-                    else:
-                        if not new_coord in seen:
-                            unseen.add(new_coord)
+                    elif new_coord not in seen:
+                        unseen.add(new_coord)
 
         self.posShift = posShift
         self.sokoban  = LTM
 
 
+    def isMoreLeft(self, coord, LTM):
+
+        if coord.real < LTM.real:
+            return True
+        elif coord.real == LTM.real and\
+             coord.imag < LTM.imag:
+             return True
+
+        return False
 
 
-class AStarLT(AStar): # AStart no Left Turn class
 
-    def __init__(self, map_, targets):
+class AStarLT(AStar): 
+
+    def __init__(self, map_, targets, sokoban):
+
         self.map       = map_
         self.targets   = targets
         self.dirs      = (1, 1j, -1, -1j)
         self.deadLocks = set()
         print "Preprocessing..."
+        self.removeUnreachable(sokoban)
         self.loadDeadLocks()
         self.digTunnels()
         print "     Done!"
+
+    def removeUnreachable(self, sokoban):
+        """
+        Remove all unreachable coordinates.
+        """
+        unseen = set([sokoban])
+        seen   = set()
+
+        while unseen:
+            coord = unseen.pop()
+            seen.add(coord)
+            for dir_ in self.dirs:
+                new_coord = coord + dir_
+                if new_coord in self.map and\
+                   new_coord not in seen:
+                    unseen.add(new_coord)
+        self.map = seen
 
 
     def loadDeadLocks(self):
@@ -86,9 +116,8 @@ class AStarLT(AStar): # AStart no Left Turn class
                 if coord + dir_ not in self.map:
                     if wall:
                         self.deadLocks.add(coord)
-                        continue
-                    else:
-                        wall = True
+                        break
+                    wall = True
                 else:
                     wall = False
 
@@ -105,7 +134,7 @@ class AStarLT(AStar): # AStart no Left Turn class
                         break
                     if coord in targets:
                         break
-                    if not (coord + dir_ * 1j not in self.map or coord - dir_ * 1j not in self.map):
+                    if coord + 1j*dir_ in self.map and coord - 1j*dir_ in self.map:
                         break
                     path.append(coord)
                     coord += dir_
@@ -142,10 +171,20 @@ class AStarLT(AStar): # AStart no Left Turn class
                     break
 
 
+    def endReached(self, node, end):
+        """
+        Test for target destination.
+        """
+        for box in end.boxes:
+            if box not in node.boxes:
+                return False
+        return True
+
+
     def heuristic(self, node):
         """
-        Estimated distance between current and final
-        position
+        Estimated distance between node and target
+        position.
         """
         dist = 0
         for box in node.boxes:
@@ -163,7 +202,7 @@ class AStarLT(AStar): # AStart no Left Turn class
         """
         neigh = []
         node.sokobanLeftMost(self.map)
-        for PS in node.posShift:
+        for PS in node.posShift:       # PS[0] = from, PS[1] = to
             if PS[1] in self.deadLocks: 
                 continue
             new_boxes = set(node.boxes)
@@ -176,28 +215,40 @@ class AStarLT(AStar): # AStart no Left Turn class
         return neigh
 
 
+def MazeFileIterator(object):
 
+    def __init__(self, f):
+        self.f = f
+
+    def next(self):
+        for row, line in enumerate(self.f):
+            for col, symbol in enumerate(line):
+                yield symbol, col + 1j*row
+
+    def __iter__(self):
+        return self
+        
 if __name__ == '__main__':
     
-    map_ = set()
-    with open("sokoban.txt", 'r') as f:
-        targets = set()
-        boxes   = set()
+    map_    = set()
+    targets = set()
+    boxes   = set()
+
+    with open("mazes/sokoban.txt", 'r') as f:
+        # for a, b in MazeFileIterator(f):
+        #     print a, b
         for row, line in enumerate(f):
             for col, symbol in enumerate(line):
                 coord = col + 1j*row
 
-                if symbol == ' ':
+                if symbol in [' ', '@', '.', '$']:
                     map_.add(coord)
-                elif symbol == '@':
-                    map_.add(coord)
-                    sokoban = coord
-                elif symbol == '.':
-                    map_.add(coord)
-                    targets.add(coord)
-                elif symbol == '$':
-                    map_.add(coord)
-                    boxes.add(coord)
+                    if symbol == '@':
+                        sokoban = coord
+                    elif symbol == '.':
+                        targets.add(coord)
+                    elif symbol == '$':
+                        boxes.add(coord)
                 else:
                     if symbol != '#' and symbol != '\n':
                         print "Unknown symbol '%s' will be considered a wall" % symbol
@@ -205,11 +256,11 @@ if __name__ == '__main__':
     start = AStarLTNode(sokoban, boxes,   0)
     end   = AStarLTNode(sokoban, targets, 0)
 
-    search_engine = AStarLT(map_, targets)
+    search_engine = AStarLT(map_, targets, sokoban)
     path = search_engine.search(start, end)
 
     for state in path:
-        with open("sokoban.txt", 'r') as f:
+        with open("mazes/sokoban.txt", 'r') as f:
             for row, line in enumerate(f):
                 for col, symbol in enumerate(line):
                     coord = col + 1j*row

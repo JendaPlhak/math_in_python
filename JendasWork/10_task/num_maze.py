@@ -60,6 +60,7 @@ class NumMaze():
         print "Possible paths: "
         for path in set([tuple(path) for path in paths[last_coord]]):
             print "     ", list(path) + [last_coord]
+        print
 
 
     def addNext(self, jump, vert, next_):
@@ -75,7 +76,7 @@ class NumMaze():
 
 
 if __name__ == '__main__':
+    
     maze_list = loadMazeList("ciselne-bludiste.txt")
     for maze in maze_list:
         maze.findPath()
-        print 

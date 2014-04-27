@@ -5,7 +5,6 @@ import sys
 class AStarLTNode(AStarNode): # AStart no Left Turn Node
 
     def __init__(self, dir_, coord):
-
         self.dir   = dir_
         self.coord = coord
         AStarNode.__init__(self)
@@ -29,6 +28,12 @@ class AStarLT(AStar): # AStart no Left Turn class
     def __init__(self, map_):
         self.map = map_
 
+    def endReached(self, node, end):
+        """
+        Test for target destination.
+        """
+        return node.coord == end.coord
+
     def heuristic(self, node):
         diff = node.coord - end.coord
         return abs(diff.real) + abs(diff.imag)
@@ -45,12 +50,10 @@ class AStarLT(AStar): # AStart no Left Turn class
 
 
 
-
-
 if __name__ == '__main__':
     
     map_ = set()
-    with open("left_maze.txt", 'r') as f:
+    with open("mazes/left_maze.txt", 'r') as f:
         for row, line in enumerate(f):
             for col, symbol in enumerate(line):
                 coord = col + 1j*row
@@ -69,8 +72,9 @@ if __name__ == '__main__':
                         print "Unknown symbol '%s' will be considered a wall" % symbol
 
     path = AStarLT(map_).search(start, end)
+    path = [x.coord for x in path]
 
-    with open("left_maze.txt", 'r') as f:
+    with open("mazes/left_maze.txt", 'r') as f:
         for row, line in enumerate(f):
             for col, symbol in enumerate(line):
                 if col + 1j*row in path and symbol not in ['+', '<', '>', '^', 'v']:
