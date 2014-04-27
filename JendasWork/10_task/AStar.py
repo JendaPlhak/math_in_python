@@ -69,7 +69,7 @@ class AStar(object):
                     open_set.add(node)
                     insort(open_list, node, key=lambda x: x.f)
 
-        return None
+        raise Exception("No Path found!")
                 
 
     def reconstructPath(self, start, end, close_set):
