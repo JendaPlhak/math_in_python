@@ -5,11 +5,12 @@ import sys
 
 class AStarLTNode(AStarNode): # AStart no Left Turn Node
 
-    def __init__(self, sokoban, boxes):
+    def __init__(self, sokoban, boxes, dir_):
 
-        self.boxes       = boxes
-        self.sokoban     = sokoban
-        self.hash        = hash((self.sokoban, tuple(self.boxes)))
+        self.dir     = dir_ 
+        self.boxes   = boxes
+        self.sokoban = sokoban
+        self.hash    = hash((self.sokoban, tuple(self.boxes)))
         AStarNode.__init__(self)
 
     def __hash__(self):
@@ -19,7 +20,10 @@ class AStarLTNode(AStarNode): # AStart no Left Turn Node
         return self.__hash__() == other.__hash__()
 
     def move_cost(self, target):
-        return 1
+        if self.dir == target.dir:
+            return 1
+        else:
+            return 2
 
     def sokobanLeftMost(self, map_):
         """
@@ -168,7 +172,7 @@ class AStarLT(AStar): # AStart no Left Turn class
                 new_boxes.add(self.tunnels[PS[1]])
             else:
                 new_boxes.add(PS[1])
-            neigh.append(AStarLTNode(PS[0], new_boxes))
+            neigh.append(AStarLTNode(PS[0], new_boxes, PS[1] - PS[0]))
         return neigh
 
 
@@ -198,8 +202,8 @@ if __name__ == '__main__':
                     if symbol != '#' and symbol != '\n':
                         print "Unknown symbol '%s' will be considered a wall" % symbol
 
-    start = AStarLTNode(sokoban, boxes)
-    end   = AStarLTNode(sokoban, targets)
+    start = AStarLTNode(sokoban, boxes,   0)
+    end   = AStarLTNode(sokoban, targets, 0)
 
     search_engine = AStarLT(map_, targets)
     path = search_engine.search(start, end)
