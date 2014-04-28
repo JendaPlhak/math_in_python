@@ -7,11 +7,12 @@ class AStarLTNode(AStarNode): # AStart no Left Turn Node
 
     def __init__(self, sokoban, boxes, dir_, new_box):
 
-        self.dir     = dir_ 
-        self.new_box = new_box
-        self.boxes   = boxes
-        self.sokoban = sokoban
-        self.hash    = hash((self.sokoban, tuple(self.boxes)))
+        self.dir      = dir_ 
+        self.new_box  = new_box
+        self.boxes    = boxes
+        self.sokoban  = sokoban
+        self.orig_sok = sokoban
+        self.hash     = hash((self.sokoban, tuple(self.boxes)))
         AStarNode.__init__(self)
 
     def __hash__(self):
@@ -21,10 +22,12 @@ class AStarLTNode(AStarNode): # AStart no Left Turn Node
         return self.__hash__() == other.__hash__()
 
     def move_cost(self, target):
-        if self.dir == target.dir:
-            return 1
-        else:
-            return 2
+        score = 1
+        if self.new_box != target.orig_sok:
+            score += 0.2
+        if self.dir != target.dir:
+            score += 0.1
+        return score
 
     def sokobanLeftMost(self, map_):
         """
@@ -210,10 +213,12 @@ class AStarLT(AStar):
             new_boxes.remove(PS[0])
             if PS[1] in self.tunnels:
                 new_box = self.tunnels[PS[1]]
+                sokoban = new_box - (PS[1] - PS[0])
             else:
                 new_box = PS[1]
+                sokoban = PS[0]
             new_boxes.add(new_box)
-            neigh.append(AStarLTNode(PS[0], new_boxes, PS[1] - PS[0], new_box))
+            neigh.append(AStarLTNode(sokoban, new_boxes, PS[1] - PS[0], new_box))
         return neigh
 
 
