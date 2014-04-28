@@ -42,6 +42,7 @@ class AStar(object):
         Perform A* search. If path is not found,
         exception is raised, otherwise path is returned. 
         """
+        self.end  = end
         start.h   = self.heuristic(start)
         start.f   = start.h
         close_set = set()
@@ -114,6 +115,51 @@ class AStarNode(object):
     def __eq__(self, other):
         raise NotImplementedError
 
+
+
+
+
+
+class AStarMapNode(AStarNode):
+
+    def __init__(self, dir_, coord):
+        self.dir   = dir_
+        self.coord = coord
+        AStarNode.__init__(self)
+
+    def __hash__(self):
+        return hash((self.coord, self.dir))
+
+    def __eq__(self, other):
+        return self.__hash__() == other.__hash__()
+
+    def move_cost(self, target):
+
+        if self.coord + self.dir == target.coord:
+            return 1
+        else:
+            return 2
+
+
+class AStarMap(AStar): 
+
+    def __init__(self, map_):
+        self.map = map_
+
+    def heuristic(self, node):
+        diff = node.coord - self.end.coord
+        return abs(diff.real) + abs(diff.imag)
+
+    def endReached(self, node, end):
+        return node.coord == end.coord
+
+    def neighbours(self, node):
+        neigh = []
+        for dir_ in (1, -1, 1j, -1j):
+            coord   = node.coord + dir_
+            if coord in self.map:
+                neigh.append(AStarMapNode(dir_, coord))
+        return neigh
 
 
 

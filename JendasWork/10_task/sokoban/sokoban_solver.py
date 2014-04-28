@@ -1,13 +1,14 @@
 #!/usr/bin/env python
-from AStar import AStar, AStarNode
-import sys
+from AStar        import AStar, AStarNode
+from plot_sokoban import plotPath
 
 
 class AStarLTNode(AStarNode): # AStart no Left Turn Node
 
-    def __init__(self, sokoban, boxes, dir_):
+    def __init__(self, sokoban, boxes, dir_, new_box):
 
         self.dir     = dir_ 
+        self.new_box = new_box
         self.boxes   = boxes
         self.sokoban = sokoban
         self.hash    = hash((self.sokoban, tuple(self.boxes)))
@@ -54,8 +55,8 @@ class AStarLTNode(AStarNode): # AStart no Left Turn Node
                     elif new_coord not in seen:
                         unseen.add(new_coord)
 
-        self.posShift = posShift
         self.sokoban  = LTM
+        return posShift
 
 
     def isMoreLeft(self, coord, LTM):
@@ -201,82 +202,59 @@ class AStarLT(AStar):
         Find all possible moves for given node
         """
         neigh = []
-        node.sokobanLeftMost(self.map)
-        for PS in node.posShift:       # PS[0] = from, PS[1] = to
+        posShift = node.sokobanLeftMost(self.map)
+        for PS in posShift:       # PS[0] = from, PS[1] = to
             if PS[1] in self.deadLocks: 
                 continue
             new_boxes = set(node.boxes)
             new_boxes.remove(PS[0])
             if PS[1] in self.tunnels:
-                new_boxes.add(self.tunnels[PS[1]])
+                new_box = self.tunnels[PS[1]]
             else:
-                new_boxes.add(PS[1])
-            neigh.append(AStarLTNode(PS[0], new_boxes, PS[1] - PS[0]))
+                new_box = PS[1]
+            new_boxes.add(new_box)
+            neigh.append(AStarLTNode(PS[0], new_boxes, PS[1] - PS[0], new_box))
         return neigh
 
 
-def MazeFileIterator(object):
+def mazeFileIterator(f):
 
-    def __init__(self, f):
-        self.f = f
-
-    def next(self):
-        for row, line in enumerate(self.f):
-            for col, symbol in enumerate(line):
+    for row, line in enumerate(f):
+        for col, symbol in enumerate(line):
+            if symbol != '\n':
                 yield symbol, col + 1j*row
 
-    def __iter__(self):
-        return self
-        
+
 if __name__ == '__main__':
     
     map_    = set()
     targets = set()
     boxes   = set()
+    maze    = []
 
-    with open("mazes/sokoban.txt", 'r') as f:
-        # for a, b in MazeFileIterator(f):
-        #     print a, b
-        for row, line in enumerate(f):
-            for col, symbol in enumerate(line):
-                coord = col + 1j*row
+    with open("../mazes/sokoban.txt", 'r') as f:
+        for symbol, coord in mazeFileIterator(f):
+            maze.append((symbol, coord))
+            if symbol in [' ', '@', '.', '$']:
+                map_.add(coord)
+                if symbol == '@':
+                    sokoban = coord
+                elif symbol == '.':
+                    targets.add(coord)
+                elif symbol == '$':
+                    boxes.add(coord)
+            else:
+                if symbol != '#':
+                    print "Unknown symbol '%s' will be considered a wall" % symbol
 
-                if symbol in [' ', '@', '.', '$']:
-                    map_.add(coord)
-                    if symbol == '@':
-                        sokoban = coord
-                    elif symbol == '.':
-                        targets.add(coord)
-                    elif symbol == '$':
-                        boxes.add(coord)
-                else:
-                    if symbol != '#' and symbol != '\n':
-                        print "Unknown symbol '%s' will be considered a wall" % symbol
+    start = AStarLTNode(sokoban, boxes,   0, -1)
+    end   = AStarLTNode(sokoban, targets, 0, -1)
 
-    start = AStarLTNode(sokoban, boxes,   0)
-    end   = AStarLTNode(sokoban, targets, 0)
-
-    search_engine = AStarLT(map_, targets, sokoban)
+    search_engine = AStarLT(set(map_), targets, sokoban)
     path = search_engine.search(start, end)
 
-    for state in path:
-        with open("mazes/sokoban.txt", 'r') as f:
-            for row, line in enumerate(f):
-                for col, symbol in enumerate(line):
-                    coord = col + 1j*row
-                    if coord in state.boxes:
-                        sys.stdout.write("$")
-                    # elif coord in search_engine.deadLocks:
-                    #     sys.stdout.write("X")
-                    # elif coord in search_engine.tunnels:
-                    #     sys.stdout.write("O")
-                    elif coord == state.sokoban:
-                        sys.stdout.write("@")
-                    elif symbol in ['@', '$']:
-                        sys.stdout.write(' ')
-                    else:
-                        sys.stdout.write(symbol)
-        print "\n---------------------------"
+    plotPath(path, map_, sokoban, maze)
+
 
 ###########
 #         #
