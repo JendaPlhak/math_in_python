@@ -1,19 +1,22 @@
 #!/usr/bin/env python
 import pygal
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 def calculate_collatzo_convergence(n):
 
     steps = 0
     max_n = 0
-    while n != 1:
 
+    while n != 1:
         steps += 1
         if n % 2 == 0:
             n /= 2
         else:
-            n = 3 * n + 1
-
+            n = 3*n + 1
         max_n = max(max_n, n)
+
     return steps, max_n
 
 
@@ -36,15 +39,22 @@ class BitmapPlot():
         open(self.path, 'w').write(self.im.render())
 
 
+def plotForPath(path, data):
+
+    fig = plt.figure(figsize=(23.5, 23.5))
+    plt.plot(data[0], data[1],  'ko')
+    fig.savefig(path, dpi=80, bbox_inches='tight')
+
 if __name__ == "__main__":
+    
 
-    Collatzo_plot           = BitmapPlot("img/Collatzo_serie.svg", "Collatzo_serie")
-    Collatzo_serie_max_plot = BitmapPlot("img/Collatzo_serie_max.svg", "Collatzo_serie_max")
-
-    for i in xrange(3000):
+    collatzo_normal = []
+    collatzo_max    = []
+    for i in xrange(8000):
         pair = calculate_collatzo_convergence(i + 1)
-        Collatzo_plot.new_point([i, pair[0]])
-        Collatzo_serie_max_plot.new_point([i, pair[1]])
+        collatzo_normal.append([i, pair[0]])
+        collatzo_max.append([i, pair[1]])
 
-    Collatzo_plot.save()
-    Collatzo_serie_max_plot.save()
+    plotForPath("img/Collatzo_serie_8000.jpg",   zip(*collatzo_normal))
+    plotForPath("img/Collatzo_serie_25.jpg", zip(*collatzo_normal[:25]))
+    plotForPath("img/Collatzo_serie_max.jpg",  zip(*collatzo_max[:3000]))
