@@ -5,7 +5,7 @@ from decimal import Decimal
 
 
 def exp_taylor(x, y, max_error=10**(-10)):    # Calculates x^y using Taylors series, see
-                                             # http://www.wolframalpha.com/input/?i=taylor+series+a%5Ex
+                                              # http://www.wolframalpha.com/input/?i=taylor+series+a%5Ex
     ln_x        = math.log(x)
     y_pow       = 1
     n_fac       = 1
@@ -39,6 +39,7 @@ def newton_sq_root(x, max_error=10**(-10)): #calculates x^(1/2)
     
 
 def exp_bisection(x, exp, max_error=10**(-10)):
+
   if(exp >= 1):
     tmp = exp_bisection(x, exp / 2.)
     return tmp * tmp
@@ -63,6 +64,7 @@ def exp_bisection(x, exp, max_error=10**(-10)):
         mid = (a + b) / 2.
 
     return acc;
+
 
 if __name__ == "__main__":
     

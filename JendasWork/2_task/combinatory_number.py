@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 def permutation(l):
+
     if len(l) == 1:
         return [l]
     else:
@@ -15,6 +16,7 @@ def permutation(l):
 
 
 def combination(l, k, repete = False):
+
     if k == 1:
         return [[i] for i in l]
     else:
@@ -30,6 +32,7 @@ def combination(l, k, repete = False):
 
 
 def variation(l, k, repete = False):
+
     if k == 1:
         return [[i] for i in l]
     else:
@@ -45,11 +48,13 @@ def variation(l, k, repete = False):
 
 
 def nice_print(l):
+
     for comb in l:
         print "    " + "".join(comb)
     print
 
 if __name__ == "__main__":
+    
     print "Permutations"
     nice_print(permutation(["a", "b"]))
     print "Combinations"

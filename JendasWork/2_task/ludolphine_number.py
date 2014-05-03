@@ -1,22 +1,25 @@
 #!/usr/bin/env python
 from decimal import *
 import gmpy
+import time
+import sys
 import math
 import numpy as np
-getcontext().prec = 30
+getcontext().prec = 1001
 
 
-def leibniz(max_error = 10**(-2)):
 
-    print "Calculating Pi using method of Leibniz..."
+def leibniz():
 
+    # print "Calculating Pi using method of Leibniz..."
     i    = Decimal(1)
     pi   = Decimal(0)
     plus = True
-    cur_error = Decimal(max_error) + Decimal(1)
 
-    while max_error < cur_error: # Can be expected, that error will be 
-                                 # approximately at most equal to the 10*(n + 1 member of series)
+    start     = time.time()
+
+    while time.time() - start < 1.: # Can be expected, that error will be 
+                                    # approximately at most equal to the 10*(n + 1 member of series)
         if plus:   
             pi  += 1/i
             plus = False
@@ -25,50 +28,52 @@ def leibniz(max_error = 10**(-2)):
             plus = True
 
         i  += 2
-        if i % 10000 == 1:
-            cur_error = 10/i
 
     return pi * 4
 
 
-def archimedes(max_rounds=10**3):
+def archimedes():
 
-    print "Calculating Pi using method of Archimedes..."
-
+    # print "Calculating Pi using method of Archimedes..."
     a = 2*Decimal(3).sqrt()
     b = Decimal(3)
     n = 0
 
-    while n < max_rounds:
+    start = time.time()
+
+    while time.time() - start < 1.:
         n += 1
         a = (2 * a * b) / (a + b)
         b = (a * b).sqrt()
     return a
 
 
-def monte_carlo(max_rounds=1000, n_per_round = 100):
+def monte_carlo(n_per_round = 100):
 
-    print "Calculating Pi using Monte Carlo method..."
-    n   = 0
-    out = 0
-    while n < max_rounds:
+    # print "Calculating Pi using Monte Carlo method..."
+    out   = 0
+    start = time.time()
+
+    n = 0
+    while time.time() - start < 1.:
+        n += 1
         for x, y in np.random.random((n_per_round, 2)):
             if (x*x + y*y) ** 0.5 > 1:
                 out += 1
-        n += 1
 
-    inside = max_rounds * n_per_round - out
+    inside = n * n_per_round - out
     ratio  = Decimal(out) / Decimal(inside)
     return 4 / (ratio + 1)
 
 
-def bellard_formula(n_steps = 1000): # http://en.wikipedia.org/wiki/Bellard%27s_formula
+def bellard_formula(): # http://en.wikipedia.org/wiki/Bellard%27s_formula
 
-    print "Calculating Pi using formula of Bellard..."
+    # print "Calculating Pi using formula of Bellard..."
+    sum_  = Decimal(0)
+    start = time.time()
+    i     = 0
 
-    sum_ = Decimal(0)
-
-    for i in xrange(n_steps):
+    while time.time() - start < 1.:
         sum_ += (
                     (-1)**i / Decimal(1 << 10*i)  \
                 )                                 \
@@ -82,14 +87,28 @@ def bellard_formula(n_steps = 1000): # http://en.wikipedia.org/wiki/Bellard%27s_
                     -Decimal(1 << 2)/(10*i + 7)   \
                     +Decimal(1)/(10*i + 9)        \
                 )
+        i += 1
+
     return sum_ * 1/Decimal(1 << 6)
+
+
+def determinePrecision(pi):
+
+    pi     = str(pi)
+    pi_ref = str(gmpy.pi(10000))  # reference pi
+
+    min_len = min(len(pi), len(pi_ref))
+
+    i = 0
+    while i < min_len and pi[i] == pi_ref[i]:
+        i += 1
+    return i
 
 
 if __name__ == "__main__":
 
-    print leibniz()
-    print archimedes()
-    print monte_carlo()
-    print bellard_formula()
-    print gmpy.pi(125)
+    print "Precision of Monte Carlo method: %d digits" % determinePrecision(monte_carlo())
+    print "Precision of Leibniz method:     %d digits" % determinePrecision(leibniz())
+    print "Precision of Archimedes method:  %d digits" % determinePrecision(archimedes())
+    print "Precision of Ballards formula:   %d digits" % determinePrecision(bellard_formula())
     print 

@@ -55,6 +55,6 @@ if __name__ == "__main__":
         collatzo_normal.append([i, pair[0]])
         collatzo_max.append([i, pair[1]])
 
-    plotForPath("img/Collatzo_serie_8000.jpg",   zip(*collatzo_normal))
-    plotForPath("img/Collatzo_serie_25.jpg", zip(*collatzo_normal[:25]))
+    plotForPath("img/Collatzo_serie_8000.jpg", zip(*collatzo_normal))
+    plotForPath("img/Collatzo_serie_25.jpg",   zip(*collatzo_normal[:25]))
     plotForPath("img/Collatzo_serie_max.jpg",  zip(*collatzo_max[:3000]))
