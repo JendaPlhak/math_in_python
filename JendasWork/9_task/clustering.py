@@ -96,16 +96,16 @@ class Clustering(object):
 
 
 
-def loadData(path="cluster_data.txt"):
+def loadData(path):
 
     data = []
     with open(path, 'r') as f:
         for row in f:
-            pair = tuple([float(x) for x in re.findall("\d+\.\d+", row)])
+            pair = tuple([float(x) for x in re.findall("-?\d+\.\d+", row)])
             data.append(pair)
     return data
 
 
 if __name__ == '__main__':
     
-    Clustering(loadData(), 7).performClustering()
+    Clustering(loadData("cluster_data.txt"), 7).performClustering()
