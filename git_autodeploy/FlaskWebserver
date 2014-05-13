@@ -44,8 +44,9 @@ do_img_reload() {
 }
 
 do_article_reload() {
-    echo ${DIR_AUTO}/createArticles.sh ${DIR_AUTO}
-    ${DIR_AUTO}/createArticles.sh ${DIR_AUTO}
+    cd ${DIR_AUTO}
+    ${DIR_AUTO}/createArticles.sh
+    cd -
 }
 
 do_clear() {
