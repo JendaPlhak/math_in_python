@@ -77,6 +77,6 @@ class NumMaze():
 
 if __name__ == '__main__':
     
-    maze_list = loadMazeList("ciselne-bludiste.txt")
+    maze_list = loadMazeList("mazes/ciselne-bludiste.txt")
     for maze in maze_list:
         maze.findPath()

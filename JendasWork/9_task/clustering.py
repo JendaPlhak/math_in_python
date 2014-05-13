@@ -3,6 +3,8 @@ from __future__ import division
 from random     import sample
 from math       import sqrt
 
+import matplotlib
+matplotlib.use('Agg')
 import re
 import matplotlib.pyplot as plt
 
@@ -90,7 +92,7 @@ class Clustering(object):
                      clrs[i]+'h', 
                      markersize=20.)
 
-        fig.savefig("clustering.png", dpi=80, bbox_inches='tight')
+        fig.savefig("img/clustering.png", dpi=80, bbox_inches='tight')
 
 
 

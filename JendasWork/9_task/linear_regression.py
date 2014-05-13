@@ -1,19 +1,18 @@
 #!/usr/bin/env python
 import matplotlib.pyplot as plt
 import numpy             as np
-
+from random       import shuffle
 from numpy        import dot, transpose
 from numpy.linalg import inv
 from clustering   import loadData
+from math         import sqrt
 
 
 def dataGenerator(n):
 
-    np.random.seed(5)
     x = np.arange(0, n)
-    y = 20 + 3 * x + np.random.normal(0, 10, n)
+    y = 5 - 2 * x + np.random.normal(0, 20, n)
     return zip(x, y)
-
 
 
 def linearRegression(data):
@@ -26,6 +25,25 @@ def linearRegression(data):
     A_inv = dot( inv(dot(transpose(A), A)), transpose(A))
 
     return dot(A_inv, y)
+
+
+def linearRegressionGradient(data):
+
+    a = 0
+    b = 0
+    n = 0
+    while n <= 10:
+        n += 1
+        shuffle(data)
+        for x, y in data:
+            grad_a = 2*(a*x + b - y) * x
+            grad_b = 2*(a*x + b - y)
+
+            norm = sqrt(grad_a**2 + grad_b**2)
+            a -= grad_a / norm
+            b -= grad_b / norm
+
+    return [b, a]
 
 
 def plotResult(l, data, path="linreg.png"):
@@ -45,7 +63,17 @@ def plotResult(l, data, path="linreg.png"):
 
 if __name__ == '__main__':
 
-    # data = loadData("linreg.txt")
+    data_pel = loadData("linreg.txt")
+    line = linearRegression(data_pel)
+    plotResult(line, data_pel, path="img/linreg.png")
+
     data = dataGenerator(100)
     line = linearRegression(data)
-    plotResult(line, data)
+    plotResult(line, data, path="img/linreg_random.png")
+    print line
+    
+    line = linearRegressionGradient(data)
+    plotResult(line, data, path="img/linreg_gradient.png")
+
+    print line
+   
