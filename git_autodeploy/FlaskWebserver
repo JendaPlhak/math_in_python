@@ -40,11 +40,11 @@ do_stop () {
 }
 do_img_reload() {
     make -C ${DIR_MAKE}
-    ${DIR_AUTO}/ImgGenerate.sh ${DIR_AUTO}
+    ${DIR_AUTO}/ImgGenerate.sh
 }
 
 do_article_reload() {
-    ${DIR_AUTO}/createArticles.sh
+    ${DIR_AUTO}/createArticles.sh ${DIR_AUTO}
 }
 
 do_clear() {
