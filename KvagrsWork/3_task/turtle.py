@@ -1,11 +1,4 @@
-#######################################
-#
-# Turtle graphics
-#
-#######################################
-
 import svgwrite
-from svglib import svg
 from math 	import sin, cos, pi, sqrt, atan
 
 def tan(alpha):

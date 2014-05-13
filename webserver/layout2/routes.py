@@ -36,7 +36,8 @@ tasksKvapil = {
        "hide_and_seek"      : '4',
        "intersection"       : '5',
        "triangulation"      : '5',
-       "gift_wrapping"      : '5'
+       "gift_wrapping"      : '5',
+       "chaos_game"         : '6'
     }
 
 @app.route('/')

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // change color on hover definitely > css
     $('#plhak, #kvapil').hover(
         function(){
             $(this).css('color','#227799');
@@ -10,7 +11,7 @@ $(document).ready(function(){
         );
 
    
-
+    // Hides the code section on the beginning > css
     $('.code').hide();
 	
 	$('#buttonCode').click(function(){
@@ -28,7 +29,7 @@ $(document).ready(function(){
 	});
 
 	
-
+    // set logic about barTask at the begining
 	plhakHidden     = true;
 	plhakBarHidden  = true;
     plhakTaskHidden = true;
@@ -43,7 +44,8 @@ $(document).ready(function(){
         "3" : ["turtle","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
-        "6" : ["chaos_game"]
+        "6" : ["chaos_game"],
+        "7" : ["plot_fractals"]
     }
     var tasksKvapil = {
         "1" : ["collatzo", "basic_graphics", "ulam_spiral", "gcd"],
@@ -53,7 +55,7 @@ $(document).ready(function(){
         "5" : ["intersection", "triangulation","gift_wrapping"],
         "6" : ["chaos_game"],
         "7" : [""],
-        "8" : [""],
+        "8" : ["affine_transformation"],
         "9" : ["mp_inverse"],
     }
 
