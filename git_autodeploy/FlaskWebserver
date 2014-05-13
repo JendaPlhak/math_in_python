@@ -40,7 +40,7 @@ do_stop () {
 }
 do_img_reload() {
     make -C ${DIR_MAKE}
-    ${DIR_AUTO}/ImgGenerate.sh
+    ${DIR_AUTO}/ImgGenerate.sh ${DIR_AUTO}
 }
 
 do_article_reload() {
@@ -80,7 +80,7 @@ case "$1" in
         status_of_proc "$DAEMON_NAME" "$DAEMON" && exit 0 || exit $?
         ;;
     *)
-        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|cleanImg|status}"
+        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|articleReload|cleanImg|status}"
         exit 1
         ;;
  
