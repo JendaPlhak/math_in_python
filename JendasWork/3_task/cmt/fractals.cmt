@@ -29,4 +29,4 @@ that is able to generate reflection of set of points for given reflection-line.
 
 This task made me think about fractals and that resulted into implementation of algorithm 
 plotting Julia set and Mandelbrot set in Cython language. However, later turned out, that 
-this is part of task 7, so I will present the result in that section.
+this is part of task 7, so I will present the results in that section.
