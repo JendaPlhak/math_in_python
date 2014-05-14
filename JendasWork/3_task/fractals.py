@@ -95,7 +95,7 @@ def kochFlake(draw, rec, side):  # Implementation using instructions
 
 
 
-def hilberCurve(draw, rec, side):
+def hilbertCurve(draw, rec, side):
 
     instructions = "A"   # Representation as Lindenmayer system. See http://en.wikipedia.org/wiki/Hilbert_curve#Representation_as_Lindenmayer_system
     rules        = {'A':'-BF+AFA+FB-','B':'+AF-BFB-FA+', '+':'+', '-':'-', 'F':'F'}
@@ -197,11 +197,11 @@ def addSymetry(edges, vertices, i):
 if __name__ == "__main__":
 
 
-    draw = Turtle("Tree")
+    draw = Turtle("Tree", [5, 80])
     tree(draw, 10, 100.)
     draw.dumpImage()
 
-    draw = Turtle("Koch_Flake")
+    draw = Turtle("Koch_Flake", [15, 80])
     kochFlake(draw, 5, 100)
     draw.dumpImage()
 
@@ -209,16 +209,16 @@ if __name__ == "__main__":
     sierpinskiTriangle(draw, 7, 500)
     draw.dumpImage()
 
-    draw = Turtle("Hilber_Curve")
-    hilberCurve(draw, 7, 300)
+    draw = Turtle("Hilbert_Curve",[5, 5])
+    hilbertCurve(draw, 7, 300)
     draw.dumpImage()
 
-    draw = Turtle("Krishna_Anklet")
-    krishnaAnklet(draw, 6, 300)
+    draw = Turtle("Krishna_Anklet", [150, 5])
+    krishnaAnklet(draw, 5, 200)
     draw.dumpImage()
 
-    draw = Turtle("Krishna_Anklet", [300, 300])
-    pentagonSnowflakeMirror(draw, 3 , 7)
+    draw = Turtle("Pentagon_snow_flake", [260, 250])
+    pentagonSnowflakeMirror(draw, 4 , 7)
     draw.dumpImage()
 
 

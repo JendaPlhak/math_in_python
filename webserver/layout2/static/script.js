@@ -41,7 +41,7 @@ $(document).ready(function(){
     var tasksPlhak  = {
         "1" : ["collatzo", "spirals", "gcd", "simple_graphics"],
         "2" : ["pascals_triangle", "combinatory_number","exponentiation","ludolphine_number"],
-        "3" : ["pictures","fractals"],
+        "3" : ["Turtle","pictures","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
         "6" : ["chaos_game"],

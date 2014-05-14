@@ -1,0 +1,28 @@
+Following fractals can be described as L-systems and therefore I implemented simple 
+grammar-interpreter for L-Systems. Eventually it turned out to be part of task 6.
+
+Koch flake:
+
+&img="Koch_Flake.svg" alt="Koch_Flake.svg"
+
+Hilbert curve:
+
+&img="Hilbert_Curve.svg" alt="Hilbert_Curve.svg"
+
+Krishna anklet:
+
+&img="Krishna_Anklet.svg" alt="Krishna_Anklet.svg"
+
+Basic recursion-based algorithm gave the Tree
+
+&img="Tree.svg" alt="Tree.svg"
+
+And using recursion I was also able to plot Sierpinski triangle
+
+&img="Sierpinski_Triangle.svg" alt="Sierpinski_Triangle.svg"
+
+Most challenging I found to create pentagon snowflake. At first I tried to write grammar that would
+generate it, but it turned out to be too hard. Eventually I solved the problem by implementing algorithm
+that is able to generate reflection of set of points for given reflection-line.
+
+&img="Pentagon_snow_flake.svg" alt="Pentagon_snow_flake.svg"
