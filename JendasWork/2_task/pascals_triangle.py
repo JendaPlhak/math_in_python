@@ -21,7 +21,7 @@ def pascals_triangle(n_layers):
     return layers
 
 
-def plot_pascals_triangle(n_layers, d):     # d = divisor
+def plot_pascals_triangle(n_layers, d, web=False):     # d = divisor
     
     layers  = pascals_triangle(n_layers)
     draw    = svgwrite.drawing.Drawing()
