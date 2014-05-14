@@ -5,11 +5,11 @@ from PIL import Image
 
 def bifurcation(path):
 
-    s_x   = 2000
-    s_y   = 1000
+    s_x   = 1000
+    s_y   = 500
     img = Image.new("RGB", (s_x, s_y), "white")
 
-    n_iter = 1500
+    n_iter = 700
 
     x_a    = 2.5
     x_b    = 4.
