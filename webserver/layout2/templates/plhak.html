@@ -8,7 +8,6 @@
 	
 	<!-- TASK 2 -->
 	{% elif task in ['pascals_triangle', 'combinatory_number','exponentiation','ludolphine_number'] %}
-		{% include 'JendasWork/2_task/article_' + task + '.html' %}
 
 		<img src="data:image/svg+xml;base64,{{ img_data }}" alt="pascals_triangle.svg" width="500">
 		<form action="" method="get">
@@ -16,10 +15,10 @@
 			Length: <input type="number" name="d" value="2"><br>
 					<input type="submit" value="Draw!">
 		</form>
-		
+		{% include 'JendasWork/2_task/article_' + task + '.html' %}
 
 	<!-- TASK 3 -->
-	{% elif task in ['turtle', 'fractals'] %}
+	{% elif task in ['pictures', 'fractals'] %}
 		{% include 'JendasWork/3_task/article_' + task + '.html' %}
 	
 	<!-- TASK 4 -->
