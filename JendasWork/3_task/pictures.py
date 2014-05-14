@@ -57,7 +57,7 @@ def triangle(draw, rec, a=10, space=10):
         draw.setCoord(center.real, center.imag)
 
 
-def rose(draw, a=30, n = 12):
+def rose(draw, a=20, n = 12):
 
     angle = (n-2) * 180. / n
     k = 18
@@ -73,20 +73,20 @@ if __name__ == "__main__":
 
     draw = Turtle("Various_pictures")
 
-    draw.setCoord(250, 250)
+    draw.setCoord(10, 10)
     draw.resetDir()
 
     draw.penDown()
     square(draw, 200)
 
     draw.resetDir()
-    draw.setCoord(500, 250)
+    draw.setCoord(210, 70)
     barredCircle(draw, r=50, shift=5)
 
-    draw.setCoord(750, 250)
+    draw.setCoord(75, 200)
     triangle(draw, 10, 5, 15)
 
-    draw.setCoord(1000, 250)
+    draw.setCoord(225, 210)
     rose(draw)
 
     draw.penUp()
