@@ -71,7 +71,7 @@ def plhak(task=''):
         return render_template('plhak.html', task=task, img_data=base64_data)
     else:    
         
-    return render_template('plhak.html', task=task)
+        return render_template('plhak.html', task=task)
 
 
 @app.route('/kvapil/') 
