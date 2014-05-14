@@ -1,0 +1,11 @@
+Greatest common divisor - Number of iterations, recursive method.
+
+&img="gcd_recursive.png" alt="gcd_recursive"
+
+Greatest common divisor - Number of iterations, modulo method.
+
+&img="gcd_modulo.png" alt="gcd_modulo_steps"
+
+Greatest common divisor - Number of iterations, subtraction method.
+
+&img="gcd_subtraction.png" alt="gcd_subtraction_steps"

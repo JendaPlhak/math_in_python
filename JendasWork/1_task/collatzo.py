@@ -20,25 +20,6 @@ def calculate_collatzo_convergence(n):
     return steps, max_n
 
 
-class BitmapPlot():
-
-    def __init__(self, path, title):
-        self.im       = pygal.XY(stroke=False, x_label_rotation=30)
-        self.path     = path
-        self.im.title = title
-        self.points   = []
-
-    def new_point(self, coord):
-        self.points.append(coord)
-
-    def flush(self):
-        self.im.add('Num. iterations', self.points)
-
-    def save(self):
-        self.flush()
-        open(self.path, 'w').write(self.im.render())
-
-
 def plotForPath(path, data):
 
     fig = plt.figure(figsize=(23.5, 23.5))
