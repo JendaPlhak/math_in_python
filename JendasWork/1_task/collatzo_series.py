@@ -42,7 +42,9 @@ class BitmapPlot():
 def plotForPath(path, data):
 
     fig = plt.figure(figsize=(23.5, 23.5))
-    plt.plot(data[0], data[1],  'ko')
+    plt.plot(data[0], data[1],  'ko', markersize=20)
+    plt.xticks(fontsize = 25)
+    plt.yticks(fontsize = 25)
     fig.savefig(path, dpi=80, bbox_inches='tight')
 
 if __name__ == "__main__":
