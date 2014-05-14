@@ -52,17 +52,21 @@ def triangulation(points):    # Greedy algorithm
 
 
 
-def triangulateRandom(n):
-    points = np.random.uniform(0,700,[n,2])
+def triangulateRandom(n, uniform=True):
 
-    draw = Turtle("Greedy_triangulation")
+    if uniform:
+        points = np.random.uniform(0,700,[n,2])
+        draw   = Turtle("triangulation_uniform_points")
+    else:
+        mean, sigma = 200, 70
+        points = np.random.normal(mean,sigma,[n,2])
+        draw   = Turtle("triangulation_normal_points")
+
     for edge in triangulation(points):
         draw.addLineNumpy(edge.array[0,:], edge.array[1,:])
-
     draw.dumpImage()
-
-
 
 
 if __name__ == '__main__':
     triangulateRandom(30)
+    triangulateRandom(50, False)

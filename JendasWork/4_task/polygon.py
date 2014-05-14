@@ -59,7 +59,6 @@ if __name__ == '__main__':
     p.drawPolygon()
     P = (150, 100)
     p.draw.addPoint(P)
-    p.draw.addLineNumpy(np.array((-1*pi,-1)), np.array(P))
     
     if p.testIn(P):
         p.draw.text("It's IN!",  fill="blue")

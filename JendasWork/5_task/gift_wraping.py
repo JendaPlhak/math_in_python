@@ -58,10 +58,16 @@ def wrapGift(points):
 
 
 
-def wrapRandomGift(n):
+def wrapRandomGift(n, uniform=True):
 
-    draw   = Turtle("Gift_Wraping")
-    points = list(np.random.uniform(0,750,[n,2]))
+    if uniform:
+        draw   = Turtle("Gift_Wraping_uniform")
+        points = list(np.random.uniform(0,750,[n,2]))
+    else:
+        draw   = Turtle("Gift_Wraping_normal")
+        mean, sigma = 200, 70
+        points = list(np.random.normal(mean,sigma,[n,2]))
+
     for point in points:
         draw.addPoint(point)
 
@@ -76,3 +82,4 @@ def wrapRandomGift(n):
 
 if __name__ == '__main__':
     wrapRandomGift(50)
+    wrapRandomGift(100, False)

@@ -1,0 +1,11 @@
+Short-edges-preferring triangulation algorithm - Uniformly distributed points
+
+&img="triangulation_uniform_points.svg" alt="triangulation_uniform_points.svg"
+
+And solution for normal distribution:
+
+&img="triangulation_normal_points.svg" alt="triangulation_normal_points.svg"
+
+As can be seen, triangulation for normally distributed points tends to have
+higher concentration of short edges at the middle. Which is again quite expected
+behavior since the probability of point occurrence at the middle of the shape.
