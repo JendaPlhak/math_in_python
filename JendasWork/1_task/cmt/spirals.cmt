@@ -1,8 +1,8 @@
 Basic Ulam spiral can be seen on following picture. Blue points represents
-form $n^{2}+13n+3$.
+prime numbers of form $n^{2}+13n+3$.
 
 &img="Ulam_spiral.png" alt="Ulam spiral with quadratic form"
 
-Second picture shows Archimedes spiral created using same logic as Ulam spiral.
+Second picture shows Archimedes spiral created using the same logic as Ulam spiral.
 
 &img="Archimed_spiral.png" alt="Archimedes spiral"
