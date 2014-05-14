@@ -10,7 +10,7 @@ from Turtle    import Turtle
 def star():
 
     step  = 20
-    side  = 500
+    side  = 250
     shift = side + 1j*side
     draw  = Turtle("star")
 
