@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import matplotlib.pyplot as plt
 import numpy             as np
+
 from random       import shuffle
 from numpy        import dot, transpose
 from numpy.linalg import inv
