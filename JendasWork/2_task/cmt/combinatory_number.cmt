@@ -1,0 +1,29 @@
+Output of my combinatorics scripts:
+
+Permutations
+    ab
+    ba
+
+Combinations
+    aaa
+    aab
+    abb
+    bbb
+
+Variations
+    aaaa
+    aaab
+    aaba
+    aabb
+    abaa
+    abab
+    abba
+    abbb
+    baaa
+    baab
+    baba
+    babb
+    bbaa
+    bbab
+    bbba
+    bbbb
