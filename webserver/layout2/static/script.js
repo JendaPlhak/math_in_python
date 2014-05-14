@@ -39,7 +39,7 @@ $(document).ready(function(){
     kvapilTaskHidden= true;
 
     var tasksPlhak  = {
-        "1" : ["collatzo", "spirals", "gcd"],
+        "1" : ["collatzo", "spirals", "gcd", "simple_graphics"],
         "2" : ["pascals_triangle"],
         "3" : ["turtle","fractals"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
