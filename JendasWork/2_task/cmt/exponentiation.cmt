@@ -1,0 +1,8 @@
+I calculated $35.5054545645^1.57485875485$ using bisection, Taylor series and python built-in ^.
+
+Results:<br>
+    Taylor:    276.373103
+    Bisection: 276.373103
+    Python:    276.373103
+
+Precision seems good enough to me.
