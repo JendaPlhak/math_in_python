@@ -49,7 +49,7 @@ def home(name=''):
 @app.route('/plhak/<task>')
 def plhak(task=''):
 
-    if task == 'pascal':
+    if task == 'pascals_triangle':
 
         n_layers = int(request.args.get('n_layers',0))
         d        = int(request.args.get('d',0))
