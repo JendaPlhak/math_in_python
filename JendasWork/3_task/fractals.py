@@ -191,9 +191,6 @@ def addSymetry(edges, vertices, i):
     return new_edges, vortex_new
 
 
-
-
-
 if __name__ == "__main__":
 
 
@@ -206,7 +203,7 @@ if __name__ == "__main__":
     draw.dumpImage()
 
     draw = Turtle("Sierpinski_Triangle")
-    sierpinskiTriangle(draw, 7, 500)
+    sierpinskiTriangle(draw, 7, 200)
     draw.dumpImage()
 
     draw = Turtle("Hilbert_Curve",[5, 5])

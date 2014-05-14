@@ -26,3 +26,7 @@ generate it, but it turned out to be too hard. Eventually I solved the problem b
 that is able to generate reflection of set of points for given reflection-line.
 
 &img="Pentagon_snow_flake.svg" alt="Pentagon_snow_flake.svg"
+
+This task made me think about fractals and that resulted into implementation of algorithm 
+plotting Julia set and Mandelbrot set in Cython language. However, later turned out, that 
+this is part of task 7, so I will present the result in that section.
