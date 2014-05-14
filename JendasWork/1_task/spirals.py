@@ -32,7 +32,7 @@ def coord_ArchimedSpiral(n, step=0.5):
     return [x, y]
 
 
-def plot_and_save_spiral(n, spiral_fun, path):
+def plot_and_save_spiral(n, spiral_fun, path, q_form=lambda n:n*n + 13*n + 3):
 
     primes        = first_n_primes(n)
     coord_primes  = zip(*[spiral_fun(i) for i in primes])
@@ -42,7 +42,6 @@ def plot_and_save_spiral(n, spiral_fun, path):
 
     if spiral_fun == calculate_coordinates_Ulam_spiral:
 
-        q_form = lambda n:3*n + 1
         coord_quad_form = {}   # Interesting patterns can be observed when highlighting primes of form 4n + an + b
         for i in xrange(n):
             coord_quad_form[ q_form(i)] = None 
@@ -62,5 +61,5 @@ def plot_and_save_spiral(n, spiral_fun, path):
 
 if __name__ == "__main__":
 
-    plot_and_save_spiral(10000, calculate_coordinates_Ulam_spiral,       "img/Ulam_spiral.png");
-    # plot_and_save_spiral(50000, coord_ArchimedSpiral, "img/Archimed_spiral.png");
+    plot_and_save_spiral(50000, calculate_coordinates_Ulam_spiral, "img/Ulam_spiral.png");
+    plot_and_save_spiral(50000, coord_ArchimedSpiral, "img/Archimed_spiral.png");
