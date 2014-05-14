@@ -45,13 +45,15 @@ def plot_pascals_triangle(n_layers, d):     # d = divisor
         shift += sq_edge / 2
 
 #    added by kvagr
+    if web:
+        return draw.tostring()
 #    if os.path.isdir("../../webserver/layout2/static/img/JendasWork/2_task/"):
-#
-    draw.saveas("../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg")
-    return "../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
 #    else:
-#        draw.saveas("img/pascals_triangle.svg")
-#        return "/home/jendas/skola/math_in_python/webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
+#        draw.saveas("../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg")
+#        return "../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
+    else:
+        draw.saveas("img/pascals_triangle.svg")
+        return "/home/jendas/skola/math_in_python/webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
 
 
 if __name__ == "__main__":

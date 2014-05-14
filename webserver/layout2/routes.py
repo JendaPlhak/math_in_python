@@ -65,8 +65,18 @@ def plhak(task=''):
 #            img = evaluateFunction("Jendas", funName, dict(request.args))
 #            
 #        else:
-        img = plot_pascals_triangle(n_layers, d)
-        base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
+
+        # udelej file-like objekt (ma metody read, write, atd.) v pameti 
+        output = StringIO()
+        output.write( plot_pascals_triangle(n_layers, d, web=True) )
+        output.seek(0)
+
+        #base64_data = open( output, "rb").read().encode("base64").replace("\n", "")
+        base64_data = output.read().encode("base64").replace("\n", "")
+        output.close()
+
+        #img = plot_pascals_triangle(n_layers, d)
+        #base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
 
         return render_template('plhak.html', task=task, img_data=base64_data)
     else:    
