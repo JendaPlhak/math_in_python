@@ -43,6 +43,7 @@ def plot_pascals_triangle(n_layers, d):     # d = divisor
                               )
                     )
         shift += sq_edge / 2
+        
     # added by kvagr
     if os.path.isdir("../../webserver/layout2/static/img/JendasWork/2_task/"):
 
