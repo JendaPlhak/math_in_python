@@ -49,28 +49,28 @@ def home(name=''):
 @app.route('/plhak/<task>')
 def plhak(task=''):
 
-#    if task == 'pascal':
-#
-#        n_layers = int(request.args.get('n_layers',0))
-#        d        = int(request.args.get('d',0))
-#    
-#        if n_layers < 0 or n_layers > 50 or d > 50:
-#            n_layers = 50
-#            d        = 2
-#        if request.args:
-#
-#            arguments = dict(request.args)
-#            funName   = arguments["funName"]
-#            del arguments["funName"]
-#            img = evaluateFunction("Jendas", funName, dict(request.args))
-#            
-#        else:
-#            img = plot_pascals_triangle(n_layers, d)
-#        base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
-#
-#        return render_template('plhak.html', task=task, img_data=base64_data)
-#    else:    
-#        
+    if task == 'pascal':
+
+        n_layers = int(request.args.get('n_layers',0))
+        d        = int(request.args.get('d',0))
+    
+        if n_layers < 0 or n_layers > 50 or d > 50:
+            n_layers = 50
+            d        = 2
+        if request.args:
+
+            arguments = dict(request.args)
+            funName   = arguments["funName"]
+            del arguments["funName"]
+            img = evaluateFunction("Jendas", funName, dict(request.args))
+            
+        else:
+            img = plot_pascals_triangle(n_layers, d)
+        base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
+
+        return render_template('plhak.html', task=task, img_data=base64_data)
+    else:    
+        
     return render_template('plhak.html', task=task)
 
 

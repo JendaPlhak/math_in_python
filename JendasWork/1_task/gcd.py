@@ -56,5 +56,5 @@ def create_and_savefig(size, gcd_algorithm, path, steps = True):
 if __name__ == "__main__":
     
     create_and_savefig(201, gcd_recursive,   "img/gcd_recursive.png", steps = False)
-    create_and_savefig(501, gcd_mod,         "img/gcd_modulo_steps.png")
-    create_and_savefig(201, gcd_subtraction, "img/gcd_subtraction_steps.png")
+    create_and_savefig(501, gcd_mod,         "img/gcd_modulo.png")
+    create_and_savefig(201, gcd_subtraction, "img/gcd_subtraction.png")
