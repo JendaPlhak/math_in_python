@@ -1,0 +1,5 @@
+Here I did something little bit different. To draw polygon filled with black points 
+I had to write program that would decide whether point lies inside polygon or out.
+Well I did that but the resulting picture shows how algorithm decided for given point.
+
+&img="Polygon.svg" alt="Polygon.svg"
