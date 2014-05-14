@@ -7,24 +7,32 @@
 		{% include 'JendasWork/1_task/article_' + task + '.html' %}
 	
 	<!-- TASK 2 -->
-	{% elif task in ['pascal'] %}
-		{% include 'JendasWork/2_task/' + task + '.html' %}
+	{% elif task in ['pascals_triangle'] %}
+		<!-- {# {% include 'JendasWork/2_task/article_' + task + '.html' %} #}-->
+
+		<img src="data:image/svg+xml;base64,{{ img_data }}" alt="pascals_triangle.svg" width="500">
+		<form action="" method="get">
+			Number: <input type="number" name="n_layers" value="10"><br>
+			Length: <input type="number" name="d" value="2"><br>
+					<input type="submit" value="Draw!">
+		</form>
+		
 
 	<!-- TASK 3 -->
 	{% elif task in ['turtle', 'fractals'] %}
-		{% include 'JendasWork/3_task/' + task + '.html' %}
+		{% include 'JendasWork/3_task/article_' + task + '.html' %}
 	
 	<!-- TASK 4 -->
 	{% elif task in ['shapes', 'polygon','effects','hide_and_seek'] %}
-		{% include 'JendasWork/4_task/' + task + '.html' %}		
+		{% include 'JendasWork/4_task/article_' + task + '.html' %}		
 	
 	<!-- TASK 5 -->
 	{% elif task in ['intersection', 'triangulation', 'gift_wrapping']%}
-		{% include 'JendasWork/5_task/' + task + '.html' %}
+		{% include 'JendasWork/5_task/article_' + task + '.html' %}
 
 	<!-- TASK 6 -->	
 	{% elif task in ['chaos_game'] %}
-		{% include 'JendasWork/6_task/' + task + '.html' %}
+		{% include 'JendasWork/6_task/article_' + task + '.html' %}
 
 			
 	{% endif %}

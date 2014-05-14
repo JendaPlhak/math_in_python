@@ -21,7 +21,7 @@ def pascals_triangle(n_layers):
     return layers
 
 
-def plot_pascals_triangle(n_layers, d):     # d = divisor
+def plot_pascals_triangle(n_layers, d, web=False):     # d = divisor
     
     layers  = pascals_triangle(n_layers)
     draw    = svgwrite.drawing.Drawing()
@@ -43,9 +43,17 @@ def plot_pascals_triangle(n_layers, d):     # d = divisor
                               )
                     )
         shift += sq_edge / 2
-    
-    # draw.saveas("img/pascals_triangle.svg")
-    return "/home/jendas/skola/math_in_python/webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
+
+#    added by kvagr
+    if web:
+        return draw.tostring()
+#    if os.path.isdir("../../webserver/layout2/static/img/JendasWork/2_task/"):
+#    else:
+#        draw.saveas("../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg")
+#        return "../../webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
+    else:
+        draw.saveas("img/pascals_triangle.svg")
+        return "/home/jendas/skola/math_in_python/webserver/layout2/static/img/JendasWork/2_task/pascals_triangle.svg"
 
 
 if __name__ == "__main__":
