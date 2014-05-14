@@ -55,7 +55,7 @@ def triangulation(points):    # Greedy algorithm
 def triangulateRandom(n, uniform=True):
 
     if uniform:
-        points = np.random.uniform(0,700,[n,2])
+        points = np.random.uniform(0,500,[n,2])
         draw   = Turtle("triangulation_uniform_points")
     else:
         mean, sigma = 200, 70

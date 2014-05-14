@@ -1,10 +1,10 @@
 Gift wrapping problem - solution for uniformly distributed points
 
-&img="Gift_Wraping_uniform.svg" alt="Gift_Wraping_uniform.svg"
+&img="Gift_Wrapping_uniform.svg" alt="Gift_Wrapping_uniform.svg"
 
 And solution for normal distribution:
 
-&img="Gift_Wraping_normal.svg" alt="Gift_Wraping_normal.svg"
+&img="Gift_Wrapping_normal.svg" alt="Gift_Wrapping_normal.svg"
 
 Wraps for normally distributed points tend to form more circle-like wrapping 
 with more circles concentrated at the middle. That is quite expected behavior with respect
