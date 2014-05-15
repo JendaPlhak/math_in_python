@@ -41,10 +41,13 @@ class WeightedRandom():
 
 
 
-def randomPolygon(n=3, r=1/2., n_iter=100000, a=300, size=1000, path="img/randomSierpinski.png"):
+def randomPolygon(n=3, r=1/2., n_iter=100000, a=400, size=450, center=(50,50), rect=False, path="img/randomSierpinski.png", ):
     
-    vertices = regularPolygon(Turtle("randomPolygon", (250,250)), a, n)
-    img      = Image.new('RGB', (size,size), 'white')
+    if rect:
+        vertices = [50+50j, 250+50j,250+250j]
+    else:
+        vertices = regularPolygon(Turtle("randomPolygon", center), a, n)
+    img = Image.new('RGB', (size,size), 'white')
     
     point = 10
     for k, i in enumerate(WeightedRandom(n_iter, [1] * n)):
@@ -62,3 +65,6 @@ def randomPolygon(n=3, r=1/2., n_iter=100000, a=300, size=1000, path="img/random
 if __name__ == '__main__':
 
     randomPolygon()
+    randomPolygon(n=4, r=1/3., a=300,           path="img/squares.png")
+    randomPolygon(n=5, r=3/8., a=250, size=550, center=(150,100), path="img/pentagon.png")
+    randomPolygon(n=3, r=1/2., size=260, rect=True, path="img/iregularTriangle.png", )
