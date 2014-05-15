@@ -3,19 +3,14 @@
 from PIL import Image
 
 
-def bifurcation(path):
+def bifurcation(path, zoom=(2.5, 4., 0., 1.), n_iter=700):
 
     s_x   = 1000
     s_y   = 500
     img = Image.new("RGB", (s_x, s_y), "white")
 
-    n_iter = 700
-
-    x_a    = 2.5
-    x_b    = 4.
-
-    y_a    = 0.1
-    y_b    = 0.9
+    # zoom parameters
+    x_a, x_b, y_a, y_b = zoom
 
     for i in xrange(s_x):
         r = x_a + (x_b - x_a) * i / float(s_x - 1)
@@ -33,4 +28,5 @@ def bifurcation(path):
 
 if __name__ == '__main__':
     
-    bifurcation("img/Bifurcation.png")
+    bifurcation("img/BifurcationFull.png")
+    bifurcation("img/BifurcationZoomed.png", (3.5, 4., 0.3, 0.5), 1200)

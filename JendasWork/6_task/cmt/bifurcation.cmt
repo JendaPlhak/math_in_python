@@ -1,0 +1,7 @@
+Bifurcation no zoom full picture
+
+&img="BifurcationFull.svg" alt="BifurcationFull.svg"
+
+Bifurcation zoomed with parameters x_a, x_b, y_a, y_b = 2.5, 4, 0, 1
+
+&img="BifurcationZoomed.svg" alt="BifurcationZoomed.svg"
