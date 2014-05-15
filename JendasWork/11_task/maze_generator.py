@@ -31,10 +31,22 @@ class MazeGenerator(object):
 
     def __init__(self, n, k=4):
 
-        roots = {1j**k:1 for k in xrange(k)}
-        self.grid    = { i+1j*j:dict(roots) for i in xrange(n) for j in xrange(n) }
+        self.grid  = {}
+        self.walls = {}
+        self.dirs  = [2+0j, -2+0j, 1+1j, 1-1j, -1-1j, -1+1j]
+
+        for i in xrange(n):
+            for j in xrange(n):
+                if (i + j) % 2 == 0:
+                    self.grid[i+1j*j] = True
+
+        for field in self.grid:
+            for dir_ in self.dirs:
+                if field + dir_ in self.grid:
+                    self.walls[(field, field + dir_)] = True
+
         self.visited = set()
-        self.dirs    = [1, 1j, -1, -1j]
+        
         self.demolishWalls(0)
 
     def copyGrid(self):
