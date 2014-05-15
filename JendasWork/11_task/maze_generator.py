@@ -12,6 +12,7 @@ class PerfectMazeGenerator(object):
 
     def __init__(self, n):
 
+        self.dirs = [1, 1j, -1, -1j]
         roots = {1j**k:1 for k in xrange(4)}
         self.grid    = { i+1j*j:dict(roots) for i in xrange(n) for j in xrange(n) }
         self.visited = set()
