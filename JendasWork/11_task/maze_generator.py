@@ -167,5 +167,5 @@ def plotMaze(grid, d=20, name="SquareMaze"):
 
 
 if __name__ == '__main__':
-    plotMaze(braidMazeGenerator(33).grid,   20, "BraidMaze")
-    plotMaze(PerfectMazeGenerator(35).grid, 20, "PerfectMaze")
+    plotMaze(braidMazeGenerator(15).grid,   20, "BraidMaze")
+    plotMaze(PerfectMazeGenerator(15).grid, 20, "PerfectMaze")
