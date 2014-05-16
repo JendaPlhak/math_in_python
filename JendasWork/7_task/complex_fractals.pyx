@@ -110,7 +110,7 @@ cdef inline Complex cFun4(Complex z):
 @cython.wraparound(False)
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def complexFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, newton=0, path="img/trol.png"):
+def complexFractal(width=1000, height=500,c_num=-0.8+0.156*1j, julia_=True, newton=0, path="img/trol.png"):
      
     # Specify image width and height
     cdef int w = width
@@ -172,7 +172,7 @@ def complexFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, new
         for x in xrange(w):
             for y in xrange(h):
                 z = cNewNumber(re_min, im_min, step_x, step_y, x, y)
-                for n in xrange(100):
+                for n in xrange(150):
                     cAdd(z, t)
                     cFun(z)
                     dz = cDiff(cFun(cAdd(z, t)), cFun(z))

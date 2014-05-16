@@ -43,6 +43,10 @@ do_img_reload() {
     ${DIR_AUTO}/ImgGenerate.sh
 }
 
+do_img_copy() {
+    ${DIR_AUTO}/ImgCopy.sh
+}
+
 do_article_reload() {
     cd ${DIR_AUTO}
     ${DIR_AUTO}/createArticles.sh
@@ -74,6 +78,10 @@ case "$1" in
         ;;
     imgReload)
         do_img_reload
+        do_img_copy
+        ;;
+    imgCopy)
+        do_img_copy
         ;;
     cleanImg)
         do_clear
@@ -82,7 +90,7 @@ case "$1" in
         status_of_proc "$DAEMON_NAME" "$DAEMON" && exit 0 || exit $?
         ;;
     *)
-        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|articleReload|cleanImg|status}"
+        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|imgCopy|articleReload|cleanImg|status}"
         exit 1
         ;;
  
