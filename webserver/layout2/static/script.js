@@ -57,6 +57,8 @@ $(document).ready(function(){
         "7" : [""],
         "8" : ["affine_transformation"],
         "9" : ["mp_inverse"],
+        "10": ["empty"],
+        "11": ["empty"]
     }
 
     $('.barTask').click(function(){
