@@ -30,21 +30,21 @@ def linearRegression(data):
 
 def linearRegressionGradient(data):
 
-    a = 0
-    b = 0
-    n = 0
-    while n <= 10:
-        n += 1
-        shuffle(data)
-        for x, y in data:
-            grad_a = 2*(a*x + b - y) * x
-            grad_b = 2*(a*x + b - y)
 
-            norm = sqrt(grad_a**2 + grad_b**2)
-            a -= grad_a / norm
-            b -= grad_b / norm
+    x_raw, y_raw = zip(*data)
 
-    return [b, a]
+    x = transpose(np.array([[1 for i in x_raw], x_raw]))
+    y = transpose(np.array(y_raw))
+
+    theta = np.array([0,0])
+    alpha = 0.001
+
+    for i in xrange(10000):
+        error = dot(x, theta) - y
+        delta = dot(transpose(x), error) / len(y_raw)**2
+        theta = theta - alpha * delta
+
+    return theta
 
 
 def plotResult(l, data, path="linreg.png"):
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     line = linearRegression(data_pel)
     plotResult(line, data_pel, path="img/linreg.png")
 
-    data = dataGenerator(100)
+    data = dataGenerator(1000)
     line = linearRegression(data)
     plotResult(line, data, path="img/linreg_random.png")
     print line

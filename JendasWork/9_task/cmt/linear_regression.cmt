@@ -1,0 +1,24 @@
+I implemented the linear regression using Moore–Penrose pseudo inverse matrix. It can be shown,
+that in this situation it is equivalent to Least squares method, which is the Best Linear Unbiased Estimator(BLUE).
+
+Formally written we need to solve following equation $A*\textbf{b} = \textbf{y}$ where b
+represents vector of parameters of the line. Since rows are linearly independent, we can apply simple formula to calculate
+the pseudo inverse: $A^{+} = (A^{*}A)^{-1}A^{*}$ and then 
+we obtain the solution by matrix multiplication: $\textbf{b} = A^{+}\textbf{y}
+
+Result for 'linreg.txt':
+
+&img="linreg.png" alt="linreg.png"
+
+And now follows experiments with my own data. I generated normally distributed noise around line $-2x + 5$.
+
+Pseudo inverse regression:
+
+&img="linreg_random.png" alt="linreg_random.png"
+
+Gradient descent:
+
+&img="linreg_gradient.png" alt="linreg_gradient.png"
+
+In accordance with the fact that, LS method is BLUE, I observed, that by adding more data I will increase
+the accuracy of my estimation.

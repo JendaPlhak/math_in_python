@@ -3,8 +3,8 @@ from __future__ import division
 from random     import sample
 from math       import sqrt
 
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import re
 import matplotlib.pyplot as plt
 
