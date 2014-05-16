@@ -60,7 +60,7 @@ def plotResult(l, data, path="linreg.png"):
     max_x = max(x)
     plt.plot([min_x, max_x], 
              [l[0] + min_x*l[1], l[0] + max_x*l[1]], 
-             'k-')
+             'k-', linewidth=5.)
 
     fig.savefig(path, dpi=80, bbox_inches='tight')
 
