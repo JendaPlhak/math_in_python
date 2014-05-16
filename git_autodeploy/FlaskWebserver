@@ -43,6 +43,10 @@ do_img_reload() {
     ${DIR_AUTO}/ImgGenerate.sh
 }
 
+do_img_copy() {
+    ${DIR_AUTO}/ImgCopy.sh
+}
+
 do_article_reload() {
     cd ${DIR_AUTO}
     ${DIR_AUTO}/createArticles.sh
@@ -74,6 +78,10 @@ case "$1" in
         ;;
     imgReload)
         do_img_reload
+        do_img_copy
+        ;;
+    imgCopy)
+        do_img_copy
         ;;
     cleanImg)
         do_clear
