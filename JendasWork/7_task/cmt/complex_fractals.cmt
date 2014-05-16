@@ -2,8 +2,8 @@ I have implemented this program for Mandelbrot and Julia set even before the tas
 in spoiling it to actually see how much time Cython saves. 
 
 At least I can provide difference between version, that uses mostly python data types to calculate 
-Newtons fractal, and version purely written in Cython. Both programs were run on the same
-machine a the task was to calculate 3000x2000 picture of Newtons fractal for the same area.
+Newton fractal, and version purely written in Cython. Both programs were run on the same
+machine and the task was to calculate 3000x2000 picture of Newton fractal for the same area.
 
 Cython with python data types: 79,23s
 
@@ -12,7 +12,7 @@ Pure Cython without any objective behavior: 5,34s
 Conclusion: Pure Cython code was about 14.8 times faster than Cython code with mostly python
 default data types. I expect pure Python to be measurably even slower.
 
-Resulting Newtons fractal for function $z^3 - 1$:
+Resulting Newton fractal for function $z^3 - 1$:
 
 &img="Newton_method1.png" alt="Newton_method1.png"
 
