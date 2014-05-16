@@ -90,7 +90,7 @@ case "$1" in
         status_of_proc "$DAEMON_NAME" "$DAEMON" && exit 0 || exit $?
         ;;
     *)
-        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|articleReload|cleanImg|status}"
+        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|imgCopy|articleReload|cleanImg|status}"
         exit 1
         ;;
  
