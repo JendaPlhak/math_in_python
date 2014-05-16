@@ -183,7 +183,7 @@ def complexFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, new
                     z = z0
                 output[x][y] = n
     
-    print "Calculation finished!"
+    print "Fractal generated!"
     
 
     col_n = 75
@@ -204,3 +204,4 @@ def complexFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, new
     for i in xrange(w):
         free(output[i])
     free(output)
+    print "Fractal printed!"
