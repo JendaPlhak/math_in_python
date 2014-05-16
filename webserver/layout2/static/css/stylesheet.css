@@ -130,8 +130,8 @@ body {
 #innerPlhak, #innerKvapil {
     display:inline-block;
     position: relative;
-    width: 200px;
-    right: -200px;
+    width: 250px;
+    right: -250px;
 }
 #innerTaskPlhak {
     display:inline-block;
