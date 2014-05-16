@@ -12,21 +12,21 @@ Pure Cython without any objective behavior: 5,34s
 Conclusion: Pure Cython code was about 14.8 times faster than Cython code with mostly python
 default data types. I expect pure Python to be measurably even slower.
 
-Resulting Newtons fractal for function $z^3 - 1$
+Resulting Newtons fractal for function $z^3 - 1$:
 
 &img="Newton_method1.png" alt="Newton_method1.png"
 
 And now something from my own experiments:
 
-$z^7 - 1$
+$z^7 - 1$:
 
 &img="Newton_method2.png" alt="Newton_method2.png"
 
-$z^7 + z^3 - 1$
+$z^7 + z^3 - 1$:
 
 &img="Newton_method3.png" alt="Newton_method3.png"
 
-$z^7 + 7z^4 - 13$
+$z^7 + 7z^4 - 13$:
 
 &img="Newton_method4.png" alt="Newton_method4.png"
 
