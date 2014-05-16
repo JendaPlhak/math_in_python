@@ -27,9 +27,13 @@ for _file in os.listdir( directory ):
         
         # get the name
         _file_name = _file[ : _file.index('.cmt') ]
-    
+        
+        # if the task directory does not exists, make it happen!
+        if not os.path.exists( '../webserver/layout2/templates/'+ part_dir ):
+            os.makedirs( '../webserver/layout2/templates/'+ part_dir )
+
         # create new file for the article
-        with open(  '../webserver/layout2/templates/'+ part_dir +'article_'+ _file_name +'.html','w') as article:
+        with open( '../webserver/layout2/templates/'+ part_dir +'article_'+ _file_name +'.html','w') as article:
             commentary = commentary.split('\n\n')
         
             # article formatting
