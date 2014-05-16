@@ -44,7 +44,7 @@ $(document).ready(function(){
         "3" : ["Turtle","pictures","fractals"],
         "4" : ["simple_shapes","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
-        "6" : ["chaos_game"],
+        "6" : ["chaos_game", "bifurcation","L-systems"],
         "7" : ["plot_fractals"]
     }
     var tasksKvapil = {

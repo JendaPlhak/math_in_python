@@ -29,6 +29,29 @@ cdef inline Complex cAdd(Complex a, Complex b):
     result.im = a.im + b.im 
     return result
 
+cdef inline Complex cDiff(Complex a, Complex b):
+    
+    cdef Complex result
+
+    result.re = a.re - b.re
+    result.im = a.im - b.im 
+    return result
+
+cdef inline Complex cDiv(Complex a, Complex b):
+    
+    cdef Complex result
+    result.re  = a.re * b.re + a.im * b.im
+    result.im  = a.im * b.re + a.re * b.im
+
+    result.re /= (b.re**2 + b.im**2)
+    result.im /= (b.re**2 + b.im**2)
+
+    return result
+
+cdef inline float cAbs(Complex a):
+    
+    return (a.re**2 + a.im**2)**0.5
+
 cdef inline Complex cNewNumber( float re_min, float im_min, 
                                 float step_x, float step_y,
                                 int x, int y):
@@ -38,9 +61,16 @@ cdef inline Complex cNewNumber( float re_min, float im_min,
     result.im = im_min + y*step_y
     return result
 
+cdef inline Complex cFun(z):
+    
+    cdef Complex one
+    one.re = 1
+    one.im = 0
+    return cDiff(cMultiply(z, cMultiply(z,z)), one)
 
 
-def complexFractal(width=3000/5, height=2000/5,c_num=-0.8+0.156*1j, julia_=True, path="img/trol.png"):
+
+def complexFractal(width=3000/100, height=2000/100,c_num=-0.8+0.156*1j, julia_=True, newton=False, path="img/trol.png"):
      
     # Specify image width and height
     cdef int w = width
@@ -68,23 +98,42 @@ def complexFractal(width=3000/5, height=2000/5,c_num=-0.8+0.156*1j, julia_=True,
     cdef float step_y = abs(im_min - im_max) / h
 
     cdef int n, x, y
-    cdef Complex z, zero
+    cdef Complex z, zero, t, dz
 
+
+    t.re = 1e-3
+    t.im = 1e-3
     zero.re = 0
     zero.im = 0
 
-    for x in xrange(w):
-        for y in xrange(h):
-            if julia:
+    if not newton:
+        for x in xrange(w):
+            for y in xrange(h):
+                if julia:
+                    z = cNewNumber(re_min, im_min, step_x, step_y, x, y)
+                else:
+                    z = zero
+                    c = cNewNumber(re_min, im_min, step_x, step_y, x, y)
+                n = 255
+                while z.re**2 + z.im**2 < treshold**2 and n >= 1:
+                    z  = cAdd(cMultiply(z, z), c)
+                    n -= 1
+                output[x][y] = n
+    else:
+        for x in xrange(w):
+            for y in xrange(h):
                 z = cNewNumber(re_min, im_min, step_x, step_y, x, y)
-            else:
-                z = zero
-                c = cNewNumber(re_min, im_min, step_x, step_y, x, y)
-            n = 255
-            while z.re**2 + z.im**2 < treshold**2 and n >= 1:
-                z  = cAdd(cMultiply(z, z), c)
-                n -= 1
-            output[x][y] = n
+                for n in xrange(255):
+                    dz = cDiff(cFun(cAdd(z, t)), cFun(z))
+                    print "\n",dz, cFun(cAdd(z, t)), cFun(z)
+                    dz = cDiv(dz, t)
+                    z0 = cDiff(z, cFun(z))
+                    print dz
+                    z0 = cDiv(z0, dz)
+                    if cAbs(cDiff(z0, z)) < 0.0003:
+                        break
+                    z = z0
+                output[x][y] = n
     
     print "Calculation finished!"
     
@@ -96,12 +145,12 @@ def complexFractal(width=3000/5, height=2000/5,c_num=-0.8+0.156*1j, julia_=True,
 
     img     = Image.new( 'RGB', (w,h))
     pix_map = img.load()
+
     # Write pixels to file
     for x in xrange(w):
         for y in xrange(h):
             pix_map[x, y] = RGB_tuples[output[x][y] % col_n]
     img.save(path)
-
 
     # Clean up
     for i in xrange(w):

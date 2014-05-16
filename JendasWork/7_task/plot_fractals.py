@@ -4,5 +4,6 @@ from complex_frac import complexFractal
 
 if __name__ == '__main__':
 
-    complexFractal(julia_=True,  path="img/Julia_Set.png")
-    complexFractal(julia_=False, path="img/Mandelbrot_set.png")
+    # complexFractal(julia_=True,  path="img/Julia_Set.png")
+    # complexFractal(julia_=False, path="img/Mandelbrot_set.png")
+    complexFractal(newton=True, path="img/Newton_method.png")
