@@ -89,7 +89,7 @@ class Clustering(object):
 
         for i, cluster in enumerate(self.clusters):
             x, y = zip(*cluster.points)
-            plt.plot(x, y, clrs[i]+'o', markersize=20.)
+            plt.plot(x, y, clrs[i]+'o', markersize=12.)
             plt.plot([cluster.centroid[0]], 
                      [cluster.centroid[1]], 
                      clrs[i]+'h', 
