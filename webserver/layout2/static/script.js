@@ -97,28 +97,28 @@ $(document).ready(function(){
 
 	$('#kvapil').click(function(){
         if( kvapilHidden && kvapilBarHidden && plhakHidden){
-            $('#plhak').animate({left:'-=200px'},'slow');
+            $('#plhak').animate({left:'-=250px'},'slow');
             plhakHidden = false;
-            $(this).animate({left:'-=200px'}, 'slow');
-            $('#outerKvapil').animate({width:'+=200px'}, 'slow');
-            $('#innerKvapil').animate({right:'+=200px'}, 'slow');
+            $(this).animate({left:'-=250px'}, 'slow');
+            $('#outerKvapil').animate({width:'+=250px'}, 'slow');
+            $('#innerKvapil').animate({right:'+=250px'}, 'slow');
             kvapilHidden    = false;
             kvapilBarHidden = false;
         }else if( !kvapilHidden && !kvapilBarHidden && !plhakHidden){
-            $('#plhak').animate({left:'+=200px'},'slow');
+            $('#plhak').animate({left:'+=250px'},'slow');
             plhakHidden = true;
-            $(this).animate({left:'+=200px'}, 'slow');
-            $('#outerKvapil').animate({width:'-=200px'}, 'slow');
-            $('#innerKvapil').animate({right:'-=200px'}, 'slow');
+            $(this).animate({left:'+=250px'}, 'slow');
+            $('#outerKvapil').animate({width:'-=250px'}, 'slow');
+            $('#innerKvapil').animate({right:'-=250px'}, 'slow');
             kvapilHidden    = true;
             kvapilBarHidden = true;
         }else if( !plhakHidden && kvapilHidden && kvapilBarHidden){
-            $('#outerPlhak').animate({width:'-=200px'},'fast');
-            $('#innerPlhak').animate({right:'-=200px'},'fast');
+            $('#outerPlhak').animate({width:'-=250px'},'fast');
+            $('#innerPlhak').animate({right:'-=250px'},'fast');
             plhakBarHidden = true;
-             $(this).animate({left:'-=200px'}, 'slow');
-            $('#outerKvapil').animate({width:'+=200px'}, 'slow');
-            $('#innerKvapil').animate({right:'+=200px'}, 'slow');
+             $(this).animate({left:'-=250px'}, 'slow');
+            $('#outerKvapil').animate({width:'+=250px'}, 'slow');
+            $('#innerKvapil').animate({right:'+=250px'}, 'slow');
             kvapilHidden    = false;
             kvapilBarHidden = false;
         }
@@ -126,25 +126,25 @@ $(document).ready(function(){
 
     $('#plhak').click(function(){
         if ( plhakHidden && plhakBarHidden && kvapilHidden ){
-            $(this).animate({left:'-=200px'}, 'slow');
-            $('#outerPlhak').animate({width:'+=200px'},'slow');
-            $('#innerPlhak').animate({right:'+=200px'},'slow');
+            $(this).animate({left:'-=250px'}, 'slow');
+            $('#outerPlhak').animate({width:'+=250px'},'slow');
+            $('#innerPlhak').animate({right:'+=250px'},'slow');
             plhakHidden     = false;
             plhakBarHidden  = false;
         }else if ( !plhakHidden && !plhakBarHidden && kvapilHidden){
-            $(this).animate({left:'+=200px'}, 'slow');
-            $('#outerPlhak').animate({width:'-=200px'},'slow');
-            $('#innerPlhak').animate({right:'-=200px'},'slow');
+            $(this).animate({left:'+=250px'}, 'slow');
+            $('#outerPlhak').animate({width:'-=250px'},'slow');
+            $('#innerPlhak').animate({right:'-=250px'},'slow');
             plhakHidden     = true;
             plhakBarHidden  = true;
         }else if( !plhakHidden && !kvapilHidden && !kvapilBarHidden){
-            $('#kvapil').animate({left:'+=200px'},'slow');
-            $('#outerKvapil').animate({width:'-=200px'}, 'slow');
-            $('#innerKvapil').animate({right:'-=200px'}, 'slow');
+            $('#kvapil').animate({left:'+=250px'},'slow');
+            $('#outerKvapil').animate({width:'-=250px'}, 'slow');
+            $('#innerKvapil').animate({right:'-=250px'}, 'slow');
             kvapilHidden    = true;
             kvapilBarHidden = true;
-            $('#outerPlhak').animate({width:'+=200px'},'slow');
-            $('#innerPlhak').animate({right:'+=200px'},'slow');
+            $('#outerPlhak').animate({width:'+=250px'},'slow');
+            $('#innerPlhak').animate({right:'+=250px'},'slow');
             plhakHidden     = false;
             plhakBarHidden  = false;
         }
