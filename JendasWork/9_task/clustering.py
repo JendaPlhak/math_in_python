@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-from __future__ import division
+import matplotlib
+matplotlib.use('Agg')
 from random     import sample
 from math       import sqrt
 
-import matplotlib
-matplotlib.use('Agg')
 import re
 import matplotlib.pyplot as plt
 
