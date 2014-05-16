@@ -137,7 +137,7 @@ def loadData(path):
 
 if __name__ == '__main__':
     
-    Clustering(loadData("cluster_data.txt"), 7).performClustering()
+    Clustering(loadData("cluster_data.txt"), 6).performClustering()
 
     points, cores = dataGenerator(7, 250, rand_sig=False)
     Clustering(points, 7, cores=cores, name="img/clustering_sigma30.png").performClustering()
