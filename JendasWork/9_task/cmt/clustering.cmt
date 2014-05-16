@@ -1,0 +1,21 @@
+First plot shows data clustering for 'cluster_data.txt' file:
+
+&img="clustering.png" alt="clustering.png"
+
+Then I implemented cluster generator. Stars represent original cluster centroids, hexagons approximated centroids.
+
+7 clusters, low noise variance:
+
+&img="clustering_sigma30.png" alt="clustering_sigma30.png"
+
+7 clusters, high noise variance:
+
+&img="clustering_sigma100.png" alt="clustering_sigma100.png"
+
+7 clusters, noise variance random for each cluster:
+
+&img="clustering_sigma50random.png" alt="clustering_sigma50random.png"
+
+It can be seen that for low noise variance are results quite accurate and the process took only few rounds
+to converge. On the other hand, cluster crossfading caused the process to perform significantly more iterations 
+(about twice more) and approximation quality is quite poor.

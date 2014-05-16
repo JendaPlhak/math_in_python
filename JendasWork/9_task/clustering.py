@@ -1,9 +1,11 @@
 #!/usr/bin/env python
-import matplotlib
-matplotlib.use('Agg')
+from __future__ import division
 from random     import sample
 from math       import sqrt
 
+import matplotlib
+matplotlib.use('Agg')
+from random import random, choice, gauss
 import re
 import matplotlib.pyplot as plt
 
@@ -26,8 +28,10 @@ class Cluster(object):
 
 class Clustering(object):
 
-    def __init__(self, data, k):
+    def __init__(self, data, k, name="img/clustering.png", cores=None):
 
+        self.cores    = cores
+        self.name     = name
         self.data     = data
         self.k        = k
         self.clusters = []
@@ -80,7 +84,7 @@ class Clustering(object):
 
     def plotResult(self):
 
-        clrs = ['r', 'g', 'b', 'k', 'c', 'm', 'y']
+        clrs = ['g', 'b', 'k', 'c', 'm', 'y','r']
         fig  = plt.figure(figsize=(23.5, 23.5))
 
         for i, cluster in enumerate(self.clusters):
@@ -90,10 +94,34 @@ class Clustering(object):
                      [cluster.centroid[1]], 
                      clrs[i]+'h', 
                      markersize=20.)
+        if self.cores:
+            for core in self.cores:
+                plt.plot([core[0]], 
+                     [core[1]], 
+                     'r*', 
+                     markersize=30.)
 
-        fig.savefig("img/clustering.png", dpi=80, bbox_inches='tight')
+
+        fig.savefig(self.name, dpi=80, bbox_inches='tight')
 
 
+def dataGenerator(n_clust, n_points, size=500, rand_sig=True, sig_max = 30):
+
+    if rand_sig:
+        cluster_cores = {(random()*size, random()*size):random()*sig_max for _ in xrange(n_clust)}
+    else:
+        cluster_cores = {(random()*size, random()*size):sig_max for _ in xrange(n_clust)}
+
+    points = []
+
+    for _ in xrange(n_points):
+        core  = choice(cluster_cores.keys())
+        sigma = cluster_cores[core]
+        x = gauss(0, sigma) + core[0]
+        y = gauss(0, sigma) + core[1]
+        points.append((x, y))
+
+    return points, cluster_cores
 
 
 
@@ -110,3 +138,12 @@ def loadData(path):
 if __name__ == '__main__':
     
     Clustering(loadData("cluster_data.txt"), 7).performClustering()
+
+    points, cores = dataGenerator(7, 250, rand_sig=False)
+    Clustering(points, 7, cores=cores, name="img/clustering_sigma30.png").performClustering()
+
+    points, cores = dataGenerator(7, 250, rand_sig=False, sig_max = 100)
+    Clustering(points, 7, cores=cores, name="img/clustering_sigma100.png").performClustering()
+
+    points, cores = dataGenerator(7, 250, rand_sig=False, sig_max = 50)
+    Clustering(points, 7, cores=cores,  name="img/clustering_sigma50random.png").performClustering()
