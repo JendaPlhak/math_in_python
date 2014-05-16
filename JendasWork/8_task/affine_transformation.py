@@ -4,7 +4,7 @@ sys.path.append("../3_task")
 
 from numpy import array, dot
 from math  import sin, cos, pi
-from test_fun import regularPolygon
+from test_pictures import regularPolygon
 from Turtle   import Turtle
 
 def identity():
@@ -71,15 +71,15 @@ def applyTransform(points, transform, rec=1):
     return points
 
 
-def drawPoints(points, title):
+def drawPoints(points, title, clr='green'):
 
-    draw = Turtle(title)
+    draw = Turtle(title, background=True)
     if isinstance(points[0], PointGroup):
         for pointGroup in points:
             draw.connectPoints(pointGroup.points)
     else:
         for point in points:
-            draw.addPoint((500*point[0] + 200, 500*point[1] + 200), 'green')
+            draw.addPoint((500*point[0] + 200, 500*point[1] + 200), clr)
     draw.dumpImage()
 
 def copyPoints(points):

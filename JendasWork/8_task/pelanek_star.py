@@ -3,7 +3,7 @@ import scipy.stats as stats
 from affine_transformation import *
 
 
-def pelanek_star(rec=5):
+def pelanek_star(rec=6):
 
     a = 500
     points = [ PointGroup(square(500)) ]
@@ -36,12 +36,12 @@ def pelanek_star(rec=5):
                                 trans,
                                 rec)
 
-    points = applyTransform(points, translation(200, 200))
+    points = applyTransform(points, translation(-50, -50))
 
-    drawPoints(points, "Pelanek_star")
+    drawPoints(points, "Star")
 
 
-def pelanek_star_iterative(n_i=5000):
+def pelanek_star_iterative(n_i=7500):
 
     a = 1
 
@@ -66,16 +66,17 @@ def pelanek_star_iterative(n_i=5000):
                       ])
                 ]
 
-    randint = stats.rv_discrete( values=(range(4), (0.25, 0.25, 0.25, 0.25)) )
+    randint = stats.rv_discrete( values=(range(4), (0.01, 0.25, 0.28, 0.25)) )
     points  = [array([0, 0, 1])]
     for i in randint.rvs(size=n_i):
         points.append(dot(trans[i], points[-1]))
 
-    drawPoints(points, "Pelanek_star_random")
+    points = [(x[0]-0.5, x[1]-0.5) for x in points]
+    drawPoints(points[200:], "Star_random", clr='black')
 
 
 
 if __name__ == '__main__':
 
-    # pelanek_star()
+    pelanek_star()
     pelanek_star_iterative()
