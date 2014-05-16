@@ -12,7 +12,7 @@ Then I implemented cluster generator. Stars represent original cluster centroids
 
 &img="clustering_sigma100.png" alt="clustering_sigma100.png"
 
-7 clusters, noise variance random for each cluster:
+7 clusters, random noise variance for each cluster:
 
 &img="clustering_sigma50random.png" alt="clustering_sigma50random.png"
 

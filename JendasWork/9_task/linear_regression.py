@@ -12,10 +12,13 @@ from clustering   import loadData
 from math         import sqrt
 
 
-def dataGenerator(n):
+def dataGenerator(n, ln=False):
 
     x = np.arange(0, n)
-    y = 5 - 2 * x + np.random.normal(0, 100, n)
+    if ln:
+        y = 5 - 2 * x + np.random.lognormal(0, 2, n)
+    else:
+        y = 5 - 2 * x + np.random.normal(0, 100, n)
     return zip(x, y)
 
 
@@ -78,6 +81,10 @@ if __name__ == '__main__':
     
     line = linearRegressionGradient(data)
     plotResult(line, data, path="img/linreg_gradient.png")
+    print line
 
+    data = dataGenerator(300, True)
+    line = linearRegression(data)
+    plotResult(line, data, path="img/linreg_random_lognormal.png")
     print line
    
