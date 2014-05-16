@@ -8,8 +8,8 @@ from libc.stdlib cimport malloc, free
 
 cdef struct Complex:
     
-    float re
-    float im
+    double re
+    double im
 
 
 cdef inline Complex cMultiply(Complex a, Complex b):
@@ -41,19 +41,19 @@ cdef inline Complex cDiv(Complex a, Complex b):
     
     cdef Complex result
     result.re  = a.re * b.re + a.im * b.im
-    result.im  = a.im * b.re + a.re * b.im
+    result.im  = a.im * b.re - a.re * b.im
 
     result.re /= (b.re**2 + b.im**2)
     result.im /= (b.re**2 + b.im**2)
 
     return result
 
-cdef inline float cAbs(Complex a):
+cdef inline double cAbs(Complex a):
     
     return (a.re**2 + a.im**2)**0.5
 
-cdef inline Complex cNewNumber( float re_min, float im_min, 
-                                float step_x, float step_y,
+cdef inline Complex cNewNumber( double re_min, double im_min, 
+                                double step_x, double step_y,
                                 int x, int y):
 
     cdef Complex result
@@ -70,7 +70,7 @@ cdef inline Complex cFun(z):
 
 
 
-def complexFractal(width=3000/100, height=2000/100,c_num=-0.8+0.156*1j, julia_=True, newton=False, path="img/trol.png"):
+def complexFractal(width=3000/10, height=2000/10,c_num=-0.8+0.156*1j, julia_=True, newton=False, path="img/trol.png"):
      
     # Specify image width and height
     cdef int w = width
@@ -83,7 +83,7 @@ def complexFractal(width=3000/100, height=2000/100,c_num=-0.8+0.156*1j, julia_=T
     # Specify real and imaginary range of image
     re_min, re_max = -2*(1/zoom) + shift, 1*(1/zoom) + shift
     im_min, im_max = -1*(1/zoom) + shift, 1*(1/zoom) + shift
-     
+    print re_min, re_max, im_min, im_max
     # Pick a value for c
     cdef Complex c
     c.re = c_num.real
@@ -94,8 +94,8 @@ def complexFractal(width=3000/100, height=2000/100,c_num=-0.8+0.156*1j, julia_=T
         output[i] = <int *> malloc(sizeof(int) * h)
 
     # Generate pixel values and write to file
-    cdef float step_x = abs(re_max - re_min) / w
-    cdef float step_y = abs(im_min - im_max) / h
+    cdef double step_x = abs(re_max - re_min) / w
+    cdef double step_y = abs(im_min - im_max) / h
 
     cdef int n, x, y
     cdef Complex z, zero, t, dz
@@ -123,14 +123,11 @@ def complexFractal(width=3000/100, height=2000/100,c_num=-0.8+0.156*1j, julia_=T
         for x in xrange(w):
             for y in xrange(h):
                 z = cNewNumber(re_min, im_min, step_x, step_y, x, y)
-                for n in xrange(255):
+                for n in xrange(100):
                     dz = cDiff(cFun(cAdd(z, t)), cFun(z))
-                    print "\n",dz, cFun(cAdd(z, t)), cFun(z)
                     dz = cDiv(dz, t)
-                    z0 = cDiff(z, cFun(z))
-                    print dz
-                    z0 = cDiv(z0, dz)
-                    if cAbs(cDiff(z0, z)) < 0.0003:
+                    z0 = cDiff(z, cDiv(cFun(z), dz))
+                    if cAbs(cDiff(z0, z)) < 1e-3:
                         break
                     z = z0
                 output[x][y] = n
