@@ -42,7 +42,7 @@ def barnsley_fen(n_i=200000):
         draw.point( (size[0]/2.1  + point[0]*size[0]/5.0, point[1]*size[1]/11.0),
                      fill='#0f0') 
 
-    im.save("img/Barsley_fen.png", "PNG")
+    im.save("img/Barsley_fern.png", "PNG")
 
 
 if __name__ == '__main__':
