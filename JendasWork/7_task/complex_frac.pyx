@@ -3,7 +3,8 @@ import numpy as np
 import colorsys
 
 from PIL import Image
-from libc.stdlib cimport malloc, free
+from libc.stdlib cimport malloc, free, pow
+cimport cython
 
 
 cdef struct Complex:
@@ -37,40 +38,79 @@ cdef inline Complex cDiff(Complex a, Complex b):
     result.im = a.im - b.im 
     return result
 
+
+@cython.cdivision(True)
 cdef inline Complex cDiv(Complex a, Complex b):
     
     cdef Complex result
     result.re  = a.re * b.re + a.im * b.im
     result.im  = a.im * b.re - a.re * b.im
 
-    result.re /= (b.re**2 + b.im**2)
-    result.im /= (b.re**2 + b.im**2)
+    result.re /= b.re**2 + b.im**2
+    result.im /= b.re**2 + b.im**2
 
     return result
 
+
 cdef inline double cAbs(Complex a):
-    
-    return (a.re**2 + a.im**2)**0.5
+    return a.re * a.re + a.im * a.im
+
 
 cdef inline Complex cNewNumber( double re_min, double im_min, 
                                 double step_x, double step_y,
                                 int x, int y):
-
     cdef Complex result
     result.re = re_min + x*step_x
     result.im = im_min + y*step_y
     return result
 
-cdef inline Complex cFun(z):
+cdef inline Complex cPow(Complex z, int n):
+
+    cdef int i
+    cdef Complex result = z
+    for i in xrange(n - 1):
+        result = cMultiply(result, z)  
+    return result
+
+ctypedef Complex (*cFun_t)(Complex)
+
+cdef inline Complex cFun1(Complex z):
     
-    cdef Complex one
-    one.re = 1
-    one.im = 0
-    return cDiff(cMultiply(z, cMultiply(z,z)), one)
+    cdef Complex i
+    i.re = 1
+    i.im = 0
+    return cDiff(cPow(z,3), i)
+
+cdef inline Complex cFun2(Complex z):
+    
+    cdef Complex i
+    i.re = 1
+    i.im = 0
+    return cDiff(cPow(z,7), i)
+
+cdef inline Complex cFun3(Complex z):
+    
+    cdef Complex i
+    i.re = 1
+    i.im = 0
+    return cAdd(cPow(z,3), cDiff(cPow(z,7), i))
+
+cdef inline Complex cFun4(Complex z):
+    
+    cdef Complex i, result
+    i.re = 13
+    i.im = 0
+    result = cDiff(cPow(z,7), i)
+
+    i.re   = 3
+    return cAdd(result, cMultiply(cPow(z,4), i))
 
 
-
-def complexFractal(width=3000/10, height=2000/10,c_num=-0.8+0.156*1j, julia_=True, newton=False, path="img/trol.png"):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.nonecheck(False)
+@cython.cdivision(True)
+def complexFractal(width=3000, height=2000,c_num=-0.8+0.156*1j, julia_=True, newton=0, path="img/trol.png"):
      
     # Specify image width and height
     cdef int w = width
@@ -83,7 +123,6 @@ def complexFractal(width=3000/10, height=2000/10,c_num=-0.8+0.156*1j, julia_=Tru
     # Specify real and imaginary range of image
     re_min, re_max = -2*(1/zoom) + shift, 1*(1/zoom) + shift
     im_min, im_max = -1*(1/zoom) + shift, 1*(1/zoom) + shift
-    print re_min, re_max, im_min, im_max
     # Pick a value for c
     cdef Complex c
     c.re = c_num.real
@@ -98,7 +137,8 @@ def complexFractal(width=3000/10, height=2000/10,c_num=-0.8+0.156*1j, julia_=Tru
     cdef double step_y = abs(im_min - im_max) / h
 
     cdef int n, x, y
-    cdef Complex z, zero, t, dz
+    cdef Complex z, zero, t, dz, z0
+    cdef cFun_t cFun
 
 
     t.re = 1e-3
@@ -120,14 +160,25 @@ def complexFractal(width=3000/10, height=2000/10,c_num=-0.8+0.156*1j, julia_=Tru
                     n -= 1
                 output[x][y] = n
     else:
+        #Calculate Newtons Fractal
+        if newton == 1:
+            cFun = cFun1
+        elif newton == 2:
+            cFun = cFun2
+        elif newton == 3:
+            cFun = cFun3
+        elif newton == 4:
+            cFun = cFun4
         for x in xrange(w):
             for y in xrange(h):
                 z = cNewNumber(re_min, im_min, step_x, step_y, x, y)
                 for n in xrange(100):
+                    cAdd(z, t)
+                    cFun(z)
                     dz = cDiff(cFun(cAdd(z, t)), cFun(z))
                     dz = cDiv(dz, t)
                     z0 = cDiff(z, cDiv(cFun(z), dz))
-                    if cAbs(cDiff(z0, z)) < 1e-3:
+                    if cAbs(cDiff(z0, z)) < 1e-3 * 1e-3:
                         break
                     z = z0
                 output[x][y] = n
