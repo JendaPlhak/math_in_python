@@ -15,7 +15,7 @@ from math         import sqrt
 def dataGenerator(n):
 
     x = np.arange(0, n)
-    y = 5 - 2 * x + np.random.normal(0, 20, n)
+    y = 5 - 2 * x + np.random.normal(0, 100, n)
     return zip(x, y)
 
 
