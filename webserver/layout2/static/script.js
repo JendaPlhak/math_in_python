@@ -46,7 +46,7 @@ $(document).ready(function(){
         "5" : ["intersection", "triangulation","gift_wrapping"],
         "6" : ["chaos_game", "bifurcation","L-systems"],
         "7" : ["complex_fractals"],
-        "8" : ["complex_fractals"]
+        "8" : ["star", "barnsley_fern", "sierpinski_relatives"]
     }
     var tasksKvapil = {
         "1" : ["collatzo", "basic_graphics", "ulam_spiral", "gcd"],

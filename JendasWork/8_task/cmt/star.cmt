@@ -1,0 +1,9 @@
+To generate the star I took two different approaches.
+
+1. MRCM from square
+
+&img="Star.svg" alt="Star.svg"
+
+2. Random generation
+
+&img="Star_random.svg" alt="Star_random.svg"
