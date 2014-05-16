@@ -128,10 +128,10 @@ body {
     top:-13px;
 }
 #innerPlhak, #innerKvapil {
-    display:inline-block;
+    display: inline-block;
     position: relative;
-    width: 250px;
-    right: -250px;
+    width: 200px;
+    right: -200px;
 }
 #innerTaskPlhak {
     display:inline-block;
@@ -153,7 +153,7 @@ body {
     width: 25px;
     height: 25px;
     background-color: #d6d6d6;
-    margin-left: 0  px;
+    margin-left: 0px;
     border-radius: 5px;
 }
 
