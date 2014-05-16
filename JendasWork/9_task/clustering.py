@@ -89,17 +89,17 @@ class Clustering(object):
 
         for i, cluster in enumerate(self.clusters):
             x, y = zip(*cluster.points)
-            plt.plot(x, y, clrs[i]+'o', markersize=10.)
+            plt.plot(x, y, clrs[i]+'o', markersize=20.)
             plt.plot([cluster.centroid[0]], 
                      [cluster.centroid[1]], 
                      clrs[i]+'h', 
-                     markersize=20.)
+                     markersize=30.)
         if self.cores:
             for core in self.cores:
                 plt.plot([core[0]], 
                      [core[1]], 
                      'r*', 
-                     markersize=30.)
+                     markersize=40.)
 
 
         fig.savefig(self.name, dpi=80, bbox_inches='tight')
