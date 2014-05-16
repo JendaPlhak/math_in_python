@@ -25,4 +25,4 @@ the accuracy of my estimation. On the other hand, adding more noise to data will
 
 If we use log-normal distribution, we will get unbiased estimation as can be seen on following plot:
 
-&img="linreg_gradient_lognormal.png" alt="linreg_gradient_lognormal.png"
+&img="linreg_random_lognormal.png" alt="linreg_random_lognormal.png"
