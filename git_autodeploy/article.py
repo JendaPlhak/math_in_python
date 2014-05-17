@@ -36,7 +36,7 @@ for _file in os.listdir( directory ):
         with open( '../webserver/layout2/templates/'+ part_dir +'article_'+ _file_name +'.html','w') as article:
 
             if re.match(r'^\s*html', commentary):
-                article.write( commentary )
+                article.write( commentary[ commentary.index('html') + 4 :] )
                 sys.exit()
 
             commentary = commentary.split('\n\n')
@@ -123,7 +123,7 @@ for _file in os.listdir( directory ):
                            \r   <div class="code">\
                            \r   <pre>\
                            \r       <code class="python">\
-                           \r{%% include '+ part_dir + _file_name +'.py %%}\
+                           \r{\% include '+ part_dir + _file_name +'.py \%}\
                            \r       </code>\
                            \r   </pre>\
                            \r</div>')
