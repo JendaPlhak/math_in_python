@@ -140,11 +140,6 @@ def kvapil(task=''):
         return render_template('kvapil.html', task=task, numTask=tasksKvapil[task])
 
 
-@app.route('/googlea439b7e95c650165.html') 
-def google_verify():
-    return render_template('googlea439b7e95c650165.html')
-
-
 if __name__ == '__main__':
     handler = RotatingFileHandler('/var/log/flask/flaskWebserver.log', maxBytes=100000, backupCount=1)
     handler.setLevel(logging.INFO)
