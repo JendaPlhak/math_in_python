@@ -19,6 +19,16 @@ of each step of correct solution.
 <br>
 Where $ is box, @ is sokoban, . is target position and # is wall.
 
+<h3>Binary search</h3>
+Before I started coding improvements on sokoban solver itself, I wanted to make 
+sure, that the A* code has no bottlenecks that could be easily fixed. 
+
+Therefore I run it with line profiler (<a href="http://pythonhosted.org/line_profiler/">see this site for more info</a>)
+and found out, that huge bottleneck is sorting preference queue of unvisited vertices each iteration
+instead of just keeping it in sorted state. Therefore I added binary insert function which made the code 10 times faster.
+
+<h3>Preprocessing</h3>
+
 
 
 
