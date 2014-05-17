@@ -2,7 +2,7 @@ html
 <h3>Why Sokoban?</h3>
 After completing the No-left-turn solver I thought it would be a shame not to use the A* algorithm any further.
 I wanted something challenging, so I chose to write sokoban in addition.
-
+<br>
 <h3>First implementation</h3>
 My first naive implementation was able to solve simple square maps with up to 3 boxes. For anything else it was too slow.
 To get at least vague idea of how the algorithm performs the search, I wrote some code to produce following text representation
@@ -19,26 +19,26 @@ of each step of correct solution.
 </textarea>
 <br>
 Where $ is box, @ is sokoban, . is target position and # is wall.
-
+<br>
 <h3>Binary search</h3>
 Before I started coding improvements on sokoban solver itself, I wanted to make 
 sure, that the A* code has no bottlenecks that could be easily fixed. 
-
+<br>
 Therefore I run it with line profiler (<a href="http://pythonhosted.org/line_profiler/" style="color: rgb(0,0,150)">see this site for more info</a>)
 and found out, that huge bottleneck is sorting preference queue of unvisited vertices each iteration
 instead of just keeping it in sorted state. Therefore I added binary insert function which made the code 10 times faster.
-
+<br>
 <h3>Preprocessing</h3>
 <h4>Unreachable map fields removal</h4>
 Since the input map can be anything-like, I thought it better to check it for unreachable fields. 
 For this task I use plain BFS over map without boxes with initial position set to 
 sokobans initial position. It works pretty well and saves some time.
-
+<br>
 <h4>Deadlocks</h4>
 There is no point in shifting box into position from which it can not be shifted to any target position. 
 Such a position is called deadlock. Deadlocks are for example corners, or fields next to wall continuous
 wall between two corners.
-
+<br>
 Performance boost caused by removing deadlocks from search space was significant and for the first time,
 my solver was able to complete following maze.<br>
 <textarea rows="11" cols="20">
@@ -53,7 +53,7 @@ my solver was able to complete following maze.<br>
     ####### 
 </textarea>
 X marks deadlock.
-
+<br>
 <h4>Tunnels</h4>
 Tunneling method is based on an idea that if we push box into tunnel, there is no point
 creating an extra state for each position of the box in the tunnel. 
@@ -63,10 +63,32 @@ creating an extra state for each position of the box in the tunnel.
  #######
 </textarea>
 This improvement enabled me to solve the previous maze for 4 boxes under two minutes.
-
+<br>
 <h3>Sokoban standard positioning</h3>
+This method is basically all about the fact, that it doesn't really matter where sokoban is. 
+What matters is which boxes can sokoban shift and where it can be shifted.
 
+Therefore we introduce standard positioning of sokoban, which means we always place him in the 
+upper-left most reachable corner. This significantly decreases the search space and algorithm
+was finally able to complete full-sized maze with six boxes, as was originally designed.
 
+<textarea rows="13" cols="20">
+    #####
+    #   #
+    #$  #
+  ###  $##
+  #  $ $ #
+### # ## #   ######
+#   # ## #####  ..#
+# $  $          ..#
+##### ### #@##  ..#
+    #     #########
+    ####### 
+</textarea> 
+
+However, there is one disadvantage. The shift sequence is no longer optimized for number of
+steps sokoban has to make. Nevertheless we care about getting solution and as long as
+our sokoban is properly fit, it is not an issue.
 
 
 

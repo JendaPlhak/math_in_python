@@ -1,7 +1,7 @@
 html
 My number maze solver uses simple breadth-first search and in each vertex it keeps track of best possible
 tracks.
-
+<br>
 Output for 'ciselne-bludiste.txt':
 
 <textarea rows="26" cols="90">
