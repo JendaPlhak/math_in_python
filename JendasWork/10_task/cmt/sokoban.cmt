@@ -165,5 +165,5 @@ html
     faster if implemented in some lower level language, I am quite satisfied with the result.
     At the beginning it seemed altogether hopeless, when the solver had to be run for several minutes
     for even the most simple sokoban levels . But during the process of adding new features, it became much 
-    more powerful and in the end it actually solved the sokoban level I took at the begging as my goal.
+    more powerful and in the end it actually solved the sokoban level which I set myself as a goal.
 </p>
