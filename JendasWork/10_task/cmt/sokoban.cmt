@@ -12,15 +12,15 @@ html
     of each step of correct solution.
 
     <br>
-    <textarea rows="8" cols="12">
-    ###########
-    #         #
-    #   $   @$#
-    #  .      #
-    #        .#
-    #      $  #
-    ###########
-    </textarea>
+<textarea rows="8" cols="12">
+###########
+#         #
+#   $   @$#
+#  .      #
+#        .#
+#      $  #
+###########
+</textarea>
     <br>
 
     Where $ is box, @ is sokoban, . is target position and # is wall.
@@ -56,7 +56,7 @@ html
     Performance boost caused by removing deadlocks from search space was significant and for the first time,
     my solver was able to complete following maze.
     <br>
-    <textarea rows="11" cols="20">
+<textarea rows="11" cols="20">
     ##### 
   ###XXX##
   #X  $ X#
@@ -66,7 +66,7 @@ html
 ##### ### #@##X  .#
     #XXXXX#########
     ####### 
-    </textarea>
+</textarea>
     X marks deadlock.
 </p>
 
@@ -76,11 +76,11 @@ html
     Tunneling method is based on an idea that if we push box into tunnel, there is no point
     creating an extra state for each position of the box in the tunnel. So instead we just
     push the box directly to end of tunnel whenever box enters one.
-    <textarea rows="11" cols="20">
+<textarea rows="11" cols="20">
  #######
 @$>>>>>$       
  #######
-    </textarea>
+</textarea>
     <br>
     Tunneling improvement enabled me to solve the previous maze for 4 boxes under two minutes.
 </p>
@@ -95,7 +95,7 @@ html
     Therefore we introduce standard positioning of sokoban, which means we always place him in the 
     upper-left most reachable corner. This significantly decreases the search space and algorithm
     was finally able to complete full-sized maze with six boxes, as was originally designed.
-    <textarea rows="13" cols="20">
+<textarea rows="13" cols="20">
     #####
     #   #
     #$  #
@@ -107,7 +107,7 @@ html
 ##### ### #@##  ..#
     #     #########
     ####### 
-    </textarea> 
+</textarea> 
 </p>
 <p>
     However, there is one disadvantage. The shift sequence is no longer optimized for number of
