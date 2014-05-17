@@ -2,7 +2,7 @@ html
 <h3>Why Sokoban?</h3>
 <p>
     After completing the No-left-turn solver I thought it would be a shame not to use the A* algorithm any further.
-    I wanted something challenging, so I chose to write sokoban in addition.
+    I wanted something challenging, so I chose to write sokoban solver in addition.
 </p>
 
 <h3>First implementation</h3>
@@ -29,8 +29,8 @@ html
 
 <h3>Binary search</h3>
 <p>
-    Before I started coding improvements on sokoban solver itself, I wanted to make 
-    sure, that the A* code has no bottlenecks that could be easily fixed. 
+    Before I started coding improvements into sokoban solver itself, I wanted to make 
+    sure that the A* code has no bottlenecks that could be easily fixed. 
 </p>
 <p>
     Therefore I run it with line profiler (<a href="http://pythonhosted.org/line_profiler/" style="color: rgb(0,0,150)">see this site for more info</a>)
@@ -49,12 +49,12 @@ html
 
 <h4>Deadlocks</h4><p>
     There is no point in shifting box into position from which it can not be shifted to any target position. 
-    Such a position is called deadlock. Deadlocks are for example corners, or fields next to wall continuous
+    Such a position is called deadlock. Deadlocks are for example corners or fields next to continuous
     wall between two corners.
 </p>
 <p>
-    Performance boost caused by removing deadlocks from search space was significant and for the first time,
-    my solver was able to complete following maze.
+    Performance boost gained by removing deadlocks from search space was significant and for the first time,
+    my solver was able to complete following level.
     <br>
 <textarea rows="11" cols="20">
     ##### 
@@ -74,16 +74,16 @@ html
 
 <h4>Tunnels</h4>
 <p>
-    Tunneling method is based on an idea that if we push box into tunnel, there is no point
+    Tunneling method is based on an idea that if we push box intoa a tunnel, there is no point
     creating an extra state for each position of the box in the tunnel. So instead we just
-    push the box directly to end of tunnel whenever box enters one.
+    push the box directly to the end of the tunnel whenever box enters one.
 <textarea rows="5" cols="10">
  #######
 @$>>>>>$
  #######
 </textarea>
     <br>
-    Tunneling improvement enabled me to solve the previous maze for 4 boxes under two minutes.
+    Tunneling improvement enabled me to solve the previous level for 4 boxes under two minutes.
     On videos below, you can sometimes notice, that box jumps several steps ahead. That happens
     when it enters some of the tunnels.
 </p>
@@ -92,12 +92,12 @@ html
 <h3>Sokoban standard positioning</h3>
 <p>
     This method is basically all about the fact, that it doesn't really matter where sokoban is. 
-    What matters is which boxes can sokoban shift and where it can be shifted.
+    What matters is which boxes can sokoban shift and where they can be shifted.
 </p>
 <p>
-    Therefore we introduce standard positioning of sokoban, which means we always place him in the 
+    Therefore we introduce standard positioning of sokoban, which means we always place him at the 
     upper-left most reachable corner. This significantly decreases the search space and algorithm
-    was finally able to complete full-sized maze with six boxes, as was originally designed.
+    was finally able to complete full-sized level with six boxes, as was originally designed.
     <br>
 <textarea rows="13" cols="20">
     #####
@@ -115,18 +115,18 @@ html
 </p>
 <p>
     However, there is one disadvantage. The shift sequence is no longer optimized for number of
-    steps sokoban has to make. Nevertheless we care about getting solution and as long as
-    our sokoban is properly fit, it is not an issue.
+    steps sokoban has to make. Nevertheless we care about getting some solution and as long as
+    our sokoban is in good shape, it is not an issue.
 </p>
 
 
 <h3>Graphical output</h3>
 
 <p>
-    Having all this done, I thought it would be a waste not to make a video generator, that would
+    Having all this done, I thought it would be a pity not to make a video generator, that would
     animate sokobans progress. However, since we already use sokoban standard positioning, for
     each state we have to reconstruct sokobans path from last shifted box to another. For that
-    is again used the A* implementation. Well and then it is only about some technical stuff, 
+    is again used the A* implementation. Then it is only matter of some bash code 
     to create video.
 </p>
 
@@ -162,8 +162,8 @@ html
 <h3>Conclusion</h3>
 <p>
     Even though the final product has its own issues, and would certainly run significantly
-    faster if implemented in some lower level language,  I am quite satisfied with the result.
-    In the beginning it seemed altogether hopeless when the solver had to be run for several minutes
-    for even the most simple sokoban levels, but during the process of adding new features, it became much 
+    faster if implemented in some lower level language, I am quite satisfied with the result.
+    At the beginning it seemed altogether hopeless, when the solver had to be run for several minutes
+    for even the most simple sokoban levels . But during the process of adding new features, it became much 
     more powerful and in the end it actually solved the sokoban level I took at the begging as my goal.
 </p>
