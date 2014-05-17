@@ -3,7 +3,7 @@ from AStar        import AStar, AStarNode
 from plot_sokoban import plotPath
 
 
-class AStarLTNode(AStarNode): # AStart no Left Turn Node
+class AStarSokNode(AStarNode): # AStart Sokoban node
 
     def __init__(self, sokoban, boxes, dir_, new_box):
 
@@ -74,7 +74,7 @@ class AStarLTNode(AStarNode): # AStart no Left Turn Node
 
 
 
-class AStarLT(AStar): 
+class AStarSok(AStar): 
 
     def __init__(self, map_, targets, sokoban):
 
@@ -109,7 +109,7 @@ class AStarLT(AStar):
     def loadDeadLocks(self):
         """
         Locate all simple dead-locks. That
-        means all corners and coordinates between corners
+        means all corners and fields between corners
         """
         # First, locate all corners
         for coord in self.map:
@@ -218,7 +218,7 @@ class AStarLT(AStar):
                 new_box = PS[1]
                 sokoban = PS[0]
             new_boxes.add(new_box)
-            neigh.append(AStarLTNode(sokoban, new_boxes, PS[1] - PS[0], new_box))
+            neigh.append(AStarSokNode(sokoban, new_boxes, PS[1] - PS[0], new_box))
         return neigh
 
 
@@ -252,10 +252,10 @@ if __name__ == '__main__':
                 if symbol != '#':
                     print "Unknown symbol '%s' will be considered a wall" % symbol
 
-    start = AStarLTNode(sokoban, boxes,   0, -1)
-    end   = AStarLTNode(sokoban, targets, 0, -1)
+    start = AStarSokNode(sokoban, boxes,   0, -1)
+    end   = AStarSokNode(sokoban, targets, 0, -1)
 
-    search_engine = AStarLT(set(map_), targets, sokoban)
+    search_engine = AStarSok(set(map_), targets, sokoban)
     path = search_engine.search(start, end)
 
     plotPath(path, map_, sokoban, maze)
