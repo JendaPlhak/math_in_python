@@ -1,0 +1,33 @@
+I choose to write solver for 'No left turn' mazes. In order to do that I needed 
+some path-finding algorithm and therefore I wrote A* implementation.
+
+With that done, it was actually very simple to complete the solver.
+Most code I had to write is dealing with maze loading and solution dump.
+
+And here is sample of output:
+
+<textarea>
+###################################
+#   ..                ..           #
+#   ....................    #      #
+##   . ############## .#           #
+##   . #        #   ....   #       #
+##   . #            .#..           #
+##   . #####      # .              #
+##   .      #       .         #    #
+##   .       #      .###############
+##   .#       #     .     ..       #
+##   .         #    ........       #
+##   .          ##########. #      #
+##   .  #     #   # ........       #
+##   .       #      .     ..       #
+##   .       #      .              #
+##  ..+      #      .###############
+##  ..       #      .          ..  #
+##          #       .............  #
+###############################.   #
+##     ..........................  #
+#      ^                       ..  #
+#                                  #
+####################################
+</textarea>
