@@ -1,6 +1,22 @@
 After completing the No-left-turn solver I thought it would be a shame not to use the A* algorithm any further.
 
-I wanted something challenging, so I chose sokoban.
+I wanted something challenging, so I chose to write sokoban in addition.
+
+My first naive implementation was able to solve simple square maps with up to 3 boxes. For anything else it was too slow.
+To get at least vague idea of how the algorithm performs the search, I wrote some code to produce following text representation
+of each step of correct solution.
+<textarea rows="7" cols="12">
+###########
+#         #
+#   $   @$#
+#  .      #
+#        .#
+#      $  #
+###########
+</textarea>
+Where $ is box, @ is sokoban, . is target position and # is wall.
+
+
 
 
 <iframe width="480" height="360" src="//www.youtube.com/embed/JKnl4bp18Xw" frameborder="0" allowfullscreen></iframe>
