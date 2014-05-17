@@ -76,7 +76,7 @@ html
     Tunneling method is based on an idea that if we push box into tunnel, there is no point
     creating an extra state for each position of the box in the tunnel. So instead we just
     push the box directly to end of tunnel whenever box enters one.
-<textarea rows="11" cols="20">
+<textarea rows="4" cols="10">
  #######
 @$>>>>>$       
  #######
@@ -95,6 +95,7 @@ html
     Therefore we introduce standard positioning of sokoban, which means we always place him in the 
     upper-left most reachable corner. This significantly decreases the search space and algorithm
     was finally able to complete full-sized maze with six boxes, as was originally designed.
+    <br>
 <textarea rows="13" cols="20">
     #####
     #   #
