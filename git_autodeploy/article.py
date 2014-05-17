@@ -39,16 +39,16 @@ for _file in os.listdir( directory ):
             cuts = [m.span() for m in re.finditer(r'(<(\w+).*?>.*?</\2>)', commentary)]
             cuts = [x for y in cuts for x in y]
 
-            # add beginning and ending if needed
+            # add beginning and ending cuts if needed
             if 0 not in cuts:
                 cuts.insert(0, 0)
-            elif len(commentary) not in cuts:
+            if len(commentary) not in cuts:
                 cuts.append( len(commentary) )
 
-            # cuts the commentary for into pars and html elements
+            # cut the commentary into pars and html elements
             for i in range( len(cuts) - 1):
                 pars = []
-                pars += commentary[ cuts[i] : cuts[i + 1]]
+                pars.append( commentary[ cuts[i] : cuts[i + 1]] )
             
             # go through pars and do another slicing
             for par in pars:
