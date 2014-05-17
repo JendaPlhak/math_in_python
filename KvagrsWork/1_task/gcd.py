@@ -64,6 +64,7 @@ def plot_gcd_algorithm(method, n=100, m=100, filename=''):
 
     # finally clear the fig
     plt.clf()
+    
 
 def plot_fixed_par_gcd(fixed=7, method=gcd_modulo, n=100, filename=''):
 
@@ -88,9 +89,9 @@ def plot_fixed_par_gcd(fixed=7, method=gcd_modulo, n=100, filename=''):
 
 if __name__ == '__main__':
 
-    #plot_gcd_algorithm(gcd_substraction, n=200, m=200, filename='gcd_substraction')
-    #plot_gcd_algorithm(gcd_modulo, n=200, m=200, filename='gcd_modulo')
-    #plot_gcd_algorithm(gcd_recursive_modulo, n=200, m=200, filename='gcd_recursive_modulo')
+    plot_gcd_algorithm(gcd_substraction, n=200, m=200, filename='gcd_substraction')
+    plot_gcd_algorithm(gcd_modulo, n=200, m=200, filename='gcd_modulo')
+    plot_gcd_algorithm(gcd_recursive_modulo, n=200, m=200, filename='gcd_recursive_modulo')
 
     for fixed in [1, 13, 171, 3141]:
         plot_fixed_par_gcd(fixed=fixed, method=gcd_substraction,  filename='gcd_substraction_'+ str(fixed))
