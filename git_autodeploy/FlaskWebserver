@@ -46,8 +46,8 @@ do_img_reload() {
 }
 
 do_single_folder_reload() {
-    local STUD=Jendas
-    local TASK=$3
+    local STUD=$1
+    local TASK=$2
     cd /home/ubuntu/math_in_python/${STUD}Work/${TASK}
 
     if [ ! -d "img" ]; then
@@ -104,7 +104,7 @@ case "$1" in
         do_img_reload
         ;;
     imgFolder)
-        do_single_folder_reload
+        do_single_folder_reload $2 $3
         ;;
     imgCopy)
         do_img_copy
