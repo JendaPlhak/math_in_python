@@ -28,6 +28,31 @@ and found out, that huge bottleneck is sorting preference queue of unvisited ver
 instead of just keeping it in sorted state. Therefore I added binary insert function which made the code 10 times faster.
 
 <h3>Preprocessing</h3>
+<h4>Unreachable map fields removal</h4>
+Since the input map can be anything-like, I thought it better to check it for unreachable fields. 
+For this task I use plain BFS over map without boxes with initial position set to 
+sokobans initial position. It works pretty well and saves some time.
+
+<h4>Deadlocks</h4>
+There is no point in shifting box into position from which it can not be shifted to any target position. 
+Such a position is called deadlock. Deadlocks are for example corners, or fields next to wall continuous
+wall between two corners.
+
+Performance boost caused by removing deadlocks from search space was significant and for the first time,
+my solver was able to complete following maze.
+<textarea rows="8" cols="12">
+    ##### 
+  ###   ##
+  #    $ #
+### # ## #   ######
+#   # ## #####    #
+# $               #
+##### ### #@##  ..#
+    #     #########
+    ####### 
+</textarea>
+
+<h4>Tunnels</h4>
 
 
 
