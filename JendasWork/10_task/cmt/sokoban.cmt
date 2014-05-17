@@ -39,7 +39,7 @@ Such a position is called deadlock. Deadlocks are for example corners, or fields
 wall between two corners.
 
 Performance boost caused by removing deadlocks from search space was significant and for the first time,
-my solver was able to complete following maze.
+my solver was able to complete following maze.<br>
 <textarea rows="8" cols="12">
     ##### 
   ###   ##
