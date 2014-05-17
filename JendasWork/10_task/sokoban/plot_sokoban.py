@@ -44,17 +44,23 @@ class AStarMap(AStar):
         return neigh
 
 
-def plotStateText(boxes, sokoban, maze):
+def plotStateText(boxes, sokoban, maze, deadLocks=None):
 
+    i = 0
     for symbol, coord in maze:
+        i+= 1
         if coord in boxes:
             sys.stdout.write("$")
         elif coord == sokoban:
             sys.stdout.write("@")
         elif symbol in ['@', '$']:
             sys.stdout.write(' ')
+        elif deadLocks and coord in deadLocks:
+            sys.stdout.write('X')
         else:
             sys.stdout.write(symbol)
+        if i % 18 == 0:
+            sys.stdout.write("\n")
     print "\n---------------------------"
 
 
@@ -98,7 +104,7 @@ class PlotStateSvg():
         self.index += 1
 
 
-def plotPath(path, map_, sokoban, maze):
+def plotPath(path, map_, sokoban, maze, deadLocks=None):
 
     search = AStarMap(set(map_))
     start  = path[0]
@@ -115,7 +121,7 @@ def plotPath(path, map_, sokoban, maze):
         for coord in sokoban_path:
             plot.plotState(start.boxes, coord, maze)
         plot.plotState(state.boxes, sokoban_end, maze)
-
+        # plotStateText(state.boxes, sokoban_end, maze, deadLocks)
         sokoban = sokoban_end
         start   = state
 

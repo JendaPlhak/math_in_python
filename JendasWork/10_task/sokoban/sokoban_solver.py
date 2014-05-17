@@ -258,7 +258,7 @@ if __name__ == '__main__':
     search_engine = AStarSok(set(map_), targets, sokoban)
     path = search_engine.search(start, end)
 
-    plotPath(path, map_, sokoban, maze)
+    plotPath(path, map_, sokoban, maze, search_engine.deadLocks)
 
 
 ###########
