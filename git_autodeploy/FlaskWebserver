@@ -46,8 +46,8 @@ do_img_reload() {
 }
 
 do_single_folder_reload() {
-    STUD=Jendas
-    TASK="$3"
+    local STUD="$2"
+    local TASK="$3"
     cd /home/ubuntu/math_in_python/${STUD}Work/${TASK}
 
     if [ ! -d "img" ]; then
