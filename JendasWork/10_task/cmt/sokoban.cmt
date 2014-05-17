@@ -76,9 +76,9 @@ html
     Tunneling method is based on an idea that if we push box into tunnel, there is no point
     creating an extra state for each position of the box in the tunnel. So instead we just
     push the box directly to end of tunnel whenever box enters one.
-<textarea rows="4" cols="10">
+<textarea rows="5" cols="10">
  #######
-@$>>>>>$       
+@$>>>>>$
  #######
 </textarea>
     <br>
