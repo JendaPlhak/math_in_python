@@ -38,6 +38,11 @@ for _file in os.listdir( directory ):
         
             # article formatting
             for par in commentary:
+                
+                # skip any html tagged paragraf in *.cmt
+                if re.match(r'^<(\w+)>.*(<\\?\1)$'):
+                    article.write( par )
+
                 # if it does not find and img it just adds paragraf
                 if '&img=' not in par:
                     article.write('<p>\n'+\
