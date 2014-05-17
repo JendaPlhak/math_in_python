@@ -84,6 +84,8 @@ html
 </textarea>
     <br>
     Tunneling improvement enabled me to solve the previous maze for 4 boxes under two minutes.
+    On videos below, you can sometimes notice, that box jumps several steps ahead. That happens
+    when it enters some of the tunnels.
 </p>
 
 
@@ -142,3 +144,26 @@ html
     <iframe width="480" height="360" src="//www.youtube.com/embed/c0l0vZgnv04" frameborder="0" allowfullscreen></iframe>
 </p>
 
+
+<h3>Code</h3>
+<p>
+    The main code is divided into three files
+    <br>
+    <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/AStar.py" style="color: rgb(0,0,150)">A* implementation</a>
+    <br>
+    <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/sokoban_solver.py" style="color: rgb(0,0,150)">Sokoban solver</a>
+    <br>
+    and <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/plot_sokoban.py" style="color: rgb(0,0,150)">Solution plotter</a>.
+    <br>
+    All are located in
+    <a href="https://github.com/JendaPlhak/math_in_python/tree/master/JendasWork/10_task/sokoban" style="color: rgb(0,0,150)">this folder</a>.
+</p>
+
+<h3>Conclusion</h3>
+<p>
+    Even though the final product has its own issues, and would certainly run significantly
+    faster if implemented in some lower level language,  I am quite satisfied with the result.
+    In the beginning it seemed altogether hopeless when the solver had to be run for several minutes
+    for even the most simple sokoban levels, but during the process of adding new features, it became much 
+    more powerful and in the end it actually solved the sokoban level I took at the begging as my goal.
+</p>
