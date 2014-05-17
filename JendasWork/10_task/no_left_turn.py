@@ -1,5 +1,6 @@
-from AStar import AStar, AStarNode
 import sys
+sys.path.append("sokoban")
+from AStar import AStar, AStarNode
 
 
 class AStarLTNode(AStarNode): # AStart no Left Turn Node
