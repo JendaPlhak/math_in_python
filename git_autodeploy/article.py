@@ -45,28 +45,37 @@ for _file in os.listdir( directory ):
             if len(commentary) not in cuts:
                 cuts.append( len(commentary) )
 
-            # cut the commentary into pars and html elements
+            # cut the commentary into pars and html elements    
+            pars = []
             for i in range( len(cuts) - 1):
-                pars = []
                 pars.append( commentary[ cuts[i] : cuts[i + 1]] )
             
             # go through pars and do another slicing
+            commentary = []
             for par in pars:
-                commentary = []
                 if re.match(r'^<(\w+).*?>.*?(</?\1>)$', par):
                     commentary.append( par )
                 else:
                     commentary.extend( par.split('\n\n'))
+
+            print 
+            print "cuts", cuts
+            print
+            print "pars:\n", pars
+            print 
+            print "commentary\n", commentary
 
             # article formatting
             for par in commentary:
                 
                 # skip any html tagged paragraf in *.cmt
                 if re.match(r'^<(\w+).*?>.*?(</?\1>)$', par):
+                    print "Writing par", par[:80]
                     article.write( par )
 
                 # if it does not find and img it just adds paragraf
                 elif '&img=' not in par:
+                    print "Writing par", par[:80]
                     article.write('<p>\n'+\
                                   par  +\
                                   '\n</p>\n\n')
