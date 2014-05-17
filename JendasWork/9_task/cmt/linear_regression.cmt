@@ -23,6 +23,6 @@ Gradient descent:
 In accordance with the fact that, LS method is BLUE, I observed, that by adding more data, I will increase
 the accuracy of my estimation. On the other hand, adding more noise to data will result in less accurate estimation.
 
-If we use log-normal distribution, we will get unbiased estimation as can be seen on following plot:
+If we use log-normal distribution, we will get unbiased estimation, as can be seen on following plot:
 
 &img="linreg_random_lognormal.png" alt="linreg_random_lognormal.png"

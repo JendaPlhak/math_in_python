@@ -10,7 +10,7 @@ Cython with python data types: 79,23s
 Pure Cython without any objective behavior: 5,34s
 
 Conclusion: Pure Cython code was about 14.8 times faster than Cython code with mostly python
-default data types. I expect pure Python to be measurably even slower.
+default data types. I expect pure Python to be even slower.
 
 Resulting Newton fractal for function $z^3 - 1$:
 
