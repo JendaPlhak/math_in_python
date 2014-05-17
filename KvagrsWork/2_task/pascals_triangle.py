@@ -50,7 +50,7 @@ def draw_pascals_triangle(n, mod=3, side=100, filename='', web=False):
                             fill   = 'rgb' + str(color),\
                             stroke = 'black'))
     if filename:
-        im.saveas( 'img/'+ filename + '.png')
+        im.saveas( 'img/'+ filename + '.svg')
     
     return
 
