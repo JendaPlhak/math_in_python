@@ -35,6 +35,12 @@ for _file in os.listdir( directory ):
         # create new file for the article
         with open( '../webserver/layout2/templates/'+ part_dir +'article_'+ _file_name +'.html','w') as article:
 
+            if re.match(r'^\s*html', commentary):
+                article.write( commentary )
+                sys.exit()
+
+            commentary = commentary.split('\n\n')
+            """
             # create cuts by html tags
             cuts = [m.span() for m in re.finditer(r'(<(\w+).*?>.*?</\2>)', commentary)]
             cuts = [x for y in cuts for x in y]
@@ -53,29 +59,39 @@ for _file in os.listdir( directory ):
             # go through pars and do another slicing
             commentary = []
             for par in pars:
-                if re.match(r'^<(\w+).*?>.*?(</?\1>)$', par):
+                if re.match(r'<(\w+).*?>.*?(</\1>)', par):
+                    print "halooo"
+                    print par
+                    print "niciiic"
                     commentary.append( par )
                 else:
+                    print
+                    print
+                    print "splitted par", par.split('\n\n')
                     commentary.extend( par.split('\n\n'))
-
+            
             print 
             print "cuts", cuts
             print
             print "pars:\n", pars
-            print 
-            print "commentary\n", commentary
+            
+            for com in commentary:
+                print
+                print "com", com
+            """
 
             # article formatting
             for par in commentary:
                 
+                """
                 # skip any html tagged paragraf in *.cmt
                 if re.match(r'^<(\w+).*?>.*?(</?\1>)$', par):
                     print "Writing par", par[:80]
                     article.write( par )
-
+                """
                 # if it does not find and img it just adds paragraf
                 elif '&img=' not in par:
-                    print "Writing par", par[:80]
+                    #print "blba", par[:80]
                     article.write('<p>\n'+\
                                   par  +\
                                   '\n</p>\n\n')
@@ -103,4 +119,11 @@ for _file in os.listdir( directory ):
                            \r       <li><a href="'+ _file_name+'.py">Get code</a></li>\
                            \r       <li><a href="https://github.com/JendaPlhak/math_in_python/blob/master/'+ part_dir + _file_name +'.py">Get Git</a></li>\
                            \r   </ul>\
+                           \r</div>\
+                           \r   <div class="code">\
+                           \r   <pre>\
+                           \r       <code class="python">\
+                           \r{%% include '+ part_dir + _file_name +'.py %%}\
+                           \r       </code>\
+                           \r   </pre>\
                            \r</div>')
