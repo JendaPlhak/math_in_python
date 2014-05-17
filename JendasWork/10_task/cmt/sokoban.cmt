@@ -1,6 +1,7 @@
 After completing the No-left-turn solver I thought it would be a shame not to use the A* algorithm any further.
 
-I wanted something challenging, so I chose
+I wanted something challenging, so I chose sokoban.
+
 
 <iframe width="480" height="360" src="//www.youtube.com/embed/JKnl4bp18Xw" frameborder="0" allowfullscreen></iframe>
 
