@@ -90,7 +90,7 @@ for _file in os.listdir( directory ):
                     article.write( par )
                 """
                 # if it does not find and img it just adds paragraf
-                elif '&img=' not in par:
+                if '&img=' not in par:
                     #print "blba", par[:80]
                     article.write('<p>\n'+\
                                   par  +\
