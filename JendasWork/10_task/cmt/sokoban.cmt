@@ -54,17 +54,18 @@ html
 </p>
 <p>
     Performance boost caused by removing deadlocks from search space was significant and for the first time,
-    my solver was able to complete following maze.<br>
+    my solver was able to complete following maze.
+    <br>
     <textarea rows="11" cols="20">
-        ##### 
-      ###XXX##
-      #X  $ X#
-    ### # ## #   ######
-    #X  # ## #####XXXX#
-    #X$              .#
-    ##### ### #@##X  .#
-        #XXXXX#########
-        ####### 
+    ##### 
+  ###XXX##
+  #X  $ X#
+### # ## #   ######
+#X  # ## #####XXXX#
+#X$              .#
+##### ### #@##X  .#
+    #XXXXX#########
+    ####### 
     </textarea>
     X marks deadlock.
 </p>
@@ -76,10 +77,11 @@ html
     creating an extra state for each position of the box in the tunnel. So instead we just
     push the box directly to end of tunnel whenever box enters one.
     <textarea rows="11" cols="20">
-     #######
-    @$>>>>>$       
-     #######
+ #######
+@$>>>>>$       
+ #######
     </textarea>
+    <br>
     Tunneling improvement enabled me to solve the previous maze for 4 boxes under two minutes.
 </p>
 
@@ -94,17 +96,17 @@ html
     upper-left most reachable corner. This significantly decreases the search space and algorithm
     was finally able to complete full-sized maze with six boxes, as was originally designed.
     <textarea rows="13" cols="20">
-        #####
-        #   #
-        #$  #
-      ###  $##
-      #  $ $ #
-    ### # ## #   ######
-    #   # ## #####  ..#
-    # $  $          ..#
-    ##### ### #@##  ..#
-        #     #########
-        ####### 
+    #####
+    #   #
+    #$  #
+  ###  $##
+  #  $ $ #
+### # ## #   ######
+#   # ## #####  ..#
+# $  $          ..#
+##### ### #@##  ..#
+    #     #########
+    ####### 
     </textarea> 
 </p>
 <p>
