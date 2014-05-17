@@ -67,6 +67,7 @@ html
     #XXXXX#########
     ####### 
 </textarea>
+    <br>
     X marks deadlock.
 </p>
 
@@ -117,6 +118,19 @@ html
 </p>
 
 
-<iframe width="480" height="360" src="//www.youtube.com/embed/JKnl4bp18Xw" frameborder="0" allowfullscreen></iframe>
+<h3>Graphical output</h3>
+
+<p>
+    Having all this done, I thought it would be a waste not to make a video generator, that would
+    animate sokobans progress. However, since we already use sokoban standard positioning, for
+    each state we have to reconstruct sokobans path from last shifted box to another. For that
+    is again used the A* implementation. Well and then it is only about some technical stuff, 
+    to create video.
+</p>
+
+<p>
+    To make it more user-friendly I uploaded the video on youtube and here it is:
+    <iframe width="480" height="360" src="//www.youtube.com/embed/JKnl4bp18Xw" frameborder="0" allowfullscreen></iframe>
+</p>
 
 <iframe width="480" height="360" src="//www.youtube.com/embed/c0l0vZgnv04" frameborder="0" allowfullscreen></iframe>
