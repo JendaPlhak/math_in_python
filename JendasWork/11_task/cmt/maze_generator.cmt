@@ -1,0 +1,8 @@
+First I created algorithm to generate standard perfect maze, sample output can be seen below.
+
+&img="PerfectMaze.svg" alt="PerfectMaze.svg"
+
+And than I created code, inspired by perfect maze generator, that generates braid maze.
+Sample output is here:
+
+&img="BraidMaze.svg" alt="BraidMaze.svg"
