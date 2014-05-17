@@ -13,6 +13,8 @@
 DIR=/home/ubuntu/math_in_python/webserver/layout2
 DIR_MAKE=/home/ubuntu/math_in_python/JendasWork/
 DIR_AUTO=/home/ubuntu/math_in_python/git_autodeploy
+IMG_PATH=/home/ubuntu/math_in_python/webserver/layout2/static/img/${STUD}Work
+
 DAEMON=$DIR/routes.py
 DAEMON_NAME=FlaskWebserver
  
@@ -41,6 +43,28 @@ do_stop () {
 do_img_reload() {
     make -C ${DIR_MAKE}
     ${DIR_AUTO}/ImgGenerate.sh
+}
+
+do_single_folder_reload() {
+    STUD=$2
+    TASK=$3
+    cd /home/ubuntu/math_in_python/${STUD}Work
+
+    if [ ! -d "img" ]; then
+        mkdir img
+    fi
+    for file in $(find . -maxdepth 1 -perm -111 -type f -name "*.py")
+    do
+        echo ${file}
+        "${file}"
+    done
+
+    if [ ! -d "${IMG_PATH}/${dir}/" ]; then
+        mkdir -p ${IMG_PATH}/${dir}/
+    fi
+    
+    cp img/* ${IMG_PATH}/${dir}/
+    cd -
 }
 
 do_img_copy() {
@@ -78,7 +102,9 @@ case "$1" in
         ;;
     imgReload)
         do_img_reload
-        do_img_copy
+        ;;
+    imgFolder)
+        do_single_folder_reload
         ;;
     imgCopy)
         do_img_copy
@@ -90,7 +116,7 @@ case "$1" in
         status_of_proc "$DAEMON_NAME" "$DAEMON" && exit 0 || exit $?
         ;;
     *)
-        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|imgCopy|articleReload|cleanImg|status}"
+        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|imgFolder|imgCopy|articleReload|cleanImg|status}"
         exit 1
         ;;
  
