@@ -58,8 +58,10 @@ class NumMaze():
         print "Lowest possible sum: %d" % self.grid[last_coord][1]
 
         print "Possible paths: "
-        for path in set([tuple(path) for path in paths[last_coord]]):
+        paths = set([tuple(path) for path in paths[last_coord]])
+        for path in paths:
             print "     ", list(path) + [last_coord]
+        print "Maze has %d possible solution(s)" % len(paths)
         print
 
 
@@ -78,5 +80,6 @@ class NumMaze():
 if __name__ == '__main__':
     
     maze_list = loadMazeList("mazes/ciselne-bludiste.txt")
-    for maze in maze_list:
+    for i, maze in enumerate(maze_list):
+        print "--------Maze number %d--------" % (i + 1)
         maze.findPath()
