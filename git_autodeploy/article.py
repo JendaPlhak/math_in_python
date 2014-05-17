@@ -34,8 +34,30 @@ for _file in os.listdir( directory ):
 
         # create new file for the article
         with open( '../webserver/layout2/templates/'+ part_dir +'article_'+ _file_name +'.html','w') as article:
-            commentary = commentary.split('\n\n')
-        
+
+            # create cuts by html tags
+            cuts = [m.span() for m in re.finditer(r'(<(\w+).*?>.*?</\2>)', commentary)]
+            cuts = [x for y in cuts for x in y]
+
+            # add beginning and ending if needed
+            if 0 not in cuts:
+                cuts.insert(0, 0)
+            elif len(commentary) not in cuts:
+                cuts.append( len(commentary) )
+
+            # cuts the commentary for into pars and html elements
+            for i in range( len(cuts) - 1):
+                pars = []
+                pars += commentary[ cuts[i] : cuts[i + 1]]
+            
+            # go through pars and do another slicing
+            for par in pars:
+                commentary = []
+                if re.match(r'^<(\w+).*?>.*?(</?\1>)$', par):
+                    commentary.append( par )
+                else:
+                    commentary.extend( par.split('\n\n'))
+
             # article formatting
             for par in commentary:
                 
