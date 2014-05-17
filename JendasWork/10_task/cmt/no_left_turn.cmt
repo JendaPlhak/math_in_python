@@ -6,7 +6,7 @@ Most code I had to write is dealing with maze loading and solution dump.
 
 And here is sample of output:
 
-<textarea>
+<textarea rows="26" cols="40">
 ###################################
 #   ..                ..           #
 #   ....................    #      #
