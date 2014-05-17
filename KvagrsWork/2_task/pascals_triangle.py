@@ -1,18 +1,15 @@
-#######################################
-#
-# Pascals triangle, modulo
-#
-#######################################
+#! usr/bin/python
 
-#from bmplib import bmp
 import svgwrite
+import colorsys
 
-def pascalsTriangle(n): # 2 < n = number of layers in the triangle
+def pascals_triangle(n):
+# 2 < n = number of layers in the triangle
+    
+    # append the first two layer of pascals triangle
+    layers = [[1], [1, 1]]
 
-    layers = []
-    layers.append([1])      # append the first two layer of pascals triangle
-    layers.append([1,1])
-
+    # adding further layers
     for i in range(2,n):
         tmp_list=[]
         tmp_list.append(1)
@@ -26,33 +23,33 @@ def pascalsTriangle(n): # 2 < n = number of layers in the triangle
     return layers
 
 
-def differentColors(mod):       
+def different_colors(N):       
+# see http://stackoverflow.com/questions/876853/generating-color-ranges-in-python
 
-    colors = []
-    for x in range(1,mod+1):
-        red   = int( (100+255/(x/5.))%255 )
-        green = int( (150+255/(x/5.))%255 )
-        blue  = int( (70+255/(x/5.))%255 )
-        colors.append( (red, green, blue) )
+    HSV_tuples = [(x * 1.0 /  N, 1, 0.85) for x in range(N) ]
+    RGB_tuples = map(lambda x: colorsys.hsv_to_rgb( *x ), HSV_tuples)
+    RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
 
-    return colors
+    return RGB_tuples
 
 
-def drawPascalsTriangle(n, mod=3, side=100, save=False, filename='', web=False):
+def draw_pascals_triangle(n, mod=3, side=100, filename='', web=False):
 
+    # initialize drawing canvas, create layers and colors
     im     = svgwrite.drawing.Drawing()
-    layers = pascalsTriangle(n)
-    colors = differentColors(mod)
+    layers = pascals_triangle( n )
+    colors = different_colors(mod)
 
     for y in range(n):
         for x in range( len( layers[ y ] ) ):
-            nx = n/2*side - y * side / 2 + x * side - side / 2  # off set
-            color = colors[ layers[y][x] % mod ]
-            im.add( im.rect(    insert = (nx, y*side) ,\
-                                size   = (side, side),\
-                                fill   = 'rgb' + str( color ),\
-                                stroke = 'black'))
-    if save:
+            # off set
+            nx = n/2*side - y * side / 2 + x * side - side / 2
+            color = colors[ (layers[y][x] + 2) % mod ]
+            im.add( im.rect(insert = (nx, y * side) ,\
+                            size   = (side, side),\
+                            fill   = 'rgb' + str(color),\
+                            stroke = 'black'))
+    if filename:
         im.saveas( filename + '.png')
     
     return
@@ -60,4 +57,4 @@ def drawPascalsTriangle(n, mod=3, side=100, save=False, filename='', web=False):
 
 if __name__ == '__main__':
 
-    drawPascalsTriangle(50, mod=2, save=True, filename='pascals_triangle')
+    draw_pascals_triangle(50, mod=20, filename='pascals_triangle')
