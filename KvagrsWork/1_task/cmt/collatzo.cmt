@@ -19,6 +19,6 @@ The first two graphs show the number of steps for 25 and then 8000 natural numbe
 The second graph covers another characteristics for Collatzo series, that is the maximum number in the series before it converges. So for $\{ a_i\}_{i=1}^k, a_k = 1$ it is $a_j, 1 \le j \le k$, such $a_j \ge a_i, \forall i, 1 \le i \le k$.
 
 
-&img="../static/img/KvagrsWork/1_task/collatzo_max.png" alt="Collatzo maximum for 8000 natural numbers" width="500"
+&img="collatzo_max.png" alt="Collatzo maximum for 8000 natural numbers" width="500"
 
 Both graphs encourages that the hypothesis might be true because there are strong trends in how the series works.
