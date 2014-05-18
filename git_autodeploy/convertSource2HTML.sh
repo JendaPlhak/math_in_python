@@ -27,3 +27,7 @@ do
         cd ..
     done
 done
+
+TARGET=/home/ubuntu/math_in_python/webserver/layout2/templates/JendasWork
+# some exceptional files
+cp -f /home/ubuntu/math_in_python/JendasWork/7_task/complex_fractals.pyx $TARGET/7_task/complex_fractals.py
