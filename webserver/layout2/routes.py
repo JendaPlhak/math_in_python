@@ -4,6 +4,8 @@ import sys
 sys.path.append("../../JendasWork/2_task/")
 sys.path.append("/home/ubuntu/math_in_python/JendasWork/2_task/")
 
+import re
+
 for i in xrange(6):
     sys.path.append("../../KvagrsWork/" + str(i + 1) +"_task/")
     sys.path.append("/home/ubuntu/math_in_python/KvagrsWork/" + str(i + 1) + "_task/")
@@ -79,6 +81,11 @@ def plhak(task=''):
         #base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
 
         return render_template('plhak.html', task=task, img_data=base64_data)
+
+    elif task.startswith('download&'):
+
+        return render_template( re.sub(r'download&', '', task) )
+        
     else:    
         
         return render_template('plhak.html', task=task)
