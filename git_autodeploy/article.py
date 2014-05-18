@@ -113,8 +113,9 @@ for _file in os.listdir( directory ):
                                       +' alt="'+ alt +'"'\
                                       +' width="'+ width +'"/>\n')
                 # finally adding buttons for codes
-                print "!!!! PART DIR", part_dir
-                name, task = part_dir.split('/')[:2]
+                users      = { "JendasWork" : "plhak", "KvagrsWork" : "kvapil"}
+                user, task = part_dir.split('/')[:2]
+                name       = users[ user ]
                 num_task   = re.match(r'(\d)', task).group(0)
 
                 article.write('<div class="menuCode">'\
