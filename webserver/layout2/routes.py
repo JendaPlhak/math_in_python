@@ -134,8 +134,8 @@ def kvapil(task=''):
 
         task = re.sub(r'download&', '', task)
         print "Proccesing download: ", task
-        
-        return render_template( 'JendasWork/1_task/collatzo.py' )
+
+        return render_template( task )
 
     #elif task == 'chaos_game':
     #    n     = int(request.args.get('num', 0))
