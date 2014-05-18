@@ -116,7 +116,7 @@ for _file in os.listdir( directory ):
                 article.write('<div class="menuCode">'\
                                +'   <ul>'\
                                +'       <li><span id="buttonCode">Show code</span></li>'\
-                               +'       <li><a href="'+ part_dir + _file_name +'.py">Get code</a></li>'\
+                               +'       <li><a href="nic.py">Get code</a></li>'\
                                +'       <li><a href="https://github.com/JendaPlhak/math_in_python/blob/master/'+ part_dir + _file_name +'.py">Get Git</a></li>'\
                                +'   </ul>'\
                                +'</div>'\
