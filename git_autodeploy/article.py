@@ -128,7 +128,7 @@ for _file in os.listdir( directory ):
                                +'<div class="code">'\
                                +'   <pre>'\
                                +'       <code class="python">'\
-                               +'{% '+ 'include \''+ part_dir + _file_name +'.py\'' + ' %}'\
+                               +'{% '+ 'include \''+ part_dir + _file_name +'.py\'' + ' ignore missing %}'\
                                +'       </code>'\
                                +'   </pre>'\
                                +'</div>')
