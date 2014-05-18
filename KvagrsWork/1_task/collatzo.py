@@ -25,7 +25,7 @@ def plotCollatzo(x=8000, y=300, maxNumber=False, filename=''):
 
 
 	points=[]
-	plt_fig = plt.figure(
+	plt_fig = plt.figure()
 	plt.axis([0,x,0,y])
 	for i in range(1,x):
 		points.append(collSteps(i, maxNumber))
