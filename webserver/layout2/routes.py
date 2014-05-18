@@ -158,7 +158,7 @@ def kvapil(task=''):
         return render_template('kvapil.html', task=task, numTask=tasksKvapil[task])
 
 
-@app.route('<name>/download/<num_task>/<task>')
+@app.route('/<name>/download/<num_task>/<task>')
 def download(name, num_task, task):
 
     users = { "kvapil" : "KvagrsWork", "plhak" : "JendasWork" }
