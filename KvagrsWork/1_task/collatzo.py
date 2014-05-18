@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#import pygal
+import pygal
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -14,6 +14,7 @@ def collSteps(n, maxNumber=False):
 			n = 3 * n + 1
 		steps += 1
 		maxN = max(maxN, n)
+
 	if maxNumber:
 		return maxN
 	else:
