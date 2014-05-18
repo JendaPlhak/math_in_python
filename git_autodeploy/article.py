@@ -123,7 +123,10 @@ for _file in os.listdir( directory ):
                                \r   <div class="code">\
                                \r   <pre>\
                                \r       <code class="python">\
-                               \r{% '+ 'include '+ str(part_dir) + str(_file_name) +'.py' + ' %}\
                                \r       </code>\
                                \r   </pre>\
                                \r</div>')
+                               #\r{% '+ 'include '+ str(part_dir) + str(_file_name) +'.py' + ' %}\
+                               #\r       </code>\
+                               #\r   </pre>\
+                               #\r</div>')
