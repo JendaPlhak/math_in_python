@@ -113,17 +113,17 @@ for _file in os.listdir( directory ):
                                       +' alt="'+ alt +'"'\
                                       +' width="'+ width +'"/>\n')
                 # finally adding buttons for codes
-                article.write('<div class="menuCode">\
-                               \r   <ul>\
-                               \r       <li><span id="buttonCode">Show code</span></li>\
-                               \r       <li><a href="'+ _file_name+'.py">Get code</a></li>\
-                               \r       <li><a href="https://github.com/JendaPlhak/math_in_python/blob/master/'+ part_dir + _file_name +'.py">Get Git</a></li>\
-                               \r   </ul>\
-                               \r</div>\
-                               \r<div class="code">\
-                               \r   <pre>\
-                               \r       <code class="python">\
-                               \r{% '+ 'include \''+ str(part_dir) + str(_file_name) +'.py\'' + ' %}\
-                               \r       </code>\
-                               \r   </pre>\
-                               \r</div>')
+                article.write('<div class="menuCode">'\
+                               +'   <ul>'\
+                               +'       <li><span id="buttonCode">Show code</span></li>'\
+                               +'       <li><a href="'+ part_dir + _file_name +'.py">Get code</a></li>'\
+                               +'       <li><a href="https://github.com/JendaPlhak/math_in_python/blob/master/'+ part_dir + _file_name +'.py">Get Git</a></li>'\
+                               +'   </ul>'\
+                               +'</div>'\
+                               +'<div class="code">'\
+                               +'   <pre>'\
+                               +'       <code class="python">'\
+                               +'{% '+ 'include \''+ part_dir) + _file_name +'.py\'' + ' %}'\
+                               +'       </code>'\
+                               +'   </pre>'\
+                               +'</div>')
