@@ -4,12 +4,14 @@ import sys
 sys.path.append("../../JendasWork/2_task/")
 sys.path.append("/home/ubuntu/math_in_python/JendasWork/2_task/")
 
+import re
+
 for i in xrange(6):
     sys.path.append("../../KvagrsWork/" + str(i + 1) +"_task/")
     sys.path.append("/home/ubuntu/math_in_python/KvagrsWork/" + str(i + 1) + "_task/")
 
 from logging.handlers import RotatingFileHandler
-from flask            import Flask, request, render_template
+from flask            import Flask, request, render_template, redirect, url_for, send_file
 from StringIO         import StringIO
 
 app = Flask(__name__)
@@ -79,6 +81,7 @@ def plhak(task=''):
         #base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
 
         return render_template('plhak.html', task=task, img_data=base64_data)
+
     else:    
         
         return render_template('plhak.html', task=task)
@@ -87,6 +90,9 @@ def plhak(task=''):
 @app.route('/kvapil/') 
 @app.route('/kvapil/<task>')
 def kvapil(task=''):
+
+    print "Proccesing task: ", task
+
 
     if task == 'triangulation':
         n     = int(request.args.get('num',0))
@@ -121,10 +127,6 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, numTask=tasksKvapil[task], img_data=base64_data)
 
-    elif task.endswith(".py"):
-
-        return render_template('KvagrsWork/1_task/'+ task)
-
     #elif task == 'chaos_game':
     #    n     = int(request.args.get('num', 0))
     #    ratio = int(request.args.get('ratio', 0))
@@ -139,6 +141,19 @@ def kvapil(task=''):
     else:
         return render_template('kvapil.html', task=task, numTask=tasksKvapil[task])
 
+
+@app.route('/<name>/download/<num_task>/<task>')
+def download(name, num_task, task):
+
+    users = { "kvapil" : "KvagrsWork", "plhak" : "JendasWork" }
+    user  = users[ name ]
+
+    path_to_task = 'templates/'+ user +'/'+ num_task +'_task/'+ task 
+
+    print "Proccesing download of: {}".format( task )
+    print "Path to file: {}".format( path_to_task )
+
+    return send_file( path_to_task )
 
 if __name__ == '__main__':
     handler = RotatingFileHandler('/var/log/flask/flaskWebserver.log', maxBytes=100000, backupCount=1)

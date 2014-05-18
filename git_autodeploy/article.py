@@ -113,17 +113,22 @@ for _file in os.listdir( directory ):
                                       +' alt="'+ alt +'"'\
                                       +' width="'+ width +'"/>\n')
                 # finally adding buttons for codes
+                #users      = { "JendasWork" : "plhak", "KvagrsWork" : "kvapil"}
+                user, task = part_dir.split('/')[:2]
+                #name       = users[ user ]
+                num_task   = re.match(r'(\d)', task).group(0)
+
                 article.write('<div class="menuCode">'\
                                +'   <ul>'\
                                +'       <li><span id="buttonCode">Show code</span></li>'\
-                               +'       <li><a href="nic.py">Get code nefunguje</a></li>'\
+                               +'       <li><a href="download/'+ num_task +'/'+ _file_name +'.py">Get code</a></li>'\
                                +'       <li><a href="https://github.com/JendaPlhak/math_in_python/blob/master/'+ part_dir + _file_name +'.py">Get Git</a></li>'\
                                +'   </ul>'\
                                +'</div>'\
                                +'<div class="code">'\
                                +'   <pre>'\
                                +'       <code class="python">'\
-                               +'{% '+ 'include \''+ part_dir) + _file_name +'.py\'' + ' %}'\
+                               +'{% '+ 'include \''+ part_dir + _file_name +'.py\'' + ' %}'\
                                +'       </code>'\
                                +'   </pre>'\
                                +'</div>')
