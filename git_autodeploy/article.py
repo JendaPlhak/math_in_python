@@ -113,7 +113,7 @@ for _file in os.listdir( directory ):
                                       +' alt="'+ alt +'"'\
                                       +' width="'+ width +'"/>\n')
                 # finally adding buttons for codes
-                print "!!!! PART DIR" part_dir
+                print "!!!! PART DIR", part_dir
                 name, task = part_dir.split('/')
                 num_task   = re.match(r'(\d)', task).group(0)
 
