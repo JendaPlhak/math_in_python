@@ -77,6 +77,12 @@ do_article_reload() {
     cd -
 }
 
+do_source_reload() {
+    cd ${DIR_AUTO}
+    ${DIR_AUTO}/convertSource2HTML.sh
+    cd -
+}
+
 do_clear() {
     make -C ${DIR_MAKE} cleanImg
 }
@@ -88,6 +94,7 @@ case "$1" in
         ;;
     restart)
         do_article_reload
+        do_source_reload
         do_stop
         do_start
         ;;
@@ -99,6 +106,9 @@ case "$1" in
         ;;
     articleReload)
         do_article_reload
+        ;;
+    sourceReload)
+        do_source_reload
         ;;
     imgReload)
         do_img_reload
@@ -116,7 +126,7 @@ case "$1" in
         status_of_proc "$DAEMON_NAME" "$DAEMON" && exit 0 || exit $?
         ;;
     *)
-        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|imgFolder|imgCopy|articleReload|cleanImg|status}"
+        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|imgReload|imgFolder|imgCopy|articleReload|sourceReload|cleanImg|status}"
         exit 1
         ;;
  
