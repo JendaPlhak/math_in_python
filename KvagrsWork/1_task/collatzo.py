@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 import matplotlib
-import pylab as plt
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 def collSteps(n, maxNumber=False):
 	steps 	= 0
