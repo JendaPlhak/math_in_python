@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import pygal
+#import pygal
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -24,6 +24,7 @@ def plotCollatzo(x=8000, y=300, maxNumber=False, filename=''):
 
 
 	points=[]
+	plt_fig = plt.figure()
 	plt.axis([0,x,0,y])
 	for i in range(1,x):
 		points.append(collSteps(i, maxNumber))
@@ -31,11 +32,11 @@ def plotCollatzo(x=8000, y=300, maxNumber=False, filename=''):
 	if maxNumber:	
 		plt.plot( range(1, x), points, 'ko' )		# collSteps(i)[1] for max
 		plt.ylabel('Maximal number aj')
-		plt.savefig('img/' + filename + '.png')
+		plt_fig.savefig('img/' + filename + '.png')
 	else:
 		plt.plot( range(1, x), points, 'ko' )		# collSteps(i)[0] for steps
 		plt.ylabel('Number of steps')
-		plt.savefig('img/' + filename + '.png')
+		plt_fig.savefig('img/' + filename + '.png')
 
 	return
 
