@@ -25,18 +25,18 @@ def plotCollatzo(x=8000, y=300, maxNumber=False, filename=''):
 
 
 	points=[]
-	plt_fig = plt.figure(figsize=(23.5, 23.5))
+	plt_fig = plt.figure(
 	plt.axis([0,x,0,y])
 	for i in range(1,x):
 		points.append(collSteps(i, maxNumber))
 
 	if maxNumber:	
 		plt.plot( range(1, x), points, 'ko' )		# collSteps(i)[1] for max
-		#plt.ylabel('Maximal number aj')
+		plt.ylabel('Maximal number aj')
 		plt_fig.savefig('img/' + filename + '.png')
 	else:
 		plt.plot( range(1, x), points, 'ko' )		# collSteps(i)[0] for steps
-		#plt.ylabel('Number of steps')
+		plt.ylabel('Number of steps')
 		plt_fig.savefig('img/' + filename + '.png')
 
 	return
