@@ -16,7 +16,7 @@ do
             mkdir -p ${CUR_PATH}/${dir}/
         fi
 
-        for file in $(find . -maxdepth 1 -perm -111 -type f -name "*.py")
+        for file in $(find . -maxdepth 1 -type f -name "*.py")
         do
             file_name=$(echo $file | grep -E '\w+\.py' -o)
             new_file=${CUR_PATH}/${dir}/${file_name}
