@@ -165,7 +165,7 @@ def download(name, num_task, task):
     user  = users[ name ]
 
     path_to_task = 'templates/'+ user +'/'+ num_task +'_task/'+ task 
-    
+
     print "Proccesing download of: {}".format( task )
     print "Path to file: {}".format( path_to_task )
 
@@ -176,4 +176,4 @@ if __name__ == '__main__':
     handler = RotatingFileHandler('/var/log/flask/flaskWebserver.log', maxBytes=100000, backupCount=1)
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)
-    app.run(port=8000, debug=True)
+    app.run(port=8080, debug=True)
