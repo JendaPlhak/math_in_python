@@ -2,8 +2,8 @@
 
 for STUD in "Jendas" "Kvagrs";
 do
-    CUR_PATH=/home/quapka/Git/math_in_python/webserver/layout2/templates/${STUD}Work
-    cd /home/quapka/Git/math_in_python/${STUD}Work
+    CUR_PATH=/home/ubuntu/math_in_python/webserver/layout2/templates/${STUD}Work
+    cd /home/ubuntu/math_in_python/${STUD}Work
 
     for dir in */
     do
