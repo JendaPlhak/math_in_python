@@ -22,10 +22,7 @@ do
             new_file=${CUR_PATH}/${dir}/${file_name}
             echo "  "Converting $file_name
 
-            touch ${new_file}
-            echo '<pre><code class="python">' > ${new_file}
-            cat $file_name >> ${new_file}
-            echo '</code></pre>' >> ${new_file}
+            cp -f $file_name $new_file
         done
         cd ..
     done
