@@ -83,9 +83,11 @@ def plhak(task=''):
         return render_template('plhak.html', task=task, img_data=base64_data)
 
     elif task.startswith('download&'):
-
-        return render_template( re.sub(r'download&', '', task) )
         
+        task = re.sub(r'download&', '', task)
+        print "Proccesing download: ", task
+        return render_template( task )
+
     else:    
         
         return render_template('plhak.html', task=task)
