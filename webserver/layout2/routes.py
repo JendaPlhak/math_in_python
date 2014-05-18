@@ -130,9 +130,12 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, numTask=tasksKvapil[task], img_data=base64_data)
 
-    elif task.endswith(".py"):
+    elif task.startswith('download&'):
 
-        return render_template('KvagrsWork/1_task/'+ task)
+        task = re.sub(r'download&', '', task)
+        print "Proccesing download: ", task
+        
+        return render_template( 'JendasWork/1_task/collatzo.py' )
 
     #elif task == 'chaos_game':
     #    n     = int(request.args.get('num', 0))
