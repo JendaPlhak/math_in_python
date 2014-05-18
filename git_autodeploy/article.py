@@ -113,9 +113,9 @@ for _file in os.listdir( directory ):
                                       +' alt="'+ alt +'"'\
                                       +' width="'+ width +'"/>\n')
                 # finally adding buttons for codes
-                users      = { "JendasWork" : "plhak", "KvagrsWork" : "kvapil"}
+                #users      = { "JendasWork" : "plhak", "KvagrsWork" : "kvapil"}
                 user, task = part_dir.split('/')[:2]
-                name       = users[ user ]
+                #name       = users[ user ]
                 num_task   = re.match(r'(\d)', task).group(0)
 
                 article.write('<div class="menuCode">'\
@@ -131,4 +131,4 @@ for _file in os.listdir( directory ):
                                +'{% '+ 'include \''+ part_dir + _file_name +'.py\'' + ' %}'\
                                +'       </code>'\
                                +'   </pre>'\
-                               +'</div>')#'+ part_dir + _file_name +'.py
+                               +'</div>')
