@@ -109,9 +109,9 @@ for _file in os.listdir( directory ):
                         if 'inline' in par:
                             article.write('class="inline_img" ')
 
-                        article.write('src="../static/img/'+ part_dir + img + '"\
-                                      alt="'+ alt +'"\
-                                      width="'+ width +'"/>\n')
+                        article.write('src="../static/img/'+ part_dir + img + '"'\
+                                      +' alt="'+ alt +'"'\
+                                      +' width="'+ width +'"/>\n')
                 # finally adding buttons for codes
                 article.write('<div class="menuCode">\
                                \r   <ul>\
@@ -120,7 +120,7 @@ for _file in os.listdir( directory ):
                                \r       <li><a href="https://github.com/JendaPlhak/math_in_python/blob/master/'+ part_dir + _file_name +'.py">Get Git</a></li>\
                                \r   </ul>\
                                \r</div>\
-                               \r   <div class="code">\
+                               \r<div class="code">\
                                \r   <pre>\
                                \r       <code class="python">\
                                \r{% '+ 'include \''+ str(part_dir) + str(_file_name) +'.py\'' + ' %}\
