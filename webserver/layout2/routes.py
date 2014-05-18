@@ -83,10 +83,10 @@ def plhak(task=''):
         return render_template('plhak.html', task=task, img_data=base64_data)
 
     elif task.startswith('download&'):
-        
+
         task = re.sub(r'download&', '', task)
         print "Proccesing download: ", task
-        return render_template( task )
+        return render_template( 'JendasWork/1_task/collatzo.py' )
 
     else:    
         
