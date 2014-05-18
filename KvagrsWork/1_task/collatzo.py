@@ -32,11 +32,11 @@ def plotCollatzo(x=8000, y=300, maxNumber=False, filename=''):
 
 	if maxNumber:	
 		plt.plot( range(1, x), points, 'ko' )		# collSteps(i)[1] for max
-		plt.ylabel('Maximal number aj')
+		#plt.ylabel('Maximal number aj')
 		plt_fig.savefig('img/' + filename + '.png')
 	else:
 		plt.plot( range(1, x), points, 'ko' )		# collSteps(i)[0] for steps
-		plt.ylabel('Number of steps')
+		#plt.ylabel('Number of steps')
 		plt_fig.savefig('img/' + filename + '.png')
 
 	return
