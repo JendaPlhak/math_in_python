@@ -3,7 +3,7 @@ import sys
 for i in xrange(8):
     sys.path.append('../' + str(i) + '_task')
 
-from turtle_lib      import Turtle
+from lib_turtle    import Turtle
 from math            import sqrt, ceil, cos, sin, atan, degrees
 
 import itertools

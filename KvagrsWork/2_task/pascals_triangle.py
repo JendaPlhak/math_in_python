@@ -1,4 +1,4 @@
-#! usr/bin/python
+#!/usr/bin/env python
 
 import svgwrite
 import colorsys
@@ -33,7 +33,7 @@ def different_colors(N):
     return RGB_tuples
 
 
-def draw_pascals_triangle(n, mod=3, side=100, filename='', web=False):
+def draw_pascals_triangle(n, mod=3, side=10, filename='', web=False):
 
     # initialize drawing canvas, create layers and colors
     im     = svgwrite.drawing.Drawing()
@@ -50,11 +50,11 @@ def draw_pascals_triangle(n, mod=3, side=100, filename='', web=False):
                             fill   = 'rgb' + str(color),\
                             stroke = 'black'))
     if filename:
-        im.saveas( filename + '.png')
+        im.saveas( 'img/'+ filename + '.svg')
     
     return
 
 
 if __name__ == '__main__':
 
-    draw_pascals_triangle(50, mod=20, filename='pascals_triangle')
+    draw_pascals_triangle(30, mod=5, filename='pascals_triangle')

@@ -1,3 +1,5 @@
+#! usr/bin/env python
+
 import sys
 sys.path.append("../5_week")
 import itertools
@@ -10,7 +12,8 @@ def vectorizePoints(A,B):
 	return [ B[0] - A[0], B[1] - A[1] ]
 
 
-def determinant(u, v):					# determinant for 2x2 matrix
+def determinant(u, v):
+# determinant for 2x2 matrix
 
 	# | u0  v0 | = u0*v1 - u1*v0
 	# | u1  v1 |
@@ -18,12 +21,13 @@ def determinant(u, v):					# determinant for 2x2 matrix
 	return u[0] * v[1] - u[1] * v[0]
 
 
-def irregularPolygon(points, size):			# points describing a irregular polygon in plane
+def irregularPolygon(points, size):
+# points describing a irregular polygon in plane
 	
 	pixels = []
 	for x, y in itertools.product(range(size), range(size)):
 		if yAxisCrossing(points, [x, y] ) == True:
-			pixels.append( [x +size, -y + size] )
+			pixels.append( [x + size, -y + size] )
 
 	return pixels
 
@@ -105,6 +109,6 @@ def determinantCrossPoint(line_1, line_2):
 
 if __name__ == '__main__':
 
-	#data = [[10, 10], [180, 20], [160, 150], [100,50], [20, 180]]
-	data = [[238,196],[392,0],[498,216],[824,338],[508,422],[362,618],[254,408],[0,312]]
+	data = [[10, 10], [180, 20], [160, 150], [100,50], [20, 180]]
+	#data = [[238,196],[392,0],[498,216],[824,338],[508,422],[362,618],[254,408],[0,312]]
 	drawIrregularPolygon( data, save=True, filename="polygon.bmp")
