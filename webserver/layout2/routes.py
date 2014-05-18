@@ -82,12 +82,6 @@ def plhak(task=''):
 
         return render_template('plhak.html', task=task, img_data=base64_data)
 
-#    elif task.startswith('download&'):
-#
-#        task = re.sub(r'download&', '', task)
-#        print "Proccesing download: ", task
-#        return render_template( 'JendasWork/1_task/collatzo.py' )
-
     else:    
         
         return render_template('plhak.html', task=task)
@@ -133,16 +127,6 @@ def kvapil(task=''):
     
         return render_template('kvapil.html', task=task, numTask=tasksKvapil[task], img_data=base64_data)
 
-#    elif task.startswith('download&'):
-#
-#        task = re.sub(r'download&', '', task)
-#        print "Proccesing download: ", task
-#
-#        return send_file( 'templates/KvagrsWork/1_task/collatzo.py')
-#        #return render_template('KvagrsWork/1_task/collatzo.py')
-        #return redirect('/KvagrsWork/1_task/collatzo.py', code=301)
-        #return send_from_directory('/KvagrsWork/1_task', 'collatzo.py')
-
     #elif task == 'chaos_game':
     #    n     = int(request.args.get('num', 0))
     #    ratio = int(request.args.get('ratio', 0))
@@ -170,7 +154,6 @@ def download(name, num_task, task):
     print "Path to file: {}".format( path_to_task )
 
     return send_file( path_to_task )
-    #return render_template('kvapil.html', task=task, numTask=tasksKvapil[task])
 
 if __name__ == '__main__':
     handler = RotatingFileHandler('/var/log/flask/flaskWebserver.log', maxBytes=100000, backupCount=1)
