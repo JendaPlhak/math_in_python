@@ -250,8 +250,10 @@ a {
 
 .drawButton {
     background: #226688;
-    outline: 0;
+    outline: 0px;
+    border: 0px;
     width: 75px;
     height: 30px;
     border-radius: 5px 5px;
+    cursor: pointer;
 }
