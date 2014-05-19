@@ -1,4 +1,9 @@
 html
+<h3>This is the one</h3>
+<p>
+    This task I choose as the one I would like to talk about during the exam.
+</p>
+
 <h3>Why Sokoban?</h3>
 <p>
     After completing the No-left-turn solver I thought it would be a shame not to use the A* algorithm any further.
