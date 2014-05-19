@@ -245,11 +245,11 @@ a {
 
 
 .drawCircle {
-    height: 20px;
-    width: 20px;
-    background-color: red;
+
 }
 
 .drawButton {
-
+    height: 20px;
+    width: 20px;
+    background-color: red;
 }
