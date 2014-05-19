@@ -116,7 +116,7 @@ for _file in os.listdir( directory ):
                 #users      = { "JendasWork" : "plhak", "KvagrsWork" : "kvapil"}
                 user, task = part_dir.split('/')[:2]
                 #name       = users[ user ]
-                num_task   = re.match(r'(\d)', task).group(0)
+                num_task   = re.match(r'(\d+)', task).group(0)
 
                 article.write('<div class="menuCode">'\
                                +'   <ul>'\
@@ -128,7 +128,7 @@ for _file in os.listdir( directory ):
                                +'<div class="code">'\
                                +'   <pre>'\
                                +'       <code class="python">'\
-                               +'{% '+ 'include \''+ part_dir + _file_name +'.py\'' + ' %}'\
+                               +'{% '+ 'include \''+ part_dir + _file_name +'.py\'' + ' ignore missing %}'\
                                +'       </code>'\
                                +'   </pre>'\
                                +'</div>')
