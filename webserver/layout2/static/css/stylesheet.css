@@ -256,7 +256,7 @@ a {
     height: 30px;
     border-radius: 5px 5px;
     cursor: pointer;
-    font-size: 20px;
+    font: bold 10px sans-serif;
 }
 
 .drawButton:hover {
