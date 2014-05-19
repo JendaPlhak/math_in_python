@@ -154,69 +154,16 @@ html
 <p>
     The main code is divided into three files
     <br>
-    A* implementation:
-    <div class="menuCode">   
-        <ul>       
-            <li>
-                <span id="buttonCode">Show code</span>
-            </li>       
-            <li>
-                <a href="https://raw.githubusercontent.com/JendaPlhak/math_in_python/master/JendasWork/10_task/sokoban/AStar.py">Get code</a>
-            </li>       
-            <li>
-                <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/AStar.py">Get Git</a>
-            </li>   
-        </ul>
-    </div>
-    <div class="code">   
-        <pre>       
-            <code class="python">{% include 'JendasWork/10_task/sokoban/AStar.py' ignore missing %}       
-            </code>   
-        </pre>
-    </div>
-    Sokoban solver:
-   <div class="menuCode">   
-        <ul>       
-            <li>
-                <span id="buttonCode">Show code</span>
-            </li>       
-            <li>
-                <a href="https://raw.githubusercontent.com/JendaPlhak/math_in_python/master/JendasWork/10_task/sokoban/sokoban_solver.py">Get code</a>
-            </li>       
-            <li>
-                <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/sokoban_solver.py">Get Git</a>
-            </li>   
-        </ul>
-    </div>
-    <div class="code">   
-        <pre>       
-            <code class="python">{% include 'JendasWork/10_task/sokoban/sokoban_solver.py' ignore missing %}       
-            </code>   
-        </pre>
-    </div>
-    Solution plotter:
-    <div class="menuCode">   
-        <ul>       
-            <li>
-                <span id="buttonCode">Show code</span>
-            </li>       
-            <li>
-                <a href="https://raw.githubusercontent.com/JendaPlhak/math_in_python/master/JendasWork/10_task/sokoban/plot_sokoban.py">Get code</a>
-            </li>       
-            <li>
-                <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/plot_sokoban.py">Get Git</a>
-            </li>   
-        </ul>
-    </div>
-    <div class="code">   
-        <pre>       
-            <code class="python">{% include 'JendasWork/10_task/sokoban/plot_sokoban.py' ignore missing %}       
-            </code>   
-        </pre>
-    </div>
-     All are located in
+    <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/AStar.py" style="color: rgb(0,0,150)">A* implementation</a>
+    <br>
+    <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/sokoban_solver.py" style="color: rgb(0,0,150)">Sokoban solver</a>
+    <br>
+    and <a href="https://github.com/JendaPlhak/math_in_python/blob/master/JendasWork/10_task/sokoban/plot_sokoban.py" style="color: rgb(0,0,150)">Solution plotter</a>.
+    <br>
+    All are located in
     <a href="https://github.com/JendaPlhak/math_in_python/tree/master/JendasWork/10_task/sokoban" style="color: rgb(0,0,150)">this folder</a>.
 </p>
+
 <h3>Conclusion</h3>
 <p>
     Even though the final product has its own issues, and would certainly run significantly
