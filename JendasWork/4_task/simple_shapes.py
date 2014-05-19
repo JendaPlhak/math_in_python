@@ -52,7 +52,7 @@ def triangle(a=200., size=500, path="img/triangle.png"):
 
 if __name__ == "__main__":
 
-    elipse(full=True,  shade=True,  path="img/elipse.png")
+    elipse(a = 150., full=True,  shade=True,  path="img/elipse.png")
     elipse(full=False, shade=False, path="img/circle.png")
     elipse(full=True,  shade=False, path="img/circle_full.png")
 
