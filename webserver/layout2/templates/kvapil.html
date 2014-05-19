@@ -44,7 +44,7 @@
 		<form action="" method="get" name="nazevFunkce">
 			Number: <input type="number" name="num" value="14"><br>
 			Length: <input type="number" name="len" value="100"><br>
-					<input type="submit" value="Draw!">
+					<input class="drawButton" type="submit" value="Draw!">
 		</form>
 
 	{% elif task == 'triangulation' %}
@@ -52,7 +52,7 @@
 		<form action="" method="get">
 			Number: <input type="number" name="num" value="{{ value }}14"><br>
 			Minimal lengths: <input type="checkbox" name="checkbox" value="True">
-					<input type="submit" value="Draw!">
+					<input class"drawButton" type="submit" value="Draw!">
 		</form>
 	{% elif task == 'chaos_game' %}
 		<img src="../static/img/KvagrsWork/6_task/sierpinski_triangle.bmp" alt="sierpinski_triangle.bmp" width="300">
