@@ -155,6 +155,11 @@ def download(name, num_task, task):
 
     return send_file( path_to_task )
 
+# Something tasty for robots 
+@app.route('/sitemap.xml')
+def sitemap():
+    return render_template('sitemap.xml')
+
 if __name__ == '__main__':
     handler = RotatingFileHandler('/var/log/flask/flaskWebserver.log', maxBytes=100000, backupCount=1)
     handler.setLevel(logging.INFO)
