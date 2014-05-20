@@ -162,7 +162,7 @@ def sitemap():
 
 # Something tasty for robots 
 @app.route('/robots.txt')
-def sitemap():
+def robots():
     return render_template('robots.txt')
 
 if __name__ == '__main__':
