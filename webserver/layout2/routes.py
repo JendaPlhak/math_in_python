@@ -139,7 +139,7 @@ def kvapil(task=''):
 #    #    base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
 #
     else:
-        return render_template('kvapil.html', task=task, numTask=tasksKvapil[task])
+        return render_template('kvapil.html', task=task)#, numTask=tasksKvapil[task])
 
 
 @app.route('/<name>/download/<num_task>/<task>')
