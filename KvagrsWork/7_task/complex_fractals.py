@@ -1,18 +1,21 @@
 #! usr/bin/env python
 import sys
-
 sys.path.append('../2_task')
 
 from PIL              import Image
 from pascals_triangle import different_colors
+
+import numpy as np
+
 import cmath
 import itertools
 
 
-def fractal(filename=''):
+def newton_fractal(filename='', pol=[]):
 
     im     = Image.new("RGB", (1000, 1000), (255, 255, 255))
     colors = different_colors(3)
+
 
     roots = { 1 : 1,
               2 : -0.5 + 3**0.5 / 2 * 1j, 
@@ -69,23 +72,25 @@ def mandelbrots_set(filename=''):
 
 def julia_set(C, filename=''):
 
-    im     = Image.new("RGB", (1000, 1000), (255, 255, 255))
-    for x, y in itertools.product(xrange(-500, 500), xrange(-500, 500)):
-        z_n = x * 0.001+ y * 1j*0.001
-        print z_n
+    im = Image.new("RGB", (400, 400), (255, 255, 255))
+
+    for x, y in itertools.product(xrange(-200, 200), xrange(-200, 200)):
+        z_n = x * 0.01 + y * 1j*0.01
+        #print z_n
         for i in range(30):
             if abs(z_n) > 2:
                 break
             z_n = z_n**2 + C
+        #print "complex number: {}".format(z_n)
+        #print "absolute value: {}".format(abs(z_n))
 
-        
-    if abs(z_n) < 2:
-        print abs(z_n)
-        col = tuple( 3*[0])
-    else:
-        col = tuple( 3*[255])
-
-    im.putpixel((x + 500, y + 500), col)
+        if abs(z_n) < 2:
+            #print "=======> Hooray"
+            col = tuple( 3 * [0])
+        else:
+            col = tuple( 3 * [255])
+    
+        im.putpixel((x + 200, y + 200), col)
 
     if filename:
         im.save('img/'+ filename +'.png')
@@ -95,6 +100,10 @@ def julia_set(C, filename=''):
 if __name__ == '__main__':
 
     #fractal('newton_fractal')
-    mandelbrots_set('mandelbrots_set')
-    C = -0.8 + 0.156j
-    #julia_set(C)
+    #mandelbrots_set('mandelbrots_set')
+    #C = -0.13 + 0.75j
+    #julia_set(C, filename='julia_set')
+    
+    p = [1,0,0,-1]
+
+    print roots(p)

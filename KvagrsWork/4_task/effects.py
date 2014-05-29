@@ -21,7 +21,7 @@ def circle_effect(side=500):
 		#RBG_tuple = tuple( map( lambda x: int(x), 3 * [255 * (cos(x / 5)**2 + sin(y / 5)**2)**0.5]) ) # modern squares
 		#RBG_tuple = tuple( map( lambda x: int(x), [x+y,x-y,x*y]) )
 #		if x**2 + y**2 - 100**2 < 0.001:
-		RBG_tuple = tuple( map( lambda x: int(x), 3 * [127 * (cos(x/pi) + 1)]) )
+		RBG_tuple = tuple( map( lambda x: int(x), 3 * [ 255 * sin((x**2 + y**2)**0.5) ]) )
 #		else:
 #			RBG_tuple = tuple( map( lambda x: int(x), 3 * [255 - (127 * (cos(x / pi**2) + sin(y / pi**2)))]) )
 		#print ' '.join(str(RBG_tuple))

@@ -1,15 +1,20 @@
 #! usr/bin/env python
 
 import sys
-sys.path.append('../4_task/')
+for i in xrange(1,11):
+    sys.path.append('../'+ str(i) +'_task/')
 
 from basic_shapes   import movePointsTowardsOrigin
+from pascals_triangle import different_colors
+
 from math           import sin, cos
 from numpy          import array, matrix, pi, dot, empty, concatenate
 from PIL            import Image
 
 import svgwrite
 
+
+IDENTITY = array([[1,0,0],[0,1,0],[0,0,1]])
 
 def translation(t_x, t_y):
 
@@ -47,42 +52,64 @@ def scaling(s_x=1, s_y=1):
 
 def shear(k_x=0, k_y=0):
 
-    shear_matrix = array([ [  1,  k_x, 0 ],
-                           [ k_y,  1,  0 ],
-                           [  0,   0,  1 ]])
+    shear_matrix = array([ [  1,  k_y, 0 ],
+                           [ k_x,  1,  0 ],
+                           [  0,   0,  1 ] ])
     return shear_matrix
 
 
-def combine(*args):
-    # calculates the matrix of all affine transformations from *args
+def combine(*transf):
+    # calculates the matrix of all affine transformations from *transf
 
-    # matrices are multiplied from 
-    matrix = args[ len(args) - 1 ]
-    for i in xrange( len(args) ):
-        matrix = dot( args[ len(args) - (i + 1) ], matrix)
+    transf = list( transf )
+    print "Printing transformations.."
+    for item in transf:
+        print "Item:"
+        print item
+    print "Done."
+    
+    matrix = transf.pop()
+    while transf:
+        matrix = dot(transf.pop(), matrix)
 
+    print "Combined matrix: "
+    print "{}".format(matrix)
+    
     return matrix
 
 
-def iterate_transformation(points, iteration=1, matrix=array([[1,0,0],[0,1,0],[0,0,1]])):
+def line_transformation(points, group=True, iteration=1, matrix=IDENTITY):
 
-    lines = connect_points( points )
+    if group:
+        lines = connect_points( points )
+    else:
+        all_points = list( points )
 
-    for i in range(iteration):
+    for i in xrange(iteration):
         new_points = []
         for point in points:
             point = dot(matrix, point)
             new_points.append( point )
-        points = new_points      
-        lines.extend( connect_points( points ) ) # new_points
-    return lines
+        points = list(new_points)
 
+        if group:
+            lines.extend( connect_points( points ) )
+        else:
+            all_points.extend(points)
+
+
+    if group:
+        return lines
+    else:
+        return all_points
+    
 
 def connect_points(points):
 
     lines = []
     for i in range( len(points) ):
         lines.append( concatenate( ( points[ i ][:2], points[ (i + 1) % len(points) ][:2]) , axis=0 ) )
+
     return lines
 
 
@@ -95,9 +122,9 @@ def min_max_lines(lines):
     y_coords = [y for b in lines[1:][::2] for y in b]
 
     x_min = min(x_coords)
-    x_max = max(x_coords)
+    #x_max = max(x_coords)
     y_min = min(y_coords)
-    y_max = max(y_coords)
+    #y_max = max(y_coords)
 
     return x_min, y_min
 
@@ -107,42 +134,63 @@ def min_max_points(points):
     points = [x for y in points for x in y]
 
     x_min = min(points)
-    x_max = max(points)
+    x_max = max(points) - x_min
     y_min = min(points)
-    y_max = max(points)
+    y_max = max(points) - y_min
 
-    return  x_min, y_min
+    return  x_min, y_min, x_max, y_max
 
 
 def shift_lines(lines):
 
-    min_x, min_y = min_max_lines(lines)
+    x_min, y_min = min_max_lines( lines )
 
+    print "Shifting lines.."
+    print "X min {}, Y min {}".format(x_min, y_min)
     for line in lines:
-        line[0] -= min_x
-        line[2] -= min_x
-        line[1] -= min_y
-        line[3] -= min_y
-
+        print "Line:{} ==> ".format(line)
+        line[0] -= x_min
+        line[2] -= x_min
+        line[1] -= y_min
+        line[3] -= y_min
+        print "==>  {}".format(line)
     return lines
+
+
+def shift_points(points):
+
+    x_min, y_min = min_max_points( points )[:2]
+
+    for point in points:
+        point[0] -= x_min
+        point[1] -= y_min
+
+    return points
 
 
 def plot_and_save(filename, lines=[], points=[]):
 
     if lines:
-        im    = svgwrite.drawing.Drawing()
-        lines = shift_lines( lines )
+        im     = svgwrite.drawing.Drawing()
+        lines  = shift_lines( lines )
+        colors = different_colors( len(lines) )
 
-        for line in lines:
+        for i, line in enumerate( lines ):
             im.add( im.line(start = line[:2],\
                             end   = line[2:],\
-                            stroke= 'black'))
+                            stroke= 'rgb'+ str(colors[ i ]) ))
         im.saveas('img/'+ filename +'.svg')
 
     if points:
-        pass
-        
-        #im = Image.new("RGB", )
+        size   = shift_points( points )[:2]
+        print "size {}".format(size)
+        im     = Image.new("RGB", size)
+        points = shift_points( points )
+        colors = different_colors( len( points ) )
+
+        for i, point in enumerate( points ):
+            im.putpixel(point, colors[ i ])
+            im.save('img/'+ filename +'.png')
 
     return
 
@@ -150,31 +198,36 @@ def plot_and_save(filename, lines=[], points=[]):
 if __name__ == '__main__':
 
     
-    points   = array([[0,0,1],[100,0,1],[100,100,1],[0,100,1]])
-
+    points = array([[0,0,1],[50,0,1],[50,50,1],[0,50,1]])
+        
     # First example from http://www.fi.muni.cz/~xpelanek/IV122/slidy/lingebra.pdf
     operator = combine(rotation(20), scaling(1.1, 1.1), translation(5, 10))
-    lines = iterate_transformation(points, iteration=10, matrix=operator)   
+    operator = combine(translation(5, 10), scaling(1.1, 1.1), rotation(20))
+    lines = line_transformation(points, iteration=10, matrix=operator)   
     plot_and_save('1_example', lines)
+    
 
+    points = array([[-50, -50,1],[50,-50,1],[50,50,1],[-50,50,1]])
     # Second example from http://www.fi.muni.cz/~xpelanek/IV122/slidy/lingebra.pdf
-    operator = combine(rotation(10), scaling(1.1, 0.8))
-    lines = iterate_transformation(points, iteration=15, matrix=operator)   
+    operator = combine(rotation(10), scaling(1.1,0.8))
+    #operator = combine(scaling(1.1, 0.8), rotation(10))
+    lines = line_transformation(points, iteration=15, matrix=operator)   
     plot_and_save('2_example', lines)
-
+    
     # Third example from http://www.fi.muni.cz/~xpelanek/IV122/slidy/lingebra.pdf
-    operator = combine(shear(1.3), rotation(10), scaling(0.9,0.9),translation(50, 50))
-    lines = iterate_transformation(points, iteration=25, matrix=operator)   
+    #operator = combine(shear(1.3), rotation(10), scaling(0.9,0.9),translation(50, 50))
+    operator = combine(translation(50, 50), scaling(0.9, 0.9), rotation(10), shear(1.3))
+    lines = line_transformation(points, iteration=25, matrix=operator)   
     plot_and_save('3_example', lines)
-
-
+    
 
     #operator = translation(10, 10)
     #operator =  reflexion(-1)
-    operator = scaling(0.5,0.5)
+    operator = scaling(0.95,0.95)
+    operator = combine( operator )
     #operator = rotation(30)
     #operator = shear(1, 0)
     #operator = shear(0, 1)
     #operator = combine(translation(25,25), scaling(0.5, 0.5))
-    lines = iterate_transformation(points, iteration=1, matrix=operator)
-    plot_and_save('example', lines)
+    points = line_transformation(points, group=False, iteration=50, matrix=operator)
+    plot_and_save('example', points=points)
