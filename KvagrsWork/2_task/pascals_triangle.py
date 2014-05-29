@@ -23,12 +23,15 @@ def pascals_triangle(n):
     return layers
 
 
-def different_colors(N):       
+def different_colors(N, real=False):       
 # see http://stackoverflow.com/questions/876853/generating-color-ranges-in-python
 
     HSV_tuples = [(x * 1.0 /  N, 1, 0.85) for x in range(N) ]
     RGB_tuples = map(lambda x: colorsys.hsv_to_rgb( *x ), HSV_tuples)
-    RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
+    if real:
+        RGB_tuples = map(lambda x: tuple( x ),RGB_tuples)
+    else:
+        RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
 
     return RGB_tuples
 
