@@ -9,35 +9,31 @@ import numpy as np
 
 import cmath
 import itertools
+import colorsys
 
 
-def newton_fractal(filename='', pol=[]):
+def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
+
+    x0 = frame[0]
+    y0 = frame[1]
+    dt = frame[2]
 
     im     = Image.new("RGB", (1000, 1000), (255, 255, 255))
-    colors = different_colors(3)
+    roots  = np.roots( pol )
+    colors = different_colors( len(roots) )
 
-
-    roots = { 1 : 1,
-              2 : -0.5 + 3**0.5 / 2 * 1j, 
-              3 : -0.5 - 3**0.5 / 2 * 1j }
-
-    for x, y in itertools.product(xrange(-500, 500), xrange(-500, 500)):
-        z_n = x +  y * 1j
+    for s, t in itertools.product(xrange(1000), xrange(1000)):
+        z = x0 + s * dt / 1000. + (y0 + t * dt / 1000.) * 1j
         for i in xrange(50):
-            if 3 * z_n**2 == 0:
+            if np.polyval( pol, z ) == 0 or np.polyval( np.polyder( pol ), z) == 0:
                 break
-            z_n = z_n - (z_n**3 - 1) / (3 * z_n**2)
+            z = z - np.polyval( pol, z) / np.polyval( np.polyder( pol ), z)
 
-        x += 500
-        y += 500
-        if abs(z_n - roots[1]) < 0.0001:
-            im.putpixel((x, y), colors[0])
-        elif abs(z_n - roots[2]) < 0.0001:
-            im.putpixel((x, y), colors[1])
-        elif abs(z_n - roots[3]) < 0.0001:
-            im.putpixel((x, y), colors[2])
-        else:
-            im.putpixel((x, y), (0, 0, 0))
+        col = (0,0,0)
+        for i, root in enumerate(roots):
+            if abs(z - root) < 0.0001:
+                col = colors[ i ]
+        im.putpixel((s, t), col)
 
     if filename:
         im.save('img/'+ filename +'.png')
@@ -45,65 +41,48 @@ def newton_fractal(filename='', pol=[]):
         im.show()
 
 
-def mandelbrots_set(filename=''):
+def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-2,3]):
 
-    im     = Image.new("RGB", (1000, 1000), (255, 255, 255))
-    #colors = different_colors(2)
-    for x, y in itertools.product(xrange(-500, 500), xrange(-500, 500)):
-        C   = x * 0.01 + y * 1j * 0.01
-        z_n = 0
+    x0 = frame[0]
+    y0 = frame[1]
+    dt = frame[2]
+
+    im = Image.new("RGB", (1000, 1000), (255, 255, 255))
+    colors = different_colors(31)
+    for s, t in itertools.product(xrange(1000), xrange(1000)):
+        steps = 0
+        if julia:
+            z = x0 + s * dt / 1000. + (y0 + t * dt / 1000.) * 1j
+        else:
+            C = x0 + s * dt / 1000. + (y0 + t * dt / 1000.) * 1j
+            z = 0
+
         for i in xrange(30):
-            if abs(z_n) > 2:
+            if abs(z) > 2:
                 break
-            z_n = z_n**2 + C
+            z      = z**2 + C
+            steps += 1
 
-        if abs(z_n) < 2:
-            col = tuple(3 * [0])
-        else:
-            col = tuple(3 * [255])
+        #HSV_tuples = [(z.real * 1.0 /  31, 1, 0.85) for x in range(31) ]
+        #RGB_tuples = map(lambda x: colorsys.hsv_to_rgb( *x ), HSV_tuples)
+        #RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
 
-        im.putpixel((x + 500, y + 500), col)
+        #if abs(z) < 2:
+        #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(z.real + z.imag)]))
+        col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(steps)]))
+        #col = RGB_tuples[steps]
+#        else:
+            #col = tuple(3 * [255])
+
+        im.putpixel((s, t), col)
 
     if filename:
         im.save('img/'+ filename +'.png')
     else:
         im.show()
 
-
-def julia_set(C, filename=''):
-
-    im = Image.new("RGB", (400, 400), (255, 255, 255))
-
-    for x, y in itertools.product(xrange(-200, 200), xrange(-200, 200)):
-        z_n = x * 0.01 + y * 1j*0.01
-        #print z_n
-        for i in range(30):
-            if abs(z_n) > 2:
-                break
-            z_n = z_n**2 + C
-        #print "complex number: {}".format(z_n)
-        #print "absolute value: {}".format(abs(z_n))
-
-        if abs(z_n) < 2:
-            #print "=======> Hooray"
-            col = tuple( 3 * [0])
-        else:
-            col = tuple( 3 * [255])
-    
-        im.putpixel((x + 200, y + 200), col)
-
-    if filename:
-        im.save('img/'+ filename +'.png')
-    else:
-        im.show()   
 
 if __name__ == '__main__':
 
-    #fractal('newton_fractal')
-    #mandelbrots_set('mandelbrots_set')
-    #C = -0.13 + 0.75j
-    #julia_set(C, filename='julia_set')
-    
-    p = [1,0,0,-1]
-
-    print roots(p)
+    newton_fractal(filename='newton_fractal', pol=[2,3,5,7,11])
+    #mandelbrot_set(filename='mandelbrot_zoom_fun2')
