@@ -76,6 +76,9 @@ if __name__ == '__main__':
 
     data = load('faithful.txt')
     k_means(data, k=2, filename='data_cluster_faithful')
-
-    #data = load('data_cluster.txt')
+    
+    #   data = load('data_cluster.txt')
     #k_means(data, k=5, filename='data_cluster')
+
+    data = load('linreg-mix.txt')
+    k_means(data, k=2, filename='linreg-mix')

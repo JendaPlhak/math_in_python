@@ -19,7 +19,7 @@ def generate_data(n=100, f=False, distribution=randn, sigma=1, mu=0):
 
 def lists_to_pairs(data):
 
-    pairs = [ [data[0][i], data[1][i]] for i in xrange(len(data[0]))]
+    pairs = [ [data[0][i], data[1][i]] for i in xrange(len(data[0])) ]
 
     return pairs
 
