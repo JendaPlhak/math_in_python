@@ -1,4 +1,5 @@
 #! usr/bin/env python
+
 import sys 
 for i in xrange(1,11):
     sys.path.append('../'+ str(i) +'_task')
@@ -7,10 +8,11 @@ from linear_regression      import load
 from data_generator         import *
 from segment_intersection   import dist
 from pascals_triangle       import different_colors
+
 import matplotlib.pyplot as plt
 
 import random
-
+import re
 
 def nearest_center(centers, point):
 
@@ -44,6 +46,7 @@ def k_means(data, k, filename=''):
     classes     = [ [] for i in xrange(k) ]
     tmp_class   = []
     all_centers = list(centers)
+    iteration   = 0
 
     while tmp_class != classes:
         tmp_class = list(classes)
@@ -55,20 +58,51 @@ def k_means(data, k, filename=''):
         for i, center in enumerate(centers):
             centers[ i ] = find_center( classes[ i ], center )
 
+        iteration += 1
         all_centers.extend( centers )
 
     colors = different_colors( k, real=True )
 
     for i in xrange( k ):
-        plt.plot( pairs_to_lists(classes[i])[0], pairs_to_lists(classes[i])[1], 'o', color=colors[i],)
-        plt.plot( centers[i][0], centers[i][1], 's', color=colors[i], markersize=10)
+        plt.plot( pairs_to_lists(classes[i])[0], pairs_to_lists(classes[i])[1],'o',
+                  markersize=5,\
+                  color=colors[i])
+        centers = pairs_to_lists( all_centers[i::k] )
+        plt.plot(centers[0], centers[1], '-s', color=colors[i])
 
+    title = re.sub(r'_', ' ', filename).title()
+    plt.title( title )
     if filename:
         plt.savefig('img/'+ filename, format='png')
     else:
         plt.show()
     plt.clf()
+
+
+    plot_shifts(all_centers, k, colors, filename)
     
+    return
+
+
+def plot_shifts(centers, k, colors, filename=''):
+
+    iteration = len( centers ) / k - 1
+    for i in xrange(k):
+        tmp_centers = centers[i::k]
+        values = []
+        for j in xrange( iteration ):
+            values.append( dist(tmp_centers[j], tmp_centers[j + 1]) )
+        plt.plot(range(iteration), values, '-s', color=colors[i])
+
+    plt.title('Differences of centroids')
+    plt.xlabel('iteration $'+ str(iteration) +'$')
+    plt.ylabel('$\Delta C$')
+    if filename:
+        plt.savefig('img/'+ filename +'_shifts', format='png')
+    else:
+        plt.show()
+    plt.clf()
+
     return
 
 
@@ -77,8 +111,8 @@ if __name__ == '__main__':
     data = load('faithful.txt')
     k_means(data, k=2, filename='data_cluster_faithful')
     
-    #   data = load('data_cluster.txt')
-    #k_means(data, k=5, filename='data_cluster')
+    data = load('data_cluster.txt')
+    k_means(data, k=5, filename='data_cluster')
 
     data = load('linreg-mix.txt')
     k_means(data, k=2, filename='linreg-mix')

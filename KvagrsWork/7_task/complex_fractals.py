@@ -69,8 +69,8 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-2,3]):
 
         #if abs(z) < 2:
         #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(z.real + z.imag)]))
-        col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(steps)]))
-        #col = RGB_tuples[steps]
+        #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(steps)]))
+        col = colors[steps]
 #        else:
             #col = tuple(3 * [255])
 
@@ -84,5 +84,5 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-2,3]):
 
 if __name__ == '__main__':
 
-    newton_fractal(filename='newton_fractal', pol=[2,3,5,7,11])
-    #mandelbrot_set(filename='mandelbrot_zoom_fun2')
+    #newton_fractal(filename='newton_fractal', pol=[2,3,5,7,11])
+    mandelbrot_set(filename='mandelbrot_steps')
