@@ -103,6 +103,7 @@ def plot_shifts(centers, k, colors, filename=''):
     plt.title('Differences of centroids')
     plt.xlabel('iteration $'+ str(iteration) +'$')
     plt.ylabel('$\Delta C$')
+    
     if filename:
         plt.savefig('img/'+ filename +'_shifts', format='png')
     else:
