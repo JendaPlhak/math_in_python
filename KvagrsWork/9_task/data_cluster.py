@@ -39,7 +39,7 @@ def find_center(data, center):
     return center
 
 
-def k_means(data, k, filename=''):
+def k_means(data, k):
 
     centers     = lists_to_pairs( generate_data( k ) )
     data        = lists_to_pairs( data )
@@ -61,25 +61,31 @@ def k_means(data, k, filename=''):
         iteration += 1
         all_centers.extend( centers )
 
+    return classes, all_centers
+
+
+def plot_data_clustering(classes, centers, k, filename=''):
+
     colors = different_colors( k, real=True )
 
-    for i in xrange( k ):
+    for i in xrange(k):
         plt.plot( pairs_to_lists(classes[i])[0], pairs_to_lists(classes[i])[1],'o',
                   markersize=5,\
                   color=colors[i])
-        centers = pairs_to_lists( all_centers[i::k] )
-        plt.plot(centers[0], centers[1], '-s', color=colors[i])
+        tmp_centers = pairs_to_lists( centers[i::k] )
+
+        plt.plot(tmp_centers[0], tmp_centers[1], '-s', color=colors[i])
 
     title = re.sub(r'_', ' ', filename).title()
     plt.title( title )
+
     if filename:
         plt.savefig('img/'+ filename, format='png')
     else:
         plt.show()
+
     plt.clf()
-
-
-    plot_shifts(all_centers, k, colors, filename)
+    plot_shifts(centers, k, colors, filename)
     
     return
 
@@ -108,11 +114,16 @@ def plot_shifts(centers, k, colors, filename=''):
 
 if __name__ == '__main__':
 
+    k = 2
     data = load('faithful.txt')
-    k_means(data, k=2, filename='data_cluster_faithful')
-    
-    data = load('data_cluster.txt')
-    k_means(data, k=5, filename='data_cluster')
-
+    classes, centers = k_means(data, k)
+    plot_data_clustering(classes, centers, k, filename='data_cluster_faithful')
+        
     data = load('linreg-mix.txt')
-    k_means(data, k=2, filename='linreg-mix')
+    classes, centers = k_means(data, k)
+    plot_data_clustering(classes, centers, k, filename='linreg-mix')
+
+    k = 5
+    data = load('data_cluster.txt')
+    classes, centers = k_means(data, k)
+    plot_data_clustering(classes, centers, k, filename='data_cluster')
