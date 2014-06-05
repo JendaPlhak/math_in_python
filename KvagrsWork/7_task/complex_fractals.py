@@ -41,7 +41,7 @@ def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
         im.show()
 
 
-def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-2,3]):
+def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-0.1,-0.1,0.7]):
 
     x0 = frame[0]
     y0 = frame[1]
@@ -67,12 +67,13 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-2,3]):
         #RGB_tuples = map(lambda x: colorsys.hsv_to_rgb( *x ), HSV_tuples)
         #RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
 
-        #if abs(z) < 2:
+        if abs(z) < 2:
+            col = tuple(3 * [0])
         #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(z.real + z.imag)]))
         #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(steps)]))
-        col = colors[steps]
-#        else:
-            #col = tuple(3 * [255])
+        #col = colors[steps]
+        else:
+            col = tuple(3 * [255])
 
         im.putpixel((s, t), col)
 
@@ -85,4 +86,4 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-2,3]):
 if __name__ == '__main__':
 
     #newton_fractal(filename='newton_fractal', pol=[2,3,5,7,11])
-    mandelbrot_set(filename='mandelbrot_steps')
+    mandelbrot_set(filename='mandelbrot_black_whiteb')

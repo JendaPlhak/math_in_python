@@ -77,7 +77,7 @@ class Turtle(object):
                                 end   = B,\
                                 stroke= 'black'))       
 
-        im.saveas( filename +'.svg')
+        im.saveas( 'img/'+ filename +'.svg')
         return
 
     def calculate_offset(self):
@@ -94,6 +94,9 @@ class Turtle(object):
 
         
         return 
+
+
+
 
 
 if __name__ == '__main__':

@@ -40,7 +40,6 @@ def draw_number_maze(maze, num, side=20):
 
     size = maze[0][0]
     maze = maze[1::]
-    print maze
     im   = svgwrite.drawing.Drawing()
 
     # grid
@@ -75,15 +74,32 @@ def draw_number_maze(maze, num, side=20):
 
     im.saveas('img/'+ str(num) +'_maze_'+ str(size) +'.svg')
 
+    return
+
 
 def text_offset(point, side):
 
     point = [ point[0] * side + side * 0.35, point[1] * side + side * 0.65 ]
     return point
 
+
+def solve_num_maze(maze):
+
+    size = maze[0][0]
+    dirs = [[1,0], [0,1],[-1, 0], [0, -1]]
+    pos  = [0, 0]
+    fin  = [size - 1, size - 1 ]
+
+    while pos != fin
+
+
+
+    pass
+
+
 if __name__ == '__main__':
 
     maze = load_num_maze('ciselne-bludiste.txt', separator='-')
     for i, m in enumerate(maze):
         print "Drawing maze number {}.".format(i + 1)
-        draw_number_maze(maze=m, num=(i + 1 ))
+        draw_number_maze(maze=m, num=(i + 1 ), side=50)
