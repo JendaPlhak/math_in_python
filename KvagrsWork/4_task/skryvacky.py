@@ -3,7 +3,7 @@ from PIL import Image
 
 
 """ Task 1 """
-im = Image.open("skryvacka1.png")
+im = Image.open("img/skryvacka1.png")
 pix = im.load()
 for x in xrange(im.size[0]):
 	for y in xrange(im.size[1]):
@@ -15,7 +15,7 @@ im.save("solved1.png")
 
 
 """ Task 3 
-im = Image.open("skryvacka3.png")
+im = Image.open("img/skryvacka3.png")
 pix = im.load()
 
 
@@ -41,7 +41,7 @@ im.save("solved3.png")
 r = []
 g = []
 b = []
-im = Image.open("skryvacka2.png")
+im = Image.open("img/skryvacka2.png")
 pix = im.load()
 for x in xrange(im.size[0]):
 	for y in xrange(im.size[1]):

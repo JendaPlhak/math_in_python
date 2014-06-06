@@ -1,5 +1,8 @@
-from PIL import Image
-from math import tan, sqrt, pi, cos, sin, floor, ceil
+#! usr/bin/env python
+
+from PIL 	   import Image
+from math 	   import tan, sqrt, pi, cos, sin, floor, ceil
+from itertools import product
 
 """ Example of Image.new and putpixel - puts black pixel at [100,100] """
 #im = Image.new("RGB", (2300, 200), "white")
@@ -9,13 +12,15 @@ from math import tan, sqrt, pi, cos, sin, floor, ceil
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
-def circle(r, x0=100, y0=100, fill=False, eps = 0.05):		# r = radius, the center of the circle = [x0,y0]
+def circle(r, x0=100, y0=100, fill=False, eps = 0.05):
+# r = radius, the center of the circle = [x0,y0]
 
 	coordinates = []
 	for x in xrange(-r,r):
 		for y in xrange(-r,r):
-			if fill and x**2 + y**2 <= r**2:				# fill == True, therefore fill it!
+			if fill and x**2 + y**2 - r**2 <= eps :				# fill == True, therefore fill it!
 				coordinates.append([x+x0,y+y0])				# creating the circle somwhere, and then moving it 
+				print "fill"
 			if ~fill and abs((x**2 + y**2 - r**2)/float(r**2)) <= eps:	# fill == False 
 				coordinates.append([x+x0,y+y0])
 
@@ -46,6 +51,16 @@ def ellipse_par(a, b, start=0, end=360, thickness=5, fill=True):	# a, b axis, st
 	return coordinates
 
 
+def spiral(a, b, eps=0.05):
+
+	coords = []
+	for x, y in product(range(-a, a), range(-b, b)):
+		if (x / a)**2 + (y / b)**2 - 1 <= eps:
+			coords.extend()
+
+	return
+
+
 def spiral_par(start=0, end=3*360, thickness=3, fill=True):	# start/end, absolute angles
 
 	# Calculate the offset
@@ -60,7 +75,7 @@ def spiral_par(start=0, end=3*360, thickness=3, fill=True):	# start/end, absolut
 		
 		coordinates.extend(circle(thickness, x, y, fill))
 
-	print coordinates
+	#print coordinates
 	return coordinates
 
 
@@ -102,10 +117,9 @@ def movePointsTowardsOrigin(points):
 	return points, size	
 
 
-def drawBasicShape(coordinates, save=False, filename=''):
+def draw(coordinates, filename=''):
 	
 	coordinate, size = movePointsTowardsOrigin(coordinates)
-	print size
 	im = Image.new("RGB", (size,size), "white")
 	for pixel in coordinates:
 		r = pixel[0]
@@ -115,16 +129,19 @@ def drawBasicShape(coordinates, save=False, filename=''):
 
 		color = (r,g,b)
 		im.putpixel( pixel, color)
-	im.show()
 
-	if save:
-		im.save(filename + ".bmp")
+	if filename:
+		im.save('img/'+ filename + ".bmp")
+	else:
+		im.show()
 
 
 if __name__ == '__main__':
 
-	drawBasicShape(circle(100, 300,300, fill=True), save=True, filename="circle_par")
-	#drawBasicShape(circle_par(100, 0, 360, thickness=5, fill=True), save=True, filename="circle_par")
-	#drawBasicShape(equilateral_triangle(100), save=True, filename="equilateral_triangle")
-	#drawBasicShape(ellipse_par(100,50), save=True, filename="spiral_par")
-	#drawBasicShape(spiral_par())	
+	#draw(circle(100, 300,300, fill=True), filename="circle_fill")
+	#draw(circle(100, 300,300, fill=False), filename="circle")
+	#draw(circle_par(100, 0, 360, thickness=5, fill=True), filename="circle_par")
+	#draw(equilateral_triangle(100), filename="equilateral_triangleA")
+	#draw(ellipse_par(100,50), filename="spiral_par")
+	#draw(spiral_par())	
+	draw(spiral())
