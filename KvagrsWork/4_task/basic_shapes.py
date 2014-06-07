@@ -51,14 +51,14 @@ def ellipse_par(a, b, start=0, end=360, thickness=5, fill=True):	# a, b axis, st
 	return coordinates
 
 
-def spiral(a, b, eps=0.05):
+def ellipse(a, b, eps=0.05):
 
 	coords = []
 	for x, y in product(range(-a, a), range(-b, b)):
-		if (x / a)**2 + (y / b)**2 - 1 <= eps:
-			coords.extend()
-
-	return
+		if (x / float(a))**2 + (y / float(b))**2 - 1 <= eps:
+			coords.extend([ [x, y] ])
+			
+	return coords
 
 
 def spiral_par(start=0, end=3*360, thickness=3, fill=True):	# start/end, absolute angles
@@ -91,8 +91,6 @@ def equilateral_triangle(side):
 
 	return coordinates
 
-
-#######################################
 
 def movePointsTowardsOrigin(points):
 
@@ -144,4 +142,4 @@ if __name__ == '__main__':
 	#draw(equilateral_triangle(100), filename="equilateral_triangleA")
 	#draw(ellipse_par(100,50), filename="spiral_par")
 	#draw(spiral_par())	
-	draw(spiral())
+	draw(ellipse(100, 50), 'ellipse')
