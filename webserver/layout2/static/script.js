@@ -54,11 +54,11 @@ $(document).ready(function(){
     var tasksKvapil = {
         "1" : ["collatzo", "basic_graphics", "ulam_spiral", "gcd"],
         "2" : ["pascals_triangle"],
-        "3" : ["turtle"],
+        "3" : ["lib_turtle", "fractals", "basic_img"],
         "4" : ["turtle","polygon", "effects", "hide_and_seek"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
         "6" : ["chaos_game"],
-        "7" : [""],
+        "7" : ["complex_fractals"],
         "8" : ["affine_transformation"],
         "9" : ["mp_inverse"],
         "10": ["empty"],
