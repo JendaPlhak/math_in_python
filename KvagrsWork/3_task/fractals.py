@@ -83,7 +83,7 @@ def sideeffect(turtle, order, side):
             #turtle.set_pos( pos )
             turtle.forward( side )
             turtle.right( 72 )
-            pentastar(turtle, order - 1, side)
+            pentaflake(turtle, order - 1, side)
         turtle.penup()
         turtle.forward( side )
         turtle.left( 72 )
@@ -106,7 +106,7 @@ def binec(turtle, order, side):
         _dir = turtle.phi
         for i in xrange(5):
 
-            pentastar(turtle, order - 1, side * 1.6)
+            pentaflake(turtle, order - 1, side * 1.6)
             turtle.right( 72 )
             turtle.forward( side )
     return
@@ -121,7 +121,7 @@ def des(turtle, order, side):
         pos  = [ turtle.x, turtle.y ]
         _dir = turtle.phi
         for i in xrange(5):
-            pentastar(turtle, order - 1, half)
+            pentaflake(turtle, order - 1, half)
             turtle.penup()
             step = 2 * half * (1 + sin(radians(18))) 
             turtle.forward( step )
@@ -153,7 +153,7 @@ def anchors(side, pos=[0, 0], _dir=0):
     return myrtle.coords
 
 
-def pentastar(turtle, order, side):
+def pentaflake(turtle, order, side):
 
     if order == 1:
         rev_polygon(turtle, 5, side)
@@ -165,7 +165,7 @@ def pentastar(turtle, order, side):
         for i, anchor in enumerate(anchors(side, pos, _dir)):
             turtle.set_pos( anchor )
             turtle.right( rot[i] )
-            pentastar(turtle, order - 1, part)
+            pentaflake(turtle, order - 1, part)
         turtle.set_dir( _dir )
         turtle.set_pos( pos )
         
@@ -188,5 +188,5 @@ if __name__ == '__main__':
     bilbo.draw_object('sierpinski')
     bilbo.restart()
 
-    pentastar(bilbo, 6, 300)
-    bilbo.draw_object('pentastar')
+    pentaflake(bilbo, 4, 300)
+    bilbo.draw_object('pentaflake_4')
