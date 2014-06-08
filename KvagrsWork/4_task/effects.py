@@ -60,12 +60,17 @@ def circles(side=500, filename='', color=None):
         im.show()
 
 
-def lines(side=500, filename=''):
+def lines(side=500, _float=True, filename=''):
 
     im = Image.new("RGB", (side, side), (255,255,255))
     n = side / 2
     for x, y in product(xrange(-n, n), xrange(-n, n)):  
-        RBG_tuple = tuple( map( lambda x: 127 * int(x), [max(x, 0), max(y,0), max(x, y)]) )
+        if _float:
+            col = [255 * sin(x / 10.), 255 * sin((x + y) / 10.), 255 * sin(y / 10.)]
+        else:
+            col = [255 * sin(x / 10), 255 * sin((x + y) / 10), 255 * sin(y / 10)]
+        RBG_tuple = tuple( map( lambda x : int(x), col))
+
         im.putpixel( (x + n, y + n), RBG_tuple )
 
     if filename:
@@ -77,8 +82,6 @@ if __name__ == '__main__':
 
     types = [lambda (x, y): [255 * sin(x**2), 255 * cos(y**2), 0 ],
              lambda (x, y): [255 * sin(pi * x * 0.09), 255 * cos(pi * y * 0.09), 255 * sin(pi * x * y * 0.09)],
-             lambda (x, y): [255 * sin(x / 10.), 255 * sin((x + y) / 10.), 255 * sin(y / 10.)],
-             lambda (x, y): [255 * sin(x / 10), 255 * sin((x + y) / 10), 255 * sin(y / 10)],
              lambda (x, y): 3 * [255 * (cos(x / 5)**2 + sin(y / 5)**2)**0.5],
              lambda (x, y): [x + y, x - y, x * y]]
 
@@ -87,4 +90,5 @@ if __name__ == '__main__':
 
     circles(filename='circle')
     chessboard(filename='chessboard')
-    lines(filename='lines')
+    lines(filename='lines_float')
+    lines(_float=False, filename='lines')
