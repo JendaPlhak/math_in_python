@@ -3,6 +3,7 @@
 from lib_turtle import Turtle, polygon, radians
 from math       import sin, pi
 
+import time
 import numpy as np
 
 def rev_polygon(turtle, n, side):
@@ -72,6 +73,43 @@ def sierpinski(turtle, order, side):
         
     return
 
+def anchors(side, pos=[0, 0], _dir=0):
+# 0.381 is a magic constant
+
+    myrtle = Turtle()
+    myrtle.set_pos( pos )
+    myrtle.set_dir( _dir )
+    rev_polygon(myrtle, 5, side )
+    myrtle.coords.pop(0)
+    myrtle.forward( side * 0.381 )
+    myrtle.coords.pop()
+    myrtle.right( 72 )
+    myrtle.forward( side * 0.381 )
+    myrtle.dots = myrtle.coords[::]
+
+    return myrtle.coords
+
+
+def pentaflake(turtle, order, side):
+
+    if order == 1:
+        rev_polygon(turtle, 5, side)
+    else:
+        part = side * 0.381
+        pos  = [ turtle.x, turtle.y ]
+        _dir = turtle.phi
+        rot  = 5 * [ 72 ] + [36]
+        for i, anchor in enumerate(anchors(side, pos, _dir)):
+            turtle.set_pos( anchor )
+            turtle.right( rot[i] )
+            pentaflake(turtle, order - 1, part)
+        turtle.set_dir( _dir )
+        turtle.set_pos( pos )
+        
+    return
+
+"""
+# possible something a bit interesting
 def sideeffect(turtle, order, side):
 
     if order == 1:
@@ -134,59 +172,35 @@ def des(turtle, order, side):
         turtle.forward( step )
         turtle.pendown()
         turtle.right( 72 )
-
-
-def anchors(side, pos=[0, 0], _dir=0):
-# 0.381 is a magic constant
-
-    myrtle = Turtle()
-    myrtle.set_pos( pos )
-    myrtle.set_dir( _dir )
-    rev_polygon(myrtle, 5, side )
-    myrtle.coords.pop(0)
-    myrtle.forward( side * 0.381 )
-    myrtle.coords.pop()
-    myrtle.right( 72 )
-    myrtle.forward( side * 0.381 )
-    myrtle.dots = myrtle.coords[::]
-
-    return myrtle.coords
-
-
-def pentaflake(turtle, order, side):
-
-    if order == 1:
-        rev_polygon(turtle, 5, side)
-    else:
-        part = side * 0.381
-        pos  = [ turtle.x, turtle.y ]
-        _dir = turtle.phi
-        rot  = 5 * [ 72 ] + [36]
-        for i, anchor in enumerate(anchors(side, pos, _dir)):
-            turtle.set_pos( anchor )
-            turtle.right( rot[i] )
-            pentaflake(turtle, order - 1, part)
-        turtle.set_dir( _dir )
-        turtle.set_pos( pos )
-        
-    return
-
-
+"""
 if __name__ == '__main__':
 
-    bilbo = Turtle()
-    bilbo.left( 90 )
-    tree(bilbo, 10, 250)
-    bilbo.draw_object('tree')
-    bilbo.restart()
+    print "Sending turtle Bilbo on an adventure!"
+    Bilbo = Turtle()
+    print ">>> Bilbo sees a tree fractal.."
+    Bilbo.left( 90 )
+    clock = time.time()
+    tree(Bilbo, 10, 250)
+    print "    Time: {}".format(time.time() - clock)
+    Bilbo.draw_object('tree')
+    Bilbo.restart()
 
-    koch_snowflake(bilbo, 5, 500)
-    bilbo.draw_object('koch')
-    bilbo.restart()
+    print ">>> Bilbo found Koch snowflake.."
+    clock = time.time()
+    koch_snowflake(Bilbo, 5, 500)
+    print "    Time: {}".format(time.time() - clock)
+    Bilbo.draw_object('koch')
+    Bilbo.restart()
 
-    sierpinski(bilbo, 7, 500)
-    bilbo.draw_object('sierpinski')
-    bilbo.restart()
+    print ">>> Bilbo tripped over Sierpinski basket.."
+    clock = time.time()
+    sierpinski(Bilbo, 7, 500)
+    print "    Time: {}".format(time.time() - clock)
+    Bilbo.draw_object('sierpinski')
+    Bilbo.restart()
 
-    pentaflake(bilbo, 4, 300)
-    bilbo.draw_object('pentaflake_4')
+    print ">>> Bilbo sees is amazed by pentagonal snowflake.."
+    clock = time.time()
+    pentaflake(Bilbo, 4, 300)
+    print "    Time: {}".format(time.time() - clock)
+    Bilbo.draw_object('pentaflake_4')
