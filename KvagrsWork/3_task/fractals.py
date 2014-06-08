@@ -1,4 +1,4 @@
-#! usr/bin/env python
+#!/usr/bin/env python
 
 from lib_turtle import Turtle, polygon, radians
 from math       import sin, pi
