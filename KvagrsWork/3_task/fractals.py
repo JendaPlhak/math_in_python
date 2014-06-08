@@ -187,7 +187,7 @@ if __name__ == '__main__':
 
     print ">>> Bilbo found Koch snowflake.."
     clock = time.time()
-    koch_snowflake(Bilbo, 5, 500)
+    koch_snowflake(Bilbo, 5, 450)
     print "    Time: {}".format(time.time() - clock)
     Bilbo.draw_object('koch')
     Bilbo.restart()
