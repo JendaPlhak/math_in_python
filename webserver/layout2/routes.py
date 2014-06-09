@@ -111,7 +111,7 @@ def kvapil(task=''):
         base64_data = output.read().encode("base64").replace("\n", "")
         output.close()
     
-        return render_template('kvapil.html', task=task, numTask=tasksKvapil[task], img_data=base64_data)
+        return render_template('kvapil.html', task=task, img_data=base64_data)
 
     elif task == 'intersection':
         n      = int(request.args.get('num',0))
@@ -125,7 +125,7 @@ def kvapil(task=''):
         img         = draw_segment_intersection(n, length)
         base64_data = open( img, "rb").read().encode("base64").replace("\n", "")
     
-        return render_template('kvapil.html', task=task, numTask=tasksKvapil[task], img_data=base64_data)
+        return render_template('kvapil.html', task=task, img_data=base64_data)
 
     #elif task == 'chaos_game':
     #    n     = int(request.args.get('num', 0))
