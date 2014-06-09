@@ -4,7 +4,6 @@ import os
 import svgwrite
 import cairo
 import rsvg
-#import wand
 
 from math       import sin, cos, pi, sqrt, atan, atan2
 from numpy      import array
@@ -191,15 +190,9 @@ class Turtle(object):
         #with open('example_star_even_16.svg','r') as f:
         #   svg_data = f.read()
         svg_data = im.tostring()
-        #print svg_data
         handler  = rsvg.Handle(None, str(svg_data))
         handler.render_cairo(ctx)
 
-        #if index < 9:
-        ## adding necessary zero for sorting the pictures for imageMagick
-        #    path = 'img/gif_part_0' + str(index + 1)
-        #else:
-        #    path = 'img/gif_part_'
         path  = 'img/gif_part_'
         path += str(index + 1).zfill( len( str( len( self.lines ))))
         print "+++ {}.png".format( path )
@@ -209,7 +202,6 @@ class Turtle(object):
 
     def clear_png(self, index):
 
-        #for i in range( index ):
         print "Removing files: "
         for f in [fn for fn in os.listdir('img/') if fn.startswith('gif_part_')]:   
             print "--- {}".format( 'img/'+ f )
