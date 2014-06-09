@@ -276,23 +276,17 @@ if __name__ == '__main__':
     print "Creating examples of the lib_turtle.."
 
     turtle = Turtle()
-    """ 
+    
     polygon(turtle, 100, 6)
-    turtle.draw_object('example_polygon')
+    turtle.draw_object('example_polygon', gif=True)
     turtle.restart()
 
     for i in [5, 17, 51]:
         star(turtle, 100, i)
-        turtle.draw_object('example_star_odd_'+ str(i))
+        turtle.draw_object('example_star_odd_'+ str(i), gif=True)
         turtle.restart()
 
     for i in [4, 16, 42]:
         star(turtle, 10, i)
         turtle.draw_object('example_star_even_'+ str(i))
         turtle.restart()
-
-    """
-    #star(turtle, 100, 5)
-    #turtle.draw_object('test')
-    polygon(turtle, 100, 3)
-    turtle.draw_object('dvojuhelnik', gif=True)

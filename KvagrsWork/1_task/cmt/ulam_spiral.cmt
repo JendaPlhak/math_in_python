@@ -2,7 +2,7 @@ Ulam spiral is one of many famous discrete spiral in mathematics. The easiest wa
 
 &img="square_spiral_example.svg" alt="Example of square spiral" width="200" inline
 
-That means you create a ortogonal grid, pick some square and start to write natural number as shown above. Of course this is not the only way how to go through all the squares in the plane. In order to be able to try different ways I have decided to use my <span class="verb">turtle.py</span> library for turtle graphics.
+That means you create a ortogonal grid, pick some square and start to write natural number as shown above. Of course this is not the only way how to go through all the squares in the plane. In order to be able to try different ways I have decided to use my <span class="verb">lib_turtle.py</span> library for turtle graphics.
 
 This is not the only way, how to do it. Going through all the squares in a plane is equivalent to creating bijective mapping between $\mathbb{N}$ and $\mathbb{Z} \times \mathbb{Z}$. Next to the familiar diagonal method there is infinitely many other. Creating such bijection is equivalent to defining an order relation $\mathcal{R} \subset \mathbb{Z} \times \mathbb{Z}$. This problem can be simplified using complex number or seeing $\mathbb{Z} \times \mathbb{Z}$ as a vector space. Also we can have a mapping $\varphi: \mathbb{N} \to \mathbb{Z}\times\mathbb{Z}$, which $\forall n \in \mathbb{N}: n \mapsto (a,b), a, b \in \mathbb{Z}$. But actually finding such $\varphi$ might be hard. The need of more such functions gave me the idea of using turtle graphics.
 
