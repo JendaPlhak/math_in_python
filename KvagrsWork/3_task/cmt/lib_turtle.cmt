@@ -2,11 +2,11 @@ Here you can see some basic examples, that can be created with the <span class="
 
 Static svg:
 
-&img="example_polygon.svg" alt="Hexagon svg" width="110"
+&img="example_polygon.svg" alt="Hexagon svg" width="200"
 
 And now more interesting gif:
 
-&img="example_polygon.gif" alt="Hexagon gif" width="110"
+&img="example_polygon.gif" alt="Hexagon gif" width="200"
 
 And some stars:
 
