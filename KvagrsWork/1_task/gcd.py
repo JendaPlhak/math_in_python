@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-import matplotlib.pyplot as plt
+import matplotlib
 matplotlib.use('Agg')
-import numpy as np
+
+import matplotlib.pyplot as plt
+import numpy             as np
 import itertools
 import re
 
