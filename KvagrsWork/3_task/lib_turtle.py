@@ -1,9 +1,15 @@
-#! usr/bin/python
+#!/usr/bin/env python
 
+import os
 import svgwrite
+import cairo
+import rsvg
+#import wand
 
-from math   import sin, cos, pi, sqrt, atan, atan2
-from numpy  import array
+from math       import sin, cos, pi, sqrt, atan, atan2
+from numpy      import array
+from images2gif import writeGif
+from PIL        import Image
 
 
 class Turtle(object):
@@ -122,16 +128,22 @@ class Turtle(object):
 
         return
 
-    def draw_object(self, filename=''):
+    def draw_object(self, filename='', gif=False):
 
         self.calculate_offset()
         im = svgwrite.drawing.Drawing()
+        if gif:
+            print "Creating files:"
+
         for x in range( len(self.lines) ):
-            A = (self.lines[x][:2]) 
-            B = (self.lines[x][2:])
+            A = ( self.lines[x][:2]) 
+            B = ( self.lines[x][2:])
             im.add( im.line(start = A,\
                             end   = B,\
-                            stroke= 'black'))     
+                            stroke= 'black'))
+            if gif:
+                self.generate_png(im, x)
+
         if self.dots:
             for dot in self.dots:
                 im.add( im.circle(center = dot,\
@@ -139,6 +151,9 @@ class Turtle(object):
                                   fill   = 'blue'))  
         if filename:
             im.saveas( 'img/'+ filename +'.svg')
+            if gif:
+                self.gifit( filename )
+                self.clear_png( len(self.lines) )
         return
 
 
@@ -154,6 +169,62 @@ class Turtle(object):
             self.dots[i] -= offset[:2]
 
         return 
+
+
+    def gif_frame(self):
+
+        mins = array( map( lambda x: int(x), 2 * map(min, zip(*self.coords)) ))
+        maxs = array( map( lambda x: int(x), 2 * map(max, zip(*self.coords)) ))
+        frame = maxs - mins + array([1, 1, 0 ,0])
+
+        return frame
+
+
+    def generate_png(self, im, index):
+
+        frame = self.gif_frame()
+        img   = cairo.ImageSurface(cairo.FORMAT_ARGB32, frame[0], frame[1])
+        ctx   = cairo.Context(img)
+        
+        ## handler= rsvg.Handle(<svg filename>)
+        # or, for in memory SVG data:
+        #with open('example_star_even_16.svg','r') as f:
+        #   svg_data = f.read()
+        svg_data = im.tostring()
+        #print svg_data
+        handler  = rsvg.Handle(None, str(svg_data))
+        handler.render_cairo(ctx)
+
+        #if index < 9:
+        ## adding necessary zero for sorting the pictures for imageMagick
+        #    path = 'img/gif_part_0' + str(index + 1)
+        #else:
+        #    path = 'img/gif_part_'
+        path  = 'img/gif_part_'
+        path += str(index + 1).zfill( len( str( len( self.lines ))))
+        print "+++ {}.png".format( path )
+
+        img.write_to_png( path +'.png')
+        return
+
+    def clear_png(self, index):
+
+        #for i in range( index ):
+        print "Removing files: "
+        for f in [fn for fn in os.listdir('img/') if fn.startswith('gif_part_')]:   
+            print "--- {}".format( 'img/'+ f )
+            os.remove( 'img/'+ f )
+
+        return
+
+
+    def gifit(self, filename):
+
+        build   = 'convert -delay 16 img/gif_part_*.png img/'+ filename +'.gif'
+        if not os.system( build ):
+            print "Succesfully converted.. {}.gif".format( filename )
+
+        return
 
 
 def radians(phi):
@@ -224,4 +295,4 @@ if __name__ == '__main__':
     #star(turtle, 100, 5)
     #turtle.draw_object('test')
     polygon(turtle, 100, 3)
-    turtle.draw_object('dvojuhelnik')
+    turtle.draw_object('dvojuhelnik', gif=True)

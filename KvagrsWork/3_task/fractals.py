@@ -174,33 +174,34 @@ def des(turtle, order, side):
         turtle.right( 72 )
 """
 if __name__ == '__main__':
-
+    
     print "Sending turtle Bilbo on an adventure!"
     Bilbo = Turtle()
+
     print ">>> Bilbo sees a tree fractal.."
     Bilbo.left( 90 )
     clock = time.time()
-    tree(Bilbo, 10, 250)
+    tree(Bilbo, 6, 250)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('tree')
+    Bilbo.draw_object('tree', gif=True)
     Bilbo.restart()
 
     print ">>> Bilbo found Koch snowflake.."
     clock = time.time()
     koch_snowflake(Bilbo, 5, 450)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('koch')
+    Bilbo.draw_object('koch', gif=True)
     Bilbo.restart()
-
+    
     print ">>> Bilbo tripped over Sierpinski basket.."
     clock = time.time()
-    sierpinski(Bilbo, 7, 500)
+    sierpinski(Bilbo, 6, 500)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('sierpinski')
+    Bilbo.draw_object('sierpinski', gif=True)
     Bilbo.restart()
 
     print ">>> Bilbo sees is amazed by pentagonal snowflake.."
     clock = time.time()
     pentaflake(Bilbo, 4, 300)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('pentaflake_4')
+    Bilbo.draw_object('pentaflake_4', gif=True)

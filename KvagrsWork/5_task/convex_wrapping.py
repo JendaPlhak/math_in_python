@@ -1,6 +1,7 @@
+#!/usr/bin/env python
 import sys
 
-sys.path.append("../4_week")
+sys.path.append("../4_task")
 
 import svgwrite
 from random 				import random, randint
@@ -20,7 +21,7 @@ def find_right(points):						# find the rightest point in the plane
 
 def norm(u):
 
-	return sqrt(dot_product(u,u))
+	return (dot_product(u,u))**0.5
 
 
 def dot_product(u,v):
