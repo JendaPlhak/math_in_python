@@ -154,7 +154,7 @@ if __name__ == '__main__':
     triangles(turtle)
     turtle.draw_object('triangles')
 
-    for i in [12, 42]
+    for i in [12, 42]:
         turtle.restart()
         polycircle(turtle, i)
         turtle.draw_object('polycircle_'+ str(i) )
