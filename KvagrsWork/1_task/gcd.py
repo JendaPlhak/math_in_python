@@ -79,6 +79,7 @@ def plot_fixed_par_gcd(fixed=7, method=gcd_modulo, n=100, filename=''):
 
     # extract the name of the method
     name_method = re.sub(r'_', r' ', filename)
+    print name_method
     # add title
     plt.title(name_method)
 
