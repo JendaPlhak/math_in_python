@@ -131,7 +131,7 @@ if __name__ == '__main__':
 
     
     turtle = Turtle()
-    """
+    
     pentagram_rel(turtle, 200)
     turtle.draw_object('pentagram_rel')
 
@@ -140,19 +140,21 @@ if __name__ == '__main__':
     turtle.draw_object('pentagram_abs')
     
     
-    for i in xrange(3,15):
+    for i in [4, 7, 14]:
         turtle.restart()
         inf_polygon(turtle, 100., 75., i,rep=25)
         turtle.draw_object('inf_polygon_'+ str(i))
     
-    for i in xrange(15, 30):
+    for i in [15, 25]:
         turtle.restart()
         grid_circle(turtle, 100., i)
         turtle.draw_object('grid_circle_'+ str(i))
-    """
+
+    turtle.restart()
     triangles(turtle)
     turtle.draw_object('triangles')
 
-    turtle.restart()
-    polycircle(turtle, 42)
-    turtle.draw_object('polycircle')
+    for i in [12, 42]
+        turtle.restart()
+        polycircle(turtle, i)
+        turtle.draw_object('polycircle_'+ str(i) )
