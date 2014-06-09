@@ -188,20 +188,20 @@ if __name__ == '__main__':
 
     print ">>> Bilbo found Koch snowflake.."
     clock = time.time()
-    koch_snowflake(Bilbo, 5, 450)
+    koch_snowflake(Bilbo, 4, 450)
     print "    Time: {}".format(time.time() - clock)
     Bilbo.draw_object('koch', gif=True)
     Bilbo.restart()
     
     print ">>> Bilbo tripped over Sierpinski basket.."
     clock = time.time()
-    sierpinski(Bilbo, 6, 500)
+    sierpinski(Bilbo, 5, 500)
     print "    Time: {}".format(time.time() - clock)
     Bilbo.draw_object('sierpinski', gif=True)
     Bilbo.restart()
 
     print ">>> Bilbo sees is amazed by pentagonal snowflake.."
     clock = time.time()
-    pentaflake(Bilbo, 4, 300)
+    pentaflake(Bilbo, 3, 300)
     print "    Time: {}".format(time.time() - clock)
     Bilbo.draw_object('pentaflake_4', gif=True)
