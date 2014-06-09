@@ -1,10 +1,10 @@
 {% extends "template.html" %}
 {% block content %}
 	{% if task == '' %}
-		<p>Welcome. Please choos	e one of the tasks on the right.</p>
+		<p>Welcome. Please choose one of the tasks on the right.</p>
 
 	<!-- TASK 1 -->
-	{% elif task  == ['collatzo', 'ulam_spiral', 'gcd', 'basic_graphics'] %}
+	{% elif task  in ['collatzo', 'ulam_spiral', 'gcd', 'basic_graphics'] %}
 		{% include '/KvagrsWork/'+ numTask +'_task/article_'+task+'.html' %}
 		
 	<!-- TASK 2 -->
@@ -12,11 +12,11 @@
 		{% include '/KvagrsWork/2_task/article_'+task+'.html' %}			
 
 	<!-- TASK 3 -->
-	{% elif task == 'fractals' %}
+	{% elif task in ['fractals', 'lib_turtle','basic_img'] %}
 		{% include '/KvagrsWork/3_task/article_'+task+'.html' %}
 
 	<!-- TASK 4 -->
-	{% elif task == ['basic_shapes', 'effects', 'hide_and_seek', 'polygon' ] %}
+	{% elif task in ['basic_shapes', 'effects', 'hide_and_seek', 'polygon' ] %}
 		<!--<img src="../static/img/KvagrsWork/4_task/circle_filled.bmp" alt="circle_filled.bmp" width="200">
 		<img src="../static/img/KvagrsWork/4_task/circle_par.bmp" alt="circle_par.bmp" width="200">
 		<img src="../static/img/KvagrsWork/4_task/ellipse_par.bmp" alt="ellipse_par.bmp" width="200">
@@ -49,27 +49,27 @@
 		</form>-->
 
 	<!-- TASK 6 -->
-	{% elif task == ['feigenbaums_diagram', 'L_system'] %}
+	{% elif task in ['feigenbaums_diagram', 'L_system'] %}
 		{% include '/KvagrsWork/6_task/article_'+task+'.html' %}
 
 	<!-- TASK 7 -->
-	{% elif task == ['complex_fractals'] %}
+	{% elif task in ['complex_fractals'] %}
 		{% include '/KvagrsWork/7_task/article_'+task+'.html' %}
 
 	<!-- TASK 8 -->
-	{% elif task == ['affine_transformation', 'examples'] %}
+	{% elif task in ['affine_transformation', 'examples'] %}
 		{% include '/KvagrsWork/8_task/article_'+task+'.html' %}
 
 	<!-- TASK 9 -->
-	{% elif task == ['data_cluster', 'linear_regression', 'data_generator'] %}
+	{% elif task in ['data_cluster', 'linear_regression', 'data_generator'] %}
 		{% include '/KvagrsWork/9_task/article_'+task+'.html' %}
 
 	<!-- TASK 10 -->
-	{% elif task == ['affine_transformation', 'examples'] %}
+	{% elif task in ['affine_transformation', 'examples'] %}
 		{% include '/KvagrsWork/10_task/article_'+task+'.html' %}
 
 	<!-- TASK 11 -->
-	{% elif task == ['affine_transformation', 'examples'] %}
+	{% elif task in ['affine_transformation', 'examples'] %}
 		{% include '/KvagrsWork/11_task/article_'+task+'.html' %}
 
 	{% else %}
