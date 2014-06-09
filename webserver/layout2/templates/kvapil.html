@@ -1,45 +1,29 @@
 {% extends "template.html" %}
 {% block content %}
 	{% if task == '' %}
-	{% elif task  == 'collatzo' %}
-		{% include '/KvagrsWork/'+ numTask +'_task/article_'+task+'.html' %}
-		
-	{% elif task == 'basic_graphics' %}
-		{% include '/KvagrsWork/1_task/article_'+task+'.html' %}
+		<p>Welcome. Please choos	e one of the tasks on the right.</p>
 
-	{% elif task == 'ulam_spiral' %}
-		{% include '/KvagrsWork/1_task/article_'+task+'.html' %}	
+	<!-- TASK 1 -->
+	{% elif task  == ['collatzo', 'ulam_spiral', 'gcd', 'basic_graphics'] %}
+		{% include '/KvagrsWork/'+ numTask +'_task/article_'+task+'.html' %}
 		
 	<!-- TASK 2 -->
 	{% elif task == 'pascals_triangle' %}
 		{% include '/KvagrsWork/2_task/article_'+task+'.html' %}			
 
+	<!-- TASK 3 -->
 	{% elif task == 'fractals' %}
-		<!--<img src="../static/img/KvagrsWork/3_task/polygon.svg" alt="polygon.svg" width="300">
-		<img src="../static/img/KvagrsWork/3_task/star.svg" alt="star.svg" width="300">
-		<img src="../static/img/KvagrsWork/3_task/squares.svg" alt="squares.svg" width="300">
-		<img src="../static/img/KvagrsWork/3_task/triangles.svg" alt="triangles.svg" width="300">
-
-		<p>Click <a href="https://github.com/JendaPlhak/math_in_python/blob/master/KvagrsWork/3_task/turtle.py">here</a> to see the code.</p>-->
 		{% include '/KvagrsWork/3_task/article_'+task+'.html' %}
 
-	{% elif task == 'shapes' %}
-		<img src="../static/img/KvagrsWork/4_task/circle_filled.bmp" alt="circle_filled.bmp" width="200">
+	<!-- TASK 4 -->
+	{% elif task == ['basic_shapes', 'effects', 'hide_and_seek', 'polygon' ] %}
+		<!--<img src="../static/img/KvagrsWork/4_task/circle_filled.bmp" alt="circle_filled.bmp" width="200">
 		<img src="../static/img/KvagrsWork/4_task/circle_par.bmp" alt="circle_par.bmp" width="200">
 		<img src="../static/img/KvagrsWork/4_task/ellipse_par.bmp" alt="ellipse_par.bmp" width="200">
-		<img src="../static/img/KvagrsWork/4_task/equilateral_triangle.bmp" alt="equilateral_triangle.bmp" width="100">
-	{% elif task == 'polygon' %}
-		<img src="../static/img/KvagrsWork/4_task/polygon.bmp" alt="Irregular polygon in the plane" width="300">
+		<img src="../static/img/KvagrsWork/4_task/equilateral_triangle.bmp" alt="equilateral_triangle.bmp" width="100">-->
+		{% include '/KvagrsWork/3_task/article_'+task+'.html' %}
 
-	{% elif task == 'hide_and_seek' %}
-		<img src="../static/img/KvagrsWork/4_task/skryvacka1.png" alt="skryvacka1.png" width="300">
-		<img src="../static/img/KvagrsWork/4_task/solved1.png" alt="solved1.png" width="300">
-		<img src="../static/img/KvagrsWork/4_task/skryvacka2.png" alt="skryvacka2.png" width="300">
-		<img src="../static/img/KvagrsWork/4_task/skryvacka2.png" alt="skryvacka2.png" width="300">
-		<img src="../static/img/KvagrsWork/4_task/skryvacka3.png" alt="skryvacka3.png" width="300">
-		<img src="../static/img/KvagrsWork/4_task/solved3.png" alt="solved3.png" width="300">
-
-
+	<!-- TASK 5 -->
 	{% elif task == 'intersection' %}
 		<img src="data:image/svg+xml;base64,{{ img_data }}" alt="intersection.svg" width="500">
 		<form action="" method="get" name="nazevFunkce">
@@ -55,6 +39,7 @@
 			Minimal lengths: <input type="checkbox" name="checkbox" value="True">
 					<input class="drawButton" type="submit" value="Draw!">
 		</form>
+
 	{% elif task == 'chaos_game' %}
 		<img src="../static/img/KvagrsWork/6_task/sierpinski_triangle.bmp" alt="sierpinski_triangle.bmp" width="300">
 		<!--<form action="" method="get">
@@ -62,6 +47,31 @@
 			Ratio: 				<input type="number" name="ratio">
 								<input	type="submit" value="Draw!">
 		</form>-->
+
+	<!-- TASK 6 -->
+	{% elif task == ['feigenbaums_diagram', 'L_system'] %}
+		{% include '/KvagrsWork/6_task/article_'+task+'.html' %}
+
+	<!-- TASK 7 -->
+	{% elif task == ['complex_fractals] %}
+		{% include '/KvagrsWork/7_task/article_'+task+'.html' %}
+
+	<!-- TASK 8 -->
+	{% elif task == ['affine_transformation', 'examples'] %}
+		{% include '/KvagrsWork/8_task/article_'+task+'.html' %}
+
+	<!-- TASK 9 -->
+	{% elif task == ['data_cluster', 'linear_regression', 'data_generator'] %}
+		{% include '/KvagrsWork/9_task/article_'+task+'.html' %}
+
+	<!-- TASK 10 -->
+	{% elif task == ['affine_transformation', 'examples'] %}
+		{% include '/KvagrsWork/10_task/article_'+task+'.html' %}
+
+	<!-- TASK 11 -->
+	{% elif task == ['affine_transformation', 'examples'] %}
+		{% include '/KvagrsWork/11_task/article_'+task+'.html' %}
+
 	{% else %}
 		<p>
 			We are sorry, this content is currently unavailable.
