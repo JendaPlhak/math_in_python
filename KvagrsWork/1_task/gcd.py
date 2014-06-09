@@ -78,7 +78,7 @@ def plot_fixed_par_gcd(fixed=7, method=gcd_modulo, n=100, filename=''):
     plt.plot(data[0], data[1], 'k-')
 
     # extract the name of the method
-    name_method = re.sub(r'_', r' ', re.search(r'(\w+)_(\w+)', str(method)).group(0))
+    name_method = re.sub(r'_', r' ', filename)
     # add title
     plt.title(name_method)
 
