@@ -183,25 +183,25 @@ if __name__ == '__main__':
     clock = time.time()
     tree(Bilbo, 6, 250)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('tree', gif=True)
+    Bilbo.draw_object('tree')
     Bilbo.restart()
 
     print ">>> Bilbo found Koch snowflake.."
     clock = time.time()
     koch_snowflake(Bilbo, 4, 450)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('koch', gif=True)
+    Bilbo.draw_object('koch')
     Bilbo.restart()
     
     print ">>> Bilbo tripped over Sierpinski basket.."
     clock = time.time()
     sierpinski(Bilbo, 5, 500)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('sierpinski', gif=True)
+    Bilbo.draw_object('sierpinski')
     Bilbo.restart()
 
     print ">>> Bilbo sees is amazed by pentagonal snowflake.."
     clock = time.time()
-    pentaflake(Bilbo, 3, 300)
+    pentaflake(Bilbo, 4, 300)
     print "    Time: {}".format(time.time() - clock)
-    Bilbo.draw_object('pentaflake_4', gif=True)
+    Bilbo.draw_object('pentaflake_4')
