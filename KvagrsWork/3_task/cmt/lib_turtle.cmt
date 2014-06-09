@@ -1,0 +1,23 @@
+Here you can see some basic examples, that can be created with the <span class="verb">lib_turtle.py</span> module.
+
+Static svg:
+
+&img="example_polygon.svg" alt="Hexagon svg"
+
+And now more interesting gif:
+
+&img="example_polygon.gif" alt="Hexagon gif"
+
+And some stars:
+
+&img="example_star_odd_5.svg" alt="Star"
+
+&img="example_star_odd_5.gif" alt="Star"
+
+&img="example_star_odd_17.svg" alt="Star"
+
+&img="example_star_odd_17.gif" alt="Star"
+
+&img="example_star_odd_51.svg" alt="Star"
+
+&img="example_star_odd_51.gif" alt="Star"
