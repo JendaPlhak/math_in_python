@@ -1,12 +1,12 @@
 &img="pentagram_abs.svg" alt="pentagram_abs" width="200"
 
-&img="pentagram_rel.svg" alt="pentagram_rel" width="200"
+&img="pentagram_rel.svg" alt="pentagram_rel" width="300"
 
 &img="inf_polygon_4.svg" alt="inf_polygon_4" width="200"
 
-&img="inf_polygon_7.svg" alt="inf_polygon_7" width="200"
+&img="inf_polygon_7.svg" alt="inf_polygon_7" width="250"
 
-&img="inf_polygon_14.svg" alt="inf_polygon_14" width="200"
+&img="inf_polygon_14.svg" alt="inf_polygon_14" width="500"
 
 &img="grid_circle_15.svg" alt="grid_circle_15" width="200"
 
@@ -14,6 +14,6 @@
 
 &img="triangle.svg" alt="triangle" width="200"
 
-&img="polycircle_12.svg" alt="polycircle_12" width="200"
+&img="polycircle_12.svg" alt="polycircle_12" width="250"
 
-&img="polycircle_42.svg" alt="polycircle_42" width="200"
+&img="polycircle_42.svg" alt="polycircle_42" width="500"

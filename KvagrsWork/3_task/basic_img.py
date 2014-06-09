@@ -145,7 +145,7 @@ if __name__ == '__main__':
         inf_polygon(turtle, 100., 75., i,rep=25)
         turtle.draw_object('inf_polygon_'+ str(i))
     
-    for i in [15, 25]:
+    for i in [15, 29]:
         turtle.restart()
         grid_circle(turtle, 100., i)
         turtle.draw_object('grid_circle_'+ str(i))
