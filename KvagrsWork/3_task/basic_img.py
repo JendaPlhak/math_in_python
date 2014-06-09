@@ -151,7 +151,7 @@ if __name__ == '__main__':
         turtle.draw_object('grid_circle_'+ str(i))
 
     turtle.restart()
-    triangles(turtle)
+    triangles(turtle, 20, 10, 10)
     turtle.draw_object('triangles')
 
     for i in [12, 42]:
