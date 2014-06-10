@@ -88,7 +88,7 @@ if __name__ == '__main__':
     for i, color in enumerate(types):
         circles(filename='circle_'+ str(i + 1), color=color)
 
-    circles(filename='circle')
+    circles(filename='circles')
     chessboard(filename='chessboard')
     lines(filename='lines_float')
     lines(_float=False, filename='lines')
