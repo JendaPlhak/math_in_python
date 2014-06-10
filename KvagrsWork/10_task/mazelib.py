@@ -91,8 +91,8 @@ def solve_num_maze(maze):
     pos  = [0, 0]
     fin  = [size - 1, size - 1 ]
 
-    while pos != fin
-
+    while pos != fin:
+        pass
 
 
     pass
@@ -104,4 +104,4 @@ if __name__ == '__main__':
     maze = load_num_maze('ciselne-bludiste.txt', separator='-')
     for i, m in enumerate(maze):
         print "Drawing maze number {}.".format(i + 1)
-        draw_number_maze(maze=m, num=(i + 1 ), side=50)
+        draw_number_maze(maze=m, num=(i + 1), side=50)
