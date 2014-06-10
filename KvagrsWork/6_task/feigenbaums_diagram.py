@@ -46,7 +46,7 @@ def draw_bifurcation_diagram(last, x_axis=[0,1], r_axis=[0,1], save=False, filen
             plt.plot( box[0], box[1], 'r-', linewidth=2)
 
     if save:
-        fig.savefig( filename + '.png')
+        fig.savefig('img/'+ filename + '.png')
 
 
 if __name__ == '__main__':
