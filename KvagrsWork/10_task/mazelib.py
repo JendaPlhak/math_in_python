@@ -1,4 +1,5 @@
-#! usr/bin/env python
+#!/usr/bin/env python
+
 import sys
 for i in xrange(1, 11):
     sys.path.append('../'+ str(i) +'_task')
