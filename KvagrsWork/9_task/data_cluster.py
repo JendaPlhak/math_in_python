@@ -13,6 +13,8 @@ from segment_intersection  import dist
 from pascals_triangle      import different_colors
 from hide_and_seek         import download_file, PATH
 
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 import random
