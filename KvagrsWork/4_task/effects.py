@@ -1,4 +1,4 @@
-#! usr/bin/env python
+#!/usr/bin/env python
 
 from PIL       import Image
 from math      import cos, sin, tan, pi
