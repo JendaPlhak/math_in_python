@@ -92,12 +92,15 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-1.5,3],
     if weight < 0:
         print "Not enough points in the frame"
         print ">>> Weight: {}".format( weight )
+        print ">>> C:      {}".format( C )
 
         return
     else:
         print "Enough points"
         print ">>> Weight: {}".format( weight )
         print "+++ {}".format( filename +'.png' )
+        print ">>> C:      {}".format( C )
+        
     if filename:
         im.save('img/'+ filename +'.png')
     else:
@@ -125,7 +128,8 @@ if __name__ == '__main__':
     #    filename += '_'.join([str(x) for x in frame])
     #    mandelbrot_set(filename=filename, frame=frame, coloring=1)
 
-    for i in range(40):
-        C = round(random(),2) + round(random(),2) * 1j
+    for i in range(50):
+        #C = round(random(),2) + round(random(),2) * 1j
+        C = 0.01 + 0.02 * i * 1j
         filename  = 'julia_set_'+ str(C)
-        mandelbrot_set(C=C, filename=filename, julia=True,frame=[-5,-5, 10])
+        mandelbrot_set(C=C, filename=filename, julia=True,frame=[-2,2,4])

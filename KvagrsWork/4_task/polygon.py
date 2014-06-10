@@ -9,6 +9,7 @@ from PIL                   import Image
 from segment_intersection  import cross_point
 from affine_transformation import min_max_points, shift_points
 
+import numpy as np
 
 def vectorizePoints(A,B):
 
@@ -123,5 +124,7 @@ if __name__ == '__main__':
     data = [[10, 10], [180, 20], [160, 150], [100,50], [20, 180]]
     drawIrregularPolygon(data, filename='polygon')
 
-    data = [[238,196],[392,0],[498,216],[824,338],[508,422],[362,618],[254,408],[0,312]]
-    drawIrregularPolygon(data, filename='star')
+    #data = [[238,196],[392,0],[498,216],[824,338],[508,422],[362,618],[254,408],[0,312]]
+    #data  = [[-100,0],[-50,-50],[0,-100],[50,-50],[100,0],[50,50],[0,100],[-50,50]]
+    #data += np.array([[100,100], [100,100], [100,100], [100,100], [100,100], [100,100], [100,100], [100,100]])
+    #drawIrregularPolygon(data, filename='star')
