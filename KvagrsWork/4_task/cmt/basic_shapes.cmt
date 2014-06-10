@@ -1,9 +1,9 @@
-&img="circle_fill.png" alt="circle_fill"
+&img="circle_fill.png" alt="circle_fill"  width="200"
 
-&img="circle.png" alt="circle"
+&img="circle.png" alt="circle" width="200"
 
-&img="equilateral_triangle.png" alt="equilateral_triangle"
+&img="circle_par.png" alt="spiral"  width="200"
 
-&img="triangle_fun.png" alt="triangle_fun"
+&img="triangle_fun.png" alt="triangle_fun" width="200"
 
-&img="ellipse.png" alt="ellipse"
+&img="ellipse.png" alt="ellipse" width="200"
