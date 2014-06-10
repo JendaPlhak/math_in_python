@@ -36,8 +36,9 @@ def download_file(path):
 
 def seek_one():
     
+    #download( PATH +'skryvacka1.png')
     _file = cStringIO.StringIO(urllib.urlopen( PATH + 'skryvacka1.png').read())
-    im    = Image.open(_file)
+    im    = Image.open('')
     im.save('img/hide_one.png')
 
     pix = im.load()
@@ -64,7 +65,7 @@ def seek_two():
             pix[x, y] = (0,0,0)
 
     im.save('img/solved_two.png')
-
+    _file.close()
     return
 
 
@@ -87,7 +88,7 @@ def seek_three():
                 pix[x,y] = (255,255,255)
     
     im.save('img/solved_three.png')
-
+    _file.close()
     return
 
 
@@ -96,5 +97,3 @@ if __name__ == '__main__':
     seek_one()
     seek_two()
     seek_three()
-
-    download_file( PATH +'skryvacka1.png')
