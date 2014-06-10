@@ -192,11 +192,11 @@ def draw(pixs, filename=''):
 
 if __name__ == '__main__':
 
-    #draw(circle(100, 300,300, fill=True), filename="circle_fill")
-    #draw(circle(100, 300,300, fill=False), filename="circle")
+    draw(circle(100, 300,300, fill=True), filename="circle_fill")
+    draw(circle(100, 300,300, fill=False), filename="circle")
     draw(circle_par(100, 0, 5000), filename="circle_par")
-    #draw(equilateral_triangle(100), filename="triangle_fun")
+    draw(equilateral_triangle(100), filename="triangle_fun")
     #draw(ellipse_par(100,50), filename="spiral_par")
-    #draw(spiral_par(), filename='spiral') 
-    #draw(ellipse(100, 50), 'ellipse')
-    #ellipse(10, 5)
+    draw(spiral_par(), filename='spiral') 
+    draw(ellipse(100, 50), 'ellipse')
+    ellipse(10, 5)
