@@ -5,6 +5,7 @@ for i in xrange(1, 11):
 
 from affine_transformation import connect_points
 from numpy                 import array
+from hide_and_seek         import download_file, PATH
 
 import itertools
 import re
@@ -99,6 +100,7 @@ def solve_num_maze(maze):
 
 if __name__ == '__main__':
 
+    download_file( PATH +'ciselne-bludiste.txt')
     maze = load_num_maze('ciselne-bludiste.txt', separator='-')
     for i, m in enumerate(maze):
         print "Drawing maze number {}.".format(i + 1)
