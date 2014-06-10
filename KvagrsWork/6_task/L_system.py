@@ -4,7 +4,7 @@ import sys
 sys.path.append('../3_task')
 
 import re
-import turtle_lib
+import lib_turtle
 
 def generate_Lsystem(axiom, rule, n):
     # symbols {F, -, +}
