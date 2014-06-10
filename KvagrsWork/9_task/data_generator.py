@@ -1,4 +1,4 @@
-#! usr/bin/python
+#!/usr/bin/python
 
 import matplotlib.pyplot as plt
 from numpy.random import *

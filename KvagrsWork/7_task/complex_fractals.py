@@ -1,10 +1,11 @@
-#! usr/bin/env python
+#!/usr/bin/env python
+
 import sys
 sys.path.append('../2_task')
 
 from PIL              import Image
 from pascals_triangle import different_colors
-
+from random           import random
 import numpy as np
 
 import cmath
@@ -18,12 +19,12 @@ def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
     y0 = frame[1]
     dt = frame[2]
 
-    im     = Image.new("RGB", (1000, 1000), (255, 255, 255))
+    im     = Image.new("RGB", (250, 250), (255, 255, 255))
     roots  = np.roots( pol )
     colors = different_colors( len(roots) )
 
-    for s, t in itertools.product(xrange(1000), xrange(1000)):
-        z = x0 + s * dt / 1000. + (y0 + t * dt / 1000.) * 1j
+    for s, t in itertools.product(xrange(250), xrange(250)):
+        z = x0 + s * dt / 250. + (y0 + t * dt / 250.) * 1j
         for i in xrange(50):
             if np.polyval( pol, z ) == 0 or np.polyval( np.polyder( pol ), z) == 0:
                 break
@@ -41,7 +42,7 @@ def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
         im.show()
 
 
-def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-0.1,-0.1,0.7]):
+def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-1.5,3], coloring=0):
 
     x0 = frame[0]
     y0 = frame[1]
@@ -49,6 +50,7 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-0.1,-0.1,0
 
     im = Image.new("RGB", (1000, 1000), (255, 255, 255))
     colors = different_colors(31)
+    weight = 0
     for s, t in itertools.product(xrange(1000), xrange(1000)):
         steps = 0
         if julia:
@@ -63,20 +65,39 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-0.1,-0.1,0
             z      = z**2 + C
             steps += 1
 
+        if coloring == 0:
+            if abs(z) < 2:
+                col = tuple(3 * [0])
+                weight += 1
+            else:
+                col = tuple(3 * [255])
+                weight -= 0.09
+
+        elif coloring == 1:
+            col = colors[steps]   
         #HSV_tuples = [(z.real * 1.0 /  31, 1, 0.85) for x in range(31) ]
         #RGB_tuples = map(lambda x: colorsys.hsv_to_rgb( *x ), HSV_tuples)
         #RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
 
-        if abs(z) < 2:
-            col = tuple(3 * [0])
+        #if abs(z) < 2:
+            #col = tuple(3 * [0])
         #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(z.real + z.imag)]))
-        #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(steps)]))
+        #col = tuple( map( lambda x: int(x), [255*(steps), 255 * z.real, 255*z.imag]))
         #col = colors[steps]
-        else:
-            col = tuple(3 * [255])
+        #else:
+        #col = tuple(3 * [255])
 
         im.putpixel((s, t), col)
 
+    if weight < 0:
+        print "Not enough points in the frame"
+        print ">>> Weight: {}".format( weight )
+
+        return
+    else:
+        print "Enough points"
+        print ">>> Weight: {}".format( weight )
+        print "+++ {}".format( filename +'.png' )
     if filename:
         im.save('img/'+ filename +'.png')
     else:
@@ -85,5 +106,26 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-0.1,-0.1,0
 
 if __name__ == '__main__':
 
-    #newton_fractal(filename='newton_fractal', pol=[2,3,5,7,11])
-    mandelbrot_set(filename='mandelbrot_black_whiteb')
+    #newton_fractal(filename='newton_fractal')
+
+    frames = [[-2,-1.5,3],
+              [-1,-1,1],
+              [-.8,-.8,.5],
+              [-.6,-.7,.1],
+              [-.55,-.67,.01],
+              [-.555,-.675,0.01]]
+
+    #frames = [[-2,-0.5, 1],
+    #          [-2,-0.5, .5],
+    #          [-2,-0.5, .1],
+    #          [-2,-0.5, .01]]
+
+    #for frame in frames:
+    #    filename  = 'mandelbrot_set'
+    #    filename += '_'.join([str(x) for x in frame])
+    #    mandelbrot_set(filename=filename, frame=frame, coloring=1)
+
+    for i in range(40):
+        C = round(random(),2) + round(random(),2) * 1j
+        filename  = 'julia_set_'+ str(C)
+        mandelbrot_set(C=C, filename=filename, julia=True,frame=[-5,-5, 10])
