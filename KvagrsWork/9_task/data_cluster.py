@@ -6,6 +6,8 @@ for i in xrange(1,11):
     sys.path.append('../'+ str(i) +'_task')
 
 import os
+import matplotlib
+matplotlib.use('Agg')
 
 from linear_regression     import load
 from data_generator        import *
@@ -13,8 +15,6 @@ from segment_intersection  import dist
 from pascals_triangle      import different_colors
 from hide_and_seek         import download_file, PATH
 
-import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 import random
