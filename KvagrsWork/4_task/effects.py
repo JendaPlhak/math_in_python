@@ -80,13 +80,13 @@ def lines(side=500, _float=True, filename=''):
 
 if __name__ == '__main__':
 
-    types = [lambda (x, y): [255 * sin(x**2), 255 * cos(y**2), 0 ],
-             lambda (x, y): [255 * sin(pi * x * 0.09), 255 * cos(pi * y * 0.09), 255 * sin(pi * x * y * 0.09)],
-             lambda (x, y): 3 * [255 * (cos(x / 5)**2 + sin(y / 5)**2)**0.5],
-             lambda (x, y): [x + y, x - y, x * y]]
-
-    for i, color in enumerate(types):
-        circles(filename='circle_'+ str(i + 1), color=color)
+#    types = [lambda (x, y): [255 * sin(x**2), 255 * cos(y**2), 0 ],
+#             lambda (x, y): [255 * sin(pi * x * 0.09), 255 * cos(pi * y * 0.09), 255 * sin(pi * x * y * 0.09)],
+#             lambda (x, y): 3 * [255 * (cos(x / 5)**2 + sin(y / 5)**2)**0.5],
+#             lambda (x, y): [x + y, x - y, x * y]]
+#
+#    for i, color in enumerate(types):
+#        circles(filename='circle_'+ str(i + 1), color=color)
 
     circles(filename='circles')
     chessboard(filename='chessboard')
