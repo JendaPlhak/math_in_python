@@ -1,13 +1,17 @@
-#! usr/bin/env python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import sys 
 for i in xrange(1,11):
     sys.path.append('../'+ str(i) +'_task')
 
-from linear_regression      import load
-from data_generator         import *
-from segment_intersection   import dist
-from pascals_triangle       import different_colors
+import os
+
+from linear_regression     import load
+from data_generator        import *
+from segment_intersection  import dist
+from pascals_triangle      import different_colors
+from hide_and_seek         import download_file, PATH
 
 import matplotlib.pyplot as plt
 
@@ -80,7 +84,7 @@ def plot_data_clustering(classes, centers, k, filename=''):
     plt.title( title )
 
     if filename:
-        plt.savefig('img/'+ filename, format='png')
+        plt.savefig('img/'+ filename +'.png')
     else:
         plt.show()
 
@@ -105,7 +109,7 @@ def plot_shifts(centers, k, colors, filename=''):
     plt.ylabel('$\Delta C$')
     
     if filename:
-        plt.savefig('img/'+ filename +'_shifts', format='png')
+        plt.savefig('img/'+ filename +'_shifts.png')
     else:
         plt.show()
     plt.clf()
@@ -115,16 +119,20 @@ def plot_shifts(centers, k, colors, filename=''):
 
 if __name__ == '__main__':
 
+    download_file( PATH +'faithful.txt')
     k = 2
     data = load('faithful.txt')
     classes, centers = k_means(data, k)
     plot_data_clustering(classes, centers, k, filename='data_cluster_faithful')
-        
+
+    download_file( PATH +'linreg-mix.txt')        
     data = load('linreg-mix.txt')
     classes, centers = k_means(data, k)
     plot_data_clustering(classes, centers, k, filename='linreg-mix')
 
+
+    download_file( PATH +'cluster_data.txt')
     k = 5
-    data = load('data_cluster.txt')
+    data = load('cluster_data.txt')
     classes, centers = k_means(data, k)
     plot_data_clustering(classes, centers, k, filename='data_cluster')

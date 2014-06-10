@@ -1,10 +1,38 @@
-#! usr/bin/env python
+#!/usr/bin/env python
 
 from PIL       import Image
 from itertools import product
+
 import urllib, cStringIO
+import re
 
 PATH = 'http://www.fi.muni.cz/~xpelanek/IV122/zadani/'
+
+def download_file(path): 
+
+    print "Attempting to download file from:"
+    print "URL: {}".format( path )
+
+    _file    = cStringIO.StringIO(urllib.urlopen( path ).read())
+    if _file:
+        print "... successfully read to buffer"
+    else:
+        print "ERROR while trying to read from:"
+        print "URL: {}".format( path )
+
+        return 
+
+    filename  = path[::-1].split('/')[0][::-1]
+
+    with open(filename, 'w') as f:
+        f.write( _file.getvalue() )
+        print "+++ {}".format( filename )
+
+    _file.close()
+
+    return
+
+
 
 def seek_one():
     
@@ -17,6 +45,7 @@ def seek_one():
             pix[x,y] = (0, 0, pix[x,y][2] * 255)
             
     im.save('img/solved_one.png')
+    _file.close()
 
     return
     
@@ -67,3 +96,5 @@ if __name__ == '__main__':
     seek_one()
     seek_two()
     seek_three()
+
+    download_file( PATH +'skryvacka1.png')

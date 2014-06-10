@@ -6,7 +6,6 @@ from numpy.random import *
 
 def generate_data(n=100, f=False, distribution=randn, sigma=1, mu=0):
 
-    
     x_values = range(n)
 
     if not f:
