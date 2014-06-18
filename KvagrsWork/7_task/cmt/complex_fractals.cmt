@@ -1,9 +1,9 @@
 Julia set animations for different constant $C$.
 
-$C = 0 + k\cdot i$, where $ k \in \{ 0.02, 0.04, \ldots 0.98 \}$
+$C = 0 + k\cdot i$, where $ k \in \{ 0.02, 0.04, \ldots, 0.98 \}$
 
 &img="julia_0.gif" alt="julia_0" width="500"
 
-$C = 0.38 + k\cdot i$, where $ k \in \{ 0.02, 0.04, \ldots 0.98 \}$
+$C = 0.38 + k\cdot i$, where $ k \in \{ 0.02, 0.04, \ldots, 0.98 \}$
 
 &img="julia_950.gif" alt="julia_950" width="500"
