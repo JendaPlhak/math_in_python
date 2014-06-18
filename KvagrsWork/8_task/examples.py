@@ -1,4 +1,4 @@
-#!usr/bin/env python
+#!/usr/bin/env python
 
 from affine_transformation import *
 from numpy                 import array
