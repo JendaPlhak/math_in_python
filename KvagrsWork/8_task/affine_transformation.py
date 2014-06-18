@@ -62,18 +62,18 @@ def combine(*transf):
     # calculates the matrix of all affine transformations from *transf
 
     transf = list( transf )
-    print "Printing transformations.."
-    for item in transf:
-        print "Item:"
-        print item
-    print "Done."
+    #print "Printing transformations.."
+    #for item in transf:
+    #    print "Item:"
+    #    print item
+    #print "Done."
     
     matrix = transf.pop()
     while transf:
         matrix = dot(transf.pop(), matrix)
 
-    print "Combined matrix: "
-    print "{}".format(matrix)
+    #print "Combined matrix: "
+    #print "{}".format(matrix)
     
     return matrix
 
