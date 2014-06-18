@@ -1,7 +1,7 @@
 #! usr/bin/env python
 
 import sys
-for i in xrange(1,11):
+for i in xrange(1,12):
     sys.path.append('../'+ str(i) +'_task/')
 
 from basic_shapes   import movePointsTowardsOrigin
@@ -126,10 +126,10 @@ def min_max_lines(lines):
     y_min = min(y_coords)
     #y_max = max(y_coords)
 
-    return x_min, y_min
+    return [x_min, y_min]
 
 
-def min_max_points(points):
+def min_max_points(points, shift=array([0,0])):
 
     points = [x for y in points for x in y]
 
@@ -138,22 +138,27 @@ def min_max_points(points):
     y_min = min(points)
     y_max = max(points) - y_min
 
-    return  x_min, y_min, x_max, y_max
+    return  array([x_min, y_min, x_max, y_max])
 
 
-def shift_lines(lines):
+def shift_lines(lines, shift=array([0,0])):
 
     x_min, y_min = min_max_lines( lines )
 
-    print "Shifting lines.."
-    print "X min {}, Y min {}".format(x_min, y_min)
+    #print "using shift {}".format( shift )
+    if shift.any():
+        print "using shift {}".format( shift )
+        x_min, y_min = shift
+
+    #print "Shifting lines.."
+    #print "X min {}, Y min {}".format(x_min, y_min)
     for line in lines:
-        print "Line:{} ==> ".format(line)
+        #print "Line:{} ==> ".format(line)
         line[0] -= x_min
         line[2] -= x_min
         line[1] -= y_min
         line[3] -= y_min
-        print "==>  {}".format(line)
+        #print "==>  {}".format(line)
     return lines
 
 
@@ -182,6 +187,7 @@ def plot_and_save(filename, lines=[], points=[]):
         im.saveas('img/'+ filename +'.svg')
 
     if points:
+        # watch out shift points changed
         size   = shift_points( points )[:2]
         print "size {}".format(size)
         im     = Image.new("RGB", size)

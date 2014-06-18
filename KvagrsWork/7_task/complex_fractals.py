@@ -7,10 +7,13 @@ from PIL              import Image
 from pascals_triangle import different_colors
 from random           import random
 from itertools        import product
+
 import numpy as np
 
 import cmath
+import math
 import colorsys
+
 
 
 def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
@@ -42,13 +45,13 @@ def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
         im.show()
 
 
-def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-1.5,3], coloring=0):
+def mandelbrot_set(C=-0.13 + 0.75j, pol=[1,0,0], filename='', julia=False, frame=[-2,-1.5,3], coloring=0):
 
     x0 = frame[0]
     y0 = frame[1]
     dt = frame[2]
 
-    im = Image.new("RGB", (1000, 1000), (255, 255, 255))
+    im     = Image.new("RGB", (1000, 1000), (255, 255, 255))
     colors = different_colors(31)
     weight = 0
     for s, t in product(xrange(1000), xrange(1000)):
@@ -62,7 +65,7 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-1.5,3],
         for i in xrange(30):
             if abs(z) > 2:
                 break
-            z      = z**2 + C
+            z      = z**3 - z**2 + C
             steps += 1
         
         if coloring == 0:
@@ -89,17 +92,17 @@ def mandelbrot_set(C=-0.13 + 0.75j, filename='', julia=False, frame=[-2,-1.5,3],
 
         im.putpixel((s, t), col)
 
-    if weight < 0:
-        print "Not enough points in the frame"
-        print ">>> Weight: {}".format( weight )
-        print ">>> C:      {}".format( C )
-
-        return
-    else:
-        print "Enough points"
-        print ">>> Weight: {}".format( weight )
-        print "+++ {}".format( filename +'.png' )
-        print ">>> C:      {}".format( C )
+    #if weight < 0:
+    #    print "Not enough points in the frame"
+    #    print ">>> Weight: {}".format( weight )
+    #    print ">>> C:      {}".format( C )
+#
+#    #    return
+#    #else:
+#    #    print "Enough points"
+#    #    print ">>> Weight: {}".format( weight )
+#    #    print "+++ {}".format( filename +'.png' )
+    #    print ">>> C:      {}".format( C )
 
     if filename:
         im.save('img/'+ filename +'.png')
@@ -128,10 +131,13 @@ if __name__ == '__main__':
     #    filename += '_'.join([str(x) for x in frame])
     #    mandelbrot_set(filename=filename, frame=frame, coloring=1)
 
-    k = 1
-    for x, y in product(range(50), range(50)):
+    k = 90
+    for x, y in product(range(1), range(90,101)):
         #C = round(random(),2) + round(random(),2) * 1j
-        C = 0.02 * x+ 0.02 * y * 1j
-        filename  = 'julia_set_'+ str( k ).zfill( 4 )
-        mandelbrot_set(C=C, filename=filename, julia=True,frame=[-2,-2,4], coloring=1)
+        C = 0.38+ 0.01 * y * 1j 
+        #C = 0.38 + 0.98j
+        filename  = 'Ajulia_set_'+ str( k ).zfill( 4 )
+        #mandelbrot_set(C=C, filename=filename, julia=True,frame=[-2,-2,4], coloring=1)
         k += 1
+#
+        mandelbrot_set(C=C, filename=filename,julia=True, frame=[-2,-2,4], coloring=0)
