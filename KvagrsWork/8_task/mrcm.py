@@ -58,12 +58,12 @@ if __name__ == '__main__':
                        combine(translation(half, half), reflexion(-1,-1))],
                      ]
 
-    #for i, operators in enumerate( list_operators ):
-    #    for j in xrange( len(operators) ):
-    #        operators[j] = combine(scaling(0.5,0.5), operators[j])
-#
-#    #    lines = MRCM(points, 8, operators)
-    #    plot_and_save('sierpinski_rel_'+ str(i + 1), lines)
+    for i, operators in enumerate( list_operators ):
+        for j in xrange( len(operators) ):
+            operators[j] = combine(scaling(0.5,0.5), operators[j])
+
+        lines = MRCM(points, 8, operators)
+        plot_and_save('sierpinski_rel_'+ str(i + 1), lines)
 
     #points = array([[0,0,1],[side,0,1],[side,side,1],[0,side,1]])
     operators = [combine(scaling(0.255,0.255), translation(37.26, 67.14)),
