@@ -22,5 +22,7 @@ if __name__ == '__main__':
     
     # Third example from http://www.fi.muni.cz/~xpelanek/IV122/slidy/lingebra.pdf
     operator = combine(translation(50, 50), scaling(0.9, 0.9), rotation(10), shear(1.3))
-    lines = line_transformation(points, iteration=25, matrix=operator)   
+    lines = line_transformation(points, iteration=25, matrix=operator)
+    for line in lines:
+        print line
     plot_and_save('3_example', lines)

@@ -16,7 +16,7 @@ import svgwrite
 
 IDENTITY = array([[1,0,0],[0,1,0],[0,0,1]])
 
-def translation(t_x, t_y):
+def translation(t_x, t_y=0):
 
     trans_matrix = array([ [1, 0, t_x ],
                            [0, 1, t_y ],
@@ -97,7 +97,6 @@ def line_transformation(points, group=True, iteration=1, matrix=IDENTITY):
         else:
             all_points.extend(points)
 
-
     if group:
         return lines
     else:
@@ -108,7 +107,7 @@ def connect_points(points):
 
     lines = []
     for i in range( len(points) ):
-        lines.append( concatenate( ( points[ i ][:2], points[ (i + 1) % len(points) ][:2]) , axis=0 ) )
+        lines.append( concatenate( ( points[ i ][:2], points[ (i + 1) % len(points) ][:2]), axis=0 ) )
 
     return lines
 
@@ -147,7 +146,7 @@ def shift_lines(lines, shift=array([0,0])):
 
     #print "using shift {}".format( shift )
     if shift.any():
-        print "using shift {}".format( shift )
+        #print "using shift {}".format( shift )
         x_min, y_min = shift
 
     #print "Shifting lines.."
@@ -181,21 +180,23 @@ def plot_and_save(filename, lines=[], points=[]):
         colors = different_colors( len(lines) )
 
         for i, line in enumerate( lines ):
-            im.add( im.line(start = line[:2],\
-                            end   = line[2:],\
-                            stroke= 'rgb'+ str(colors[ i ]) ))
+            im.add( im.line(start  = line[:2],\
+                            end    = line[2:],\
+                            stroke = 'black'))
+                            #stroke = 'rgb'+ str(colors[ i ]) ))
         im.saveas('img/'+ filename +'.svg')
 
     if points:
         # watch out shift points changed
         size   = shift_points( points )[:2]
-        print "size {}".format(size)
-        im     = Image.new("RGB", size)
+        #print size
+        #print "size {}".format(size)
+        im     = Image.new("RGB", (500,500), (255,255,255))
         points = shift_points( points )
-        colors = different_colors( len( points ) )
+        #colors = different_colors( len( points ) )
 
         for i, point in enumerate( points ):
-            im.putpixel(point, colors[ i ])
+            im.putpixel(point[:2], (0,0,0))
             im.save('img/'+ filename +'.png')
 
     return
