@@ -60,7 +60,7 @@ $(document).ready(function(){
         "6" : ["chaos_game","feigenbaums_diagram","L_system"],
         "7" : ["complex_fractals"],
         "8" : ["affine_transformation","mrcm"],
-        "9" : ["mp_inverse","data_cluster"],
+        "9" : ["linear_regression","data_cluster"],
         "10": ["number_maze","mazelib"],
         "11": ["empty"]
     }

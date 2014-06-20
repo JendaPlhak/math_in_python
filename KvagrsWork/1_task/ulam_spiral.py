@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import sys
-for i in xrange(8):
+for i in xrange(1,11):
     sys.path.append('../' + str(i) + '_task')
 
 from lib_turtle    import Turtle
-from math            import sqrt, ceil, cos, sin, atan, degrees
+from math          import sqrt, ceil, cos, sin, atan, degrees
 
 import itertools
 import svgwrite

@@ -14,6 +14,7 @@ from data_generator        import *
 from segment_intersection  import dist
 from pascals_triangle      import different_colors
 from hide_and_seek         import download_file, PATH
+from affine_transformation import min_max_points
 
 import matplotlib.pyplot as plt
 
@@ -30,7 +31,7 @@ def nearest_center(centers, point):
     return centers.index( nearest )
 
 
-def find_center(data, center):
+def find_center(data, center=[0,0]):
 
     if not data:
         return center
@@ -47,8 +48,14 @@ def find_center(data, center):
 
 def k_means(data, k):
 
-    centers     = lists_to_pairs( generate_data( k ) )
+    #centers     = lists_to_pairs( generate_data( k ) )
     data        = lists_to_pairs( data )
+    anchor      = find_center( data )
+    dif         = max( min_max_points( data )[2:]) / k**2
+    centers     = []
+    for i in xrange(k):
+        centers.append(list(anchor + array([uniform(-dif, dif), uniform(-dif, dif)])))
+
     classes     = [ [] for i in xrange(k) ]
     tmp_class   = []
     all_centers = list(centers)
@@ -138,3 +145,8 @@ if __name__ == '__main__':
     data = load('cluster_data.txt')
     classes, centers = k_means(data, k)
     plot_data_clustering(classes, centers, k, filename='data_cluster')
+
+    centroids = [[0,0],[1,0],[1,1],[0,1]]
+    data = cluster_data(b=2, dif=0.2, k=4, centroids=centroids)
+    classes, centers = k_means(data, k=4)
+    plot_data_clustering(classes, centers, k=4, filename='generated_data_cluster')
