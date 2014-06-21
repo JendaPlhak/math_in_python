@@ -4,42 +4,9 @@ sys.path.append('../1_task')
 
 from decimal   import *
 from math      import log, factorial
-#from gcd       import gcd_recursive_modulo
 from itertools import product
 
 context = Context(prec=49)
-
-X = 2
-Y = 3.11
-
-
-def compare_exp(x,y, result):
-
-    return
-
-def logarithm(x, err=10**(-6)):
-
-    n = 1
-    x = x - 1
-    term = Decimal( x ) 
-    _sum = Decimal( term )
-
-    if abs(x) < 1:
-        while err < abs(term):
-            n += 1
-            term = Decimal( (-1)**(n + 1) * x**n / n )
-            _sum += term
-
-        return _sum
-
-    else:
-        _sum = logarithm(x - 1)
-        while err < abs(term):
-            n += 1
-            term = Decimal( (-1)**(n) / (( x - 1)**n * n) )
-            _sum += term
-
-        return _sum
 
 def p(x, a):
 # calculates x**a
@@ -79,7 +46,6 @@ def root(S, n=2, eps=0.000001):
     x_n = x_0 - context.divide( f(x_0), derf(x_0))
 
     while abs(x_n - x_0) / x_n > eps:
-        #print f(x_0), Decimal( derf(x_0) )
         x_0 = x_n
         if derf(x_0) == 0:
             return None
@@ -101,7 +67,7 @@ def taylor_series(x, y, n=10):
 
 
 def fraction(y):
-# rewrites y as a fraction naively
+# rewrites y as a fraction
     
     int_part = int(y)
     decimal  = str( y - int_part )[2:]
@@ -113,7 +79,6 @@ def fraction(y):
     decimal  = int( decimal )
     numer    = int_part * denom + decimal
     modul    = gcd_modulo(numer, denom)
-    #print "MODUL", modul, numer, denom
 
     return numer / modul, denom / modul
 
@@ -122,7 +87,6 @@ def fraction(y):
 def naive_method(x, y):
 
     exp, rot = fraction(y)
-#    print exp, rot
 
     result = root(x, rot)
     if result == None:
@@ -136,7 +100,6 @@ if __name__ == '__main__':
 
     args = [0.1, 11, 3.12, 1651]
     exps = [13.1, 2, 165, 0.123]
-
 
     for arg, exp in product(args, exps):
         print "<p>$x^y = {",arg,"}^{",exp,"}$</p>"
