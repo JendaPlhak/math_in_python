@@ -5,7 +5,7 @@ html
 <p>
 	The first method is simply calculating Taylor series for the function $a^x$ (in variable $x$) and then evaluating it in the parameters. The Taylor series looks like this:
 	$$
-	T_n(x) = 1 + \log a x + \frac{\log^2 a x^2}{2!} + \frac{\log^3 a x^3}{3!} + \cdots + \frac{\log^n a x^n}{n!} + \cdots
+	T_n(x) = 1 + x \log a + \frac{x^2 \log^2 a}{2!} + \frac{x^3 \log^3 a}{3!} + \cdots + \frac{x^n \log^n a}{n!} + \cdots
 	$$
 </p>
 
