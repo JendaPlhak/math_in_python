@@ -10,10 +10,17 @@ html
 </p>
 
 <h3>Naive method</h3>
-I called the second method naive, because of its nature. Lets say we want to calculate $3.40^{1.456}$. If we would be able to write $1.456 = \frac{a}{b}$, that is as fraction, then we would be able ( with operators $+,-,/, \cdot$) calculate:
-$$
-3.40^{1.456} = 3.40 ^{\frac{a}{b}} = \big(\sqrt[b]{3.40}\big)^a
-$$
+<p>
+	I called the second method naive, because of its nature. Lets say we want to calculate $3.40^{1.456}$. If we would be able to write $1.456 = \frac{a}{b}$, that is as fraction, then we would be able ( with operators $+,-,/, \cdot$) calculate:
+	$$
+	3.40^{1.456} = 3.40 ^{\frac{a}{b}} = \big(\sqrt[b]{3.40}\big)^a
+	$$
+
+	This method heavily relies on calculating the $n-$th root, which is done by Newton's method( with the precision set to $0.000001$). 
+</p>
+
+<h3>Conclusion</h3>
+<p>To test both method I've decided to do many different calculations. The bases $[0.1, 11, 3.12, 1651]$ and exponents $[13.1, 2, 165, 0.123]$ and then each pair is calculated. The first numbers are in this order: Python's ** operator, Taylor series, Naive method. When the Naive method gives None, it means, that during the Newton's method a 0 division occured. That can be explained because of using very large or very small numbers - maybe the better way would be to somehow calculate it partially - a bit of <i>rooting</i>, <i>exponation</i>, <i>rooting</i>.</p>
 
 <p>$x^y = { 0.1 }^{ 13.1 }$</p>
 
