@@ -1,5 +1,6 @@
 Permutations of 'abcd'.
-<textarea>
+
+<textarea rows="24" cols="4" readonly="readonly">
 abcd
 abdc
 acbd
