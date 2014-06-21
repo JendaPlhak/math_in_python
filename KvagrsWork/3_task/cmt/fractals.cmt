@@ -1,14 +1,24 @@
+At first this task seemed very hard, since recursion is still my weak site at programming, but after few tries I was able to achieve to draw each fractal. Next to the fractals you can see a gif animations, which gives a good insight, how the recursive process work in each fractal.
+
+The tree-fractal become very easy to after saving the position and directions in each nesting.
+
 &img="tree.svg" alt="Tree fractal" width="500"
 
 &img="tree.gif" alt="Tree fractal" width="500"
+
+The koch-fractal is in fact drawn three times, each time from different position with different direction.
 
 &img="koch.svg" alt="Koch snowflake fractal" width="500"
 
 &img="koch.gif" alt="Koch snowflake fractal" width="500"
 
+The sierpinski-fractal just draws a triangle for three different positions.
+
 &img="sierpinski.svg" alt="Sierpinski gasket fractal" width="500"
 
 &img="sierpinski.gif" alt="Sierpinski gasket fractal" width="500"
+
+The last fractal is created with two turtles, although only one of them actually draws. The <i>drawing</i> turtle draws each pentagon, and the second turtle goes along the path of the polygon and saves six different coordinates - five for the <i>edge</i> polygons and on for the middle.
 
 &img="pentaflake_4.svg" alt="Pentagonal snowflake fractal" width="500"
 
