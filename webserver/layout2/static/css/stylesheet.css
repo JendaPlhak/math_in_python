@@ -263,3 +263,8 @@ a {
     color: red;
     color: #223355;
 }
+
+/* For some tasks */
+textarea {
+    resize: none;
+}
