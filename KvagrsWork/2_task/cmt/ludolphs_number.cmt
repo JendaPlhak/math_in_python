@@ -5,7 +5,7 @@ Python math module:
 
 Monte carlo, time: 1 sec:
 
-<pre><code class="python">
+<pre><code class="plain">
 >>>    3.138992313818937507363671102211810648441314697265625
 >>> D: 0.002600339770855608634292366332374513149261474609375
 >>> Differs at 3 position.
