@@ -11,9 +11,12 @@ import re
 
 def gcd_recursive_modulo(a, b):
 
+    if b == 0:
+        return a
     if a % b == 0:
-        return b
+        return a
     else:
+        #print b, a % b
         return gcd_modulo( b, a % b )
 
 
