@@ -1,6 +1,13 @@
 html
 
 <p>I've used two methods to calculate $x^y$ for $x,y \in \mathbb{R}^+$</p>
+<h3> Taylor series</h3>
+<p>
+	The first method is simply calculating Taylor series for the function $a^x$ (in variable $x$) and then evaluating it in the parameters. The Taylor series looks like this:
+	$$
+	T_n(x) = 1 + \log a x + \frac{\log^2 a x^2}{2!} + \frac{\log^3 a x^3}{3!} + \cdots + \frac{\log^n a x^n}{n!} + \cdots
+	$$
+</p>
 
 <p>$x^y = { 0.1 }^{ 13.1 }$</p>
 
