@@ -53,7 +53,7 @@ $(document).ready(function(){
     }
     var tasksKvapil = {
         "1" : ["collatzo", "basic_graphics", "ulam_spiral", "gcd"],
-        "2" : ["pascals_triangle"],
+        "2" : ["permutation","pascals_triangle"],
         "3" : ["lib_turtle", "fractals", "basic_img"],
         "4" : ["polygon", "effects", "hide_and_seek", "basic_shapes"],
         "5" : ["intersection", "triangulation","gift_wrapping"],
