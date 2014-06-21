@@ -10,9 +10,9 @@ html
 </p>
 
 <h3>Naive method</h3>
-I called the second method naive, because of its nature. Lets say we want to calculate $3.40^{1.456}$. If we would be able to write $1.456 = \frac{a}{b}$, that is as fraction then we would be able ( with operators $+,-,/, \cdot$) calculate:
+I called the second method naive, because of its nature. Lets say we want to calculate $3.40^{1.456}$. If we would be able to write $1.456 = \frac{a}{b}$, that is as fraction, then we would be able ( with operators $+,-,/, \cdot$) calculate:
 $$
-3.40^{1.456} = 3.40 ^{\frac{a}{b}} = (\sqrt{b}3.40)^a
+3.40^{1.456} = 3.40 ^{\frac{a}{b}} = (\sqrt{b,3.40})^a
 $$
 
 <p>$x^y = { 0.1 }^{ 13.1 }$</p>
