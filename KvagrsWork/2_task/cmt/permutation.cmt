@@ -1,0 +1,11 @@
+Permutations of 'abcd'.
+
+abcd abdc acbd acdb adbc adcb bacd badc bcad bcda bdac bdca cabd cadb cbad cbda cdab cdba dabc dacb dbac dbca dcab dcba
+
+Combinations of 'abcd' of the length 2 without repetition.
+
+abc abd abe acd ace ade bcd bce bde cde
+
+Variations of 'abcd' of the length 3 with repetition.
+
+aa ab ac ad ae ba bb bc bd be ca cb cc cd ce da db dc dd de ea eb ec ed ee

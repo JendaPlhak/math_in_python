@@ -85,20 +85,6 @@ def text_offset(point, side):
     return point
 
 
-def solve_num_maze(maze):
-
-    size = maze[0][0]
-    dirs = [[1,0], [0,1],[-1, 0], [0, -1]]
-    pos  = [0, 0]
-    fin  = [size - 1, size - 1 ]
-
-    while pos != fin:
-        pass
-
-
-    pass
-
-
 if __name__ == '__main__':
 
     download_file( PATH +'ciselne-bludiste.txt')
