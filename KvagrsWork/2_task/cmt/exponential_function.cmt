@@ -20,7 +20,7 @@ html
 </p>
 
 <h3>Conclusion</h3>
-<p>To test both method I've decided to do many different calculations. The bases $[0.1, 11, 3.12, 1651]$ and exponents $[13.1, 2, 165, 0.123]$ and then each pair is calculated. The first numbers are in this order: Python's ** operator, Taylor series, Naive method. When the Naive method gives None, it means, that during the Newton's method a 0 division occured. That can be explained because of using very large or very small numbers - maybe the better way would be to somehow calculate it partially - a bit of <i>rooting</i>, <i>exponation</i>, <i>rooting</i>.</p>
+<p>To test both method I've decided to do many different calculations. The bases $[0.1, 11, 3.12, 1651]$ and exponents $[13.1, 2, 165, 0.123]$ and then each pair is calculated. The results are in this order: Python's ** operator, Taylor series, Naive method. When the Naive method gives None, it means, that during the Newton's method a 0 division occured. That can be explained because of using very large or very small numbers - maybe the better way would be to somehow calculate it partially - a bit of <i>rooting</i>, <i>exponation</i>, <i>rooting</i> etc.</p>
 
 <p>$x^y = { 0.1 }^{ 13.1 }$</p>
 
