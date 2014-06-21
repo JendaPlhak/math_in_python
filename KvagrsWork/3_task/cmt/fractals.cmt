@@ -1,6 +1,6 @@
 At first this task seemed very hard, since recursion is still my weak site at programming, but after few tries I was able to achieve to draw each fractal. Next to the fractals you can see a gif animations, which gives a good insight, how the recursive process work in each fractal.
 
-The tree-fractal become very easy to after saving the position and directions in each nesting.
+The tree-fractal become very easy to draw after saving the positions and directions in each nesting.
 
 &img="tree.svg" alt="Tree fractal" width="500"
 
