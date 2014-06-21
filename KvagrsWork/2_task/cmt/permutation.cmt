@@ -1,6 +1,6 @@
 Permutations of 'abcd'.
 
-<textarea rows="24" cols="4" readonly="readonly">
+<textarea rows="25" cols="4" readonly="readonly">
 abcd
 abdc
 acbd
@@ -28,6 +28,8 @@ dcba
 </textarea>
 
 Combinations of 'abcd' of the length 2 without repetition.
+
+<textarea rows="11" cols="4" readonly="readonly">
 abc
 abd
 abe
@@ -38,8 +40,11 @@ bcd
 bce
 bde
 cde
+</textarea>
 
 Variations of 'abcd' of the length 3 with repetition.
+
+<textarea rows="26" cols="4" readonly="readonly">
 aa
 ab
 ac
@@ -65,3 +70,4 @@ eb
 ec
 ed
 ee
+</textarea>
