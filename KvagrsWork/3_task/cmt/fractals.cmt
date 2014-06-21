@@ -18,7 +18,7 @@ The sierpinski-fractal just draws a triangle for three different positions.
 
 &img="sierpinski.gif" alt="Sierpinski gasket fractal" width="500"
 
-The last fractal is created with two turtles, although only one of them actually draws. The <i>drawing</i> turtle draws each pentagon, and the second turtle goes along the path of the polygon and saves six different coordinates - five for the <i>edge</i> polygons and on for the middle.
+The last fractal is created with two turtles, although only one of them actually draws. The <i>drawing</i> turtle draws each pentagon, and the second turtle goes along the path of the polygon and saves six different coordinates - five for the <i>edge</i> polygons and on for the middle. Those coordinates then gives to the other turtle.
 
 &img="pentaflake_4.svg" alt="Pentagonal snowflake fractal" width="500"
 
