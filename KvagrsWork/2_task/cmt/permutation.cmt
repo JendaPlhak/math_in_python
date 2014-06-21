@@ -29,7 +29,7 @@ dcba
 
 Combinations of 'abcd' of the length 2 without repetition.
 
-<textarea rows="11" cols="4" readonly="readonly">
+<textarea rows="11" cols="3" readonly="readonly">
 abc
 abd
 abe
@@ -44,7 +44,7 @@ cde
 
 Variations of 'abcd' of the length 3 with repetition.
 
-<textarea rows="26" cols="4" readonly="readonly">
+<textarea rows="26" cols="2" readonly="readonly">
 aa
 ab
 ac
