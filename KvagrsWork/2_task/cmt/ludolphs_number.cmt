@@ -29,3 +29,12 @@ html
 >>> Differs at 16<sup>th</sup> position.
 >>>    3.141592653589793<span style="color:red">238462643383279502884197169399391</span>
 </pre>
+
+
+<p>Chudnovsky, time: 1 sec:</p>
+<pre>
+>>>    3.141592653589733946087473438
+>>> D: 5.916991049003054418516159058E-14
+>>> Differs at 14<sup>th</sup> position.
+>>>    3.1415926535897<span style="color:red">33946087473438</span>
+</pre>
