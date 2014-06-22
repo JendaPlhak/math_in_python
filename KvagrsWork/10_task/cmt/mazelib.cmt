@@ -1,3 +1,5 @@
+This just shows how the <span class="verb">mazelib.py</span> can draw the basic number maze.
+
 &img="1_maze_10.svg" alt="1_maze_10" width="500"
 
 &img="2_maze_5.svg" alt="2_maze_5" width="250"
@@ -5,4 +7,3 @@
 &img="3_maze_5.svg" alt="3_maze_5" width="250"
 
 &img="4_maze_4.svg" alt="4_maze_4" width="200"
-

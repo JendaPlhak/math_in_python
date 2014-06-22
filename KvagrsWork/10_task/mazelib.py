@@ -11,6 +11,7 @@ from hide_and_seek         import download_file, PATH
 import itertools
 import re
 import svgwrite
+import os
 
 
 def load_num_maze(filename, separator=''):
@@ -38,12 +39,9 @@ def load_num_maze(filename, separator=''):
     return maze_table
 
 
-def draw_number_maze(maze, num, side=20):
-
-    size = maze[0][0]
-    maze = maze[1::]
-    im   = svgwrite.drawing.Drawing()
-
+def addGrid(im, size, side=20):
+# draws the grid
+    
     # grid
     for i in xrange( size - 1):
         A = [ side * (i + 1), 0]
@@ -51,10 +49,11 @@ def draw_number_maze(maze, num, side=20):
 
         im.add( im.line(start  = A,\
                         end    = B,\
-                        stroke = 'gray'))
+                        stroke = 'rgb(50,50,50)'))
         im.add( im.line(start  = A[::-1],\
                         end    = B[::-1],\
-                        stroke = 'gray'))
+                        stroke = 'rgb(50,50,50)'))
+
     # outline
     corners = array( [[0,0], [1, 0], [1,1], [0,1]] )
     for i in xrange(4):
@@ -65,7 +64,12 @@ def draw_number_maze(maze, num, side=20):
                         end    = line[2:],\
                         stroke = 'black'))
 
-    # fill maze with numbers
+    return
+
+
+def addNumbers(im, maze, size, side=20):
+# fill maze with numbers
+
     for x, y in itertools.product(xrange(size), xrange(size)):
         im.add( im.text(maze[x][y],
                         insert      = text_offset([y, x], side),\
@@ -73,16 +77,85 @@ def draw_number_maze(maze, num, side=20):
                         font_size   = side / 2,\
                         fill        ='black'))
 
-
-    im.saveas('img/'+ str(num) +'_maze_'+ str(size) +'.svg')
-
     return
 
 
 def text_offset(point, side):
+# offsets so the numbers will be nicely in the middle
 
     point = [ point[0] * side + side * 0.35, point[1] * side + side * 0.65 ]
     return point
+
+
+def draw_number_maze(maze, num, side=20, save=True):
+# draws the given number maze, expected as list of lists of ints
+    
+    # get the values and declare canvas
+    size = maze[0][0]
+    maze = maze[1::]
+    im   = svgwrite.drawing.Drawing()
+
+    # self-explanatory
+    addGrid(im, size, side)
+    addNumbers(im, maze, size, side)
+
+    if save:
+        im.saveas('img/'+ str(num) +'_maze_'+ str(size) +'.svg')        
+
+    return
+
+
+def gif_path(maze, size, path, side=20, type_path=''):
+# draws the path square by square and gifs it
+
+    print "Creating gif from: "
+    for row in maze:
+        print "  "+ " ".join( [str(x) for x in row])
+
+    for i, stand in enumerate( path ):
+        im   = svgwrite.drawing.Drawing()
+        for passed in path[:i]:
+            corner = array( passed ) * side
+            im.add( im.rect(insert = corner[::-1],\
+                            size   = (side, side),\
+                            fill   = 'rgb(102,178,255)' ))
+
+        corner = array( stand ) * side
+        im.add( im.rect(insert = corner[::-1],\
+                        size   = (side, side),\
+                        fill   = 'rgb(0,102,204)' ))
+        addGrid(im, size, side)
+        addNumbers(im, maze, size, side)
+
+        num   = str(i + 1).zfill( len( str( len( path ))))
+        _file = 'img/maze_gif_'+ num +'.svg'
+        print "+++ {}".format( _file )
+        im.saveas( _file )
+
+    # convert svg files to gif
+    print ">>> converting to gif:"
+    gifname = str(size) +'_'+ type_path + put_path_to_string( path )
+    build   = 'convert -delay 36 img/maze_gif_*.svg img/'+ gifname +'.gif'
+    os.system( build )
+
+    # do the clean up
+    for f in sorted( [fn for fn in os.listdir('img/') if fn.startswith('maze_gif_')]):  
+        print "--- {}".format( 'img/'+ f )
+        os.remove( 'img/'+ f )
+    return
+
+
+def put_path_to_string(path):
+# from path of type list creates str
+# [[0,0],[3,0]] --> '0-0_3-0'
+# useful to distinguish same maze with different solution
+
+    str_path = ''
+    for point in path:
+        str_path += '_'
+        str_path += str(point[0]) +'-'+ str(point[1])
+
+    return str_path
 
 
 if __name__ == '__main__':
