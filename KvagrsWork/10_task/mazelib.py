@@ -135,7 +135,7 @@ def gif_path(maze, size, path, side=20, type_path=''):
     # convert svg files to gif
     print ">>> converting to gif:"
     gifname = str(size) +'_'+ type_path + put_path_to_string( path )
-    build   = 'convert -delay 36 img/maze_gif_*.svg img/'+ gifname +'.gif'
+    build   = 'convert -delay 72 img/maze_gif_*.svg img/'+ gifname +'.gif'
     os.system( build )
 
     # do the clean up
