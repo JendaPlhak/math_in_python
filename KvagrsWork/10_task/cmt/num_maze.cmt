@@ -1,4 +1,4 @@
-Here are some of the solutions. I have included both the solutions with the lowes and the highest sum (the sum of all the jump values):
+Here are some of the solutions. I have included both the solutions with the lowest and the highest sum (the sum of all the jump values):
 
 Lets start with the smallest one $4 \times 4$ maze. There were only two solutions, with different sum, that gives us one with the lowest sum:
 
