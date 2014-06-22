@@ -2,7 +2,7 @@ Here are some of the solutions. I have included both the solutions with the lowe
 
 Lets start with the smallest one $4 \times 4$ maze. There were only two solutions, with different sum, that gives us one with the lowest sum:
 
-&img="4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3"
+&img="4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" width="122"
 
 And the other with higher sum:
 
