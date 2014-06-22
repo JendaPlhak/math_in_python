@@ -6,7 +6,8 @@ Here are some of the solutions for the <i>number maze</i>. I have included both 
 Lets start with the smallest one $4 \times 4$ maze. There were only two solutions, with different sum, that gives us one with the lowest sum:
 
 <div style="width:410px; height:105px; border:1px solid red; padding:5px;" float="left" clear="left">
-	<img src="../static/img/KvagrsWork/10_task/4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" height="121" width="121" float="left"/>
+<p style="float:left;">
+	<img src="../static/img/KvagrsWork/10_task/4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" height="121" width="121" float="left"/></p>
 	<img src="../static/img/KvagrsWork/10_task/4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" height="121" width="121" float="left"/>
 </div>
 
