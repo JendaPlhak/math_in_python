@@ -14,12 +14,13 @@ Lets start with the smallest one $4 \times 4$ maze. There were only two solution
 	<img src="../static/img/KvagrsWork/10_task/4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" width="121"/>
 </p>
 </div>
-
+<p>
 &img="4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" width="121"
 
 And the other with higher sum:
 
 &img="4_high_0-0_0-2_2-2_3-2_3-1_3-0_3-3.gif" alt="4_high_0-0_0-2_2-2_3-2_3-1_3-0_3-3" width="121"
+</p>
 
 <h3>Maze $\mathbf{5 \times 5}$</h3>
 Then the first $5 \times 5$ maze. Also only one solution with lowest sum, but even four different soluions with highest sum.
