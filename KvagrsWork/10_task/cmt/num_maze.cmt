@@ -6,11 +6,12 @@ Here are some of the solutions for the <i>number maze</i>. I have included both 
 Lets start with the smallest one $4 \times 4$ maze. There were only two solutions, with different sum, that gives us one with the lowest sum:
 
 <div style="width:900px; height:121px;" clear="left">
-<p style="float:middle;">
+<p style="float:left;">
 	<img src="../static/img/KvagrsWork/10_task/4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" height="121" width="121"/>
 </p>
+<div height="121" width="50"> </div>
 
-<p style="float:middle;">
+<p style="float:left;">
 	<img src="../static/img/KvagrsWork/10_task/4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" width="121"/>
 </p>
 </div></br>
