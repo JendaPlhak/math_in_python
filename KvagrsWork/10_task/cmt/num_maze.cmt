@@ -1,5 +1,6 @@
-Here are some of the solutions for the <i>number maze</i>. I have included both the solutions with the lowest and the highest sum (the sum of all the jump values):
+Here are some of the solutions for the <i>number maze</i>. I have included both the solutions with the lowest and the highest sum (the sum of all the <i>jump</i> values):
 
+<h3>Maze $4 \times 4$</h3>
 Lets start with the smallest one $4 \times 4$ maze. There were only two solutions, with different sum, that gives us one with the lowest sum:
 
 &img="4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" width="121"
@@ -8,6 +9,7 @@ And the other with higher sum:
 
 &img="4_high_0-0_0-2_2-2_3-2_3-1_3-0_3-3.gif" alt="4_high_0-0_0-2_2-2_3-2_3-1_3-0_3-3" width="121"
 
+<h3>Maze $5 \times 5$</h3>
 Then the first $5 \times 5$ maze. Also only one solution with lowest sum, but even four different soluions with highest sum.
 
 &img="5_low_0-0_1-0_2-0_3-0_4-0_4-3_4-4.gif" alt="5_low_0-0_1-0_2-0_3-0_4-0_4-3_4-4" width="151"
@@ -22,6 +24,7 @@ And the <i>highest sum</i> solutions
 
 &img="5_high_0-0_0-1_2-1_3-1_3-4_1-4_0-4_0-3_1-3_2-3_2-4_2-0_1-0_1-1_4-1_4-0_4-3_4-4.gif" alt="5_high_0-0_0-1_2-1_3-1_3-4_1-4_0-4_0-3_1-3_2-3_2-4_2-0_1-0_1-1_4-1_4-0_4-3_4-4" width="151"
 
+
 And the next $5 \times 5$ maze. Again 	
 
 &img="5_high_0-0_0-3_0-1_0-2_1-2_1-1_1-3_3-3_3-1_4-1_4-2_4-4.gif" alt="5_high_0-0_0-3_0-1_0-2_1-2_1-1_1-3_3-3_3-1_4-1_4-2_4-4" width="151"
@@ -30,7 +33,7 @@ And the next $5 \times 5$ maze. Again
 
 &img="5_low_0-0_3-0_3-3_3-1_4-1_4-2_4-4.gif" alt="5_low_0-0_3-0_3-3_3-1_4-1_4-2_4-4" width="151"
 
-
+<h3>Maze $10 \times 10$</h3>
 
 &img="10_low_0-0_9-0_9-2_3-2_3-6_8-6_9-6_9-4_9-7_9-9.gif" alt="10_low_0-0_9-0_9-2_3-2_3-6_8-6_9-6_9-4_9-7_9-9" width="301"
 
