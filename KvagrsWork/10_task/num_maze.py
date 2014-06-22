@@ -18,20 +18,29 @@ class NumberMaze():
         self.high_paths  = []
 
     def DFS(self, pos):
+    # deep-first search algorithm
+    # keeping the stack outside the function
+    # to be able to copy it to get the path
 
         self.STACK.append( pos )
-        
+
+        # check for the end position, that is right
+        # bottom corner
         if self.maze[pos[0]][pos[1]] == 0:
+            # get the path
             self.paths.append( self.STACK[::] )
             self.STACK.pop()
             return
         else:
             for _dir in [[0,1],[1,0],[-1,0],[0,-1]]:
+                # jump to the next position
                 new_pos = list( pos + self.maze[pos[0]][pos[1]] * array( _dir ))
+                # avoid cycles
                 if new_pos in self.STACK:
                     continue
                 if self.on_board( new_pos ) and new_pos not in self.STACK:
                     self.DFS( new_pos )
+            # if the path did not lead to the end
             else:
                 self.STACK.pop()
 
