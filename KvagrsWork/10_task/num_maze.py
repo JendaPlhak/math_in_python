@@ -94,7 +94,7 @@ class NumberMaze():
 
 if __name__ == '__main__':
 
-    # download the file, necessarily for server
+    # download the file, necessary for server
     download_file( PATH + 'ciselne-bludiste.txt')
 
     mazes = load_num_maze('ciselne-bludiste.txt', '-')
