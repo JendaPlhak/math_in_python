@@ -5,7 +5,7 @@ Here are some of the solutions for the <i>number maze</i>. I have included both 
 <h3>Maze $\mathbf{4 \times 4}$</h3>
 Lets start with the smallest one $4 \times 4$ maze. There were only two solutions, with different sum, that gives us one with the lowest sum:
 
-<div style="width:410px; height:122px; border:1px solid red; padding:5px;">
+<div style="width:900px; height:122px; border:1px solid red; padding:5px;">
 <p style="float:left;">
 	<img src="../static/img/KvagrsWork/10_task/4_low_0-0_0-2_2-2_3-2_3-3.gif" alt="4_low_0-0_0-2_2-2_3-2_3-3" style="width: 121; margin-right:10px;"/>
 </p>
