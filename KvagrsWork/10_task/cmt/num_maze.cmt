@@ -9,7 +9,7 @@ And the other with higher sum:
 
 &img="4_high_0-0_0-2_2-2_3-2_3-1_3-0_3-3.gif" alt="4_high_0-0_0-2_2-2_3-2_3-1_3-0_3-3" width="121"
 
-<h3>Maze $5 \times 5$</h3>
+<h3>Maze $\mathbf{5 \times 5}$</h3>
 Then the first $5 \times 5$ maze. Also only one solution with lowest sum, but even four different soluions with highest sum.
 
 &img="5_low_0-0_1-0_2-0_3-0_4-0_4-3_4-4.gif" alt="5_low_0-0_1-0_2-0_3-0_4-0_4-3_4-4" width="151"
@@ -33,7 +33,7 @@ And the next $5 \times 5$ maze. Again
 
 &img="5_low_0-0_3-0_3-3_3-1_4-1_4-2_4-4.gif" alt="5_low_0-0_3-0_3-3_3-1_4-1_4-2_4-4" width="151"
 
-<h3>Maze $10 \times 10$</h3>
+<h3>Maze $\mathbf{10 \times 10}$</h3>
 
 &img="10_low_0-0_9-0_9-2_3-2_3-6_8-6_9-6_9-4_9-7_9-9.gif" alt="10_low_0-0_9-0_9-2_3-2_3-6_8-6_9-6_9-4_9-7_9-9" width="301"
 
