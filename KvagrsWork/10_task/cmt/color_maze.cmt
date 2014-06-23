@@ -1,6 +1,6 @@
-For the second maze I choose the <i>color maze</i>. The goal is to go from the left bottom corner to the right upper one. The number of used color must be the same for all colors except the white. Such maze of course does not necessarily have unique solution - I have decided to show all of them for the example, since maximal number of solutions was 5.
+For the second maze I choose the <i>color maze</i>. The goal is to go from the left bottom corner to the right upper one. The number of used color must be the same for all colors except the white. Such maze of course does not necessarily have unique solution - I have decided to show all of them for the example, since maximal number of solutions was 5. I am using basic <b>DFS</b> algorithm, but to improve the efficiency I have added some <span class="verb">if statement</span>. After stoping the algorithm, when - the current path contained some color more times, then the lowest possible occurence of some color - the speed change rapidly.
 
-<h3> First $\mathbf{4 \times 4}</h3>
+<h3> First $\mathbf{4 \times 4}$</h3>
 
 &img="color4_3-0_2-0_1-0_0-0_0-1_1-1_1-2_2-2_2-3_1-3_0-3.gif" alt="color4_3-0_2-0_1-0_0-0_0-1_1-1_1-2_2-2_2-3_1-3_0-3" width="301"
 
@@ -10,11 +10,11 @@ For the second maze I choose the <i>color maze</i>. The goal is to go from the l
 
 &img="color4_3-0_2-0_1-0_1-1_2-1_2-2_2-3_1-3_0-3.gif" alt="color4_3-0_2-0_1-0_1-1_2-1_2-2_2-3_1-3_0-3" width="301"
 
-<h3> Second $\mathbf{5 \times 5}</h3>
+<h3> Second $\mathbf{5 \times 5}$</h3>
 
 &img="color5_4-0_4-1_4-2_4-3_4-4_3-4_2-4_2-3_2-2_2-1_1-1_0-1_0-2_0-3_0-4.gif" alt="color5_4-0_4-1_4-2_4-3_4-4_3-4_2-4_2-3_2-2_2-1_1-1_0-1_0-2_0-3_0-4" width="351"
 
-<h3> Third $\mathbf{6 \times 6}</h3>
+<h3> Third $\mathbf{6 \times 6}$</h3>
 
 &img="color6_5-0_4-0_3-0_3-1_4-1_5-1_5-2_4-2_4-3_4-4_3-4_3-5_2-5_2-4_2-3_1-3_1-2_0-2_0-3_0-4_0-5.gif" alt="color6_5-0_4-0_3-0_3-1_4-1_5-1_5-2_4-2_4-3_4-4_3-4_3-5_2-5_2-4_2-3_1-3_1-2_0-2_0-3_0-4_0-5" width="401"
 
@@ -26,6 +26,6 @@ For the second maze I choose the <i>color maze</i>. The goal is to go from the l
 
 &img="color6_5-0_5-1_5-2_4-2_3-2_3-1_3-0_2-0_2-1_1-1_1-2_1-3_1-4_2-4_3-4_4-4_4-5_3-5_2-5_1-5_0-5.gif" alt="color6_5-0_5-1_5-2_4-2_3-2_3-1_3-0_2-0_2-1_1-1_1-2_1-3_1-4_2-4_3-4_4-4_4-5_3-5_2-5_1-5_0-5" width="401"
 
-<h3> Fourth $\mathbf{7 \times 7}</h3>
+<h3> Fourth $\mathbf{7 \times 7}$</h3>
 
 &img="color7_6-0_6-1_6-2_6-3_5-3_4-3_4-2_4-1_3-1_2-1_2-2_1-2_1-3_1-4_1-5_0-5_0-6.gif" alt="color7_6-0_6-1_6-2_6-3_5-3_4-3_4-2_4-1_3-1_2-1_2-2_1-2_1-3_1-4_1-5_0-5_0-6" width="451"
