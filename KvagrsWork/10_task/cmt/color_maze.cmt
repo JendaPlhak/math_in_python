@@ -2,7 +2,7 @@ For the second maze I choose the <i>color maze</i>. The goal is to go from the l
 
 I am using basic <b>DFS</b> algorithm, but to improve the efficiency I have added some <span class="verb">if statement</span>. After stoping the algorithm, when - the current path contained some color more times, then the lowest possible occurence of some color - the speed change rapidly.
 
-All of the examples were taken from <a href="http://tutor.fi.muni.cz/index.php?p=problem_list" style="on hover: red;"> tutor project</a> at the Faculty of Informatics in Brno (Masaryk University). This project offers much more interesting stuff, and can serve for learning or leisure time activity.
+All of the examples were taken from <a href="http://tutor.fi.muni.cz/index.php?p=problem_list" style="hover: red;"> tutor project</a> at the Faculty of Informatics in Brno (Masaryk University). This project offers much more interesting stuff, and can serve for learning or leisure time activity.
 
 <h3> First $\mathbf{4 \times 4}$</h3>
 
