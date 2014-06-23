@@ -118,7 +118,7 @@ if __name__ == '__main__':
         # creates animated gif for different paths with
         # lowest and highest sum of "jumps"
         for path in maze.low_paths:
-            gif_path(maze.maze, maze.size, path, 30, 'low')
+            number_gif_path(maze.maze, maze.size, path, 30, 'low')
     
         for path in maze.high_paths:
-            gif_path(maze.maze, maze.size, path, 30, 'high')
+            number_gif_path(maze.maze, maze.size, path, 30, 'high')

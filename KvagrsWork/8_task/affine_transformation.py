@@ -104,6 +104,7 @@ def line_transformation(points, group=True, iteration=1, matrix=IDENTITY):
     
 
 def connect_points(points):
+# connects points as polygon
 
     lines = []
     for i in range( len(points) ):
@@ -113,7 +114,7 @@ def connect_points(points):
 
 
 def min_max_lines(lines):
-    # returns min x and y coordinate from lines
+# returns min x and y coordinate from lines
 
     lines = zip(*lines)
 
