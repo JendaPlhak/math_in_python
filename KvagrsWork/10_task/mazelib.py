@@ -362,13 +362,14 @@ def expand_lines(lines, shift):
 
 if __name__ == '__main__':
 
-    """
+    
     download_file( PATH +'ciselne-bludiste.txt')
     maze = load_num_maze('ciselne-bludiste.txt', separator='-')
     for i, m in enumerate(maze):
         print "Drawing maze number {}.".format(i + 1)
         draw_number_maze(maze=m, num=(i + 1), side=50)
-    """
+    
 
-    maze = load_col_maze('col_maze.txt')
-    draw_color_maze(maze, side=50)
+    mazes = load_col_maze('col_maze.txt')
+    for maze in mazes:
+        draw_color_maze(maze, side=50)
