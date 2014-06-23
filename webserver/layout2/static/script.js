@@ -61,7 +61,7 @@ $(document).ready(function(){
         "7" : ["complex_fractals"],
         "8" : ["affine_transformation","mrcm"],
         "9" : ["linear_regression","data_cluster"],
-        "10": ["num_maze","mazelib"],
+        "10": ["num_maze","color_maze","mazelib"],
         "11": ["empty"]
     }
 
