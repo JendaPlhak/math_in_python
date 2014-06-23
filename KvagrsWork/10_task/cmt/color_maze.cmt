@@ -4,6 +4,8 @@ I am using basic <b>DFS</b> algorithm, but to improve the efficiency I have adde
 
 All of the examples were taken from <a href="http://tutor.fi.muni.cz/index.php?p=problem_list"><b>tutor project</b></a> at the Faculty of Informatics in Brno (Masaryk University). This project offers much more interesting stuff, and can serve for learning or leisure time activity.
 
+Next to each maze there is counter of the colors as the path goes.
+
 <h3> First $\mathbf{4 \times 4}$</h3>
 
 This example shows, that sometimes the solutions might differ in only one square. The first two differ in the sixth step.
