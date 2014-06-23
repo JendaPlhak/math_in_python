@@ -14,7 +14,7 @@ This example shows, that sometimes the solutions might differ in only one square
 
 &img="color4_3-0_2-0_1-0_0-0_0-1_1-1_2-1_2-2_2-3_1-3_0-3.gif" alt="color4_3-0_2-0_1-0_0-0_0-1_1-1_2-1_2-2_2-3_1-3_0-3"width="301"
 
-The last two solutions differ in the fourth. But in fact the difference occurs at the same place in both pairs of solutions.
+The last two solutions differ in the fourth step. But in fact the difference occurs at the same place in both pairs of solutions.
 
 &img="color4_3-0_2-0_1-0_1-1_1-2_2-2_2-3_1-3_0-3.gif" alt="color4_3-0_2-0_1-0_1-1_1-2_2-2_2-3_1-3_0-3" width="301"
 
