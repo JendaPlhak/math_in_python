@@ -194,7 +194,7 @@ def draw_number_maze(maze, num, side=20, save=True):
     addNumbers(im, maze, size, side)
 
     if save:
-        im.saveas('img/'+ str(num) +'_maze_'+ str(size) +'.svg')        
+        im.saveas('img/'+ str(num) +'_'+ str(size) +'_number_maze.svg')        
 
     return
 
@@ -239,7 +239,7 @@ def number_gif_path(maze, size, path, side=20, type_path=''):
     return
 
 
-def draw_color_maze(maze, side=20, save=True):
+def draw_color_maze(maze, num, side=20, save=True):
 # draws svg color maze
     
     im   = svgwrite.drawing.Drawing()
@@ -250,7 +250,7 @@ def draw_color_maze(maze, side=20, save=True):
     addGrid(im, size, side)
 
     if save:
-        im.saveas('img/color_maze.svg')
+        im.saveas('img/'+ str(num) +'_'+ str(size) +'_color_maze.svg')
     return
 
 
@@ -366,10 +366,11 @@ if __name__ == '__main__':
     download_file( PATH +'ciselne-bludiste.txt')
     maze = load_num_maze('ciselne-bludiste.txt', separator='-')
     for i, m in enumerate(maze):
-        print "Drawing maze number {}.".format(i + 1)
+        print "Drawing number maze {}.".format(i + 1)
         draw_number_maze(maze=m, num=(i + 1), side=50)
     
 
     mazes = load_col_maze('col_maze.txt')
-    for maze in mazes:
-        draw_color_maze(maze, side=50)
+    for i, maze in enumerate( mazes ):
+        print "Drawing color maze {}.".format(i + 1)
+        draw_color_maze(maze, num=(i + 1), side=50)

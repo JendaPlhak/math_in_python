@@ -1,9 +1,17 @@
 This just shows how the <span class="verb">mazelib.py</span> can draw the basic number maze.
 
-&img="1_maze_10.svg" alt="1_maze_10" width="500"
+&img="4_4_number_maze.svg" alt="4_4_number_maze" width="201"
 
-&img="2_maze_5.svg" alt="2_maze_5" width="250"
+&img="3_5_number_maze.svg" alt="3_5_number_maze" width="251"
 
-&img="3_maze_5.svg" alt="3_maze_5" width="250"
+&img="2_5_number_maze.svg" alt="2_5_number_maze" width="251"
 
-&img="4_maze_4.svg" alt="4_maze_4" width="200"
+&img="1_10_number_maze.svg" alt="1_10_number_maze" width="500"
+
+&img="4_4_color_maze.svg" alt="4_4_color_maze" width="301"
+
+&img="3_5_color_maze.svg" alt="3_5_color_maze" width="351"
+
+&img="2_6_color_maze.svg" alt="2_6_color_maze" width="401"
+
+&img="1_7_color_maze.svg" alt="1_7_color_maze" width="451"
