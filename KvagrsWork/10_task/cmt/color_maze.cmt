@@ -1,10 +1,16 @@
-For the second maze I choose the <i>color maze</i>. The goal is to go from the left bottom corner to the right upper one. The number of used color must be the same for all colors except the white. Such maze of course does not necessarily have unique solution - I have decided to show all of them for the example, since maximal number of solutions was 5. I am using basic <b>DFS</b> algorithm, but to improve the efficiency I have added some <span class="verb">if statement</span>. After stoping the algorithm, when - the current path contained some color more times, then the lowest possible occurence of some color - the speed change rapidly.
+For the second maze I choose the <i>color maze</i>. The goal is to go from the left bottom corner to the right upper one. The number of used color must be the same for all colors except the white. Such maze of course does not necessarily have unique solution - I have decided to show all of them for the example, since maximal number of solutions was 5.
+
+I am using basic <b>DFS</b> algorithm, but to improve the efficiency I have added some <span class="verb">if statement</span>. After stoping the algorithm, when - the current path contained some color more times, then the lowest possible occurence of some color - the speed change rapidly.
 
 <h3> First $\mathbf{4 \times 4}$</h3>
+
+This example shows, that sometimes the solutions might differ in only one square. The first two differ in the sixth step.
 
 &img="color4_3-0_2-0_1-0_0-0_0-1_1-1_1-2_2-2_2-3_1-3_0-3.gif" alt="color4_3-0_2-0_1-0_0-0_0-1_1-1_1-2_2-2_2-3_1-3_0-3" width="301"
 
 &img="color4_3-0_2-0_1-0_0-0_0-1_1-1_2-1_2-2_2-3_1-3_0-3.gif" alt="color4_3-0_2-0_1-0_0-0_0-1_1-1_2-1_2-2_2-3_1-3_0-3"width="301"
+
+The last two solutions differ in the fourth. But in fact the difference occurs at the same place in both pairs of solutions.
 
 &img="color4_3-0_2-0_1-0_1-1_1-2_2-2_2-3_1-3_0-3.gif" alt="color4_3-0_2-0_1-0_1-1_1-2_2-2_2-3_1-3_0-3" width="301"
 
