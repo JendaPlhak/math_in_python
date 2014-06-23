@@ -56,36 +56,23 @@ def load_col_maze(filename, separator='-'):
     with open(filename, 'r') as f:
         mazes = f.read().rstrip()
 
+    # to separate different mazes in the file
     if separator:
         mazes = re.split(r'%s+'%separator, mazes)
 
-    #print mazes
     mazes_table = []
     while mazes:
         maze = []
+        # clean it from both sides
         tmp_maze = mazes.pop().rstrip()[::-1].rstrip()[::-1]
+        # convert to list of list of strings
         for row in tmp_maze.split('\n'):
             maze.append( row.split() )
 
-        print maze
+        # the size str to int
         maze[0][0] = int(maze[0][0])
         mazes_table.append( maze )
 
-    """
-    print mazes_table
-
-
-    #size = tmp_maze[0]
-    #tmp_maze = tmp_maze[2:]
-
-    maze = []
-    for row in tmp_maze.split('\n'):
-        maze.append( row.split() )
-
-    maze[0][0] = int(maze[0][0])
-
-    return maze
-    """
     return mazes_table
 
 
@@ -135,17 +122,6 @@ def addColors(im, maze, size, side=20):
 # available colors 
 # white, red, yellow, blue, black(K), orange, purple
 # brown(N), green
-    
-    colors = {'W':'rgb(255,255,255)',
-              'R':'rgb(255,10,10)',
-              'Y':'rgb(255,255,10)',
-              'B':'rgb(10,10,255)',
-              'K':'rgb(0,0,0)',
-              'O':'rgb(255,133,10)',
-              'P':'rgb(133,10,255)',
-              'N':'rgb(51,26,0)',
-              'G':'rgb(0,153,0)',
-              'A':'rgb(255,255,255)'}
 
     for i, j in product(xrange(size), xrange(size)):
         corner = tuple(side * array( [j, i] ))
@@ -154,8 +130,7 @@ def addColors(im, maze, size, side=20):
         else:
             im.add( im.rect(insert = corner,\
                             size   = (side, side),\
-                            fill   = colors[maze[i][j]]))
-
+                            fill   = COLORS[maze[i][j]]))
 
     return
 
@@ -351,7 +326,7 @@ def color_gif_path(maze, size, path, step_dict, side=20, type_path=''):
     
     # convert svg files to gif
     print ">>> converting to gif:"
-    gifname = str(size) +'_'+ str(size) + put_path_to_string( path )
+    gifname = 'color'+ str(size) + put_path_to_string( path )
     build   = 'convert -delay 72 img/color_gif_*.svg img/'+ gifname +'.gif'
     os.system( build )
 
