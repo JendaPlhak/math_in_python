@@ -1,4 +1,4 @@
-This just shows how the <span class="verb">mazelib.py</span> can draw the basic <i>number</i> and <i>color</i> maze. It also creates give animations, which you can see <a href="http://www.math-in-python.com/kvapil/num_maze"><b>here</b></a> and <a href="http://www.math-in-python.com/kvapil/color_maze"><b>here</b></a>. 
+This just shows how the <span class="verb">mazelib.py</span> can draw the basic <i>number</i> and <i>color</i> maze. It also creates gif animations, which you can see <a href="http://www.math-in-python.com/kvapil/num_maze"><b>here</b></a> and <a href="http://www.math-in-python.com/kvapil/color_maze"><b>here</b></a>. 
 
 <h3> Number maze</h3>
 
