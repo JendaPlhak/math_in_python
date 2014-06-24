@@ -88,6 +88,7 @@ def mandelbrot_set(C=-0.13 + 0.75j, pol=[1,0,0], filename='', julia=False, frame
                 #weight -= 0.05
 
         elif coloring == 1:
+            # + 15 for nicer color set
             col = colors[(15 + steps) % 30]
 
         elif coloring == 2:
@@ -145,9 +146,9 @@ if __name__ == '__main__':
     #          [-2,-0.5, .5],
     #          [-2,-0.5, .1],
     #          [-2,-0.5, .01]]
-    mandelbrot_set(filename='mandelbrot_set_col0',coloring=0)
-    mandelbrot_set(filename='mandelbrot_set_col1',coloring=1)
-    mandelbrot_set(filename='mandelbrot_set_col2',coloring=2)
+    #mandelbrot_set(filename='mandelbrot_set_col0', coloring=0)
+    #mandelbrot_set(filename='mandelbrot_set_col1', coloring=1)
+    #mandelbrot_set(filename='mandelbrot_set_col2', coloring=2)
     #for frame in frames:
     #    filename  = 'mandelbrot_set'
     #    filename += '_'.join([str(x) for x in frame])
@@ -163,3 +164,11 @@ if __name__ == '__main__':
 #        k += 1
 #
 #        mandelbrot_set(C=C, filename=filename,julia=True, frame=[-2,-2,4], coloring=0)
+    for i in xrange(200):
+        index = str(i + 1).zfill( 3 )
+        #b = -1.5 + 0.007 * 200
+        b = -1.5 + 0.007 * i
+        frame = [-2, b, abs(2*b)]
+        filename = 'zoom_mandelbrot_set_'+ index
+        print "+++ img/{}".format( filename )
+        mandelbrot_set(filename='zoom_mandelbrot_set_'+ index,coloring=1, frame=frame)

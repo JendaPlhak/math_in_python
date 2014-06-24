@@ -13,11 +13,8 @@ def gcd_recursive_modulo(a, b):
 
     if b == 0:
         return a
-    if a % b == 0:
-        return a
     else:
-        #print b, a % b
-        return gcd_modulo( b, a % b )
+        return gcd_recursive_modulo( b, a % b )
 
 
 def gcd_modulo(a, b):
@@ -95,6 +92,7 @@ def plot_fixed_par_gcd(fixed=7, method=gcd_modulo, n=100, filename=''):
 
 if __name__ == '__main__':
 
+    
     plot_gcd_algorithm(gcd_substraction, n=200, m=200, filename='gcd_substraction')
     plot_gcd_algorithm(gcd_modulo, n=200, m=200, filename='gcd_modulo')
     plot_gcd_algorithm(gcd_recursive_modulo, n=200, m=200, filename='gcd_recursive_modulo')
