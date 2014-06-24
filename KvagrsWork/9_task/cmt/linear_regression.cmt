@@ -1,0 +1,45 @@
+This is output of my <span class="verb">linear_regression</span> script together with the graphs.
+
+<pre>
+Analytic solution: $y=2.39974289747\cdot x + 1.44551940122$.
+</pre>
+
+&img="analytic_solution_linregtxt.png" alt="analytic_solution_linregtxt"
+
+<pre>
+Grid search solution: $y=0\cdot x + 1.99223497851$.
+</pre>
+
+&img="grid_search_linregtxt.png" alt="grid_search_linregtxt"
+
+<pre>
+Generated line $y = -2\cdot x + 5$ with normal distribution.
+</pre>
+
+<pre>
+Analytic solution: $y=-2.02306194166\cdot x + 7.02114740513$.
+</pre>
+
+&img="analytic_solution_lognormal.png" alt="analytic_solution_lognormal"
+
+<pre>
+Grid search solution: $y=0\cdot x + -39.2539089542$.
+</pre>
+
+&img="grid_search_lognormal.png" alt="grid_search_lognormal"
+
+<pre>
+Generated line $y = -2\cdot x + 5$ with lognormal distribution.
+</pre>
+
+<pre>
+Analytic solution: $y=255039.143967\cdot x + 1957216.85948$.
+</pre>
+
+&img="analytic_solution_normal.png" alt="analytic_solution_normal"
+
+<pre>
+Grid search solution: $y=40\cdot x + -94.6840648485$.
+</pre>
+
+&img="grid_search_normal.png" alt="grid_search_normal"

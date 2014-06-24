@@ -1,6 +1,10 @@
 #!/usr/bin/env python
-#import matplotlib
-#matplotlib.use('Agg')
+import sys
+for i in xrange(1,11):
+    sys.path.append('../'+ str(i) +'_task')
+
+import matplotlib
+matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
 import operator
@@ -11,6 +15,7 @@ from numpy.linalg   import inv, pinv
 from numpy.random   import *
 from math           import pi, tan, atan
 from data_generator import *
+from hide_and_seek  import download_file, PATH
 
 
 def load(filename):
@@ -43,12 +48,12 @@ def plot_line(line, style='-'):
 
 
 def calculate_SSE(data, a, b):
-    # returns the SSE
+# returns the SSE
     return sum([(a * data[0][i] + b - data[1][i])**2 for i in range(len(data[0]))])
 
 
 def SSE_asol(data):
-    # find y = ax + b
+# find y = ax + b
 
     n     = len( data[0])
 
@@ -66,17 +71,14 @@ def SSE_asol(data):
     x_value = [min(data[0]) - 1, max(data[0]) + 1]
     line    = [ x_value, [a * x + b for x in x_value] ]
 
+
+    print "Analytic solution: $y={}\cdot x + {}$".format(a, b)
     return line
 
 
-def MP_pseudoinverse(data):
-
-    pass
-
-
-def SSE_grid_search(data):#, nb, na):
-    # calculate possible a,b such y = ax + b
-    # and find the minimal SSE
+def SSE_grid_search(data, filename):
+# calculate possible a,b such y = ax + b
+# and find the minimal SSE
     min_x = min( data[0] )
     max_x = max( data[0] )
 
@@ -92,41 +94,45 @@ def SSE_grid_search(data):#, nb, na):
     for a, b in product(a_range, b_range):
         lines.append([a,b,calculate_SSE(data, a, b)])
 
+    #for line in lines:
+        #print line[2]
+    #sorted(lines, key=operator.itemgetter(2))
     lines.sort(key=operator.itemgetter(2))
+    #for line in lines:
+    #    print line[2]
 
-    #for i, line in enumerate(lines):
-        #print line
-        #plt.plot([min_x, max_x], map(lambda x: line[0]*x + line[1],[min_x, max_x]), color=colors[i])
+    min_SSE_index = 0
+    for i, line in enumerate(lines):
+        if lines[min_SSE_index][2] > lines[i][2]:
+            min_SSE_index = i
+        #a = lines[i][0]
+        #b = lines[i][1]
+        #print lines[i][2]
+        #print "Grid search solution: $y={}\cdot x + {}$".format(a, b)
+        plt.plot([min_x, max_x], map(lambda x: line[0]*x + line[1],[min_x, max_x]), color=colors[i])
 
+    a = lines[min_SSE_index][0]
+    b = lines[min_SSE_index][1]
+    #print lines[i][2]
+    print "Grid search solution: $y={}\cdot x + {}$".format(a, b)
+    #print min_x, max_x, a
+    #line = map(lambda x: a*x + b,[min_x, max_x])
+    #print line
 
     #plt.ylim([-10,100])
     #plt.xlim([-10,100])
-    plt.show()
+    if filename:
+        plt.savefig('img/'+ filename +'.png')
+    else:
+        plt.show()
+
+    #plt.clf()
+    #for line in lines:
+        #print line
+    #return lines[0][:-1]
+    #lines[0] = [map(lambda x: lines[0][0]*x + lines[0][1],[min_x, max_x])]
+
     return
-
-    """
-    min_a = (min(data[1]) / min(filter(None, data[0])))
-    max_a = (max(data[1]) / max(filter(None, data[0])))
-
-    # create the grid
-    a_list  = map(tan, step_list(min_a, max_a, na))
-    b_list  = step_list(min(data[1]), max(data[1]), nb)
-    near_a  = a_list[0]
-    near_b  = b_list[0]
-    min_SSE = calculate_SSE(data, near_a, near_b)
-
-    x_av    = mean(data[0])
-    from itertools      import product
-        plt.plot([-1, 1], [-a + b, a + b], 'g-')
-        if min_SSE > calculate_SSE(data, a, b):
-            near_a, near_b = a, b
-            min_SSE        = calculate_SSE(data, a, b)
-    plt.show()
-    # stretch the line
-    x_value = [min(data[0]) - 1, max(data[0]) + 1]
-    line    = [ x_value, [near_a * x + near_b for x in x_value] ]
-    """
-    #return line
 
 
 def plot_regression(data, line, filename=''):
@@ -138,6 +144,7 @@ def plot_regression(data, line, filename=''):
         plt.savefig('img/'+ filename +'.png')
     else:
         plt.show()
+    plt.clf()
     return
 
 
@@ -159,9 +166,22 @@ if __name__ == '__main__':
     #        plt.plot([-1,1], [-t+i, t+i],'k-')
     #plt.show()
     """
+    download_file( PATH + 'linreg.txt')
+    data = load('linreg.txt')
 
-    data = linear_data(n=100,distribution=normal, L=-5, U=50, a=-2,b=5, sigma=10)
-    SSE_grid_search( data )
-    #line = SSE_asol( data )
-    ##line = SSE_grid_search( data )
-    #plot_regression(data, line)
+    line = SSE_asol(data)
+    plot_regression(data, line, filename='analytic_solution_linregtxt')
+    line = SSE_grid_search( data, filename='grid_search_linregtxt')
+
+
+    a = -2
+    b =  5
+    for distr in [normal, lognormal]:
+        print "Generated line $y = {}\cdot x + {}$ with {} distribution.".format(a, b, distr.__name__)
+        data = linear_data(n=100,distribution=distr, L=-5, U=50, a=a,b=b, sigma=10)
+    #SSE_grid_search( data )
+        line = SSE_asol( data )
+        plot_regression(data, line, filename='analytic_solution_'+str(distr.__name__))
+
+        line = SSE_grid_search( data, filename='grid_search_'+str(distr.__name__))
+        #plot_regression(data, line, filename='grid_search_'+str(distr.__name__)) 
