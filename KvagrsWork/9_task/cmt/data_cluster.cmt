@@ -1,4 +1,4 @@
-I have implemented two versions of choosing the starting centers for the <i>k-means</i> algorithm. The first way is to choose randomly $k$ centers around the center of gravity of <i>all</i> the points for clustering. The second way sorts the data by the distance from the origin, and then slice this data into $k$ different sets, from each of the sets than chooses one center.
+I have implemented two versions of choosing the starting centers for the <i>k-means</i> algorithm. The first way is to choose randomly $k$ centers around the center of gravity of <i>all</i> the points for clustering. The second way is to sort the data by the distance from the origin, and then slice this data into $k$ different sets, and from each of the set then choose one center.
 
 The first approach works good in cases, where the data is distributed roughly on some almost regular polygon. For example:
 
