@@ -40,7 +40,7 @@ def interpret_Lsytem(path, forward=7, angle=60, filename=''):
             getattr(turtle, instr[step][0])( instr[step][1])
 
     if filename:
-        turtle.draw_object( filename )
+        turtle.draw_object( filename +'_L_system' )
 
     return
 
@@ -48,20 +48,24 @@ def interpret_Lsytem(path, forward=7, angle=60, filename=''):
 if __name__ == '__main__':
 
     path  = generate_Lsystem('F--F--F', {'F':'F+F--F+F'}, 4)
-    interpret_Lsytem(path, forward=3, angle=60, filename='koch_L_system')
-
+    interpret_Lsytem(path, forward=3, angle=60, filename='koch')
 
     path  = generate_Lsystem('A', {'A':'B-A-B', 'B':'A+B+A'}, 8)
-    interpret_Lsytem(path, forward=1, angle=60, filename='sierpinski_L_system')
+    interpret_Lsytem(path, forward=1, angle=60, filename='sierpinski')
 
     path = generate_Lsystem('x', {'x':'-yF+xFx+Fy-',
                                   'y':'+xF-yFy-Fx+'}, 5)
-    interpret_Lsytem(path, angle=90, filename='hilbert_L_system')
+    interpret_Lsytem(path, angle=90, filename='hilbert')
 
     path = generate_Lsystem( 'A', {'A': 'F[+A]-A',
                                    'F': 'FF'}, 7)
-    interpret_Lsytem( path, forward=2, angle=45, filename='basic_tree_L_system')
+    interpret_Lsytem( path, forward=2, angle=45, filename='basic_tree')
 
     path = generate_Lsystem('A', {'A':'F-[[A]+A]+F[+FA]-A',
                                   'F':'FF'}, 5)
-    interpret_Lsytem( path, angle=26, filename='tree_L_system')    
+    interpret_Lsytem( path, angle=26, filename='tree')
+
+    path = generate_Lsystem('A', {'A':'-A++B',
+                                  'B':'A--B+'}, 4)
+    interpret_Lsytem( path, angle=45, filename='dragon')
+    
