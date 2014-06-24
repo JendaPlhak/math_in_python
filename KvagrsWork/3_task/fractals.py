@@ -108,9 +108,9 @@ def pentaflake(turtle, order, side):
         
     return
 
-"""
+
 # possible something a bit interesting
-def sideeffect(turtle, order, side):
+def side_effect_1(turtle, order, side):
 
     if order == 1:
         polygon(turtle, side, 5)
@@ -135,7 +135,8 @@ def sideeffect(turtle, order, side):
 
     return
 
-def binec(turtle, order, side):
+
+def side_effect_2(turtle, order, side):
 
     if order == 1:
         polygon(turtle, side, 5)
@@ -150,7 +151,7 @@ def binec(turtle, order, side):
     return
 
 
-def des(turtle, order, side):
+def side_effect_3(turtle, order, side):
 
     if order == 1:
         rev_polygon(turtle, 5, side)
@@ -172,12 +173,15 @@ def des(turtle, order, side):
         turtle.forward( step )
         turtle.pendown()
         turtle.right( 72 )
-"""
+
+
 if __name__ == '__main__':
+        
     
     print "Sending turtle Bilbo on an adventure!"
     Bilbo = Turtle()
 
+    """
     print ">>> Bilbo sees a tree fractal.."
     Bilbo.left( 90 )
     clock = time.time()
@@ -205,3 +209,15 @@ if __name__ == '__main__':
     pentaflake(Bilbo, 4, 300)
     print "    Time: {}".format(time.time() - clock)
     Bilbo.draw_object('pentaflake_4')
+    """
+
+    side_effect_1(Bilbo, 4, 100)
+    Bilbo.draw_object('side_effect_1')
+
+    Bilbo.restart()
+    side_effect_2(Bilbo, 4, 100)
+    Bilbo.draw_object('side_effect_2')
+
+    Bilbo.restart()
+    side_effect_3(Bilbo, 4, 100)
+    Bilbo.draw_object('side_effect_3')
