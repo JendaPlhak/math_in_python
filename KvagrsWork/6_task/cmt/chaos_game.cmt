@@ -1,0 +1,27 @@
+<h3>chaos game $n = 11, r=0.255$</h3>
+
+&img="chaos_game_11_0.255.png" alt="chaos_game_11_0.255"
+
+<h3>chaos game $n = 11, r=0.5$</h3>
+
+&img="chaos_game_11_0.5.png" alt="chaos_game_11_0.5"
+
+<h3>chaos game $n=3, r =0.5$</h3>
+
+&img="chaos_game_3_0.5.png" alt="chaos_game_3_0.5"
+
+<h3>chaos game $n = 5, r=0.255$</h3>
+
+&img="chaos_game_5_0.255.png" alt="chaos_game_5_0.255"
+
+<h3>chaos game $n=5,r=0.5$</h3>
+
+&img="chaos_game_5_0.5.png" alt="chaos_game_5_0.5"
+
+<h3>chaos game $n=7, r=0.255$</h3>
+
+&img="chaos_game_7_0.255.png" alt="chaos_game_7_0.255"
+
+<h3>chaos game $n=7, r=0.5$</h3>
+
+&img="chaos_game_7_0.5.png" alt="chaos_game_7_0.5"
