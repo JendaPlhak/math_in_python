@@ -1,5 +1,9 @@
-Here are some examples of generated data from <span class="verb">data_generator.py</span>
+Here are some examples of generated data from <span class="verb">data_generator.py</span>.
+
+<h3>Cluster data</h3>
 
 &img="random_cluster.png" alt="random_cluster"
+
+<h3>Linear data with noise</h3>
 
 &img="random_linear.png" alt="random_linear"
