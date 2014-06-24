@@ -4,7 +4,7 @@ The first approach works good in cases, where the data is distributed roughly on
 
 &img="data_cluster.png" alt="data_cluster"
 
-But also the second method might work:
+But also the second method might work, but in this case it fails:
 
 &img="data_cluster_sorted.png" alt="data_cluster_sorted"
 
