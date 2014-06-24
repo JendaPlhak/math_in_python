@@ -126,7 +126,7 @@ def SSE_grid_search(data, filename):
     else:
         plt.show()
 
-    #plt.clf()
+    plt.clf()
     #for line in lines:
         #print line
     #return lines[0][:-1]
