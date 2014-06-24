@@ -40,6 +40,9 @@
 					<input class="drawButton" type="submit" value="Draw!">
 		</form>
 
+	{% elif task =='convex_wrapping' %}
+		{% include '/KvagrsWork/5_task/article_'+task+'.html' %}
+		
 	<!-- TASK 6 -->
 	{% elif task in ['chaos_game','feigenbaums_diagram', 'L_system' ] %}
 		{% include '/KvagrsWork/6_task/article_'+task+'.html' %}

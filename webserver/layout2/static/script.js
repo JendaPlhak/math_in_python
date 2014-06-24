@@ -56,7 +56,7 @@ $(document).ready(function(){
         "2" : ["permutation","pascals_triangle","exponential_function", "ludolphs_number"],
         "3" : ["lib_turtle", "fractals", "basic_img"],
         "4" : ["polygon", "effects", "hide_and_seek", "basic_shapes"],
-        "5" : ["intersection", "triangulation","gift_wrapping"],
+        "5" : ["intersection", "triangulation","convex_wrapping"],
         "6" : ["chaos_game","feigenbaums_diagram","L_system"],
         "7" : ["complex_fractals"],
         "8" : ["affine_transformation","mrcm"],

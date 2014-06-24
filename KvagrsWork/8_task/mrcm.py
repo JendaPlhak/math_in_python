@@ -83,10 +83,23 @@ if __name__ == '__main__':
                  combine(translation(-70,100),rotation(-50),scaling(0.35,0.4)),
                  combine(scaling(0.001,0.3),rotation(3), translation(12,720))]
 
-#    operators = [combine(scaling(0.001,0.85), rotation(3), translation(12,-30)),
-#                 combine(translation(100,150),rotation(45),scaling(0.001,0.5)),
-#                 combine(translation(-70,100),rotation(-50),scaling(0.001,0.4)),
+#    operators = [combine(scaling(0.1,0.85), rotation(3), translation(12,-30)),
+#                 combine(translation(100,150),rotation(45),scaling(0.1,0.5)),
+#                 combine(translation(-70,100),rotation(-50),scaling(0.1,0.4)),
 #                 combine(scaling(0.001,0.3),rotation(3), translation(12,720))]
 
-    lines = MRCM(points, 6, operators)
+    lines = MRCM(points, 5, operators)
     draw_and_save('barnsley_fern', lines)
+
+    points = array([[-50,-50],[17,0],[40,30],[0,90]])
+    points = array([[ 0, -half, 1],
+                    [ half, -half, 1],
+                    [ half, 2 * half, 1],
+                    [-half, 2 * half, 1]])
+
+    operators = [combine(scaling(0.85,0.85), rotation(3), translation(12,-30)),
+                 combine(translation(100,150),rotation(45),scaling(0.4,0.5)),
+                 combine(translation(-70,100),rotation(-50),scaling(0.35,0.4)),
+                 combine(scaling(0.001,0.3),rotation(3), translation(12,720))]
+    lines = MRCM(points, 1, operators)
+    draw_and_save('test', lines)

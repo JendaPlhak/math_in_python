@@ -13,14 +13,18 @@ from basic_shapes import movePointsTowardsOrigin
 
 class ChaosGame():
 
-    def __init__(self, n, r=0.5, side=200, regular=True):
+    def __init__(self, n, r=0.5, side=200, regular=True, weights=[]):
 
         self.n        = n
         self.r        = r
         self.pixels   = []
         self.vertices = []
-        self.weights  = [[i * (1. / n), (i + 1) * (1. / n)] for i in xrange(n)]
-        self.side     = side
+        if not weights:
+            self.weights  = [[i * (1. / n), (i + 1) * (1. / n)] for i in xrange(n)]
+        else:
+            # the most horrible line ever written
+            self.weights  = [[0, weights[0]]] + [ [sum( [weights[j] for j in xrange(i)]) + weights[i], sum( [weights[j] for j in xrange(i +1 )]) + weights[i + 1]] for i in xrange(n - 1) ]# + [[1-weights[n-1],1]]
+        self.side = side
 
         if regular:
             angle  = pi / 2
@@ -33,6 +37,7 @@ class ChaosGame():
 
 
         self.pixels.extend( self.vertices )
+        print len(self.weights), len(self.vertices)
 
         return
 
@@ -61,7 +66,7 @@ class ChaosGame():
             if weight[0] <= value and value <= weight[1]:
                 index = i
                 break
-
+        
         return self.vertices[i]
 
 
@@ -145,12 +150,17 @@ def draw_chaos_game(pixels, filename=''):
 
 if __name__ == '__main__':
         
-    #pixels = chaos_game(n=3, r=0.5, weights=[1,1,1], side=200, iteration=1000000, regular=True)
+    #pixels = chaos_game(n=4, r=0.5, weights=[0.73,0.13,0.11,0.03], side=200, iteration=1000000, regular=True)
     #print len(pixels)
     #draw_chaos_game(pixels, filename='sierpinski_gasket')
     #pixels = chaos_game(n=5, r=0.2, weights=[1,1,1,1,1], side=200, iteration=100000, regular=True)
     #draw_chaos_game(pixels, filename='sierpinski_gasket')
-    for n, r in product([3,5,7,11],[0.1,0.255,0.5,0.94]):
-        chaos_game = ChaosGame(n=n, r=r)
-        chaos_game.add_points()
-        chaos_game.draw('chaos_game_'+str(n)+'_'+str(r))
+    #for n, r in product([3,5,7,11],[0.1,0.255,0.5,0.94]):
+    #    chaos_game = ChaosGame(n=n, r=r)
+    #    chaos_game.add_points()
+    #    chaos_game.draw('chaos_game_'+str(n)+'_'+str(r))
+
+    chaos_game = ChaosGame(n=4, r=0.5, weights=[0.73,0.13,0.11,0.03])
+    print chaos_game.weights
+    chaos_game.add_points()
+    chaos_game.draw('chaos_game_'+str(4)+'_'+str(0.5))
