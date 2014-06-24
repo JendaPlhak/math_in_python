@@ -1,9 +1,50 @@
-&img="basic_tree_L_system.svg" alt="basic_tree_L_system"
+Here are some drawings created with <span class="verb">L_system.py</span> script together with <span class="verb">lib_turtle</span> library. Each pictures is presented twice, the first is original, and the second with little change of the angle (one or two degrees).
 
-&img="koch_L_system.svg" alt="koch_L_system"
+<h3>Basic tree</h3>
 
-&img="sierpinski_L_system.svg" alt="sierpinski_L_system"
+&img="L_system_basic_tree_original.svg" alt="L_system_basic_tree_original"
 
-&img="tree_L_system.svg" alt="tree_L_system"
+&img="L_system_basic_tree_change.svg" alt="L_system_basic_tree_change"
 
-&img="hilbert_L_system.svg" alt="hilbert_L_system"
+<h3>Dragon</h3>
+
+
+&img="L_system_dragon_original.svg" alt="L_system_dragon_original"
+
+&img="L_system_dragon_change.svg" alt="L_system_dragon_change"
+
+<h3>Hilbert curve</h3>
+
+&img="L_system_hilbert_original.svg" alt="L_system_hilbert_original"
+
+&img="L_system_hilbert_change.svg" alt="L_system_hilbert_change"
+
+<h3>Koch flake</h3>
+
+&img="L_system_koch_original.svg" alt="L_system_koch_original"
+
+&img="L_system_koch_change.svg" alt="L_system_koch_change"
+
+<h3>Sierpinski gasket</h3>
+
+&img="L_system_sierpinski_original.svg" alt="L_system_sierpinski_original"
+
+&img="L_system_sierpinski_change.svg" alt="L_system_sierpinski_change"
+
+<h3>Simple bush</h3>
+
+&img="L_system_simple_bush_original.svg" alt="L_system_simple_bush_original"
+
+&img="L_system_simple_bush_change.svg" alt="L_system_simple_bush_change"
+
+<h3>Tree</h3>
+
+&img="L_system_tree_original.svg" alt="L_system_tree_original"
+
+&img="L_system_tree_change.svg" alt="L_system_tree_change"
+
+<h3>Weed</h3>
+
+&img="L_system_weed_original.svg" alt="L_system_weed_original"
+
+&img="L_system_weed_change.svg" alt="L_system_weed_change"
