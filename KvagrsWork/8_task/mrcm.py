@@ -40,6 +40,7 @@ if __name__ == '__main__':
                     [ half, -half, 1],
                     [ half,  half, 1],
                     [-half,  half, 1]])
+    """
 
     list_operators = [[translation(-half, -half),
                        translation(-half,  half),
@@ -58,21 +59,31 @@ if __name__ == '__main__':
                        combine(translation(half, half), reflexion(-1,-1))],
                      ]
 
-#    for i, operators in enumerate( list_operators ):
-#        for j in xrange( len(operators) ):
-#            operators[j] = combine(scaling(0.5,0.5), operators[j])
-#
-#        lines = MRCM(points, 8, operators)
-#        plot_and_save('sierpinski_rel_'+ str(i + 1), lines)
-
-    #points = array([[0,0,1],[side,0,1],[side,side,1],[0,side,1]])
-    
-    # Star
+    """
     operators = [combine(scaling(0.255,0.255), translation(0,-270)),
                  combine(scaling(0.255,0.255), translation(-255,150)),
                  combine(scaling(0.255,0.255), translation( 255,150)),
                  combine(scaling(0.735,0.735), rotation(30)),
                  ]
 
-    lines = MRCM(points, 7, operators)
-    plot_and_save('star', lines)
+    lines = MRCM(points, 5, operators)
+    draw_and_save('star', lines)
+    
+
+    points = array([[-half, -half, 1],
+                    [ half, -half, 1],
+                    [ half, 2 * half, 1],
+                    [-half, 2 * half, 1]])
+
+    operators = [combine(scaling(0.85,0.85), rotation(3), translation(12,-30)),
+                 combine(translation(100,150),rotation(45),scaling(0.4,0.5)),
+                 combine(translation(-70,100),rotation(-50),scaling(0.35,0.4)),
+                 combine(scaling(0.001,0.3),rotation(3), translation(12,720))]
+
+#    operators = [combine(scaling(0.001,0.85), rotation(3), translation(12,-30)),
+#                 combine(translation(100,150),rotation(45),scaling(0.001,0.5)),
+#                 combine(translation(-70,100),rotation(-50),scaling(0.001,0.4)),
+#                 combine(scaling(0.001,0.3),rotation(3), translation(12,720))]
+
+    lines = MRCM(points, 6, operators)
+    draw_and_save('barnsley_fern', lines)
