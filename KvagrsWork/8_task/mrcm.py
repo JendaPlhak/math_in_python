@@ -63,11 +63,14 @@ if __name__ == '__main__':
     operators = [combine(scaling(0.255,0.255), translation(0,-270)),
                  combine(scaling(0.255,0.255), translation(-255,150)),
                  combine(scaling(0.255,0.255), translation( 255,150)),
-                 combine(scaling(0.735,0.735), rotation(30)),
+                 combine(scaling(0.735,0.735), rotation(-30)),
                  ]
 
     lines = MRCM(points, 5, operators)
     draw_and_save('star', lines)
+
+    lines = MRCM(points, 1, operators)
+    draw_and_save('star_first', lines)
     
 
     points = array([[-half, -half, 1],

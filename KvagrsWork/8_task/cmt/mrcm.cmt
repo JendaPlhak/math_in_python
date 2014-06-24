@@ -10,4 +10,10 @@ I was not able to improve my pictures, so this is the best result I have got.
 
 &img="barnsley_fern.svg" alt="barnsley_fern"
 
+For the star I have experienced weird behavior. Although the first iteration looks like this:
+
+&img="star_first.svg" alt="star_first"
+
+more iterations do not create (even ugly) star, but more like a spiral:
+
 &img="star.svg" alt="star"
