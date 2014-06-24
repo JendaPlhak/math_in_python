@@ -1,3 +1,7 @@
+Newton fractal:
+
+&img="newton_fractal.png" alt="newton_fractal"
+
 Julia set animations for different constant $C$.
 
 $C = 0 + k\cdot i$, where $ k \in \{ 0.02, 0.04, \ldots, 0.98 \}$

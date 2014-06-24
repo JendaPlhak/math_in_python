@@ -16,26 +16,27 @@ import colorsys
 
 
 
-def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
+def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-2, -2, 4]):
 
     x0 = frame[0]
     y0 = frame[1]
     dt = frame[2]
 
-    im     = Image.new("RGB", (250, 250), (255, 255, 255))
+    im     = Image.new("RGB", (500, 500), (255, 255, 255))
     roots  = np.roots( pol )
     colors = different_colors( len(roots) )
     print roots
 
 
-    for s, t in product(xrange(250), xrange(250)):
-        z = x0 + s * dt / 250. + (y0 + t * dt / 250.) * 1j
+    for s, t in product(xrange(500), xrange(500)):
+        z = x0 + s * dt / 500. + (y0 + t * dt / 500.) * 1j
+
         for i in xrange(100):
 
             if z**3 == 0:            
                 break
 
-            z = z - z**3 / (3. * z**2)
+            z = z - (z**3 - 1) / (3. * z**2)
             #print z
             #if np.polyval( pol, z ) == 0 or np.polyval( np.polyder( pol ), z) == 0:
             #    break
@@ -46,7 +47,7 @@ def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
         for i, root in enumerate(roots):
             
             if abs(z - root) < 0.0001:
-                print abs(z - root)
+                #print abs(z - root)
                 col = colors[ i ]
             #else:
             im.putpixel((s, t), col)
