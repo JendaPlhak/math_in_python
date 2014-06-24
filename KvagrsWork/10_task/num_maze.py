@@ -95,7 +95,7 @@ class NumberMaze():
     def on_board(self, pos):
     # False if the position pos is of outside the grid
 
-        if any(x < 0 for x in pos) or any(x  > self.size - 1 for x in pos):
+        if any(x < 0 for x in pos) or any(x > self.size - 1 for x in pos):
             return False
         else:
             return True 

@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import sys
 sys.path.append('../2_task')
+import matplotlib
+matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
 
@@ -72,8 +74,11 @@ def pairs_to_lists(data):
 
     return lists
 
+def plot_linear_data(data, filename=''):
 
-def plot_data(dataset, filename=''):
+    pass
+
+def plot_dataset(dataset, filename=''):
 
     colors = different_colors( len(dataset), real=True )
     for i, data in enumerate(dataset):
@@ -83,6 +88,8 @@ def plot_data(dataset, filename=''):
         plt.savefig('img/'+ filename +'.png')
     else:
         plt.show()
+
+    plt.clf()
     return
     
 
@@ -92,8 +99,10 @@ if __name__ == '__main__':
     #dataset.append( linear_data(distribution=normal,b=50, sigma=10))
     #dataset.append( linear_data(distribution=logistic,b=50, sigma=10))
     #dataset.append( linear_data(distribution=laplace,b=50, sigma=10))
-    #plot_data( dataset )
-    centroids = lists_to_pairs( generate_data(n=5) )
+    #plot_dataset( dataset )
+    #centroids = lists_to_pairs( generate_data(n=5) )
     #print cluster_data(k=5, centroids=centroids, dif=10)
-    dataset   = [ cluster_data(k=5, U=10, dif=2) ]
-    plot_data( dataset )
+    dataset   = [ cluster_data(L=2, dif=0.3) ]
+    plot_dataset( dataset, 'random_cluster' )
+    dataset = [ linear_data(U=5) ]
+    plot_dataset( dataset, 'random_linear')
