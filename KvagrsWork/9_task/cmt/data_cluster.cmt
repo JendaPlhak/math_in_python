@@ -20,10 +20,12 @@ Here are some other examples.
 
 &img="data_cluster_faithful_shifts.png" alt="data_cluster_faithful_shifts"
 
-&img="generated_data_cluster.png" alt="generated_data_cluster"
-
-&img="generated_data_cluster_shifts.png" alt="generated_data_cluster_shifts"
-
 &img="linreg-mix.png" alt="linreg-mix"
 
 &img="linreg-mix_shifts.png" alt="linreg-mix_shifts"
+
+The last data were generated randomly and for this type of data the second method of choosing default centers gave better results:
+
+&img="generated_data_cluster.png" alt="generated_data_cluster"
+
+&img="generated_data_cluster_shifts.png" alt="generated_data_cluster_shifts"

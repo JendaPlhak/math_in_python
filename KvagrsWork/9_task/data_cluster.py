@@ -140,19 +140,19 @@ def plot_shifts(centers, k, colors, filename=''):
 if __name__ == '__main__':
 
     
-    download_file( PATH +'faithful.txt')
+    #download_file( PATH +'faithful.txt')
     k = 2
     data = load('faithful.txt')
     classes, centers = k_means(data, k)
     plot_data_clustering(classes, centers, k, filename='data_cluster_faithful')
 
-    download_file( PATH +'linreg-mix.txt')        
+    #download_file( PATH +'linreg-mix.txt')        
     data = load('linreg-mix.txt')
     classes, centers = k_means(data, k)
     plot_data_clustering(classes, centers, k, filename='linreg-mix')
 
 
-    download_file( PATH +'cluster_data.txt')
+    #download_file( PATH +'cluster_data.txt')
     k = 5
     data = load('cluster_data.txt')
     classes, centers = k_means(data, k)
@@ -161,8 +161,10 @@ if __name__ == '__main__':
     classes, centers = k_means(data, k, sorted_centers=True)
     plot_data_clustering(classes, centers, k, filename='data_cluster_sorted')
     
-    #centroids = [[0,0],[1,0],[1,1],[0,1]]
     k = 7
     data = cluster_data(n=100, L=2, dif=0.2, k=k)
-    classes, centers = k_means(data, k=k, sorted_centers=True)
+    classes, centers = k_means(data, k=k)
     plot_data_clustering(classes, centers, k=k, filename='generated_data_cluster')
+
+    classes, centers = k_means(data, k=k, sorted_centers=True)
+    plot_data_clustering(classes, centers, k=k, filename='generated_data_cluster_sorted')
