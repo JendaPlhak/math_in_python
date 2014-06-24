@@ -62,7 +62,7 @@ $(document).ready(function(){
         "8" : ["affine_transformation","mrcm"],
         "9" : ["linear_regression","data_cluster","data_generator"],
         "10": ["num_maze","color_maze","mazelib"],
-        "11": ["empty"]
+        "11": ["braid_maze_old"]
     }
 
     $('.barTask').click(function(){
