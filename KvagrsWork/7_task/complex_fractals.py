@@ -25,19 +25,31 @@ def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-500, -500, 1000]):
     im     = Image.new("RGB", (250, 250), (255, 255, 255))
     roots  = np.roots( pol )
     colors = different_colors( len(roots) )
+    print roots
+
 
     for s, t in product(xrange(250), xrange(250)):
         z = x0 + s * dt / 250. + (y0 + t * dt / 250.) * 1j
-        for i in xrange(50):
-            if np.polyval( pol, z ) == 0 or np.polyval( np.polyder( pol ), z) == 0:
-                break
-            z = z - np.polyval( pol, z) / np.polyval( np.polyder( pol ), z)
+        for i in xrange(100):
 
+            if z**3 == 0:            
+                break
+
+            z = z - z**3 / (3. * z**2)
+            #print z
+            #if np.polyval( pol, z ) == 0 or np.polyval( np.polyder( pol ), z) == 0:
+            #    break
+            #z = z - np.polyval( pol, z) / np.polyval( np.polyder( pol ), z)
+
+        #print colors
         col = (0,0,0)
         for i, root in enumerate(roots):
+            
             if abs(z - root) < 0.0001:
+                print abs(z - root)
                 col = colors[ i ]
-        im.putpixel((s, t), col)
+            #else:
+            im.putpixel((s, t), col)
 
     if filename:
         im.save('img/'+ filename +'.png')
@@ -112,7 +124,7 @@ def mandelbrot_set(C=-0.13 + 0.75j, pol=[1,0,0], filename='', julia=False, frame
 
 if __name__ == '__main__':
 
-    #newton_fractal(filename='newton_fractal')
+    newton_fractal(filename='newton_fractal')
 
     #frames = [[-2,-1.5,3],
     #          [-1,-1,1],
@@ -131,13 +143,13 @@ if __name__ == '__main__':
     #    filename += '_'.join([str(x) for x in frame])
     #    mandelbrot_set(filename=filename, frame=frame, coloring=1)
 
-    k = 90
-    for x, y in product(range(1), range(90,101)):
-        #C = round(random(),2) + round(random(),2) * 1j
-        C = 0.38+ 0.01 * y * 1j 
-        #C = 0.38 + 0.98j
-        filename  = 'Ajulia_set_'+ str( k ).zfill( 4 )
-        #mandelbrot_set(C=C, filename=filename, julia=True,frame=[-2,-2,4], coloring=1)
-        k += 1
+#    k = 90
+#    for x, y in product(range(1), range(90,101)):
+#        #C = round(random(),2) + round(random(),2) * 1j
+#        C = 0.38+ 0.01 * y * 1j 
+#        #C = 0.38 + 0.98j
+#        filename  = 'Ajulia_set_'+ str( k ).zfill( 4 )
+#        #mandelbrot_set(C=C, filename=filename, julia=True,frame=[-2,-2,4], coloring=1)
+#        k += 1
 #
-        mandelbrot_set(C=C, filename=filename,julia=True, frame=[-2,-2,4], coloring=0)
+#        mandelbrot_set(C=C, filename=filename,julia=True, frame=[-2,-2,4], coloring=0)
