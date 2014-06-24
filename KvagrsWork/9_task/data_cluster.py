@@ -18,6 +18,7 @@ from affine_transformation import min_max_points
 
 import matplotlib.pyplot as plt
 
+import operator
 import random
 import re
 
@@ -46,15 +47,25 @@ def find_center(data, center=[0,0]):
     return center
 
 
-def k_means(data, k):
+def k_means(data, k, sorted_centers=False):
 
-    #centers     = lists_to_pairs( generate_data( k ) )
     data        = lists_to_pairs( data )
-    anchor      = find_center( data )
-    dif         = max( min_max_points( data )[2:]) / k**2
-    centers     = []
-    for i in xrange(k):
-        centers.append(list(anchor + array([uniform(-dif, dif), uniform(-dif, dif)])))
+    if sorted_centers:
+        data = [[x[0], x[1], dist([0,0], [x[0],x[1]])] for x in data]
+        data.sort(key=operator.itemgetter(2))
+        n = len( data ) - 1
+        tmp_data_A = data[::]
+        centers = []
+        for i in xrange(k):
+            tmp_data_B = tmp_data_A[:n / k]
+            centers.append( random.choice( tmp_data_B ) )
+            tmp_data_A = tmp_data_A[n / k:]
+    else:        
+        anchor      = find_center( data )
+        dif         = max( min_max_points( data )[2:]) / k**2
+        centers     = []
+        for i in xrange(k):
+            centers.append(list(anchor + array([uniform(-dif, dif), uniform(-dif, dif)])))
 
     classes     = [ [] for i in xrange(k) ]
     tmp_class   = []
@@ -128,6 +139,7 @@ def plot_shifts(centers, k, colors, filename=''):
 
 if __name__ == '__main__':
 
+    
     download_file( PATH +'faithful.txt')
     k = 2
     data = load('faithful.txt')
@@ -146,7 +158,11 @@ if __name__ == '__main__':
     classes, centers = k_means(data, k)
     plot_data_clustering(classes, centers, k, filename='data_cluster')
 
-    centroids = [[0,0],[1,0],[1,1],[0,1]]
-    data = cluster_data(b=2, dif=0.2, k=4, centroids=centroids)
-    classes, centers = k_means(data, k=4)
-    plot_data_clustering(classes, centers, k=4, filename='generated_data_cluster')
+    classes, centers = k_means(data, k, sorted_centers=True)
+    plot_data_clustering(classes, centers, k, filename='data_cluster_sorted')
+    
+    #centroids = [[0,0],[1,0],[1,1],[0,1]]
+    k = 7
+    data = cluster_data(n=100, L=2, dif=0.2, k=k)
+    classes, centers = k_means(data, k=k, sorted_centers=True)
+    plot_data_clustering(classes, centers, k=k, filename='generated_data_cluster')

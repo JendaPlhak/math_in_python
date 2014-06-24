@@ -1,11 +1,33 @@
-&img="data_cluster_faithful.png" alt="data_cluster_faithful" width="500"
+I have implemented two versions of choosing the starting centers for the <i>k-means</i> algorithm. The first way is to choose randomly $k$ centers around the center of gravity of <i>all</i> the points for clustering. The second way sorts the data by the distance from the origin, and then slice this data into $k$ different sets, from each of the sets than chooses one center.
 
-&img="data_cluster_faithful_shifts.png" alt="data_cluster_faithful_shifts" width="500"
+The first approach works good in cases, where the data is distributed roughly on some almost regular polygon. For example:
 
-&img="data_cluster.png" alt="data_cluster" width="500"
+&img="data_cluster.png" alt="data_cluster"
 
-&img="data_cluster_shifts.png" alt="data_cluster_shifts" width="500"
+But also the second method might work:
 
-&img="linreg-mix.png" alt="linreg-mix" width="500"
+&img="data_cluster_sorted.png" alt="data_cluster_sorted"
 
-&img="linreg-mix_shifts.png" alt="linreg-mix_shifts" width="500"
+To help analyze the data I have added a function which draws graph of the difference, how the centers changed each iteration. That is how far they moved from one iteration to another:
+
+&img="data_cluster_shifts.png" alt="data_cluster_shifts"
+
+&img="data_cluster_sorted_shifts.png" alt="data_cluster_sorted_shifts"
+
+Here are some other examples.
+
+&img="data_cluster_faithful.png" alt="data_cluster_faithful"
+
+
+
+&img="generated_data_cluster.png" alt="generated_data_cluster"
+
+&img="linreg-mix.png" alt="linreg-mix"
+
+&img="data_cluster_faithful_shifts.png" alt="data_cluster_faithful_shifts"
+
+&img="data_cluster_shifts.png" alt="data_cluster_shifts"
+
+&img="generated_data_cluster_shifts.png" alt="generated_data_cluster_shifts"
+
+&img="linreg-mix_shifts.png" alt="linreg-mix_shifts"

@@ -30,22 +30,23 @@ def linear_data(n=100, distribution=normal, a=1, b=0, L=0, U=1, mean=1, sigma=1)
     return data
 
 
-def cluster_data(k=4, n=100, a=0, b=100, centroids=[], dif=2):
+def cluster_data(k=4, n=100, U=0, L=100, centroids=[], dif=2):
 
     data = []
     if not centroids:
         centroids = []
         for i in xrange(k):
-            centroids.append( [uniform(a, b), uniform(a, b)] )
+            centroids.append( [uniform(U, L), uniform(U, L)] )
 
-    k = len(centroids)
+    #k = len(centroids)
     nums = []
-    for i in xrange(k-1):
+    for i in xrange(k - 1):
         nums.append( n / k + randint( -n / k**2, n / k**2 ) )
     nums.append( n - sum(nums) )
 
     for i, centroid in enumerate(centroids):
         for j in xrange(nums[i]):
+
             point = centroid + array([uniform(-dif / 2, dif / 2), uniform(-dif / 2, dif / 2)])
             data.append( point )
 
@@ -94,5 +95,5 @@ if __name__ == '__main__':
     #plot_data( dataset )
     centroids = lists_to_pairs( generate_data(n=5) )
     #print cluster_data(k=5, centroids=centroids, dif=10)
-    dataset   = [ cluster_data(k=5,U=10, dif=2) ]
+    dataset   = [ cluster_data(k=5, U=10, dif=2) ]
     plot_data( dataset )
