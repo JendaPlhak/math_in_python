@@ -1,0 +1,12 @@
+This task really stopped me. I have been working on it for several hours, I've tried two different representations of the maze, and failed each time after 150+ and 250+ lines of code.
+
+I have tried to do the following:
+<ol>
+	<li>Add one wall from each vertex</li>
+	<li>Go through the rest of the walls and try to add more, while checking, that between each pair of vertices there exists a circle.</li>
+</ol>
+
+But I think the algorithm checking for circle failed in each attempt. So I only got this:
+
+&img="static_braid_maze.svg" alt="static_braid_maze"
+

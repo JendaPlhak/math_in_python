@@ -115,6 +115,7 @@ class BraidMaze(NumberMaze):
     def DFS_cycle(self, pos):
 
         self.STACK.append( pos )
+        """
         # with fixed
         if list(pos) == list(self.FIXED) and len(self.STACK) > 2:
             self.STACK = []
@@ -132,9 +133,9 @@ class BraidMaze(NumberMaze):
                         self.DFS_cycle( new_point )
             else:
                 self.STACK = []
-                return False
+        return False
 
-
+        """
 
         """
         visited = [ list(pos) ]
