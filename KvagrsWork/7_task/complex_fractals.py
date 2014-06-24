@@ -25,8 +25,6 @@ def newton_fractal(filename='', pol=[1,0,0,-1], frame=[-2, -2, 4]):
     im     = Image.new("RGB", (500, 500), (255, 255, 255))
     roots  = np.roots( pol )
     colors = different_colors( len(roots) )
-    print roots
-
 
     for s, t in product(xrange(500), xrange(500)):
         z = x0 + s * dt / 500. + (y0 + t * dt / 500.) * 1j
@@ -78,44 +76,53 @@ def mandelbrot_set(C=-0.13 + 0.75j, pol=[1,0,0], filename='', julia=False, frame
         for i in xrange(30):
             if abs(z) > 2:
                 break
-            z      = z**3 - z**2 + C
+            z      = z**2 + C
             steps += 1
         
         if coloring == 0:
             if abs(z) < 2:
+                col = tuple(3 * [0])
+                #weight += 1
+            else:
+                col = tuple(3 * [255])
+                #weight -= 0.05
+
+        elif coloring == 1:
+            col = colors[(15 + steps) % 30]
+
+        elif coloring == 2:
+            if abs(max(z.real, z.imag)) < 2:
                 col = tuple(3 * [0])
                 weight += 1
             else:
                 col = tuple(3 * [255])
                 weight -= 0.05
 
-        elif coloring == 1:
-            col = colors[(15 + steps) % 30]   
-        #HSV_tuples = [(z.real * 1.0 /  31, 1, 0.85) for x in range(31) ]
-        #RGB_tuples = map(lambda x: colorsys.hsv_to_rgb( *x ), HSV_tuples)
-        #RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
-
-        #if abs(z) < 2:
-            #col = tuple(3 * [0])
-        #col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(z.real + z.imag)]))
-        #col = tuple( map( lambda x: int(x), [255*(steps), 255 * z.real, 255*z.imag]))
-        #col = colors[steps]
-        #else:
-        #col = tuple(3 * [255])
+#        HSV_tuples = [(z.real * 1.0 /  31, 1, 0.85) for x in range(31) ]
+#        RGB_tuples = map(lambda x: colorsys.hsv_to_rgb( *x ), HSV_tuples)
+#        RGB_tuples = map(lambda x: tuple(map(lambda y: int(y * 255),x)),RGB_tuples)
+#
+#        if abs(z) < 2:
+#            col = tuple(3 * [0])
+#        col = tuple( map( lambda x: int(x), [255 * z.real, 255*z.imag, 255*(z.real + z.imag)]))
+#        col = tuple( map( lambda x: int(x), [255*(steps), 255 * z.real, 255*z.imag]))
+#        col = colors[steps]
+#        else:
+#        col = tuple(3 * [255])
 
         im.putpixel((s, t), col)
 
-    #if weight < 0:
-    #    print "Not enough points in the frame"
-    #    print ">>> Weight: {}".format( weight )
-    #    print ">>> C:      {}".format( C )
+#    if weight < 0:
+#        print "Not enough points in the frame"
+#        print ">>> Weight: {}".format( weight )
+#        print ">>> C:      {}".format( C )
 #
-#    #    return
-#    #else:
-#    #    print "Enough points"
-#    #    print ">>> Weight: {}".format( weight )
-#    #    print "+++ {}".format( filename +'.png' )
-    #    print ">>> C:      {}".format( C )
+#        return
+#    else:
+#        print "Enough points"
+#        print ">>> Weight: {}".format( weight )
+#        print "+++ {}".format( filename +'.png' )
+#        print ">>> C:      {}".format( C )
 
     if filename:
         im.save('img/'+ filename +'.png')
@@ -125,7 +132,7 @@ def mandelbrot_set(C=-0.13 + 0.75j, pol=[1,0,0], filename='', julia=False, frame
 
 if __name__ == '__main__':
 
-    newton_fractal(filename='newton_fractal')
+    #newton_fractal(filename='newton_fractal')
 
     #frames = [[-2,-1.5,3],
     #          [-1,-1,1],
@@ -138,7 +145,9 @@ if __name__ == '__main__':
     #          [-2,-0.5, .5],
     #          [-2,-0.5, .1],
     #          [-2,-0.5, .01]]
-
+    mandelbrot_set(filename='mandelbrot_set_col0',coloring=0)
+    mandelbrot_set(filename='mandelbrot_set_col1',coloring=1)
+    mandelbrot_set(filename='mandelbrot_set_col2',coloring=2)
     #for frame in frames:
     #    filename  = 'mandelbrot_set'
     #    filename += '_'.join([str(x) for x in frame])
