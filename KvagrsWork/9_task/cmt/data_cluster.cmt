@@ -29,3 +29,7 @@ The last data were generated randomly and for this type of data the second metho
 &img="generated_data_cluster.png" alt="generated_data_cluster"
 
 &img="generated_data_cluster_shifts.png" alt="generated_data_cluster_shifts"
+
+&img="generated_data_cluster_sorted.png" alt="generated_data_cluster_sorted"
+
+&img="generated_data_cluster_sorted_shifts.png" alt="generated_data_cluster_sorted_shifts"
