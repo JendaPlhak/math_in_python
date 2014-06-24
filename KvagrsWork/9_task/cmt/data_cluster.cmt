@@ -8,7 +8,7 @@ But also the second method might work, but in this case it fails:
 
 &img="data_cluster_sorted.png" alt="data_cluster_sorted"
 
-To help analyze the data I have added a function which draws graph of the difference, how the centers changed each iteration. That is how far they moved from one iteration to another:
+To help analyze the data I have added a function which draws graph of the difference, how the centers changed each iteration. That is how far they moved from one iteration to another. In the second example you can see, how the red and green centers were at the beginning way of, but the other were almost same throughout the algorithm - nevertheless this time the clustering failed:
 
 &img="data_cluster_shifts.png" alt="data_cluster_shifts"
 
@@ -18,16 +18,12 @@ Here are some other examples.
 
 &img="data_cluster_faithful.png" alt="data_cluster_faithful"
 
-
+&img="data_cluster_faithful_shifts.png" alt="data_cluster_faithful_shifts"
 
 &img="generated_data_cluster.png" alt="generated_data_cluster"
 
-&img="linreg-mix.png" alt="linreg-mix"
-
-&img="data_cluster_faithful_shifts.png" alt="data_cluster_faithful_shifts"
-
-&img="data_cluster_shifts.png" alt="data_cluster_shifts"
-
 &img="generated_data_cluster_shifts.png" alt="generated_data_cluster_shifts"
+
+&img="linreg-mix.png" alt="linreg-mix"
 
 &img="linreg-mix_shifts.png" alt="linreg-mix_shifts"
