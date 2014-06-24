@@ -1,7 +1,6 @@
 &img="circle_fill.png" alt="circle_fill"  width="200"
 
-
-&img="circle.png" alt="circle" width="200"
+&img="circle_no_fill.png" alt="circle_no_fill" width="200"
 
 &img="circle_par.png" alt="spiral"  width="200"
 
