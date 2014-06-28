@@ -141,6 +141,16 @@ def kvapil(task=''):
     else:
         return render_template('kvapil.html', task=task)#, numTask=tasksKvapil[task])
 
+@app.route('/vinkler')
+def vinkler_list():
+    return render_template('vinkler_list.html')
+
+
+@app.route('/vinkler/<task>')
+def vinkler_task(task=None):
+    notebook = 'MojmirsWork/{}.html'.format(task)
+    return render_template('vinkler_task.html', notebook=notebook)
+
 
 @app.route('/<name>/download/<num_task>/<task>')
 def download(name, num_task, task):

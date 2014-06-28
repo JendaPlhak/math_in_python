@@ -109,6 +109,10 @@ body {
     display: inline-block;
 }
 
+#vinkler {
+    color:#225588;
+}
+
 #outerPlhak, #outerKvapil {
     display: inline-block;
     overflow: hidden;
